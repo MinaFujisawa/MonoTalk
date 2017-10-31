@@ -8,12 +8,15 @@
 
 /* Begin PBXBuildFile section */
 		094ABF081FA7E85F00BA23AB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 094ABF071FA7E85F00BA23AB /* AppDelegate.swift */; };
-		094ABF0A1FA7E85F00BA23AB /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 094ABF091FA7E85F00BA23AB /* ViewController.swift */; };
 		094ABF0D1FA7E85F00BA23AB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 094ABF0B1FA7E85F00BA23AB /* Main.storyboard */; };
 		094ABF0F1FA7E85F00BA23AB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 094ABF0E1FA7E85F00BA23AB /* Assets.xcassets */; };
 		094ABF121FA7E85F00BA23AB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 094ABF101FA7E85F00BA23AB /* LaunchScreen.storyboard */; };
 		094ABF1D1FA7E85F00BA23AB /* MonoTalkTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 094ABF1C1FA7E85F00BA23AB /* MonoTalkTests.swift */; };
 		094ABF281FA7E85F00BA23AB /* MonoTalkUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 094ABF271FA7E85F00BA23AB /* MonoTalkUITests.swift */; };
+		094ABF361FA7EBD100BA23AB /* ItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 094ABF351FA7EBD100BA23AB /* ItemViewController.swift */; };
+		094ABF381FA7F05200BA23AB /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 094ABF371FA7F05200BA23AB /* Colors.swift */; };
+		094ABF3A1FA7F85200BA23AB /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 094ABF391FA7F85200BA23AB /* Model.swift */; };
+		0979FA4A1FA80172000BDB5B /* UI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0979FA491FA80172000BDB5B /* UI.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,7 +39,6 @@
 /* Begin PBXFileReference section */
 		094ABF041FA7E85F00BA23AB /* MonoTalk.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MonoTalk.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		094ABF071FA7E85F00BA23AB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		094ABF091FA7E85F00BA23AB /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		094ABF0C1FA7E85F00BA23AB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		094ABF0E1FA7E85F00BA23AB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		094ABF111FA7E85F00BA23AB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -47,6 +49,10 @@
 		094ABF231FA7E85F00BA23AB /* MonoTalkUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MonoTalkUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		094ABF271FA7E85F00BA23AB /* MonoTalkUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonoTalkUITests.swift; sourceTree = "<group>"; };
 		094ABF291FA7E85F00BA23AB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		094ABF351FA7EBD100BA23AB /* ItemViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemViewController.swift; sourceTree = "<group>"; };
+		094ABF371FA7F05200BA23AB /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
+		094ABF391FA7F85200BA23AB /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
+		0979FA491FA80172000BDB5B /* UI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UI.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,11 +104,14 @@
 			isa = PBXGroup;
 			children = (
 				094ABF071FA7E85F00BA23AB /* AppDelegate.swift */,
-				094ABF091FA7E85F00BA23AB /* ViewController.swift */,
 				094ABF0B1FA7E85F00BA23AB /* Main.storyboard */,
+				094ABF351FA7EBD100BA23AB /* ItemViewController.swift */,
 				094ABF0E1FA7E85F00BA23AB /* Assets.xcassets */,
 				094ABF101FA7E85F00BA23AB /* LaunchScreen.storyboard */,
 				094ABF131FA7E85F00BA23AB /* Info.plist */,
+				094ABF371FA7F05200BA23AB /* Colors.swift */,
+				094ABF391FA7F85200BA23AB /* Model.swift */,
+				0979FA491FA80172000BDB5B /* UI.swift */,
 			);
 			path = MonoTalk;
 			sourceTree = "<group>";
@@ -259,8 +268,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				094ABF0A1FA7E85F00BA23AB /* ViewController.swift in Sources */,
+				094ABF3A1FA7F85200BA23AB /* Model.swift in Sources */,
+				094ABF381FA7F05200BA23AB /* Colors.swift in Sources */,
 				094ABF081FA7E85F00BA23AB /* AppDelegate.swift in Sources */,
+				094ABF361FA7EBD100BA23AB /* ItemViewController.swift in Sources */,
+				0979FA4A1FA80172000BDB5B /* UI.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -9,74 +9,101 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Item View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="MonoTalk" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="ItemViewController" customModule="MonoTalk" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="H99-O6-PSB">
-                                <rect key="frame" x="0.0" y="64" width="375" height="252"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="H99-O6-PSB">
+                                <rect key="frame" x="0.0" y="64" width="375" height="240"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9gI-nY-cO2">
-                                        <rect key="frame" x="166" y="116" width="42" height="21"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9gI-nY-cO2">
+                                        <rect key="frame" x="24" y="78" width="327" height="20.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="b06-qE-cl2">
-                                        <rect key="frame" x="321" y="8" width="46" height="30"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                        <state key="normal" title="Button"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="b06-qE-cl2">
+                                        <rect key="frame" x="331" y="16" width="20" height="22"/>
+                                        <state key="normal" image="icon_star_filled"/>
+                                        <connections>
+                                            <action selector="starButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="nLQ-JN-V8h"/>
+                                        </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hc6-U5-Eoc">
-                                        <rect key="frame" x="267" y="8" width="46" height="30"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                        <state key="normal" title="Button"/>
-                                    </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1PV-b5-a8j">
-                                        <rect key="frame" x="8" y="12" width="42" height="21"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="GK9-Jp-mbH">
-                                        <rect key="frame" x="141" y="198" width="92" height="30"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="GK9-Jp-mbH">
+                                        <rect key="frame" x="159" y="193" width="57" height="23"/>
                                         <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="W5X-5z-DkM">
-                                                <rect key="frame" x="0.0" y="0.0" width="46" height="30"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                                <state key="normal" title="Button"/>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="W5X-5z-DkM">
+                                                <rect key="frame" x="0.0" y="0.0" width="22" height="23"/>
+                                                <state key="normal" image="icon_sample"/>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Cn7-hX-gD1">
-                                                <rect key="frame" x="46" y="0.0" width="46" height="30"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                                <state key="normal" title="Button"/>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Cn7-hX-gD1">
+                                                <rect key="frame" x="38" y="0.0" width="19" height="23"/>
+                                                <state key="normal" image="icon_note"/>
+                                                <connections>
+                                                    <action selector="noteButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="HCc-HA-QM1"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                     </stackView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1PV-b5-a8j">
+                                        <rect key="frame" x="24" y="16" width="34" height="16"/>
+                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="13"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hc6-U5-Eoc">
+                                        <rect key="frame" x="294" y="16" width="21" height="22"/>
+                                        <state key="normal" image="icon_feeling_normal"/>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="b06-qE-cl2" firstAttribute="top" secondItem="H99-O6-PSB" secondAttribute="top" constant="16" id="3t7-cR-6eP"/>
+                                    <constraint firstItem="1PV-b5-a8j" firstAttribute="leading" secondItem="H99-O6-PSB" secondAttribute="leading" constant="24" id="9hd-hS-KKZ"/>
+                                    <constraint firstAttribute="trailing" secondItem="b06-qE-cl2" secondAttribute="trailing" constant="24" id="A5m-wE-umo"/>
+                                    <constraint firstItem="1PV-b5-a8j" firstAttribute="top" secondItem="H99-O6-PSB" secondAttribute="top" constant="16" id="DPm-WD-hvm"/>
+                                    <constraint firstItem="GK9-Jp-mbH" firstAttribute="centerX" secondItem="H99-O6-PSB" secondAttribute="centerX" id="Eid-sU-UNs"/>
+                                    <constraint firstAttribute="trailing" secondItem="9gI-nY-cO2" secondAttribute="trailing" constant="24" id="JAf-hV-aTM"/>
+                                    <constraint firstItem="hc6-U5-Eoc" firstAttribute="top" secondItem="b06-qE-cl2" secondAttribute="top" id="efa-wC-pX6"/>
+                                    <constraint firstAttribute="height" constant="240" id="ftB-t7-Bd1"/>
+                                    <constraint firstItem="9gI-nY-cO2" firstAttribute="leading" secondItem="H99-O6-PSB" secondAttribute="leading" constant="24" id="mN7-Xu-xh5"/>
+                                    <constraint firstItem="b06-qE-cl2" firstAttribute="leading" secondItem="hc6-U5-Eoc" secondAttribute="trailing" constant="16" id="nOP-7V-xms"/>
+                                    <constraint firstItem="9gI-nY-cO2" firstAttribute="top" secondItem="b06-qE-cl2" secondAttribute="bottom" constant="40" id="r2J-0i-g8z"/>
+                                    <constraint firstAttribute="bottom" secondItem="GK9-Jp-mbH" secondAttribute="bottom" constant="24" id="zgT-jy-7ak"/>
+                                </constraints>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4Zs-Z1-Pod">
-                                <rect key="frame" x="164" y="608" width="46" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                <state key="normal" title="Button"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4Zs-Z1-Pod">
+                                <rect key="frame" x="151.5" y="571" width="72" height="72"/>
+                                <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="72" id="BOG-VD-ARX"/>
+                                    <constraint firstAttribute="width" constant="72" id="uBD-ZJ-Mt3"/>
+                                </constraints>
+                                <state key="normal" image="icon_record"/>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="0.96862745098039216" green="0.96862745098039216" blue="0.96862745098039216" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="4Zs-Z1-Pod" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="4wg-Xf-80K"/>
+                            <constraint firstItem="H99-O6-PSB" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="LvV-zd-LRZ"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="4Zs-Z1-Pod" secondAttribute="bottom" constant="24" id="Tbx-vo-Yb6"/>
+                            <constraint firstItem="H99-O6-PSB" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="fS2-PU-Cyo"/>
+                            <constraint firstItem="H99-O6-PSB" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="uGy-gr-miN"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <navigationItem key="navigationItem" id="1Xp-km-1cd"/>
+                    <connections>
+                        <outlet property="categoryLabel" destination="1PV-b5-a8j" id="Hed-Cx-PRM"/>
+                        <outlet property="questionLabel" destination="9gI-nY-cO2" id="e64-oC-XmK"/>
+                        <outlet property="recordButton" destination="4Zs-Z1-Pod" id="MM5-1S-Aai"/>
+                        <outlet property="sampleButton" destination="W5X-5z-DkM" id="K2x-Cu-836"/>
+                        <outlet property="starButton" destination="b06-qE-cl2" id="hH1-zW-1Tv"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
@@ -101,4 +128,11 @@
             <point key="canvasLocation" x="264" y="491.15442278860576"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="icon_feeling_normal" width="21" height="21"/>
+        <image name="icon_note" width="19" height="19"/>
+        <image name="icon_record" width="33" height="41"/>
+        <image name="icon_sample" width="22" height="23"/>
+        <image name="icon_star_filled" width="20" height="19"/>
+    </resources>
 </document>
