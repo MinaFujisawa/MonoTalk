@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ItemViewController: UIViewController {
+class QuestionViewController: UIViewController {
 
     @IBAction func noteButton(_ sender: Any) {
     }
@@ -19,7 +19,9 @@ class ItemViewController: UIViewController {
     }
     @IBOutlet weak var starButton: UIButton!
     @IBOutlet weak var questionLabel: UILabel!
-
+    
+    var question : Question!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpUI()

@@ -13,9 +13,10 @@
 		094ABF121FA7E85F00BA23AB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 094ABF101FA7E85F00BA23AB /* LaunchScreen.storyboard */; };
 		094ABF1D1FA7E85F00BA23AB /* MonoTalkTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 094ABF1C1FA7E85F00BA23AB /* MonoTalkTests.swift */; };
 		094ABF281FA7E85F00BA23AB /* MonoTalkUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 094ABF271FA7E85F00BA23AB /* MonoTalkUITests.swift */; };
-		094ABF361FA7EBD100BA23AB /* ItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 094ABF351FA7EBD100BA23AB /* ItemViewController.swift */; };
+		094ABF361FA7EBD100BA23AB /* QuestionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 094ABF351FA7EBD100BA23AB /* QuestionViewController.swift */; };
 		094ABF381FA7F05200BA23AB /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 094ABF371FA7F05200BA23AB /* Colors.swift */; };
 		094ABF3A1FA7F85200BA23AB /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 094ABF391FA7F85200BA23AB /* Model.swift */; };
+		095E33401FA8131C0010B1F3 /* QuestionsPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 095E333F1FA8131C0010B1F3 /* QuestionsPageViewController.swift */; };
 		0979FA4A1FA80172000BDB5B /* UI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0979FA491FA80172000BDB5B /* UI.swift */; };
 		0979FA4C1FA80A15000BDB5B /* DataSourse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0979FA4B1FA80A15000BDB5B /* DataSourse.swift */; };
 /* End PBXBuildFile section */
@@ -50,9 +51,10 @@
 		094ABF231FA7E85F00BA23AB /* MonoTalkUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MonoTalkUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		094ABF271FA7E85F00BA23AB /* MonoTalkUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonoTalkUITests.swift; sourceTree = "<group>"; };
 		094ABF291FA7E85F00BA23AB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		094ABF351FA7EBD100BA23AB /* ItemViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemViewController.swift; sourceTree = "<group>"; };
+		094ABF351FA7EBD100BA23AB /* QuestionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionViewController.swift; sourceTree = "<group>"; };
 		094ABF371FA7F05200BA23AB /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		094ABF391FA7F85200BA23AB /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
+		095E333F1FA8131C0010B1F3 /* QuestionsPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionsPageViewController.swift; sourceTree = "<group>"; };
 		0979FA491FA80172000BDB5B /* UI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UI.swift; sourceTree = "<group>"; };
 		0979FA4B1FA80A15000BDB5B /* DataSourse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataSourse.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -107,7 +109,7 @@
 			children = (
 				094ABF071FA7E85F00BA23AB /* AppDelegate.swift */,
 				094ABF0B1FA7E85F00BA23AB /* Main.storyboard */,
-				094ABF351FA7EBD100BA23AB /* ItemViewController.swift */,
+				094ABF351FA7EBD100BA23AB /* QuestionViewController.swift */,
 				094ABF0E1FA7E85F00BA23AB /* Assets.xcassets */,
 				094ABF101FA7E85F00BA23AB /* LaunchScreen.storyboard */,
 				094ABF131FA7E85F00BA23AB /* Info.plist */,
@@ -115,6 +117,7 @@
 				094ABF391FA7F85200BA23AB /* Model.swift */,
 				0979FA491FA80172000BDB5B /* UI.swift */,
 				0979FA4B1FA80A15000BDB5B /* DataSourse.swift */,
+				095E333F1FA8131C0010B1F3 /* QuestionsPageViewController.swift */,
 			);
 			path = MonoTalk;
 			sourceTree = "<group>";
@@ -274,8 +277,9 @@
 				094ABF3A1FA7F85200BA23AB /* Model.swift in Sources */,
 				094ABF381FA7F05200BA23AB /* Colors.swift in Sources */,
 				094ABF081FA7E85F00BA23AB /* AppDelegate.swift in Sources */,
+				095E33401FA8131C0010B1F3 /* QuestionsPageViewController.swift in Sources */,
 				0979FA4C1FA80A15000BDB5B /* DataSourse.swift in Sources */,
-				094ABF361FA7EBD100BA23AB /* ItemViewController.swift in Sources */,
+				094ABF361FA7EBD100BA23AB /* QuestionViewController.swift in Sources */,
 				0979FA4A1FA80172000BDB5B /* UI.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
