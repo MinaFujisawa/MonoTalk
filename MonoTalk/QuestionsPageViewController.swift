@@ -20,18 +20,18 @@ class QuestionsPageViewController: UIPageViewController {
         _ = Question(uuid: UUID().uuidString, categoryId: "2", question: "Dairy1 question", exampleAnswer: "It was awesome!")
 
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let questionVC1 = storyboard.instantiateViewController(withIdentifier: "storyPage") as! QuestionViewController
+        let questionVC1 = storyboard.instantiateViewController(withIdentifier: "questionPage") as! QuestionViewController
         questionVC1.question = question1
 
-        let questionVC2 = storyboard.instantiateViewController(withIdentifier: "storyPage") as! QuestionViewController
+        let questionVC2 = storyboard.instantiateViewController(withIdentifier: "questionPage") as! QuestionViewController
         questionVC2.question = question2
 
-        let questionVC3 = storyboard.instantiateViewController(withIdentifier: "storyPage") as! QuestionViewController
+        let questionVC3 = storyboard.instantiateViewController(withIdentifier: "questionPage") as! QuestionViewController
         questionVC3.question = question3
 
         pageCollection = [questionVC1, questionVC2, questionVC3]
 
-        self.setViewControllers([questionVC1], direction: .forward, animated: true, completion: nil)
+        self.setViewControllers([questionVC1], direction: .forward, animated: false, completion: nil)
         self.dataSource = self
     }
 }

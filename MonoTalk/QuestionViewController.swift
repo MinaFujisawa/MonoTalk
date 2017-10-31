@@ -24,15 +24,16 @@ class QuestionViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setUpUI()
+        
 
     }
-
-    func setUpUI() {
-//        recordButton.layer.cornerRadius = recordButton.frame.width / 2
+    
+    override func viewWillAppear(_ animated: Bool) {
         recordButton.clipsToBounds = true
         recordButton.backgroundColor = MyColor.theme.value
         recordButton.dropShadow(isCircle: true)
+        
+        questionLabel.text = question.question
     }
 
 }

@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct DataSorce {
+//struct DataSorce {
 //    var categories : [Category]
 //
 //    init() {
@@ -25,5 +25,5 @@ struct DataSorce {
 //        var question4 = Question(uuid: UUID().uuidString, categoryId: categories[1].uuid, question: "Dairy1 question", exampleAnswer: "It was awesome!")
 //        return [question1, question2]
 //    }
-}
+//}
 

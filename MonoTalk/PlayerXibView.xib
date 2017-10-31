@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PlayerXibView" customModule="MonoTalk" customModuleProvider="target"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8Q3-9Q-k5C">
+                    <rect key="frame" x="24" y="44" width="327" height="48"/>
+                    <subviews>
+                        <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="G0t-P3-A28">
+                            <rect key="frame" x="42" y="9.5" width="241" height="31"/>
+                        </slider>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tuT-il-Tqj">
+                            <rect key="frame" x="297" y="13" width="14" height="22"/>
+                            <state key="normal" image="icon_trash"/>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="i2Z-kZ-FkT">
+                            <rect key="frame" x="16" y="13" width="12" height="22"/>
+                            <state key="normal" image="icon_play"/>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="48" id="62Q-RM-bW5"/>
+                        <constraint firstItem="i2Z-kZ-FkT" firstAttribute="leading" secondItem="8Q3-9Q-k5C" secondAttribute="leading" constant="16" id="DzN-jl-x6K"/>
+                        <constraint firstItem="G0t-P3-A28" firstAttribute="centerY" secondItem="8Q3-9Q-k5C" secondAttribute="centerY" id="QGW-hs-tzN"/>
+                        <constraint firstItem="G0t-P3-A28" firstAttribute="leading" secondItem="i2Z-kZ-FkT" secondAttribute="trailing" constant="16" id="Y1I-eR-h32"/>
+                        <constraint firstItem="tuT-il-Tqj" firstAttribute="leading" secondItem="G0t-P3-A28" secondAttribute="trailing" constant="16" id="fqa-GL-j17"/>
+                        <constraint firstItem="i2Z-kZ-FkT" firstAttribute="centerY" secondItem="8Q3-9Q-k5C" secondAttribute="centerY" id="uSK-fm-iOu"/>
+                        <constraint firstAttribute="trailing" secondItem="tuT-il-Tqj" secondAttribute="trailing" constant="16" id="utE-pe-Gkt"/>
+                        <constraint firstItem="tuT-il-Tqj" firstAttribute="centerY" secondItem="8Q3-9Q-k5C" secondAttribute="centerY" id="yUZ-wc-JZq"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="8Q3-9Q-k5C" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="24" id="3sg-rP-uey"/>
+                <constraint firstItem="8Q3-9Q-k5C" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="24" id="TDm-1k-vRf"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="8Q3-9Q-k5C" secondAttribute="trailing" constant="24" id="ef6-n2-PKT"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <point key="canvasLocation" x="34.5" y="66.5"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="icon_play" width="12" height="15"/>
+        <image name="icon_trash" width="14" height="17"/>
+    </resources>
+</document>
