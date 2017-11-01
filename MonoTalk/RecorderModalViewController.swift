@@ -10,39 +10,54 @@ import UIKit
 import AVFoundation
 
 class RecorderModalViewController: UIViewController {
-
     @IBOutlet weak var mainButton: UIButton!
     @IBOutlet weak var okButton: UIButton!
-    @IBAction func deleteButton(_ sender: Any) {
-        dismiss(animated: true, completion: nil)
-    }
     @IBOutlet weak var deleteButton: UIButton!
-    @IBAction func okButton(_ sender: Any) {
-        dismiss(animated: true, completion: nil)
-    }
-    @IBAction func mainButton(_ sender: Any) {
-        mainButtonTapped()
-    }
-    
+    @IBOutlet weak var timeLabel: UILabel!
+
     var recordingSession: AVAudioSession!
     var audioRecorder: AVAudioRecorder!
     var audioPlayer: AVAudioPlayer?
     let fileManager = FileManager()
     let fileName = "sample.caf"
-    
-    
+    var startTime: Date!
+    var recordingTimer: Timer?
+    var playTimer : Timer?
+
+    var questionId: String!
+
+    @IBAction func deleteButton(_ sender: Any) {
+        stopAudio()
+        dismiss(animated: true, completion: nil)
+    }
+    @IBAction func okButton(_ sender: Any) {
+        stopAudio()
+        let url = getFileURL()
+        let recordAnswer = RecordAnswer(uuid: UUID.init().uuidString, questionId: questionId, date: Date(), url: url)
+
+        // TODO: save to database
+        dismiss(animated: true, completion: nil)
+    }
+    @IBAction func mainButton(_ sender: Any) {
+
+        // Recorder
+        if audioRecorder != nil {
+            finishRecording(success: true)
+        } else {
+            togglePlayOrStop()
+        }
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         okButton.isHidden = true
         deleteButton.isHidden = true
-        
+
         // TODO: circle
-        
-        
-        //MARK: AV
+
+        //add event to the button
         recordingSession = AVAudioSession.sharedInstance()
-        
         do {
             try recordingSession.setCategory(AVAudioSessionCategoryPlayAndRecord)
             try recordingSession.setActive(true)
@@ -59,7 +74,7 @@ class RecorderModalViewController: UIViewController {
             print("failed to record!")
         }
     }
-    
+
     // MARK: Record
     func startRecording() {
         let settings = [
@@ -68,61 +83,96 @@ class RecorderModalViewController: UIViewController {
             AVNumberOfChannelsKey: 1,
             AVEncoderAudioQualityKey: AVAudioQuality.high.rawValue
         ]
-        
+
         do {
-            audioRecorder = try AVAudioRecorder(url: getDocumentFilePath(), settings: settings)
+            audioRecorder = try AVAudioRecorder(url: getFileURL(), settings: settings)
             audioRecorder.delegate = self
             audioRecorder.record()
-            
+
         } catch {
             finishRecording(success: false)
         }
+
+        // Display recording time
+        startTime = Date()
+        recordingTimer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(displayRecordingTime), userInfo: nil, repeats: true)
     }
-    
-    func getDocumentsDirectory() -> URL {
-        let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
-        let documentsDirectory = paths[0]
-        return documentsDirectory
-    }
-    
-    func getDocumentFilePath() -> URL {
+
+    func getFileURL() -> URL {
         let urls = fileManager.urls(for: .documentDirectory, in: .userDomainMask) as [NSURL]
         let dirURL = urls[0]
         return dirURL.appendingPathComponent(fileName)!
     }
-    
+
     func finishRecording(success: Bool) {
         audioRecorder.stop()
         audioRecorder = nil
-        
+
         // UI
         okButton.isHidden = false
         deleteButton.isHidden = false
         mainButton.setImage(UIImage(named: "icon_record_play"), for: .normal)
-        
+
+        // Stop timer
+        recordingTimer?.invalidate()
+
         if !success {
             print("recording failed")
         }
+
     }
-    
-    @objc func mainButtonTapped() {
-        if audioRecorder == nil {
-            play()
-        } else {
-            finishRecording(success: true)
-        }
+
+    @objc func displayRecordingTime() {
+        let interval = Date().timeIntervalSince(startTime)
+        timeLabel.text = Time.getFormatedTime(interval)
     }
-    
+
+    func displayDurationTime() {
+        let duration = Time.getDuration(url: getFileURL())
+        timeLabel.text = Time.getFormatedTime(duration)
+    }
+
+
     // MARK : Play
-    func play() {
-        do {
-            try audioPlayer = AVAudioPlayer(contentsOf: self.getDocumentFilePath())
-        } catch {
-            print("Error to play")
-        }
+    func playAudio() {
+        mainButton.setImage(UIImage(named: "icon_record_stop"), for: .normal)
+
+        // Display playing time
+        playTimer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(displayPlayingTime), userInfo: nil, repeats: true)
         audioPlayer?.play()
     }
+
+    func stopAudio() {
+        audioPlayer?.stop()
+        audioPlayer?.currentTime = 0
+        playTimer?.invalidate()
+        mainButton.setImage(UIImage(named: "icon_record_play"), for: .normal)
+        displayDurationTime()
+    }
     
+    @objc func displayPlayingTime() {
+        timeLabel.text = Time.getFormatedTime(audioPlayer!.currentTime)
+    }
+
+    func togglePlayOrStop() {
+        if audioPlayer == nil {
+            do {
+                try audioPlayer = AVAudioPlayer(contentsOf: self.getFileURL())
+                audioPlayer?.delegate = self
+            } catch {
+                print("Error to play")
+            }
+        }
+
+        if let audioPlayer = audioPlayer {
+            if audioPlayer.isPlaying {
+                stopAudio()
+            } else {
+                playAudio()
+            }
+        }
+    }
+
     // Close this view
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         super.touchesEnded(touches, with: event)
@@ -140,5 +190,11 @@ extension RecorderModalViewController: AVAudioRecorderDelegate {
         if !flag {
             finishRecording(success: false)
         }
+    }
+}
+
+extension RecorderModalViewController: AVAudioPlayerDelegate {
+    func audioPlayerDidFinishPlaying(_ player: AVAudioPlayer, successfully flag: Bool) {
+        stopAudio()
     }
 }

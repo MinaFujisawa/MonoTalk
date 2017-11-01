@@ -8,6 +8,7 @@
 
 import Foundation
 import CoreMedia
+import AVFoundation
 
 struct Category {
     let uuid: String!
@@ -53,14 +54,4 @@ struct RecordAnswer {
     let questionId: String!
     let date: Date!
     let url: URL!
-    let duration: Float64 //not sure
-
-//    if let url = Bundle.main.url(forResource: "small", withExtension: "mp4") {
-//        let asset = AVAsset(url: url)
-//
-//        let duration = asset.duration
-//        let durationTime = CMTimeGetSeconds(duration)
-//
-//        print(durationTime)
-//    }
 }

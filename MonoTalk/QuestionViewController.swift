@@ -23,12 +23,8 @@ class QuestionViewController: UIViewController {
     
     var question : Question!
     
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -37,6 +33,14 @@ class QuestionViewController: UIViewController {
         recordButton.dropShadow(isCircle: true)
         
         questionLabel.text = question.question
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if (segue.identifier == "recoder") {
+            let modal = segue.destination as! RecorderModalViewController
+//            modal.questionId = question.uuid //why bad access??
+            modal.questionId = "aa"
+        }
     }
     
 }

@@ -123,8 +123,8 @@
                             <view tag="1" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Toz-XN-lMv">
                                 <rect key="frame" x="0.0" y="492" width="375" height="175"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xwB-qx-1Fw">
-                                        <rect key="frame" x="166" y="38" width="42" height="21"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00:00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xwB-qx-1Fw">
+                                        <rect key="frame" x="164" y="38" width="46" height="21"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -192,6 +192,7 @@
                         <outlet property="deleteButton" destination="OqX-hd-npL" id="ka3-Oe-1Le"/>
                         <outlet property="mainButton" destination="ZeD-W5-iOi" id="fqI-mQ-04C"/>
                         <outlet property="okButton" destination="YAD-hk-kmA" id="2BJ-S4-Ozq"/>
+                        <outlet property="timeLabel" destination="xwB-qx-1Fw" id="dWa-K0-xfB"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uKD-LV-7Jt" userLabel="First Responder" sceneMemberID="firstResponder"/>
