@@ -21,6 +21,7 @@
 		095E33401FA8131C0010B1F3 /* QuestionsPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 095E333F1FA8131C0010B1F3 /* QuestionsPageViewController.swift */; };
 		0979FA4A1FA80172000BDB5B /* UI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0979FA491FA80172000BDB5B /* UI.swift */; };
 		0979FA4C1FA80A15000BDB5B /* DataSourse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0979FA4B1FA80A15000BDB5B /* DataSourse.swift */; };
+		09E728521FA95342007B7F5F /* RecorderModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09E728511FA95342007B7F5F /* RecorderModalViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,6 +62,7 @@
 		095E333F1FA8131C0010B1F3 /* QuestionsPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionsPageViewController.swift; sourceTree = "<group>"; };
 		0979FA491FA80172000BDB5B /* UI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UI.swift; sourceTree = "<group>"; };
 		0979FA4B1FA80A15000BDB5B /* DataSourse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataSourse.swift; sourceTree = "<group>"; };
+		09E728511FA95342007B7F5F /* RecorderModalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecorderModalViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -113,6 +115,7 @@
 			children = (
 				094ABF071FA7E85F00BA23AB /* AppDelegate.swift */,
 				094ABF351FA7EBD100BA23AB /* QuestionViewController.swift */,
+				09E728511FA95342007B7F5F /* RecorderModalViewController.swift */,
 				095E333F1FA8131C0010B1F3 /* QuestionsPageViewController.swift */,
 				094ABF0E1FA7E85F00BA23AB /* Assets.xcassets */,
 				094ABF101FA7E85F00BA23AB /* LaunchScreen.storyboard */,
@@ -286,6 +289,7 @@
 				094ABF381FA7F05200BA23AB /* Colors.swift in Sources */,
 				094ABF081FA7E85F00BA23AB /* AppDelegate.swift in Sources */,
 				095E33401FA8131C0010B1F3 /* QuestionsPageViewController.swift in Sources */,
+				09E728521FA95342007B7F5F /* RecorderModalViewController.swift in Sources */,
 				0979FA4C1FA80A15000BDB5B /* DataSourse.swift in Sources */,
 				094ABF361FA7EBD100BA23AB /* QuestionViewController.swift in Sources */,
 				0979FA4A1FA80172000BDB5B /* UI.swift in Sources */,

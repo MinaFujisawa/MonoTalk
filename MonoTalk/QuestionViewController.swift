@@ -8,6 +8,7 @@
 
 import UIKit
 
+
 class QuestionViewController: UIViewController {
 
     @IBAction func noteButton(_ sender: Any) {
@@ -22,10 +23,12 @@ class QuestionViewController: UIViewController {
     
     var question : Question!
     
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -35,5 +38,5 @@ class QuestionViewController: UIViewController {
         
         questionLabel.text = question.question
     }
-
+    
 }

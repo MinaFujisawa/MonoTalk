@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="seL-pe-Fje">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="FkJ-5g-QCh">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -18,7 +18,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="H99-O6-PSB">
-                                <rect key="frame" x="0.0" y="64" width="375" height="240"/>
+                                <rect key="frame" x="0.0" y="20" width="375" height="240"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9gI-nY-cO2">
                                         <rect key="frame" x="24" y="78" width="327" height="20.5"/>
@@ -28,7 +28,7 @@
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="b06-qE-cl2">
                                         <rect key="frame" x="331" y="16" width="20" height="22"/>
-                                        <state key="normal" image="icon_star_filled"/>
+                                        <state key="normal" image="icon_star_outline"/>
                                         <connections>
                                             <action selector="starButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="nLQ-JN-V8h"/>
                                         </connections>
@@ -83,7 +83,10 @@
                                     <constraint firstAttribute="height" constant="72" id="BOG-VD-ARX"/>
                                     <constraint firstAttribute="width" constant="72" id="uBD-ZJ-Mt3"/>
                                 </constraints>
-                                <state key="normal" image="icon_record"/>
+                                <state key="normal" image="icon_record_microphone"/>
+                                <connections>
+                                    <segue destination="VDQ-qS-3oC" kind="presentation" identifier="recoder" modalTransitionStyle="crossDissolve" id="ydW-zZ-kkT"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="0.96862745098039216" green="0.96862745098039216" blue="0.96862745098039216" alpha="1" colorSpace="calibratedRGB"/>
@@ -107,40 +110,131 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1167" y="491"/>
+            <point key="canvasLocation" x="3041" y="-237"/>
+        </scene>
+        <!--Recorder Modal View Controller-->
+        <scene sceneID="6a1-sk-k0w">
+            <objects>
+                <viewController modalPresentationStyle="overCurrentContext" id="VDQ-qS-3oC" customClass="RecorderModalViewController" customModule="MonoTalk" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" tag="1" contentMode="scaleToFill" id="c6I-Br-Fqk">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view tag="1" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Toz-XN-lMv">
+                                <rect key="frame" x="0.0" y="492" width="375" height="175"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xwB-qx-1Fw">
+                                        <rect key="frame" x="166" y="38" width="42" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZeD-W5-iOi">
+                                        <rect key="frame" x="151" y="79" width="72" height="72"/>
+                                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="72" id="Wmf-L9-H4R"/>
+                                            <constraint firstAttribute="width" constant="72" id="qz3-8T-Fwm"/>
+                                        </constraints>
+                                        <state key="normal" image="icon_record_stop"/>
+                                        <connections>
+                                            <action selector="mainButton:" destination="VDQ-qS-3oC" eventType="touchUpInside" id="Bqk-Af-bR6"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YAD-hk-kmA">
+                                        <rect key="frame" x="275" y="91" width="48" height="48"/>
+                                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="48" id="Coh-fg-vWy"/>
+                                            <constraint firstAttribute="width" constant="48" id="wH0-55-PpO"/>
+                                        </constraints>
+                                        <state key="normal" image="icon_record_ok"/>
+                                        <connections>
+                                            <action selector="okButton:" destination="VDQ-qS-3oC" eventType="touchUpInside" id="mhD-PM-jEa"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OqX-hd-npL">
+                                        <rect key="frame" x="51" y="91" width="48" height="48"/>
+                                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="48" id="ZRB-9m-Q7x"/>
+                                            <constraint firstAttribute="width" constant="48" id="lpO-Si-RWU"/>
+                                        </constraints>
+                                        <state key="normal" image="icon_record_trash"/>
+                                        <connections>
+                                            <action selector="deleteButton:" destination="VDQ-qS-3oC" eventType="touchUpInside" id="JPU-aD-AB9"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="ZeD-W5-iOi" secondAttribute="bottom" constant="24" id="Aup-5S-m2N"/>
+                                    <constraint firstItem="ZeD-W5-iOi" firstAttribute="top" secondItem="xwB-qx-1Fw" secondAttribute="bottom" constant="20" id="AyL-KV-Qg9"/>
+                                    <constraint firstItem="OqX-hd-npL" firstAttribute="centerY" secondItem="ZeD-W5-iOi" secondAttribute="centerY" id="Gf5-hp-dQ7"/>
+                                    <constraint firstItem="xwB-qx-1Fw" firstAttribute="centerX" secondItem="Toz-XN-lMv" secondAttribute="centerX" id="QB5-eZ-nQl"/>
+                                    <constraint firstItem="YAD-hk-kmA" firstAttribute="centerY" secondItem="ZeD-W5-iOi" secondAttribute="centerY" id="aXj-WN-2YD"/>
+                                    <constraint firstAttribute="height" constant="175" id="lNk-8J-gev"/>
+                                    <constraint firstItem="ZeD-W5-iOi" firstAttribute="leading" secondItem="OqX-hd-npL" secondAttribute="trailing" constant="52" id="rjT-a1-TOx"/>
+                                    <constraint firstItem="ZeD-W5-iOi" firstAttribute="centerX" secondItem="Toz-XN-lMv" secondAttribute="centerX" id="wTf-tm-fLe"/>
+                                    <constraint firstItem="YAD-hk-kmA" firstAttribute="leading" secondItem="ZeD-W5-iOi" secondAttribute="trailing" constant="52" id="x5C-30-Blf"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.20000000000000001" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Toz-XN-lMv" firstAttribute="leading" secondItem="YBx-wF-p5b" secondAttribute="leading" id="iyn-IH-TgI"/>
+                            <constraint firstItem="Toz-XN-lMv" firstAttribute="bottom" secondItem="YBx-wF-p5b" secondAttribute="bottom" id="lQP-xp-cjg"/>
+                            <constraint firstItem="Toz-XN-lMv" firstAttribute="trailing" secondItem="YBx-wF-p5b" secondAttribute="trailing" id="q2D-UF-Za0"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="YBx-wF-p5b"/>
+                    </view>
+                    <connections>
+                        <outlet property="deleteButton" destination="OqX-hd-npL" id="ka3-Oe-1Le"/>
+                        <outlet property="mainButton" destination="ZeD-W5-iOi" id="fqI-mQ-04C"/>
+                        <outlet property="okButton" destination="YAD-hk-kmA" id="2BJ-S4-Ozq"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="uKD-LV-7Jt" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3804" y="-237.03148425787109"/>
         </scene>
         <!--Questions Page View Controller-->
         <scene sceneID="kIw-2J-6vU">
             <objects>
-                <pageViewController autoresizesArchivedViewToFullSize="NO" transitionStyle="pageCurl" navigationOrientation="horizontal" spineLocation="min" id="seL-pe-Fje" customClass="QuestionsPageViewController" customModule="MonoTalk" customModuleProvider="target" sceneMemberID="viewController"/>
+                <pageViewController autoresizesArchivedViewToFullSize="NO" transitionStyle="pageCurl" navigationOrientation="horizontal" spineLocation="min" id="seL-pe-Fje" customClass="QuestionsPageViewController" customModule="MonoTalk" customModuleProvider="target" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="pV6-jE-t94"/>
+                </pageViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rRq-46-dAx" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2044" y="491"/>
+            <point key="canvasLocation" x="3042" y="491"/>
         </scene>
         <!--Navigation Controller-->
-        <scene sceneID="zT5-Tn-vjt">
+        <scene sceneID="ugg-zr-DUY">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="D5x-1E-kGT" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="FkJ-5g-QCh" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="IbB-8m-9q0">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="zZd-u5-C92">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="Dyw-sN-0hA"/>
+                        <segue destination="seL-pe-Fje" kind="relationship" relationship="rootViewController" id="bbR-NM-wMU"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="NWW-Np-B33" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ALF-uv-DyT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="264" y="491.15442278860576"/>
+            <point key="canvasLocation" x="2043.2" y="490.25487256371815"/>
         </scene>
     </scenes>
     <resources>
         <image name="icon_feeling_normal" width="21" height="21"/>
         <image name="icon_note" width="19" height="19"/>
-        <image name="icon_record" width="33" height="41"/>
+        <image name="icon_record_microphone" width="33" height="41"/>
+        <image name="icon_record_ok" width="18" height="14"/>
+        <image name="icon_record_stop" width="24" height="24"/>
+        <image name="icon_record_trash" width="15" height="18"/>
         <image name="icon_sample" width="22" height="23"/>
-        <image name="icon_star_filled" width="20" height="19"/>
+        <image name="icon_star_outline" width="20" height="19"/>
     </resources>
 </document>
