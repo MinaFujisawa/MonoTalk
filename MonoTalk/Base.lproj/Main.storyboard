@@ -199,11 +199,11 @@
             </objects>
             <point key="canvasLocation" x="3804" y="-237.03148425787109"/>
         </scene>
-        <!--Questions Page View Controller-->
+        <!--title-->
         <scene sceneID="kIw-2J-6vU">
             <objects>
-                <pageViewController autoresizesArchivedViewToFullSize="NO" transitionStyle="pageCurl" navigationOrientation="horizontal" spineLocation="min" id="seL-pe-Fje" customClass="QuestionsPageViewController" customModule="MonoTalk" customModuleProvider="target" sceneMemberID="viewController">
-                    <navigationItem key="navigationItem" id="pV6-jE-t94"/>
+                <pageViewController autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="seL-pe-Fje" customClass="QuestionsPageViewController" customModule="MonoTalk" customModuleProvider="target" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" title="title" id="pV6-jE-t94"/>
                 </pageViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rRq-46-dAx" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

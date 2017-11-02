@@ -21,6 +21,7 @@ class QuestionViewController: UIViewController {
     @IBOutlet weak var starButton: UIButton!
     @IBOutlet weak var questionLabel: UILabel!
     
+    var currentIndexTitle: String!
     var question : Question!
     
     override func viewDidLoad() {
@@ -28,11 +29,14 @@ class QuestionViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        // UI
         recordButton.clipsToBounds = true
         recordButton.backgroundColor = MyColor.theme.value
         recordButton.dropShadow(isCircle: true)
         
+        // Init contents
         questionLabel.text = question.question
+        self.title = currentIndexTitle
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
