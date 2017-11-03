@@ -9,6 +9,7 @@
 import Foundation
 import CoreMedia
 import AVFoundation
+import RealmSwift
 
 struct Category {
     let uuid: String!

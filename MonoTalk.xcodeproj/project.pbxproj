@@ -23,6 +23,9 @@
 		0979FA4C1FA80A15000BDB5B /* DataSourse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0979FA4B1FA80A15000BDB5B /* DataSourse.swift */; };
 		09E728521FA95342007B7F5F /* RecorderModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09E728511FA95342007B7F5F /* RecorderModalViewController.swift */; };
 		09E728541FA96B91007B7F5F /* Time.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09E728531FA96B91007B7F5F /* Time.swift */; };
+		76D8F864D1B0FBBD8D237AF8 /* Pods_MonoTalkTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2645F8DA66821BEDDE56A428 /* Pods_MonoTalkTests.framework */; };
+		F6CEE0F6CACEA01984875347 /* Pods_MonoTalkUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 30391151E5FE1E147BC2EE3B /* Pods_MonoTalkUITests.framework */; };
+		FF336F827C8547CD9DE09F68 /* Pods_MonoTalk.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A3B299541C4A4170D0E3A6B0 /* Pods_MonoTalk.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -65,6 +68,15 @@
 		0979FA4B1FA80A15000BDB5B /* DataSourse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataSourse.swift; sourceTree = "<group>"; };
 		09E728511FA95342007B7F5F /* RecorderModalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecorderModalViewController.swift; sourceTree = "<group>"; };
 		09E728531FA96B91007B7F5F /* Time.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Time.swift; sourceTree = "<group>"; };
+		1DEE21F88B40CB9E251D52C8 /* Pods-MonoTalkTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MonoTalkTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MonoTalkTests/Pods-MonoTalkTests.debug.xcconfig"; sourceTree = "<group>"; };
+		2645F8DA66821BEDDE56A428 /* Pods_MonoTalkTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MonoTalkTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		30391151E5FE1E147BC2EE3B /* Pods_MonoTalkUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MonoTalkUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		6ED8A6F990719261DAEC0BDA /* Pods-MonoTalkTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MonoTalkTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-MonoTalkTests/Pods-MonoTalkTests.release.xcconfig"; sourceTree = "<group>"; };
+		964E139B8D5986FD42043BFF /* Pods-MonoTalk.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MonoTalk.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MonoTalk/Pods-MonoTalk.debug.xcconfig"; sourceTree = "<group>"; };
+		9E23B95381A78805DCCAF0E9 /* Pods-MonoTalkUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MonoTalkUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MonoTalkUITests/Pods-MonoTalkUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		A3B299541C4A4170D0E3A6B0 /* Pods_MonoTalk.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MonoTalk.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C2E5D93F45AFD6EDE9B02667 /* Pods-MonoTalk.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MonoTalk.release.xcconfig"; path = "Pods/Target Support Files/Pods-MonoTalk/Pods-MonoTalk.release.xcconfig"; sourceTree = "<group>"; };
+		DE5DF0130403871084856154 /* Pods-MonoTalkUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MonoTalkUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-MonoTalkUITests/Pods-MonoTalkUITests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,6 +84,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FF336F827C8547CD9DE09F68 /* Pods_MonoTalk.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -79,6 +92,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				76D8F864D1B0FBBD8D237AF8 /* Pods_MonoTalkTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -86,6 +100,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F6CEE0F6CACEA01984875347 /* Pods_MonoTalkUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -99,6 +114,8 @@
 				094ABF1B1FA7E85F00BA23AB /* MonoTalkTests */,
 				094ABF261FA7E85F00BA23AB /* MonoTalkUITests */,
 				094ABF051FA7E85F00BA23AB /* Products */,
+				D33CB3A63F2087D17E7C9A7F /* Pods */,
+				2190F73CF7241A551C2E921C /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -152,6 +169,29 @@
 			path = MonoTalkUITests;
 			sourceTree = "<group>";
 		};
+		2190F73CF7241A551C2E921C /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				A3B299541C4A4170D0E3A6B0 /* Pods_MonoTalk.framework */,
+				2645F8DA66821BEDDE56A428 /* Pods_MonoTalkTests.framework */,
+				30391151E5FE1E147BC2EE3B /* Pods_MonoTalkUITests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		D33CB3A63F2087D17E7C9A7F /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				964E139B8D5986FD42043BFF /* Pods-MonoTalk.debug.xcconfig */,
+				C2E5D93F45AFD6EDE9B02667 /* Pods-MonoTalk.release.xcconfig */,
+				1DEE21F88B40CB9E251D52C8 /* Pods-MonoTalkTests.debug.xcconfig */,
+				6ED8A6F990719261DAEC0BDA /* Pods-MonoTalkTests.release.xcconfig */,
+				9E23B95381A78805DCCAF0E9 /* Pods-MonoTalkUITests.debug.xcconfig */,
+				DE5DF0130403871084856154 /* Pods-MonoTalkUITests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -159,9 +199,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 094ABF2C1FA7E85F00BA23AB /* Build configuration list for PBXNativeTarget "MonoTalk" */;
 			buildPhases = (
+				C8C19DAC729D14EA07B3580E /* [CP] Check Pods Manifest.lock */,
 				094ABF001FA7E85F00BA23AB /* Sources */,
 				094ABF011FA7E85F00BA23AB /* Frameworks */,
 				094ABF021FA7E85F00BA23AB /* Resources */,
+				49CAC9FD92911157CBEF1BFE /* [CP] Embed Pods Frameworks */,
+				67179FBC4835E4C5EE1ED054 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -176,9 +219,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 094ABF2F1FA7E85F00BA23AB /* Build configuration list for PBXNativeTarget "MonoTalkTests" */;
 			buildPhases = (
+				8B9C237F5516368265C53B82 /* [CP] Check Pods Manifest.lock */,
 				094ABF141FA7E85F00BA23AB /* Sources */,
 				094ABF151FA7E85F00BA23AB /* Frameworks */,
 				094ABF161FA7E85F00BA23AB /* Resources */,
+				ED1A0784C24D452427E8A054 /* [CP] Embed Pods Frameworks */,
+				DF3E89AA2FFF3CE59D693A36 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -194,9 +240,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 094ABF321FA7E85F00BA23AB /* Build configuration list for PBXNativeTarget "MonoTalkUITests" */;
 			buildPhases = (
+				A179A5BD0B9AEE186E68FD46 /* [CP] Check Pods Manifest.lock */,
 				094ABF1F1FA7E85F00BA23AB /* Sources */,
 				094ABF201FA7E85F00BA23AB /* Frameworks */,
 				094ABF211FA7E85F00BA23AB /* Resources */,
+				A6357E57330F3255AA503E67 /* [CP] Embed Pods Frameworks */,
+				95DED4F9FBE0405C8E7D699B /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -281,6 +330,168 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		49CAC9FD92911157CBEF1BFE /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-MonoTalk/Pods-MonoTalk-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Realm/Realm.framework",
+				"${BUILT_PRODUCTS_DIR}/RealmSwift/RealmSwift.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RealmSwift.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MonoTalk/Pods-MonoTalk-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		67179FBC4835E4C5EE1ED054 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MonoTalk/Pods-MonoTalk-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		8B9C237F5516368265C53B82 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-MonoTalkTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		95DED4F9FBE0405C8E7D699B /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MonoTalkUITests/Pods-MonoTalkUITests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A179A5BD0B9AEE186E68FD46 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-MonoTalkUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A6357E57330F3255AA503E67 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-MonoTalkUITests/Pods-MonoTalkUITests-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Realm/Realm.framework",
+				"${BUILT_PRODUCTS_DIR}/RealmSwift/RealmSwift.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RealmSwift.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MonoTalkUITests/Pods-MonoTalkUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C8C19DAC729D14EA07B3580E /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-MonoTalk-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		DF3E89AA2FFF3CE59D693A36 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MonoTalkTests/Pods-MonoTalkTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		ED1A0784C24D452427E8A054 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-MonoTalkTests/Pods-MonoTalkTests-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Realm/Realm.framework",
+				"${BUILT_PRODUCTS_DIR}/RealmSwift/RealmSwift.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RealmSwift.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MonoTalkTests/Pods-MonoTalkTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		094ABF001FA7E85F00BA23AB /* Sources */ = {
@@ -460,6 +671,7 @@
 		};
 		094ABF2D1FA7E85F00BA23AB /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 964E139B8D5986FD42043BFF /* Pods-MonoTalk.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -474,6 +686,7 @@
 		};
 		094ABF2E1FA7E85F00BA23AB /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = C2E5D93F45AFD6EDE9B02667 /* Pods-MonoTalk.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -488,6 +701,7 @@
 		};
 		094ABF301FA7E85F00BA23AB /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1DEE21F88B40CB9E251D52C8 /* Pods-MonoTalkTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -504,6 +718,7 @@
 		};
 		094ABF311FA7E85F00BA23AB /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6ED8A6F990719261DAEC0BDA /* Pods-MonoTalkTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -520,6 +735,7 @@
 		};
 		094ABF331FA7E85F00BA23AB /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9E23B95381A78805DCCAF0E9 /* Pods-MonoTalkUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -535,6 +751,7 @@
 		};
 		094ABF341FA7E85F00BA23AB /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = DE5DF0130403871084856154 /* Pods-MonoTalkUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
