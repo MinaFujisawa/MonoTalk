@@ -5,6 +5,8 @@
     </device>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Navigation items with more than one left or right bar item" minToolsVersion="7.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -215,6 +217,9 @@
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="0q7-FN-bD9" kind="show" identifier="GoToQuestions" id="Lg4-g8-WtD"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -226,24 +231,40 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="p5Z-YU-xb6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1672.8" y="489.80509745127438"/>
+            <point key="canvasLocation" x="1882" y="493"/>
         </scene>
-        <!--Table View Controller-->
+        <!--Question Table View Controller-->
         <scene sceneID="J1Q-XG-1At">
             <objects>
-                <tableViewController id="0q7-FN-bD9" sceneMemberID="viewController">
+                <tableViewController id="0q7-FN-bD9" customClass="QuestionTableViewController" customModule="MonoTalk" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="WOM-gf-70f">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="RIM-WO-Fuy">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="RIM-WO-Fuy" customClass="QuestionCell" customModule="MonoTalk" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="RIM-WO-Fuy" id="ZrJ-Ka-Sex">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Where are you from?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Agf-if-TWS">
+                                            <rect key="frame" x="8" y="11" width="160" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="Agf-if-TWS" firstAttribute="leading" secondItem="ZrJ-Ka-Sex" secondAttribute="leadingMargin" id="moC-k7-aRv"/>
+                                        <constraint firstItem="Agf-if-TWS" firstAttribute="centerY" secondItem="ZrJ-Ka-Sex" secondAttribute="centerY" id="qFb-j4-fjm"/>
+                                    </constraints>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="questionLabel" destination="Agf-if-TWS" id="0W3-ow-rmX"/>
+                                    <segue destination="seL-pe-Fje" kind="show" identifier="GoToDetail" id="vCR-ev-n2X"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -251,10 +272,31 @@
                             <outlet property="delegate" destination="0q7-FN-bD9" id="3NZ-8a-tOw"/>
                         </connections>
                     </tableView>
+                    <navigationItem key="navigationItem" id="Wut-sl-2CL">
+                        <rightBarButtonItems>
+                            <barButtonItem style="plain" id="7Ta-5g-IZw">
+                                <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="ggF-D2-opT">
+                                    <rect key="frame" x="313" y="7" width="46" height="30"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <state key="normal" title="add"/>
+                                </button>
+                            </barButtonItem>
+                            <barButtonItem style="plain" id="U2P-mp-hsM">
+                                <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Zh6-ew-3uC">
+                                    <rect key="frame" x="266" y="7" width="39" height="30"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <state key="normal" title="menu"/>
+                                </button>
+                                <connections>
+                                    <action selector="menuButton:" destination="0q7-FN-bD9" id="z3W-rd-OU5"/>
+                                </connections>
+                            </barButtonItem>
+                        </rightBarButtonItems>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bLV-Pf-VDS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2524" y="492.50374812593708"/>
+            <point key="canvasLocation" x="2863.1999999999998" y="492.50374812593708"/>
         </scene>
         <!--title-->
         <scene sceneID="kIw-2J-6vU">
@@ -264,7 +306,7 @@
                 </pageViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rRq-46-dAx" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3380" y="490.70464767616198"/>
+            <point key="canvasLocation" x="3719.1999999999998" y="490.70464767616198"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="RDl-KD-yAT">
@@ -282,7 +324,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YnL-Il-m6c" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="810" y="490"/>
+            <point key="canvasLocation" x="1018" y="493"/>
         </scene>
     </scenes>
     <resources>
