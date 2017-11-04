@@ -10,6 +10,8 @@ import Foundation
 import RealmSwift
 
 class MyRealm {
+    let realm = try! Realm()
+
     func addCategory(name: String) {
         let category = Category()
         category.id = UUID().uuidString

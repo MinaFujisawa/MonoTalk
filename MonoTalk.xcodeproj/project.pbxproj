@@ -152,6 +152,8 @@
 			isa = PBXGroup;
 			children = (
 				094ABF071FA7E85F00BA23AB /* AppDelegate.swift */,
+				098446C31FAE4A81005F72E8 /* Storyboards */,
+				098446C41FAE4ABE005F72E8 /* Common */,
 				098446C21FAE3DA7005F72E8 /* DataBase */,
 				0910BB351FAD23FC006AEA85 /* CategoryTableViewController.swift */,
 				0910BB3D1FAD30DC006AEA85 /* QuestionTableViewController.swift */,
@@ -159,17 +161,10 @@
 				09E728511FA95342007B7F5F /* RecorderModalViewController.swift */,
 				095E333F1FA8131C0010B1F3 /* QuestionsPageViewController.swift */,
 				094ABF0E1FA7E85F00BA23AB /* Assets.xcassets */,
-				094ABF101FA7E85F00BA23AB /* LaunchScreen.storyboard */,
 				094ABF131FA7E85F00BA23AB /* Info.plist */,
-				094ABF0B1FA7E85F00BA23AB /* Main.storyboard */,
-				094ABF371FA7F05200BA23AB /* Colors.swift */,
-				0979FA491FA80172000BDB5B /* UI.swift */,
 				0979FA4B1FA80A15000BDB5B /* DataSourse.swift */,
-				0957D61A1FA9373000A91705 /* PlayerXibView.xib */,
 				0957D61C1FA93C9F00A91705 /* PlayerXibView.swift */,
-				09E728531FA96B91007B7F5F /* Time.swift */,
 				0910BB371FAD28EE006AEA85 /* CategoryCell.swift */,
-				0910BB381FAD28EE006AEA85 /* CategoryCellXibView.xib */,
 				0910BB3B1FAD30C0006AEA85 /* QuestionCell.swift */,
 			);
 			path = MonoTalk;
@@ -202,6 +197,27 @@
 				094ABF391FA7F85200BA23AB /* Model.swift */,
 			);
 			path = DataBase;
+			sourceTree = "<group>";
+		};
+		098446C31FAE4A81005F72E8 /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				094ABF0B1FA7E85F00BA23AB /* Main.storyboard */,
+				094ABF101FA7E85F00BA23AB /* LaunchScreen.storyboard */,
+				0957D61A1FA9373000A91705 /* PlayerXibView.xib */,
+				0910BB381FAD28EE006AEA85 /* CategoryCellXibView.xib */,
+			);
+			path = Storyboards;
+			sourceTree = "<group>";
+		};
+		098446C41FAE4ABE005F72E8 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				09E728531FA96B91007B7F5F /* Time.swift */,
+				0979FA491FA80172000BDB5B /* UI.swift */,
+				094ABF371FA7F05200BA23AB /* Colors.swift */,
+			);
+			path = Common;
 			sourceTree = "<group>";
 		};
 		2190F73CF7241A551C2E921C /* Frameworks */ = {
