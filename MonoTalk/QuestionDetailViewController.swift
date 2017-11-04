@@ -9,7 +9,7 @@
 import UIKit
 
 
-class QuestionViewController: UIViewController {
+class QuestionDetailViewController: UIViewController {
 
     @IBAction func noteButton(_ sender: Any) {
     }

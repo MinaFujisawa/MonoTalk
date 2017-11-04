@@ -38,4 +38,16 @@ class QuestionTableViewController: UITableViewController {
         return cell
     }
     
+    // MARK: segue
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "GoToDetail" {
+            let pageVC = segue.destination as! QuestionsPageViewController
+            let cell = sender as! QuestionTavleViewCell
+            if let indexPath = self.tableView!.indexPath(for: cell) {
+                pageVC.selectedIndex = indexPath.row
+                pageVC.questions = questions
+            }
+        }
+    }
+    
 }

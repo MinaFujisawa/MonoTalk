@@ -18,7 +18,7 @@
 		094ABF121FA7E85F00BA23AB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 094ABF101FA7E85F00BA23AB /* LaunchScreen.storyboard */; };
 		094ABF1D1FA7E85F00BA23AB /* MonoTalkTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 094ABF1C1FA7E85F00BA23AB /* MonoTalkTests.swift */; };
 		094ABF281FA7E85F00BA23AB /* MonoTalkUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 094ABF271FA7E85F00BA23AB /* MonoTalkUITests.swift */; };
-		094ABF361FA7EBD100BA23AB /* QuestionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 094ABF351FA7EBD100BA23AB /* QuestionViewController.swift */; };
+		094ABF361FA7EBD100BA23AB /* QuestionDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 094ABF351FA7EBD100BA23AB /* QuestionDetailViewController.swift */; };
 		094ABF381FA7F05200BA23AB /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 094ABF371FA7F05200BA23AB /* Colors.swift */; };
 		094ABF3A1FA7F85200BA23AB /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 094ABF391FA7F85200BA23AB /* Model.swift */; };
 		0957D61B1FA9373000A91705 /* PlayerXibView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0957D61A1FA9373000A91705 /* PlayerXibView.xib */; };
@@ -72,7 +72,7 @@
 		094ABF231FA7E85F00BA23AB /* MonoTalkUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MonoTalkUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		094ABF271FA7E85F00BA23AB /* MonoTalkUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonoTalkUITests.swift; sourceTree = "<group>"; };
 		094ABF291FA7E85F00BA23AB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		094ABF351FA7EBD100BA23AB /* QuestionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionViewController.swift; sourceTree = "<group>"; };
+		094ABF351FA7EBD100BA23AB /* QuestionDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionDetailViewController.swift; sourceTree = "<group>"; };
 		094ABF371FA7F05200BA23AB /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		094ABF391FA7F85200BA23AB /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		0957D61A1FA9373000A91705 /* PlayerXibView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PlayerXibView.xib; sourceTree = "<group>"; };
@@ -157,9 +157,9 @@
 				098446C21FAE3DA7005F72E8 /* DataBase */,
 				0910BB351FAD23FC006AEA85 /* CategoryTableViewController.swift */,
 				0910BB3D1FAD30DC006AEA85 /* QuestionTableViewController.swift */,
-				094ABF351FA7EBD100BA23AB /* QuestionViewController.swift */,
-				09E728511FA95342007B7F5F /* RecorderModalViewController.swift */,
 				095E333F1FA8131C0010B1F3 /* QuestionsPageViewController.swift */,
+				094ABF351FA7EBD100BA23AB /* QuestionDetailViewController.swift */,
+				09E728511FA95342007B7F5F /* RecorderModalViewController.swift */,
 				094ABF0E1FA7E85F00BA23AB /* Assets.xcassets */,
 				094ABF131FA7E85F00BA23AB /* Info.plist */,
 				0979FA4B1FA80A15000BDB5B /* DataSourse.swift */,
@@ -562,7 +562,7 @@
 				095E33401FA8131C0010B1F3 /* QuestionsPageViewController.swift in Sources */,
 				09E728521FA95342007B7F5F /* RecorderModalViewController.swift in Sources */,
 				0979FA4C1FA80A15000BDB5B /* DataSourse.swift in Sources */,
-				094ABF361FA7EBD100BA23AB /* QuestionViewController.swift in Sources */,
+				094ABF361FA7EBD100BA23AB /* QuestionDetailViewController.swift in Sources */,
 				0979FA4A1FA80172000BDB5B /* UI.swift in Sources */,
 				0910BB361FAD23FC006AEA85 /* CategoryTableViewController.swift in Sources */,
 				0910BB3C1FAD30C0006AEA85 /* QuestionTavleViewCell.swift in Sources */,

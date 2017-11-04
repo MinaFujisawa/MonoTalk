@@ -7,33 +7,28 @@
 //
 
 import UIKit
+import RealmSwift
 
 class QuestionsPageViewController: UIPageViewController {
-    var pageCollection: [UIViewController]!
+    var selectedIndex : Int!
+    var questions : List<Question>!
+    
+    var pageCollection = [UIViewController]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        let question1 = Question(uuid: UUID().uuidString, categoryId: "1", question: "1.How's it going?", exampleAnswer: nil)
-        let question2 = Question(uuid: UUID().uuidString, categoryId: "1", question: "2.How was your weekend?", exampleAnswer: "It was awesome!")
-        let question3 = Question(uuid: UUID().uuidString, categoryId: "2", question: "3.How was your weekend?", exampleAnswer: "It was awesome!")
-        let question4 = Question(uuid: UUID().uuidString, categoryId: "2", question: "4. Dairy1 question", exampleAnswer: "It was awesome!")
+        
 
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let questionVC1 = storyboard.instantiateViewController(withIdentifier: "questionPage") as! QuestionViewController
-        questionVC1.question = question1
+        
+        for i in 0..<questions.count {
+            let detailVC = storyboard.instantiateViewController(withIdentifier: "questionPage") as! QuestionDetailViewController
+            detailVC.question = questions[i]
+            pageCollection.append(detailVC)
+        }
 
-        let questionVC2 = storyboard.instantiateViewController(withIdentifier: "questionPage") as! QuestionViewController
-        questionVC2.question = question2
-
-        let questionVC3 = storyboard.instantiateViewController(withIdentifier: "questionPage") as! QuestionViewController
-        questionVC3.question = question3
-
-        let questionVC4 = storyboard.instantiateViewController(withIdentifier: "questionPage") as! QuestionViewController
-        questionVC4.question = question4
-
-        pageCollection = [questionVC1, questionVC2, questionVC3, questionVC4]
-
-        self.title = String(format: "%d / %d", 1, pageCollection.count)
-        self.setViewControllers([questionVC1], direction: .forward, animated: true, completion: nil)
+        self.title = String(format: "%d / %d", selectedIndex+1, pageCollection.count)
+        self.setViewControllers([pageCollection[selectedIndex]], direction: .forward, animated: true, completion: nil)
         self.dataSource = self
         self.delegate = self
     }
