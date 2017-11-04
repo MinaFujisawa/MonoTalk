@@ -10,7 +10,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CategoryCell" customModule="MonoTalk" customModuleProvider="target">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CategoryTableViewCell" customModule="MonoTalk" customModuleProvider="target">
             <connections>
                 <outlet property="nameLabel" destination="drn-WM-ap0" id="ONT-Sh-qND"/>
                 <outlet property="numLabel" destination="1sa-J7-uI0" id="gEC-SB-2Um"/>

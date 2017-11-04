@@ -8,9 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		0910BB361FAD23FC006AEA85 /* CategoryTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0910BB351FAD23FC006AEA85 /* CategoryTableViewController.swift */; };
-		0910BB391FAD28EE006AEA85 /* CategoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0910BB371FAD28EE006AEA85 /* CategoryCell.swift */; };
+		0910BB391FAD28EE006AEA85 /* CategoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0910BB371FAD28EE006AEA85 /* CategoryTableViewCell.swift */; };
 		0910BB3A1FAD28EE006AEA85 /* CategoryCellXibView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0910BB381FAD28EE006AEA85 /* CategoryCellXibView.xib */; };
-		0910BB3C1FAD30C0006AEA85 /* QuestionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0910BB3B1FAD30C0006AEA85 /* QuestionCell.swift */; };
+		0910BB3C1FAD30C0006AEA85 /* QuestionTavleViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0910BB3B1FAD30C0006AEA85 /* QuestionTavleViewCell.swift */; };
 		0910BB3E1FAD30DC006AEA85 /* QuestionTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0910BB3D1FAD30DC006AEA85 /* QuestionTableViewController.swift */; };
 		094ABF081FA7E85F00BA23AB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 094ABF071FA7E85F00BA23AB /* AppDelegate.swift */; };
 		094ABF0D1FA7E85F00BA23AB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 094ABF0B1FA7E85F00BA23AB /* Main.storyboard */; };
@@ -56,9 +56,9 @@
 
 /* Begin PBXFileReference section */
 		0910BB351FAD23FC006AEA85 /* CategoryTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryTableViewController.swift; sourceTree = "<group>"; };
-		0910BB371FAD28EE006AEA85 /* CategoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryCell.swift; sourceTree = "<group>"; };
+		0910BB371FAD28EE006AEA85 /* CategoryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryTableViewCell.swift; sourceTree = "<group>"; };
 		0910BB381FAD28EE006AEA85 /* CategoryCellXibView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CategoryCellXibView.xib; sourceTree = "<group>"; };
-		0910BB3B1FAD30C0006AEA85 /* QuestionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionCell.swift; sourceTree = "<group>"; };
+		0910BB3B1FAD30C0006AEA85 /* QuestionTavleViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionTavleViewCell.swift; sourceTree = "<group>"; };
 		0910BB3D1FAD30DC006AEA85 /* QuestionTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionTableViewController.swift; sourceTree = "<group>"; };
 		094ABF041FA7E85F00BA23AB /* MonoTalk.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MonoTalk.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		094ABF071FA7E85F00BA23AB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -164,8 +164,8 @@
 				094ABF131FA7E85F00BA23AB /* Info.plist */,
 				0979FA4B1FA80A15000BDB5B /* DataSourse.swift */,
 				0957D61C1FA93C9F00A91705 /* PlayerXibView.swift */,
-				0910BB371FAD28EE006AEA85 /* CategoryCell.swift */,
-				0910BB3B1FAD30C0006AEA85 /* QuestionCell.swift */,
+				0910BB371FAD28EE006AEA85 /* CategoryTableViewCell.swift */,
+				0910BB3B1FAD30C0006AEA85 /* QuestionTavleViewCell.swift */,
 			);
 			path = MonoTalk;
 			sourceTree = "<group>";
@@ -565,8 +565,8 @@
 				094ABF361FA7EBD100BA23AB /* QuestionViewController.swift in Sources */,
 				0979FA4A1FA80172000BDB5B /* UI.swift in Sources */,
 				0910BB361FAD23FC006AEA85 /* CategoryTableViewController.swift in Sources */,
-				0910BB3C1FAD30C0006AEA85 /* QuestionCell.swift in Sources */,
-				0910BB391FAD28EE006AEA85 /* CategoryCell.swift in Sources */,
+				0910BB3C1FAD30C0006AEA85 /* QuestionTavleViewCell.swift in Sources */,
+				0910BB391FAD28EE006AEA85 /* CategoryTableViewCell.swift in Sources */,
 				09F2A76A1FAE3425001DEBD6 /* MyRealm.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

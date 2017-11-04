@@ -1,5 +1,5 @@
 //
-//  QuestionCell.swift
+//  CategoryCell.swift
 //  MonoTalk
 //
 //  Created by MINA FUJISAWA on 2017/11/03.
@@ -8,12 +8,13 @@
 
 import UIKit
 
-class QuestionCell: UITableViewCell {
+class CategoryTableViewCell: UITableViewCell {
 
-    @IBOutlet weak var questionLabel: UILabel!
+    @IBOutlet weak var numLabel: UILabel!
+    @IBOutlet weak var nameLabel: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        loadNib()
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -21,5 +22,11 @@ class QuestionCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
-
+    
+    func loadNib(){
+        let view = Bundle.main.loadNibNamed("CategoryCellXibView", owner: self, options: nil)?.first as! UIView
+        view.frame = self.bounds
+        self.addSubview(view)
+    }
+    
 }
