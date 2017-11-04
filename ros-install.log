@@ -1,0 +1,27 @@
+/Users/MinaFujisawa/.nvm/versions/node/v8.9.0/bin/ros -> /Users/MinaFujisawa/.nvm/versions/node/v8.9.0/lib/node_modules/realm-object-server/dist/cli.js
+
+> lzma-native@3.0.1 install /Users/MinaFujisawa/.nvm/versions/node/v8.9.0/lib/node_modules/realm-object-server/node_modules/lzma-native
+> node-pre-gyp install --fallback-to-build && node node_modules/rimraf/bin.js build
+
+[lzma-native] Success: "/Users/MinaFujisawa/.nvm/versions/node/v8.9.0/lib/node_modules/realm-object-server/node_modules/lzma-native/binding-v3.0.1-node-v57-darwin-x64/lzma_native.node" is installed via remote
+
+> realm@1.12.0 install /Users/MinaFujisawa/.nvm/versions/node/v8.9.0/lib/node_modules/realm-object-server/node_modules/realm-one/node_modules/realm
+> node-pre-gyp install --fallback-to-build
+
+[realm] Success: "/Users/MinaFujisawa/.nvm/versions/node/v8.9.0/lib/node_modules/realm-object-server/node_modules/realm-one/node_modules/realm/compiled/node-v57_darwin_x64/realm.node" is installed via remote
+
+> bcrypt@1.0.3 install /Users/MinaFujisawa/.nvm/versions/node/v8.9.0/lib/node_modules/realm-object-server/node_modules/bcrypt
+> node-pre-gyp install --fallback-to-build
+
+[bcrypt] Success: "/Users/MinaFujisawa/.nvm/versions/node/v8.9.0/lib/node_modules/realm-object-server/node_modules/bcrypt/lib/binding/bcrypt_lib.node" is installed via remote
+
+> realm@2.0.1 install /Users/MinaFujisawa/.nvm/versions/node/v8.9.0/lib/node_modules/realm-object-server/node_modules/realm
+> node-pre-gyp install --fallback-to-build
+
+[realm] Success: "/Users/MinaFujisawa/.nvm/versions/node/v8.9.0/lib/node_modules/realm-object-server/node_modules/realm/compiled/node-v57_darwin_x64/realm.node" is installed via remote
+
+> uws@8.14.1 install /Users/MinaFujisawa/.nvm/versions/node/v8.9.0/lib/node_modules/realm-object-server/node_modules/uws
+> node-gyp rebuild > build_log.txt 2>&1 || exit 0
+
++ realm-object-server@2.0.13
+added 448 packages in 43.983s

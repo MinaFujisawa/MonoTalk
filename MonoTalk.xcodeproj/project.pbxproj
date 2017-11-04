@@ -28,6 +28,8 @@
 		0979FA4C1FA80A15000BDB5B /* DataSourse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0979FA4B1FA80A15000BDB5B /* DataSourse.swift */; };
 		09E728521FA95342007B7F5F /* RecorderModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09E728511FA95342007B7F5F /* RecorderModalViewController.swift */; };
 		09E728541FA96B91007B7F5F /* Time.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09E728531FA96B91007B7F5F /* Time.swift */; };
+		09F2A7681FAE3383001DEBD6 /* RealmInitializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09F2A7671FAE3383001DEBD6 /* RealmInitializer.swift */; };
+		09F2A76A1FAE3425001DEBD6 /* MyRealm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09F2A7691FAE3425001DEBD6 /* MyRealm.swift */; };
 		76D8F864D1B0FBBD8D237AF8 /* Pods_MonoTalkTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2645F8DA66821BEDDE56A428 /* Pods_MonoTalkTests.framework */; };
 		F6CEE0F6CACEA01984875347 /* Pods_MonoTalkUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 30391151E5FE1E147BC2EE3B /* Pods_MonoTalkUITests.framework */; };
 		FF336F827C8547CD9DE09F68 /* Pods_MonoTalk.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A3B299541C4A4170D0E3A6B0 /* Pods_MonoTalk.framework */; };
@@ -78,6 +80,8 @@
 		0979FA4B1FA80A15000BDB5B /* DataSourse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataSourse.swift; sourceTree = "<group>"; };
 		09E728511FA95342007B7F5F /* RecorderModalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecorderModalViewController.swift; sourceTree = "<group>"; };
 		09E728531FA96B91007B7F5F /* Time.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Time.swift; sourceTree = "<group>"; };
+		09F2A7671FAE3383001DEBD6 /* RealmInitializer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmInitializer.swift; sourceTree = "<group>"; };
+		09F2A7691FAE3425001DEBD6 /* MyRealm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyRealm.swift; sourceTree = "<group>"; };
 		1DEE21F88B40CB9E251D52C8 /* Pods-MonoTalkTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MonoTalkTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MonoTalkTests/Pods-MonoTalkTests.debug.xcconfig"; sourceTree = "<group>"; };
 		2645F8DA66821BEDDE56A428 /* Pods_MonoTalkTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MonoTalkTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		30391151E5FE1E147BC2EE3B /* Pods_MonoTalkUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MonoTalkUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -162,6 +166,8 @@
 				0910BB371FAD28EE006AEA85 /* CategoryCell.swift */,
 				0910BB381FAD28EE006AEA85 /* CategoryCellXibView.xib */,
 				0910BB3B1FAD30C0006AEA85 /* QuestionCell.swift */,
+				09F2A7671FAE3383001DEBD6 /* RealmInitializer.swift */,
+				09F2A7691FAE3425001DEBD6 /* MyRealm.swift */,
 			);
 			path = MonoTalk;
 			sourceTree = "<group>";
@@ -515,6 +521,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				094ABF3A1FA7F85200BA23AB /* Model.swift in Sources */,
+				09F2A7681FAE3383001DEBD6 /* RealmInitializer.swift in Sources */,
 				0910BB3E1FAD30DC006AEA85 /* QuestionTableViewController.swift in Sources */,
 				0957D61D1FA93C9F00A91705 /* PlayerXibView.swift in Sources */,
 				09E728541FA96B91007B7F5F /* Time.swift in Sources */,
@@ -528,6 +535,7 @@
 				0910BB361FAD23FC006AEA85 /* CategoryTableViewController.swift in Sources */,
 				0910BB3C1FAD30C0006AEA85 /* QuestionCell.swift in Sources */,
 				0910BB391FAD28EE006AEA85 /* CategoryCell.swift in Sources */,
+				09F2A76A1FAE3425001DEBD6 /* MyRealm.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

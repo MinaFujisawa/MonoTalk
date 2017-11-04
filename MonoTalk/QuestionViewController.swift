@@ -35,7 +35,7 @@ class QuestionViewController: UIViewController {
         recordButton.dropShadow(isCircle: true)
         
         // Init contents
-        questionLabel.text = question.question
+        questionLabel.text = question.questionBody
         self.title = currentIndexTitle
     }
     
