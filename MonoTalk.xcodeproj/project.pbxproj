@@ -26,6 +26,8 @@
 		095E33401FA8131C0010B1F3 /* QuestionsPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 095E333F1FA8131C0010B1F3 /* QuestionsPageViewController.swift */; };
 		0979FA4A1FA80172000BDB5B /* UI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0979FA491FA80172000BDB5B /* UI.swift */; };
 		0979FA4C1FA80A15000BDB5B /* DataSourse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0979FA4B1FA80A15000BDB5B /* DataSourse.swift */; };
+		09A958B31FAE39FD000DD9AF /* default.realm in Frameworks */ = {isa = PBXBuildFile; fileRef = 09A958B21FAE39FD000DD9AF /* default.realm */; };
+		09A958B41FAE3C5B000DD9AF /* default.realm in Resources */ = {isa = PBXBuildFile; fileRef = 09A958B11FAE39D9000DD9AF /* default.realm */; };
 		09E728521FA95342007B7F5F /* RecorderModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09E728511FA95342007B7F5F /* RecorderModalViewController.swift */; };
 		09E728541FA96B91007B7F5F /* Time.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09E728531FA96B91007B7F5F /* Time.swift */; };
 		09F2A7681FAE3383001DEBD6 /* RealmInitializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09F2A7671FAE3383001DEBD6 /* RealmInitializer.swift */; };
@@ -78,6 +80,8 @@
 		095E333F1FA8131C0010B1F3 /* QuestionsPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionsPageViewController.swift; sourceTree = "<group>"; };
 		0979FA491FA80172000BDB5B /* UI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UI.swift; sourceTree = "<group>"; };
 		0979FA4B1FA80A15000BDB5B /* DataSourse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataSourse.swift; sourceTree = "<group>"; };
+		09A958B11FAE39D9000DD9AF /* default.realm */ = {isa = PBXFileReference; lastKnownFileType = file; path = default.realm; sourceTree = "<group>"; };
+		09A958B21FAE39FD000DD9AF /* default.realm */ = {isa = PBXFileReference; lastKnownFileType = file; name = default.realm; path = "../../../Library/Developer/CoreSimulator/Devices/F4BF7243-7F90-4C42-A711-52F2DF361C4B/data/Containers/Data/Application/00689D4C-15B0-42AF-A04B-0FAEED33487D/Documents/default.realm"; sourceTree = "<group>"; };
 		09E728511FA95342007B7F5F /* RecorderModalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecorderModalViewController.swift; sourceTree = "<group>"; };
 		09E728531FA96B91007B7F5F /* Time.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Time.swift; sourceTree = "<group>"; };
 		09F2A7671FAE3383001DEBD6 /* RealmInitializer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmInitializer.swift; sourceTree = "<group>"; };
@@ -98,6 +102,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				09A958B31FAE39FD000DD9AF /* default.realm in Frameworks */,
 				FF336F827C8547CD9DE09F68 /* Pods_MonoTalk.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -147,6 +152,7 @@
 			isa = PBXGroup;
 			children = (
 				094ABF071FA7E85F00BA23AB /* AppDelegate.swift */,
+				098446C21FAE3DA7005F72E8 /* DataBase */,
 				0910BB351FAD23FC006AEA85 /* CategoryTableViewController.swift */,
 				0910BB3D1FAD30DC006AEA85 /* QuestionTableViewController.swift */,
 				094ABF351FA7EBD100BA23AB /* QuestionViewController.swift */,
@@ -157,7 +163,6 @@
 				094ABF131FA7E85F00BA23AB /* Info.plist */,
 				094ABF0B1FA7E85F00BA23AB /* Main.storyboard */,
 				094ABF371FA7F05200BA23AB /* Colors.swift */,
-				094ABF391FA7F85200BA23AB /* Model.swift */,
 				0979FA491FA80172000BDB5B /* UI.swift */,
 				0979FA4B1FA80A15000BDB5B /* DataSourse.swift */,
 				0957D61A1FA9373000A91705 /* PlayerXibView.xib */,
@@ -166,8 +171,6 @@
 				0910BB371FAD28EE006AEA85 /* CategoryCell.swift */,
 				0910BB381FAD28EE006AEA85 /* CategoryCellXibView.xib */,
 				0910BB3B1FAD30C0006AEA85 /* QuestionCell.swift */,
-				09F2A7671FAE3383001DEBD6 /* RealmInitializer.swift */,
-				09F2A7691FAE3425001DEBD6 /* MyRealm.swift */,
 			);
 			path = MonoTalk;
 			sourceTree = "<group>";
@@ -190,9 +193,21 @@
 			path = MonoTalkUITests;
 			sourceTree = "<group>";
 		};
+		098446C21FAE3DA7005F72E8 /* DataBase */ = {
+			isa = PBXGroup;
+			children = (
+				09F2A7671FAE3383001DEBD6 /* RealmInitializer.swift */,
+				09F2A7691FAE3425001DEBD6 /* MyRealm.swift */,
+				09A958B11FAE39D9000DD9AF /* default.realm */,
+				094ABF391FA7F85200BA23AB /* Model.swift */,
+			);
+			path = DataBase;
+			sourceTree = "<group>";
+		};
 		2190F73CF7241A551C2E921C /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				09A958B21FAE39FD000DD9AF /* default.realm */,
 				A3B299541C4A4170D0E3A6B0 /* Pods_MonoTalk.framework */,
 				2645F8DA66821BEDDE56A428 /* Pods_MonoTalkTests.framework */,
 				30391151E5FE1E147BC2EE3B /* Pods_MonoTalkUITests.framework */,
@@ -329,6 +344,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				09A958B41FAE3C5B000DD9AF /* default.realm in Resources */,
 				0910BB3A1FAD28EE006AEA85 /* CategoryCellXibView.xib in Resources */,
 				094ABF121FA7E85F00BA23AB /* LaunchScreen.storyboard in Resources */,
 				094ABF0F1FA7E85F00BA23AB /* Assets.xcassets in Resources */,

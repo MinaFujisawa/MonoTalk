@@ -27,7 +27,7 @@ class Question: Object {
     @objc dynamic var note: String? = nil
     @objc dynamic var isFavorited = false
     var rate = Rate.soso.rawValue
-//    let categoryName = LinkingObjects(fromType: Category.self, property: "name")
+    let categoryName = ""
     var records = List<Record>()
     
     enum Rate : Int {
