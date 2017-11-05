@@ -78,6 +78,10 @@ enum MyColor {
     func withAlpha(_ alpha: Double) -> UIColor {
         return self.value.withAlphaComponent(CGFloat(alpha))
     }
+    
+    
+    
+    
 }
 
 extension MyColor {
@@ -113,5 +117,21 @@ extension MyColor {
         return instanceColor
     }
 }
+
+extension UIColor {
+    // Return 1px image
+    func as1ptImage() -> UIImage {
+        UIGraphicsBeginImageContext(CGSize(width: 1, height: 1))
+        let ctx = UIGraphicsGetCurrentContext()
+        self.setFill()
+        ctx!.fill(CGRect(x: 0, y: 0, width: 1, height: 1))
+        let image = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        return image!
+    }
+    
+}
+
+
 
 

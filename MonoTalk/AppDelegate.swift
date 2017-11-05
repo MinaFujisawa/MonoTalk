@@ -27,15 +27,26 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             userDefault.set(false, forKey: "firstLaunch")
         }
         
-//        var config = Realm.Configuration()
-//        config.readOnly = false
-//        Realm.Configuration.defaultConfiguration = config
-        
-        // for debug
-//        userDefault.set(true, forKey: "firstLaunch")
-//        MyRealm.resetRealm()
-        
+        setNaviBarStyle()
         return true
+    }
+    
+    func setNaviBarStyle() {
+        // Color
+        UINavigationBar.appearance().barTintColor = .white
+        UINavigationBar.appearance().tintColor = MyColor.darkText.value
+        UINavigationBar.appearance().titleTextAttributes = [NSAttributedStringKey.foregroundColor: MyColor.darkText.value]
+        
+        // Border
+        UINavigationBar.appearance().shadowImage = MyColor.border.value.as1ptImage()
+        
+        // Back button icon
+        let backIcon = UIImage(named: "navi_arrow_back")
+        UINavigationBar.appearance().backIndicatorImage = backIcon
+        UINavigationBar.appearance().backIndicatorTransitionMaskImage = backIcon
+        
+        // Back position
+        UIBarButtonItem.appearance().setBackButtonTitlePositionAdjustment(UIOffsetMake(2, 0), for: UIBarMetrics.default)
     }
 
 }
