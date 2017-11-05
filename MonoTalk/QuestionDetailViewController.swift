@@ -7,7 +7,7 @@
 //
 
 import UIKit
-
+import RealmSwift
 
 class QuestionDetailViewController: UIViewController {
 
@@ -26,6 +26,7 @@ class QuestionDetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        print(question.records.count)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -42,8 +43,7 @@ class QuestionDetailViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if (segue.identifier == "recoder") {
             let modal = segue.destination as! RecorderModalViewController
-//            modal.questionId = question.uuid //why bad access??
-            modal.questionId = "aa"
+            modal.questionId = question.id
         }
     }
     

@@ -30,6 +30,10 @@ class Question: Object {
     let categoryName = ""
     var records = List<Record>()
     
+    override static func primaryKey() -> String? {
+        return "id"
+    }
+    
     enum Rate : Int {
         case great
         case good
