@@ -21,14 +21,6 @@ class MyRealm {
         try! realm.write{ realm.add(category) }
     }
     
-    func addRecord(data: Data) {
-        let record = Record()
-        record.id = UUID().uuidString
-        record.recordData = data
-        
-        let realm = try! Realm()
-        try! realm.write{ realm.add(record) }
-    }
     
     static func loadSeedRealm(){
         var config = Realm.Configuration()

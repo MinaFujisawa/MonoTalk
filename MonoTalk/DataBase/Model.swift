@@ -55,6 +55,6 @@ class Question: Object {
 class Record: Object {
     @objc dynamic var id = ""
     @objc dynamic var date = Date()
-    @objc dynamic var recordData = Data()
+//    @objc dynamic var fileName = ""
 }
 

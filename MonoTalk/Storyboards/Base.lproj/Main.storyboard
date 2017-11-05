@@ -90,13 +90,20 @@
                                     <segue destination="VDQ-qS-3oC" kind="presentation" identifier="recoder" modalTransitionStyle="crossDissolve" id="ydW-zZ-kkT"/>
                                 </connections>
                             </button>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cHb-xj-h58">
+                                <rect key="frame" x="0.0" y="284" width="375" height="383"/>
+                            </scrollView>
                         </subviews>
                         <color key="backgroundColor" red="0.96862745098039216" green="0.96862745098039216" blue="0.96862745098039216" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="4Zs-Z1-Pod" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="4wg-Xf-80K"/>
                             <constraint firstItem="H99-O6-PSB" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="LvV-zd-LRZ"/>
+                            <constraint firstItem="cHb-xj-h58" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="STR-6C-y1F"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="4Zs-Z1-Pod" secondAttribute="bottom" constant="24" id="Tbx-vo-Yb6"/>
+                            <constraint firstItem="cHb-xj-h58" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="ae5-hN-p5L"/>
                             <constraint firstItem="H99-O6-PSB" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="fS2-PU-Cyo"/>
+                            <constraint firstItem="cHb-xj-h58" firstAttribute="top" secondItem="H99-O6-PSB" secondAttribute="bottom" constant="24" id="gcH-vF-e4V"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="cHb-xj-h58" secondAttribute="trailing" id="u1n-jd-d3C"/>
                             <constraint firstItem="H99-O6-PSB" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="uGy-gr-miN"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
@@ -104,15 +111,17 @@
                     <navigationItem key="navigationItem" id="1Xp-km-1cd"/>
                     <connections>
                         <outlet property="categoryLabel" destination="1PV-b5-a8j" id="Hed-Cx-PRM"/>
+                        <outlet property="questionAreaView" destination="H99-O6-PSB" id="hxz-l0-yeY"/>
                         <outlet property="questionLabel" destination="9gI-nY-cO2" id="e64-oC-XmK"/>
                         <outlet property="recordButton" destination="4Zs-Z1-Pod" id="MM5-1S-Aai"/>
                         <outlet property="sampleButton" destination="W5X-5z-DkM" id="K2x-Cu-836"/>
+                        <outlet property="scrollView" destination="cHb-xj-h58" id="rch-hH-UmW"/>
                         <outlet property="starButton" destination="b06-qE-cl2" id="hH1-zW-1Tv"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3041" y="-237"/>
+            <point key="canvasLocation" x="3040.8000000000002" y="-237.03148425787109"/>
         </scene>
         <!--Recorder Modal View Controller-->
         <scene sceneID="6a1-sk-k0w">

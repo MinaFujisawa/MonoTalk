@@ -6,8 +6,9 @@
 //  Copyright © 2017 MINA FUJISAWA. All rights reserved.
 //
 
-import UIKit    
+import UIKit
 import AVFoundation
+import RealmSwift
 
 class RecorderModalViewController: UIViewController {
     @IBOutlet weak var mainButton: UIButton!
@@ -19,12 +20,15 @@ class RecorderModalViewController: UIViewController {
     var audioRecorder: AVAudioRecorder!
     var audioPlayer: AVAudioPlayer?
     let fileManager = FileManager()
-    let fileName = "sample.caf"
+    let fileExtension = ".caf"
+    let id = UUID().uuidString
     var startTime: Date!
     var recordingTimer: Timer?
-    var playTimer : Timer?
+    var playTimer: Timer?
 
+    var realm: Realm!
     var questionId: String!
+    var notaificationID : String!
 
     @IBAction func deleteButton(_ sender: Any) {
         stopAudio()
@@ -32,10 +36,25 @@ class RecorderModalViewController: UIViewController {
     }
     @IBAction func okButton(_ sender: Any) {
         stopAudio()
-        let url = getFileURL()
-        let recordAnswer = RecordAnswer(uuid: UUID.init().uuidString, questionId: questionId, date: Date(), url: url)
-
-        // TODO: save to database
+        // MARK: Save the record to DB
+        do {
+            let newRecord = Record()
+//            let recordData = try Data(contentsOf: getFileURL(), options: .alwaysMapped)
+            newRecord.id = id
+            
+            realm = try! Realm()
+            
+            // add new record to the question obj
+            if let question = realm.object(ofType: Question.self, forPrimaryKey: questionId) {
+                try! realm.write() {
+                    question.records.append(newRecord)
+                }
+            }
+        } catch {
+            print(error)
+        }
+        
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: notaificationID), object: nil)
         dismiss(animated: true, completion: nil)
     }
     @IBAction func mainButton(_ sender: Any) {
@@ -50,7 +69,6 @@ class RecorderModalViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
         okButton.isHidden = true
         deleteButton.isHidden = true
 
@@ -101,7 +119,7 @@ class RecorderModalViewController: UIViewController {
     func getFileURL() -> URL {
         let urls = fileManager.urls(for: .documentDirectory, in: .userDomainMask) as [NSURL]
         let dirURL = urls[0]
-        return dirURL.appendingPathComponent(fileName)!
+        return dirURL.appendingPathComponent(id + fileExtension)!
     }
 
     func finishRecording(success: Bool) {
@@ -149,7 +167,7 @@ class RecorderModalViewController: UIViewController {
         mainButton.setImage(UIImage(named: "icon_record_play"), for: .normal)
         displayDurationTime()
     }
-    
+
     @objc func displayPlayingTime() {
         timeLabel.text = Time.getFormatedTime(audioPlayer!.currentTime)
     }

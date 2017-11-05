@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import RealmSwift
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -25,6 +26,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             RealmInitializer.setUp()
             userDefault.set(false, forKey: "firstLaunch")
         }
+        
+//        var config = Realm.Configuration()
+//        config.readOnly = false
+//        Realm.Configuration.defaultConfiguration = config
         
         // for debug
 //        userDefault.set(true, forKey: "firstLaunch")
