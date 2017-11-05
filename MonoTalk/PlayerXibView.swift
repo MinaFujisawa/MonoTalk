@@ -26,34 +26,33 @@ class PlayerXibView: UIView {
     @IBOutlet weak var containerView: UIView!
 
     var audioPlayer: AVAudioPlayer?
-    var startTime: Date!
     var playTimer: Timer?
     let fileExtension = ".caf"
 
-    var record : Record!
+    var record: Record!
     var recordUrl: URL!
 
     override init(frame: CGRect) {
         super.init(frame: frame)
         loadNib()
     }
-    
-    init(frame: CGRect, record : Record) {
+
+    init(frame: CGRect, record: Record) {
         super.init(frame: frame)
         loadNib()
-        
+
         self.record = record
-        
+
         // Get record URL
         let documentsDirectory = FileManager().urls(for: .documentDirectory, in: .userDomainMask)[0]
         recordUrl = documentsDirectory.appendingPathComponent(record.id + fileExtension)
-        
+
         // Set date
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy MMMM dd h:mm a"
+        dateFormatter.dateFormat = "yyyy MM dd h:mm a"
         dateFormatter.amSymbol = "am"
         dateFormatter.pmSymbol = "pm"
-        
+
         dateLabel.text = dateFormatter.string(from: record.date)
         displayDurationTime()
         let gestureRec = UITapGestureRecognizer(target: self, action: #selector (self.tapped (_:)))
@@ -77,31 +76,6 @@ class PlayerXibView: UIView {
     }
 
     // MARK : Play
-    func displayDurationTime() {
-        let duration = Time.getDuration(url: recordUrl)
-        timeLabel.text = Time.getFormatedTime(duration)
-    }
-
-    func playAudio() {
-        playButton.setImage(UIImage(named: "icon_pause"), for: .normal)
-
-        // Display playing time
-        playTimer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(displayPlayingTime), userInfo: nil, repeats: true)
-        audioPlayer?.play()
-        print("playing")
-    }
-
-    func stopAudio() {
-        audioPlayer?.stop()
-        audioPlayer?.currentTime = 0
-        playTimer?.invalidate()
-        playButton.setImage(UIImage(named: "icon_play"), for: .normal)
-        displayDurationTime()
-    }
-
-    @objc func displayPlayingTime() {
-        timeLabel.text = Time.getFormatedTime(audioPlayer!.currentTime)
-    }
 
     func togglePlayOrStop() {
         if audioPlayer == nil {
@@ -115,12 +89,45 @@ class PlayerXibView: UIView {
 
         if let audioPlayer = audioPlayer {
             if audioPlayer.isPlaying {
-                stopAudio()
+                pauseAudio()
             } else {
                 playAudio()
             }
         }
     }
+
+    func displayDurationTime() {
+        let duration = Time.getDuration(url: recordUrl)
+        timeLabel.text = Time.getFormatedTime(duration)
+    }
+
+    func playAudio() {
+        playButton.setImage(UIImage(named: "icon_pause"), for: .normal)
+
+        // Display playing time
+        playTimer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(displayPlayingTime), userInfo: nil, repeats: true)
+        audioPlayer?.play()
+    }
+
+    func stopAudio() {
+        audioPlayer?.stop()
+        audioPlayer?.currentTime = 0
+        playTimer?.invalidate()
+        playButton.setImage(UIImage(named: "icon_play"), for: .normal)
+        displayDurationTime()
+    }
+
+    func pauseAudio() {
+        audioPlayer?.stop()
+        playTimer?.invalidate()
+        playButton.setImage(UIImage(named: "icon_play"), for: .normal)
+    }
+
+    @objc func displayPlayingTime() {
+        timeLabel.text = Time.getFormatedTime(audioPlayer!.currentTime)
+    }
+
+
 }
 
 extension PlayerXibView: AVAudioPlayerDelegate {
