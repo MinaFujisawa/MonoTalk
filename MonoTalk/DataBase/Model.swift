@@ -29,19 +29,34 @@ class Question: Object {
     var rate = Rate.soso.rawValue
     let categoryName = ""
     var records = List<Record>()
-    
+
     override static func primaryKey() -> String? {
         return "id"
     }
-    
-    enum Rate : Int {
+
+    enum Rate: Int {
         case great
         case good
         case soso
         case notGood
         case bad
+        
+        var rateImage : UIImage {
+            switch self {
+            case .great:
+                return UIImage(named: "rate_great")!
+            case .good:
+                return UIImage(named: "rate_good")!
+            case .soso:
+                return UIImage(named: "rate_soso")!
+            case .notGood:
+                return UIImage(named: "rate_notGood")!
+            case .bad:
+                return UIImage(named: "rate_bad")!
+            }
+        }
     }
-    
+
     var rateAsEnum: Rate {
         get {
             return Rate(rawValue: rate)!
@@ -51,6 +66,7 @@ class Question: Object {
         }
     }
 }
+
 
 class Record: Object {
     @objc dynamic var id = ""

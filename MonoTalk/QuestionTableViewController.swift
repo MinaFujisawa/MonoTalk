@@ -34,7 +34,18 @@ class QuestionTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: cellID, for: indexPath) as! QuestionTavleViewCell
         let question = questions[indexPath.row]
+        
+        // Set cell
         cell.questionLabel.text = question.questionBody
+        cell.recordNumLabel.text = String(question.records.count)
+        if question.exampleAnswer == nil {
+            cell.exampleIcon.image = nil
+        }
+        if question.note == nil {
+            cell.noteIcon.image = nil
+        }
+        cell.rateIcon.image = Question.Rate(rawValue: question.rate)?.rateImage
+        
         return cell
     }
     

@@ -10,6 +10,10 @@ import UIKit
 
 class QuestionTavleViewCell: UITableViewCell {
 
+    @IBOutlet weak var noteIcon: UIImageView!
+    @IBOutlet weak var rateIcon: UIImageView!
+    @IBOutlet weak var exampleIcon: UIImageView!
+    @IBOutlet weak var recordNumLabel: UILabel!
     @IBOutlet weak var questionLabel: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
