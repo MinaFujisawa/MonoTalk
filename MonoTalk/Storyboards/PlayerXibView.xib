@@ -26,9 +26,6 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8Q3-9Q-k5C">
                     <rect key="frame" x="24" y="20" width="327" height="48"/>
                     <subviews>
-                        <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="G0t-P3-A28">
-                            <rect key="frame" x="42" y="9" width="189" height="31"/>
-                        </slider>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tuT-il-Tqj">
                             <rect key="frame" x="297" y="13" width="14" height="22"/>
                             <state key="normal" image="icon_trash"/>
@@ -49,6 +46,12 @@
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
+                        <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="G0t-P3-A28">
+                            <rect key="frame" x="42" y="8" width="189" height="31"/>
+                            <connections>
+                                <action selector="sliderChanged:" destination="-1" eventType="valueChanged" id="CQg-0y-kWv"/>
+                            </connections>
+                        </slider>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>

@@ -142,12 +142,12 @@ class RecorderModalViewController: UIViewController {
 
     @objc func displayRecordingTime() {
         let interval = Date().timeIntervalSince(startTime)
-        timeLabel.text = Time.getFormatedTime(interval)
+        timeLabel.text = Time.getFormatedTime(timeInterval: interval)
     }
 
     func displayDurationTime() {
         let duration = Time.getDuration(url: getFileURL())
-        timeLabel.text = Time.getFormatedTime(duration)
+        timeLabel.text = Time.getFormatedTime(timeInterval: duration)
     }
 
 
@@ -169,7 +169,7 @@ class RecorderModalViewController: UIViewController {
     }
 
     @objc func displayPlayingTime() {
-        timeLabel.text = Time.getFormatedTime(audioPlayer!.currentTime)
+        timeLabel.text = Time.getFormatedTime(timeInterval: audioPlayer!.currentTime)
     }
 
     func togglePlayOrStop() {

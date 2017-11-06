@@ -10,7 +10,7 @@ import Foundation
 import AVFoundation
 
 class Time {
-    static func getFormatedTime(_ timeInterval : TimeInterval) -> String {
+    static func getFormatedTime(timeInterval : TimeInterval) -> String {
         //        let hours = Int(totalSeconds / 3600)
         let m = Int((timeInterval.truncatingRemainder(dividingBy: 3600)) / 60)
         let s = Int(timeInterval.truncatingRemainder(dividingBy: 60))
