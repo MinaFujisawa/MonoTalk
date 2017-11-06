@@ -28,7 +28,7 @@ class RecorderModalViewController: UIViewController {
 
     var realm: Realm!
     var questionId: String!
-    var notaificationID : String!
+    var notificationIdDismssedModel: String!
 
     @IBAction func deleteButton(_ sender: Any) {
         stopAudio()
@@ -37,24 +37,19 @@ class RecorderModalViewController: UIViewController {
     @IBAction func okButton(_ sender: Any) {
         stopAudio()
         // MARK: Save the record to DB
-        do {
-            let newRecord = Record()
-//            let recordData = try Data(contentsOf: getFileURL(), options: .alwaysMapped)
-            newRecord.id = id
-            
-            realm = try! Realm()
-            
-            // add new record to the question obj
-            if let question = realm.object(ofType: Question.self, forPrimaryKey: questionId) {
-                try! realm.write() {
-                    question.records.append(newRecord)
-                }
+        let newRecord = Record()
+        newRecord.id = id
+
+        realm = try! Realm()
+
+        // Save new record
+        if let question = realm.object(ofType: Question.self, forPrimaryKey: questionId) {
+            try! realm.write() {
+                question.records.append(newRecord)
             }
-        } catch {
-            print(error)
         }
-        
-        NotificationCenter.default.post(name: NSNotification.Name(rawValue: notaificationID), object: nil)
+
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: notificationIdDismssedModel), object: nil)
         dismiss(animated: true, completion: nil)
     }
     @IBAction func mainButton(_ sender: Any) {

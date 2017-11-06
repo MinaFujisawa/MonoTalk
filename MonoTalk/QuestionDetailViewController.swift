@@ -24,21 +24,26 @@ class QuestionDetailViewController: UIViewController {
     @IBOutlet weak var questionLabel: UILabel!
 
     let cellID = "PlayerCell"
-    let notificationID = "dismissedModal"
+    let notificationIdDismssedModel = "dismissedModal"
+    let notaificationIdDeleted = "deleted"
     var currentIndexTitle: String!
     var question: Question!
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         // UI
         recordButton.clipsToBounds = true
         recordButton.backgroundColor = MyColor.theme.value
         recordButton.dropShadow(isCircle: true)
-        
+
         self.view.bringSubview(toFront: recordButton)
-        
-        NotificationCenter.default.addObserver(self, selector: #selector(self.setPlayerViews), name:NSNotification.Name(rawValue: notificationID), object: nil)
+
+        // From model
+        NotificationCenter.default.addObserver(self, selector: #selector(self.setPlayerViews), name: NSNotification.Name(rawValue: notificationIdDismssedModel), object: nil)
+
+        // From player xib
+        NotificationCenter.default.addObserver(self, selector: #selector(self.rearrangePlayerViews(_:)), name: NSNotification.Name(rawValue: notaificationIdDeleted), object: nil)
     }
 
 
@@ -46,7 +51,7 @@ class QuestionDetailViewController: UIViewController {
         // Init contents
         questionLabel.text = question.questionBody
         self.title = currentIndexTitle
-        
+
         setPlayerViews()
     }
 
@@ -54,19 +59,61 @@ class QuestionDetailViewController: UIViewController {
         if (segue.identifier == "recoder") {
             let modal = segue.destination as! RecorderModalViewController
             modal.questionId = question.id
-            modal.notaificationID = notificationID
+            modal.notificationIdDismssedModel = notificationIdDismssedModel
         }
     }
 
     @objc func setPlayerViews() {
+        // remove all subviews
+        for view in self.scrollView.subviews {
+            view.removeFromSuperview()
+        }
         for i in 0..<question.records.count {
             let width = UIScreen.main.bounds.size.width
             let height = 64
             let y = (height + 40) * i
-            let playerView = PlayerXibView(frame: CGRect(x: 0, y: y, width: Int(width), height: height), record: question.records[i])
+            let playerView = PlayerXibView(frame: CGRect(x: 0, y: y, width: Int(width), height: height),
+                                           record: question.records[i], index: i)
+            playerView.tag = 100
             scrollView.addSubview(playerView)
         }
     }
+
+    @objc func rearrangePlayerViews(_ notification: NSNotification) {
+
+        if let deletedIndex = notification.userInfo?["index"] as? Int {
+            var playerViews = getPlayerViews()
+
+            playerViews[deletedIndex].removeFromSuperview()
+            playerViews = getPlayerViews()
+
+            // Close the space
+            for i in deletedIndex..<playerViews.count {
+                print(i)
+                let x = playerViews[i].frame.origin.x
+                let y = playerViews[i].frame.origin.y - 64 - 40
+                let width = playerViews[i].frame.size.width
+                let height = playerViews[i].frame.size.height
+
+                UIView.animate(withDuration: 0.5, animations: {
+                    playerViews[i].frame = CGRect(x: x, y: y, width: width, height: height)
+
+                })
+            }
+        }
+    }
+
+    func getPlayerViews() -> [UIView] {
+        var result = [UIView]()
+        var playViews = scrollView.subviews.filter({$0 is PlayerXibView})
+        for view in playViews {
+            if view.tag == 100 {
+                result.append(view)
+            }
+        }
+        return result
+    }
+
 
 }
 

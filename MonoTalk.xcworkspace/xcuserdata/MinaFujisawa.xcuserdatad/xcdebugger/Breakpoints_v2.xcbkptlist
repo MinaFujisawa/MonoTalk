@@ -10,12 +10,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MonoTalk/PlayerXibView.swift"
-            timestampString = "531632389.793202"
+            timestampString = "531640244.151994"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "140"
-            endingLineNumber = "140"
-            landmarkName = "updateSlider()"
+            startingLineNumber = "143"
+            endingLineNumber = "143"
+            landmarkName = "resetAudio()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

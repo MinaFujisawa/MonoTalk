@@ -12,17 +12,14 @@ import AVFoundation
 
 class PlayerXibView: UIView {
 
-    @IBAction func playButton(_ sender: Any) {
-        togglePlayOrStop()
-    }
+    
 
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var timeLabel: UILabel!
     @IBOutlet weak var tappableView: UIView!
     @IBOutlet weak var playButton: UIButton!
 
-    @IBAction func trashButton(_ sender: Any) {
-    }
+    
     @IBOutlet weak var slider: UISlider!
     @IBOutlet weak var containerView: UIView!
 
@@ -32,17 +29,20 @@ class PlayerXibView: UIView {
     var record: Record!
     var recordUrl: URL!
     var timer: Timer!
+    let notaificationIdDeleted = "deleted"
+    var index : Int!
 
     override init(frame: CGRect) {
         super.init(frame: frame)
         loadNib()
     }
 
-    init(frame: CGRect, record: Record) {
+    init(frame: CGRect, record: Record, index: Int) {
         super.init(frame: frame)
         loadNib()
 
         self.record = record
+        self.index = index
 
         // Get record URL
         let documentsDirectory = FileManager().urls(for: .documentDirectory, in: .userDomainMask)[0]
@@ -90,6 +90,9 @@ class PlayerXibView: UIView {
     }
 
     // MARK : Play
+    @IBAction func playButton(_ sender: Any) {
+        togglePlayOrStop()
+    }
 
     func togglePlayOrStop() {
         if let audioPlayer = audioPlayer {
@@ -149,6 +152,17 @@ class PlayerXibView: UIView {
             audioPlayer?.play()
         }
         timeLabel.text = Time.getFormatedTime(timeInterval: audioPlayer.currentTime)
+    }
+    
+    // MARK: Delete
+    @IBAction func trashButton(_ sender: Any) {
+        let realm = try! Realm()
+        try! realm.write() {
+            realm.delete(record)
+            let indexDict:[String: Int] = ["index": index]
+            NotificationCenter.default.post(name: NSNotification.Name(rawValue: notaificationIdDeleted),
+                                            object: nil, userInfo: indexDict)
+        }
     }
 }
 
