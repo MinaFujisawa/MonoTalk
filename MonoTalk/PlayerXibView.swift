@@ -26,23 +26,24 @@ class PlayerXibView: UIView {
     var audioPlayer: AVAudioPlayer!
     let fileExtension = ".caf"
     var isPaused = true
+    var questionID : String!
     var record: Record!
     var recordUrl: URL!
     var timer: Timer!
     let notaificationIdDeleted = "deleted"
-    var index : Int!
+    let notaificationIdDeletedUserInfo = "indexOfDletedItem"
 
     override init(frame: CGRect) {
         super.init(frame: frame)
         loadNib()
     }
 
-    init(frame: CGRect, record: Record, index: Int) {
+    init(frame: CGRect, record: Record, questionID: String) {
         super.init(frame: frame)
         loadNib()
 
         self.record = record
-        self.index = index
+        self.questionID = questionID
 
         // Get record URL
         let documentsDirectory = FileManager().urls(for: .documentDirectory, in: .userDomainMask)[0]
@@ -80,6 +81,7 @@ class PlayerXibView: UIView {
     }
 
     @objc func tapped(_ sender: UITapGestureRecognizer) {
+        
 //        togglePlayOrStop()
     }
 
@@ -157,11 +159,19 @@ class PlayerXibView: UIView {
     // MARK: Delete
     @IBAction func trashButton(_ sender: Any) {
         let realm = try! Realm()
+        
+        // Get current index of records
+        let parentQuestion = realm.object(ofType: Question.self, forPrimaryKey: questionID)
+        let currentRecord = realm.object(ofType: Record.self, forPrimaryKey: record.id)
+        let indexOfRecord = parentQuestion?.records.index(of: currentRecord!)
+        
         try! realm.write() {
             realm.delete(record)
-            let indexDict:[String: Int] = ["index": index]
-            NotificationCenter.default.post(name: NSNotification.Name(rawValue: notaificationIdDeleted),
-                                            object: nil, userInfo: indexDict)
+            if let indexOfRecord = indexOfRecord {
+                let positionYDict:[String: Int] = [notaificationIdDeletedUserInfo: indexOfRecord]
+                NotificationCenter.default.post(name: NSNotification.Name(rawValue: notaificationIdDeleted),
+                                                object: nil, userInfo: positionYDict)
+            }
         }
     }
 }

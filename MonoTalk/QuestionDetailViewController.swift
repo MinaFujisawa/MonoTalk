@@ -26,6 +26,7 @@ class QuestionDetailViewController: UIViewController {
     let cellID = "PlayerCell"
     let notificationIdDismssedModel = "dismissedModal"
     let notaificationIdDeleted = "deleted"
+    let notaificationIdDeletedUserInfo = "indexOfDletedItem"
     var currentIndexTitle: String!
     var question: Question!
 
@@ -73,7 +74,7 @@ class QuestionDetailViewController: UIViewController {
             let height = 64
             let y = (height + 40) * i
             let playerView = PlayerXibView(frame: CGRect(x: 0, y: y, width: Int(width), height: height),
-                                           record: question.records[i], index: i)
+                                           record: question.records[i], questionID:question.id)
             playerView.tag = 100
             scrollView.addSubview(playerView)
         }
@@ -81,15 +82,12 @@ class QuestionDetailViewController: UIViewController {
 
     @objc func rearrangePlayerViews(_ notification: NSNotification) {
 
-        if let deletedIndex = notification.userInfo?["index"] as? Int {
+        if let indexOfDeletedItem = notification.userInfo?[notaificationIdDeletedUserInfo] as? Int {
             var playerViews = getPlayerViews()
-
-            playerViews[deletedIndex].removeFromSuperview()
-            playerViews = getPlayerViews()
+            playerViews[indexOfDeletedItem].removeFromSuperview()
 
             // Close the space
-            for i in deletedIndex..<playerViews.count {
-                print(i)
+            for i in indexOfDeletedItem + 1..<playerViews.count {
                 let x = playerViews[i].frame.origin.x
                 let y = playerViews[i].frame.origin.y - 64 - 40
                 let width = playerViews[i].frame.size.width
@@ -105,7 +103,7 @@ class QuestionDetailViewController: UIViewController {
 
     func getPlayerViews() -> [UIView] {
         var result = [UIView]()
-        var playViews = scrollView.subviews.filter({$0 is PlayerXibView})
+        var playViews = scrollView.subviews.filter({ $0 is PlayerXibView })
         for view in playViews {
             if view.tag == 100 {
                 result.append(view)

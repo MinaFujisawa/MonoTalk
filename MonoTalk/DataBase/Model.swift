@@ -55,6 +55,8 @@ class Question: Object {
 class Record: Object {
     @objc dynamic var id = ""
     @objc dynamic var date = Date()
-//    @objc dynamic var fileName = ""
+    override static func primaryKey() -> String? {
+        return "id"
+    }
 }
 
