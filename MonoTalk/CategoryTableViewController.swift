@@ -49,7 +49,7 @@ class CategoryTableViewController: UITableViewController {
             let questionsVC = segue.destination as! QuestionTableViewController
             let cell = sender as! CategoryTableViewCell
             if let indexPath = self.tableView!.indexPath(for: cell) {
-                questionsVC.questions = categories[indexPath.row].questions
+                questionsVC.categoryID = categories[indexPath.row].id
             }
         }
     }
