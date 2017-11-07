@@ -66,7 +66,7 @@ class QuestionTableViewController: UITableViewController {
     }
 
     @objc func openAddQuestion() {
-        let editQuestionVC = EditQuestionViewController()
+        let editQuestionVC = AddEditQuestionViewController()
         self.navigationController?.pushViewController(editQuestionVC, animated: true)
     }
 
@@ -107,12 +107,12 @@ class QuestionTableViewController: UITableViewController {
             let pageVC = segue.destination as! QuestionsPageViewController
             let cell = sender as! QuestionTavleViewCell
             if let indexPath = self.tableView!.indexPath(for: cell) {
-                pageVC.selectedIndex = indexPath.row
-                pageVC.questions = questions
+                pageVC.startIndex = indexPath.row
+                pageVC.categoryID = categoryID
             }
         } else if segue.identifier == "GoToAdd"{
             let nav = segue.destination as! UINavigationController
-            let editVC = nav.topViewController as! EditQuestionViewController
+            let editVC = nav.topViewController as! AddEditQuestionViewController
             editVC.isFromAdd = true
             editVC.categoryID = categoryID
         }

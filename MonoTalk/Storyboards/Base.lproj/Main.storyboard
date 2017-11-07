@@ -243,10 +243,10 @@
             </objects>
             <point key="canvasLocation" x="1882" y="493"/>
         </scene>
-        <!--Add Question View Controller-->
+        <!--Add Edit Question View Controller-->
         <scene sceneID="9WX-dw-Etp">
             <objects>
-                <viewController storyboardIdentifier="EditQuestion" id="A9w-Oz-NqG" customClass="AddQuestionViewController" customModule="MonoTalk" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="EditQuestion" id="A9w-Oz-NqG" customClass="AddEditQuestionViewController" customModule="MonoTalk" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="B2e-In-bGQ">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -493,6 +493,9 @@
                             </button>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <segue destination="WrU-IG-9PQ" kind="presentation" identifier="GoToEdit" id="Gr9-Mh-UhM"/>
+                    </connections>
                 </pageViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rRq-46-dAx" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -552,4 +555,7 @@
         <image name="navi_plus" width="17" height="17"/>
         <image name="rate_soso" width="33" height="33"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="Gr9-Mh-UhM"/>
+    </inferredMetricsTieBreakers>
 </document>

@@ -9,7 +9,7 @@
 import UIKit
 import RealmSwift
 
-class EditQuestionViewController: UIViewController {
+class AddEditQuestionViewController: UIViewController {
 
     @IBOutlet weak var questionTextView: UITextView!
     @IBOutlet weak var exampleTextView: UITextView!
@@ -17,16 +17,16 @@ class EditQuestionViewController: UIViewController {
 
     var textViews = [UITextView]()
     var isFromAdd = false // true: new, false: edit
-    var existingQuestion: Question?
-    var categoryID : String!
+    var existingQuestion: Question!
+    var categoryID: String!
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        questionTextView.tag = 1000
         textViews.append(questionTextView)
         textViews.append(exampleTextView)
         textViews.append(noteTextView)
         setUpUI()
+        questionTextView.tag = 1000
 
         if isFromAdd {
             self.title = "Create new Question"
@@ -34,14 +34,15 @@ class EditQuestionViewController: UIViewController {
             self.navigationItem.rightBarButtonItem?.isEnabled = false
         } else {
             self.title = "Edit Question"
-            if let question = existingQuestion {
-                questionTextView.text = question.questionBody
-                exampleTextView.text = question.exampleAnswer ?? ""
-                noteTextView.text = question.note ?? ""
-            }
+            print(existingQuestion.questionBody)
+            questionTextView.text = existingQuestion.questionBody
+            // TODO: Set PH
+            exampleTextView.text = existingQuestion.exampleAnswer ?? ""
+            noteTextView.text = existingQuestion.note ?? ""
+
         }
     }
-    
+
     func setUpUI() {
         view.backgroundColor = MyColor.bluishGrayBackground.value
 
@@ -66,22 +67,22 @@ class EditQuestionViewController: UIViewController {
     @IBAction func doneButton(_ sender: Any) {
         // MARK: Save
         let realm = try! Realm()
-        if isFromAdd{
+        if isFromAdd {
             // Add new question
             let newQuestion = Question()
             newQuestion.questionBody = questionTextView.text
             newQuestion.categoryID = categoryID
             if exampleTextView.textColor == MyColor.placeHolderText.value {
                 newQuestion.exampleAnswer = nil
-            } else{
+            } else {
                 newQuestion.exampleAnswer = exampleTextView.text
             }
             if noteTextView.textColor == MyColor.placeHolderText.value {
                 newQuestion.note = nil
-            } else{
+            } else {
                 newQuestion.note = noteTextView.text
             }
-            
+
             let category = realm.object(ofType: Category.self, forPrimaryKey: categoryID)
             try! realm.write {
                 category?.questions.append(newQuestion)
@@ -89,18 +90,16 @@ class EditQuestionViewController: UIViewController {
         } else {
             // Update question
             try! realm.write {
-                if let existingQuestion = existingQuestion {
-                    existingQuestion.questionBody = questionTextView.text
-                    if exampleTextView.textColor == MyColor.placeHolderText.value {
-                        existingQuestion.exampleAnswer = nil
-                    } else{
-                        existingQuestion.exampleAnswer = exampleTextView.text
-                    }
-                    if noteTextView.textColor == MyColor.placeHolderText.value {
-                        existingQuestion.note = nil
-                    } else{
-                        existingQuestion.note = noteTextView.text
-                    }
+                existingQuestion.questionBody = questionTextView.text
+                if exampleTextView.textColor == MyColor.placeHolderText.value {
+                    existingQuestion.exampleAnswer = nil
+                } else {
+                    existingQuestion.exampleAnswer = exampleTextView.text
+                }
+                if noteTextView.textColor == MyColor.placeHolderText.value {
+                    existingQuestion.note = nil
+                } else {
+                    existingQuestion.note = noteTextView.text
                 }
             }
         }
@@ -112,7 +111,7 @@ class EditQuestionViewController: UIViewController {
     }
 }
 
-extension EditQuestionViewController: UITextViewDelegate {
+extension AddEditQuestionViewController: UITextViewDelegate {
     func textViewDidBeginEditing(_ textView: UITextView) {
         if textView.textColor == MyColor.placeHolderText.value {
             textView.text = nil
