@@ -243,10 +243,10 @@
             </objects>
             <point key="canvasLocation" x="1882" y="493"/>
         </scene>
-        <!--Edit Question View Controller-->
+        <!--Add Question View Controller-->
         <scene sceneID="9WX-dw-Etp">
             <objects>
-                <viewController id="A9w-Oz-NqG" customClass="EditQuestionViewController" customModule="MonoTalk" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="EditQuestion" id="A9w-Oz-NqG" customClass="AddQuestionViewController" customModule="MonoTalk" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="B2e-In-bGQ">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -481,7 +481,18 @@
         <scene sceneID="kIw-2J-6vU">
             <objects>
                 <pageViewController autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="seL-pe-Fje" customClass="QuestionsPageViewController" customModule="MonoTalk" customModuleProvider="target" sceneMemberID="viewController">
-                    <navigationItem key="navigationItem" title="title" id="pV6-jE-t94"/>
+                    <navigationItem key="navigationItem" title="title" id="pV6-jE-t94">
+                        <barButtonItem key="rightBarButtonItem" style="plain" id="k2X-k6-R2M">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="gDH-73-dGS">
+                                <rect key="frame" x="288" y="11" width="71" height="22"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="navi_menu"/>
+                                <connections>
+                                    <action selector="menuButton:" destination="seL-pe-Fje" eventType="touchUpInside" id="tcM-gx-nbk"/>
+                                </connections>
+                            </button>
+                        </barButtonItem>
+                    </navigationItem>
                 </pageViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rRq-46-dAx" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
