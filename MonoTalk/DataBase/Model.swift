@@ -26,8 +26,8 @@ class Question: Object {
     @objc dynamic var exampleAnswer: String? = nil
     @objc dynamic var note: String? = nil
     @objc dynamic var isFavorited = false
+    @objc dynamic var categoryID = ""
     var rate = Rate.soso.rawValue
-    let categoryName = ""
     var records = List<Record>()
 
     override static func primaryKey() -> String? {

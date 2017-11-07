@@ -70,6 +70,7 @@ class EditQuestionViewController: UIViewController {
             // Add new question
             let newQuestion = Question()
             newQuestion.questionBody = questionTextView.text
+            newQuestion.categoryID = categoryID
             if exampleTextView.textColor == MyColor.placeHolderText.value {
                 newQuestion.exampleAnswer = nil
             } else{
@@ -80,7 +81,6 @@ class EditQuestionViewController: UIViewController {
             } else{
                 newQuestion.note = noteTextView.text
             }
-            
             
             let category = realm.object(ofType: Category.self, forPrimaryKey: categoryID)
             try! realm.write {

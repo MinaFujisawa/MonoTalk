@@ -32,14 +32,8 @@ class QuestionDetailViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // UI
-        recordButton.clipsToBounds = true
-        recordButton.backgroundColor = MyColor.theme.value
-        recordButton.dropShadow(isCircle: true)
-
-        self.view.bringSubview(toFront: recordButton)
-
+        setUpUI()
+        
         // From model
         NotificationCenter.default.addObserver(self, selector: #selector(self.setPlayerViews), name: NSNotification.Name(rawValue: notificationIdDismssedModel), object: nil)
 
@@ -50,10 +44,23 @@ class QuestionDetailViewController: UIViewController {
 
     override func viewWillAppear(_ animated: Bool) {
         // Init contents
+        let realm = try! Realm()
         questionLabel.text = question.questionBody
+        print(question.categoryID)
+        let category = realm.object(ofType: Category.self, forPrimaryKey: question.categoryID)
+        categoryLabel.text = category?.name
         self.title = currentIndexTitle
 
         setPlayerViews()
+    }
+    
+    func setUpUI() {
+        // Record Button
+        recordButton.clipsToBounds = true
+        recordButton.backgroundColor = MyColor.theme.value
+        recordButton.dropShadow(isCircle: true)
+        self.view.bringSubview(toFront: recordButton)
+        
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -103,7 +110,7 @@ class QuestionDetailViewController: UIViewController {
 
     func getPlayerViews() -> [UIView] {
         var result = [UIView]()
-        var playViews = scrollView.subviews.filter({ $0 is PlayerXibView })
+        let playViews = scrollView.subviews.filter({ $0 is PlayerXibView })
         for view in playViews {
             if view.tag == 100 {
                 result.append(view)
