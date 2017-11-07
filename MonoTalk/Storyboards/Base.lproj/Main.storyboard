@@ -243,6 +243,112 @@
             </objects>
             <point key="canvasLocation" x="1882" y="493"/>
         </scene>
+        <!--Edit Question View Controller-->
+        <scene sceneID="9WX-dw-Etp">
+            <objects>
+                <viewController id="A9w-Oz-NqG" customClass="EditQuestionViewController" customModule="MonoTalk" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="B2e-In-bGQ">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="EM7-RE-ICa">
+                                <rect key="frame" x="0.0" y="117" width="375" height="128"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="128" id="CSZ-Nl-XjA"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Question" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yVI-TP-NzA">
+                                <rect key="frame" x="24" y="88" width="69" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sample Answer (optional)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZrJ-PS-mb0">
+                                <rect key="frame" x="24" y="269" width="196" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="v5n-Av-Dsd">
+                                <rect key="frame" x="0.0" y="479" width="375" height="128"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="128" id="Wrq-gs-NcV"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Note (optional)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CbH-ac-uPU">
+                                <rect key="frame" x="24" y="450" width="115" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="T8V-0D-dsn">
+                                <rect key="frame" x="0.0" y="298" width="375" height="128"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="128" id="2Vy-Th-43D"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="CbH-ac-uPU" firstAttribute="leading" secondItem="yVI-TP-NzA" secondAttribute="leading" id="1eG-YD-7yg"/>
+                            <constraint firstItem="EM7-RE-ICa" firstAttribute="top" secondItem="yVI-TP-NzA" secondAttribute="bottom" constant="8" id="1pX-D0-e5B"/>
+                            <constraint firstItem="ZrJ-PS-mb0" firstAttribute="top" secondItem="EM7-RE-ICa" secondAttribute="bottom" constant="24" id="9gK-Cn-ZXZ"/>
+                            <constraint firstItem="T8V-0D-dsn" firstAttribute="leading" secondItem="Saw-ZC-Sef" secondAttribute="leading" id="Mik-jZ-gmh"/>
+                            <constraint firstItem="T8V-0D-dsn" firstAttribute="top" secondItem="ZrJ-PS-mb0" secondAttribute="bottom" constant="8" id="QhD-wU-6h9"/>
+                            <constraint firstItem="T8V-0D-dsn" firstAttribute="trailing" secondItem="Saw-ZC-Sef" secondAttribute="trailing" id="bVo-bu-Czx"/>
+                            <constraint firstItem="yVI-TP-NzA" firstAttribute="leading" secondItem="Saw-ZC-Sef" secondAttribute="leading" constant="24" id="bWw-tv-S24"/>
+                            <constraint firstItem="v5n-Av-Dsd" firstAttribute="leading" secondItem="Saw-ZC-Sef" secondAttribute="leading" id="d4i-T3-2VO"/>
+                            <constraint firstItem="EM7-RE-ICa" firstAttribute="leading" secondItem="Saw-ZC-Sef" secondAttribute="leading" id="eER-ec-sVL"/>
+                            <constraint firstItem="v5n-Av-Dsd" firstAttribute="top" secondItem="CbH-ac-uPU" secondAttribute="bottom" constant="8" id="fpi-8S-Dzq"/>
+                            <constraint firstItem="yVI-TP-NzA" firstAttribute="top" secondItem="Saw-ZC-Sef" secondAttribute="top" constant="24" id="h3v-CW-QQ7"/>
+                            <constraint firstItem="CbH-ac-uPU" firstAttribute="top" secondItem="T8V-0D-dsn" secondAttribute="bottom" constant="24" id="hsL-sa-9uX"/>
+                            <constraint firstItem="ZrJ-PS-mb0" firstAttribute="leading" secondItem="yVI-TP-NzA" secondAttribute="leading" id="rWQ-lj-hvY"/>
+                            <constraint firstItem="Saw-ZC-Sef" firstAttribute="trailing" secondItem="EM7-RE-ICa" secondAttribute="trailing" id="xqH-j0-Npg"/>
+                            <constraint firstItem="v5n-Av-Dsd" firstAttribute="trailing" secondItem="Saw-ZC-Sef" secondAttribute="trailing" id="xxD-xf-wzp"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="Saw-ZC-Sef"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="emH-RC-e3F">
+                        <barButtonItem key="leftBarButtonItem" style="plain" id="BVF-rQ-sdn">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="k6r-lg-got">
+                                <rect key="frame" x="16" y="11" width="69" height="22"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="navi_close"/>
+                                <connections>
+                                    <action selector="closeButton:" destination="A9w-Oz-NqG" eventType="touchUpInside" id="LDL-WH-vDS"/>
+                                </connections>
+                            </button>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" style="plain" id="Wit-vd-wOZ">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="fCn-zU-mcA">
+                                <rect key="frame" x="322" y="7" width="37" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Done"/>
+                                <connections>
+                                    <action selector="doneButton:" destination="A9w-Oz-NqG" eventType="touchUpInside" id="tXy-t6-8vU"/>
+                                </connections>
+                            </button>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="exampleTextView" destination="T8V-0D-dsn" id="fEu-4w-V24"/>
+                        <outlet property="noteTextView" destination="v5n-Av-Dsd" id="61n-yh-YqZ"/>
+                        <outlet property="questionTextView" destination="EM7-RE-ICa" id="bVO-Tl-y4V"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="uOd-cO-eVF" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3719" y="1303"/>
+        </scene>
         <!--Question Table View Controller-->
         <scene sceneID="J1Q-XG-1At">
             <objects>
@@ -337,25 +443,35 @@
                     </tableView>
                     <navigationItem key="navigationItem" id="Wut-sl-2CL">
                         <rightBarButtonItems>
-                            <barButtonItem style="plain" id="7Ta-5g-IZw">
-                                <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="ggF-D2-opT">
-                                    <rect key="frame" x="313" y="7" width="46" height="30"/>
+                            <barButtonItem image="navi_plus" style="plain" id="9sq-PF-fbB">
+                                <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="vQn-mh-JjY">
+                                    <rect key="frame" x="311" y="11" width="48" height="22"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    <state key="normal" title="add"/>
+                                    <accessibility key="accessibilityConfiguration">
+                                        <accessibilityTraits key="traits" button="YES" image="YES"/>
+                                    </accessibility>
+                                    <state key="normal" image="navi_plus"/>
+                                    <connections>
+                                        <segue destination="WrU-IG-9PQ" kind="presentation" identifier="GoToAdd" id="2Oc-ed-0xa"/>
+                                    </connections>
                                 </button>
                             </barButtonItem>
-                            <barButtonItem style="plain" id="U2P-mp-hsM">
-                                <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Zh6-ew-3uC">
-                                    <rect key="frame" x="266" y="7" width="39" height="30"/>
+                            <barButtonItem style="plain" id="2fZ-Ex-B1s">
+                                <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="jza-V3-pSP">
+                                    <rect key="frame" x="232" y="11" width="71" height="22"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    <state key="normal" title="menu"/>
+                                    <state key="normal" image="navi_menu"/>
+                                    <connections>
+                                        <action selector="menuButton:" destination="0q7-FN-bD9" eventType="touchUpInside" id="GG4-iV-SVj"/>
+                                    </connections>
                                 </button>
-                                <connections>
-                                    <action selector="menuButton:" destination="0q7-FN-bD9" id="z3W-rd-OU5"/>
-                                </connections>
                             </barButtonItem>
                         </rightBarButtonItems>
                     </navigationItem>
+                    <connections>
+                        <outlet property="addButton" destination="9sq-PF-fbB" id="0WK-LB-cAb"/>
+                        <outlet property="menuButton" destination="2fZ-Ex-B1s" id="wJS-xV-BTG"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bLV-Pf-VDS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -389,6 +505,24 @@
             </objects>
             <point key="canvasLocation" x="1018" y="493"/>
         </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="e26-qf-vNS">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="WrU-IG-9PQ" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="vfZ-dt-x7F">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="A9w-Oz-NqG" kind="relationship" relationship="rootViewController" id="X8U-AO-kYA"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="mWK-fn-WRW" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2863" y="1303"/>
+        </scene>
     </scenes>
     <resources>
         <image name="icon_cell_note" width="12" height="12"/>
@@ -402,6 +536,9 @@
         <image name="icon_record_trash" width="15" height="18"/>
         <image name="icon_sample" width="22" height="23"/>
         <image name="icon_star_outline" width="20" height="19"/>
+        <image name="navi_close" width="15" height="15"/>
+        <image name="navi_menu" width="17" height="5"/>
+        <image name="navi_plus" width="17" height="17"/>
         <image name="rate_soso" width="33" height="33"/>
     </resources>
 </document>

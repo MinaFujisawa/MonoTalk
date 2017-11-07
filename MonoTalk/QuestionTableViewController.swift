@@ -16,12 +16,14 @@ class QuestionTableViewController: UITableViewController {
     let cellID = "QuestionCell"
     var notificationToken: NotificationToken? = nil
 
-    @IBAction func menuButton(_ sender: Any) {
-    }
+    @IBOutlet weak var menuButton: UIBarButtonItem!
+    @IBOutlet weak var addButton: UIBarButtonItem!
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        setUp()
+
         let realm = try! Realm()
         let category = realm.object(ofType: Category.self, forPrimaryKey: categoryID)
         questions = category?.questions
@@ -53,7 +55,24 @@ class QuestionTableViewController: UITableViewController {
         notificationToken?.invalidate()
     }
     
+    // MARK: Navigation bar
+    func setUp() {
+        //TODO: add filter menu
+        addButton.image = UIImage(named: "navi_plus")!
+        menuButton.image = UIImage(named: "navi_menu")!
+    }
     
+    @IBAction func menuButton(_ sender: Any) {
+    }
+
+    @objc func openAddQuestion() {
+        let editQuestionVC = EditQuestionViewController()
+        self.navigationController?.pushViewController(editQuestionVC, animated: true)
+    }
+
+    @objc func openMenu() {
+
+    }
 
     // MARK: - Table view data source
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -91,7 +110,13 @@ class QuestionTableViewController: UITableViewController {
                 pageVC.selectedIndex = indexPath.row
                 pageVC.questions = questions
             }
+        } else if segue.identifier == "GoToAdd"{
+            let nav = segue.destination as! UINavigationController
+            let editVC = nav.topViewController as! EditQuestionViewController
+            editVC.isFromAdd = true
+            editVC.categoryID = categoryID
         }
+        
     }
 
 }

@@ -12,7 +12,7 @@ import AVFoundation
 import RealmSwift
 
 class Category: Object {
-    @objc dynamic var id = ""
+    @objc dynamic var id = UUID().uuidString
     @objc dynamic var name = ""
     var questions = List<Question>()
     override static func primaryKey() -> String? {
@@ -20,7 +20,7 @@ class Category: Object {
     }
 }
 class Question: Object {
-    @objc dynamic var id = ""
+    @objc dynamic var id = UUID().uuidString
     @objc dynamic var date = Date()
     @objc dynamic var questionBody = ""
     @objc dynamic var exampleAnswer: String? = nil

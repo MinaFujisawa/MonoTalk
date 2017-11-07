@@ -24,6 +24,7 @@
 		0957D61B1FA9373000A91705 /* PlayerXibView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0957D61A1FA9373000A91705 /* PlayerXibView.xib */; };
 		0957D61D1FA93C9F00A91705 /* PlayerXibView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0957D61C1FA93C9F00A91705 /* PlayerXibView.swift */; };
 		095E33401FA8131C0010B1F3 /* QuestionsPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 095E333F1FA8131C0010B1F3 /* QuestionsPageViewController.swift */; };
+		0972A8081FB0FE4D002E9E88 /* EditQuestionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0972A8071FB0FE4D002E9E88 /* EditQuestionViewController.swift */; };
 		0979FA4A1FA80172000BDB5B /* UI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0979FA491FA80172000BDB5B /* UI.swift */; };
 		0979FA4C1FA80A15000BDB5B /* DataSourse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0979FA4B1FA80A15000BDB5B /* DataSourse.swift */; };
 		09A958B31FAE39FD000DD9AF /* default.realm in Frameworks */ = {isa = PBXBuildFile; fileRef = 09A958B21FAE39FD000DD9AF /* default.realm */; };
@@ -78,6 +79,7 @@
 		0957D61A1FA9373000A91705 /* PlayerXibView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PlayerXibView.xib; sourceTree = "<group>"; };
 		0957D61C1FA93C9F00A91705 /* PlayerXibView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerXibView.swift; sourceTree = "<group>"; };
 		095E333F1FA8131C0010B1F3 /* QuestionsPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionsPageViewController.swift; sourceTree = "<group>"; };
+		0972A8071FB0FE4D002E9E88 /* EditQuestionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditQuestionViewController.swift; sourceTree = "<group>"; };
 		0979FA491FA80172000BDB5B /* UI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UI.swift; sourceTree = "<group>"; };
 		0979FA4B1FA80A15000BDB5B /* DataSourse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataSourse.swift; sourceTree = "<group>"; };
 		09A958B11FAE39D9000DD9AF /* default.realm */ = {isa = PBXFileReference; lastKnownFileType = file; path = default.realm; sourceTree = "<group>"; };
@@ -157,6 +159,7 @@
 				098446C21FAE3DA7005F72E8 /* DataBase */,
 				0910BB351FAD23FC006AEA85 /* CategoryTableViewController.swift */,
 				0910BB3D1FAD30DC006AEA85 /* QuestionTableViewController.swift */,
+				0972A8071FB0FE4D002E9E88 /* EditQuestionViewController.swift */,
 				095E333F1FA8131C0010B1F3 /* QuestionsPageViewController.swift */,
 				094ABF351FA7EBD100BA23AB /* QuestionDetailViewController.swift */,
 				09E728511FA95342007B7F5F /* RecorderModalViewController.swift */,
@@ -554,6 +557,7 @@
 			files = (
 				094ABF3A1FA7F85200BA23AB /* Model.swift in Sources */,
 				09F2A7681FAE3383001DEBD6 /* RealmInitializer.swift in Sources */,
+				0972A8081FB0FE4D002E9E88 /* EditQuestionViewController.swift in Sources */,
 				0910BB3E1FAD30DC006AEA85 /* QuestionTableViewController.swift in Sources */,
 				0957D61D1FA93C9F00A91705 /* PlayerXibView.swift in Sources */,
 				09E728541FA96B91007B7F5F /* Time.swift in Sources */,
