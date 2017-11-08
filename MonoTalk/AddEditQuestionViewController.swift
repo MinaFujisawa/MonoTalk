@@ -12,7 +12,6 @@ import RealmSwift
 class AddEditQuestionViewController: UIViewController {
 
     @IBOutlet weak var questionTextView: UITextView!
-    @IBOutlet weak var exampleTextView: UITextView!
     @IBOutlet weak var noteTextView: UITextView!
 
     var textViews = [UITextView]()
@@ -23,7 +22,6 @@ class AddEditQuestionViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         textViews.append(questionTextView)
-        textViews.append(exampleTextView)
         textViews.append(noteTextView)
         setUpUI()
         questionTextView.tag = 1000
@@ -37,9 +35,7 @@ class AddEditQuestionViewController: UIViewController {
             print(existingQuestion.questionBody)
             questionTextView.text = existingQuestion.questionBody
             // TODO: Set PH
-            exampleTextView.text = existingQuestion.exampleAnswer ?? ""
             noteTextView.text = existingQuestion.note ?? ""
-
         }
     }
 
@@ -56,7 +52,6 @@ class AddEditQuestionViewController: UIViewController {
     func setPlaceHolder() {
         // TODO: set valid place holder
         questionTextView.text = "Placeholder"
-        exampleTextView.text = "Placeholder"
         noteTextView.text = "Placeholder"
         for textView in textViews {
             textView.textColor = MyColor.placeHolderText.value
@@ -72,11 +67,7 @@ class AddEditQuestionViewController: UIViewController {
             let newQuestion = Question()
             newQuestion.questionBody = questionTextView.text
             newQuestion.categoryID = categoryID
-            if exampleTextView.textColor == MyColor.placeHolderText.value {
-                newQuestion.exampleAnswer = nil
-            } else {
-                newQuestion.exampleAnswer = exampleTextView.text
-            }
+
             if noteTextView.textColor == MyColor.placeHolderText.value {
                 newQuestion.note = nil
             } else {
@@ -91,11 +82,7 @@ class AddEditQuestionViewController: UIViewController {
             // Update question
             try! realm.write {
                 existingQuestion.questionBody = questionTextView.text
-                if exampleTextView.textColor == MyColor.placeHolderText.value {
-                    existingQuestion.exampleAnswer = nil
-                } else {
-                    existingQuestion.exampleAnswer = exampleTextView.text
-                }
+
                 if noteTextView.textColor == MyColor.placeHolderText.value {
                     existingQuestion.note = nil
                 } else {

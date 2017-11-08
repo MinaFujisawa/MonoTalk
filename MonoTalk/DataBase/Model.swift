@@ -23,7 +23,6 @@ class Question: Object {
     @objc dynamic var id = UUID().uuidString
     @objc dynamic var date = Date()
     @objc dynamic var questionBody = ""
-    @objc dynamic var exampleAnswer: String? = nil
     @objc dynamic var note: String? = nil
     @objc dynamic var isFavorited = false
     @objc dynamic var categoryID = ""

@@ -46,7 +46,7 @@ class CategoryTableViewController: UITableViewController {
         }
 
         // MARK: UI
-        tableView.separatorStyle = UITableViewCellSeparatorStyle.none
+        self.tableView.separatorStyle = UITableViewCellSeparatorStyle.none
 //        tableView.separatorInset = UIEdgeInsets.zero
 //        tableView.layoutMargins = UIEdgeInsets.zero
 

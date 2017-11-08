@@ -18,7 +18,6 @@ struct RealmInitializer {
 
         let question1 = Question()
         question1.questionBody = "Dairy1 how's it going?"
-        question1.exampleAnswer = "I'm great"
         question1.categoryID = category1.id
 
         let question2 = Question()
@@ -33,7 +32,6 @@ struct RealmInitializer {
         
         let question3 = Question()
         question3.questionBody = "Dairy2 how's it going?"
-        question3.exampleAnswer = "I'm great"
         question3.categoryID = category2.id
         
         let question4 = Question()
