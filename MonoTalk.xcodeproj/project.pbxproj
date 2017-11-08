@@ -27,6 +27,8 @@
 		0972A8081FB0FE4D002E9E88 /* AddEditQuestionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0972A8071FB0FE4D002E9E88 /* AddEditQuestionViewController.swift */; };
 		0979FA4A1FA80172000BDB5B /* UI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0979FA491FA80172000BDB5B /* UI.swift */; };
 		0979FA4C1FA80A15000BDB5B /* DataSourse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0979FA4B1FA80A15000BDB5B /* DataSourse.swift */; };
+		099F7B821FB2878F0069C73E /* CreateCategoryCellXib.swift in Sources */ = {isa = PBXBuildFile; fileRef = 099F7B801FB2878F0069C73E /* CreateCategoryCellXib.swift */; };
+		099F7B831FB2878F0069C73E /* CreateCategoryCellXib.xib in Resources */ = {isa = PBXBuildFile; fileRef = 099F7B811FB2878F0069C73E /* CreateCategoryCellXib.xib */; };
 		09A958B31FAE39FD000DD9AF /* default.realm in Frameworks */ = {isa = PBXBuildFile; fileRef = 09A958B21FAE39FD000DD9AF /* default.realm */; };
 		09A958B41FAE3C5B000DD9AF /* default.realm in Resources */ = {isa = PBXBuildFile; fileRef = 09A958B11FAE39D9000DD9AF /* default.realm */; };
 		09E728521FA95342007B7F5F /* RecorderModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09E728511FA95342007B7F5F /* RecorderModalViewController.swift */; };
@@ -82,6 +84,8 @@
 		0972A8071FB0FE4D002E9E88 /* AddEditQuestionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEditQuestionViewController.swift; sourceTree = "<group>"; };
 		0979FA491FA80172000BDB5B /* UI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UI.swift; sourceTree = "<group>"; };
 		0979FA4B1FA80A15000BDB5B /* DataSourse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataSourse.swift; sourceTree = "<group>"; };
+		099F7B801FB2878F0069C73E /* CreateCategoryCellXib.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateCategoryCellXib.swift; sourceTree = "<group>"; };
+		099F7B811FB2878F0069C73E /* CreateCategoryCellXib.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CreateCategoryCellXib.xib; sourceTree = "<group>"; };
 		09A958B11FAE39D9000DD9AF /* default.realm */ = {isa = PBXFileReference; lastKnownFileType = file; path = default.realm; sourceTree = "<group>"; };
 		09A958B21FAE39FD000DD9AF /* default.realm */ = {isa = PBXFileReference; lastKnownFileType = file; name = default.realm; path = "../../../Library/Developer/CoreSimulator/Devices/F4BF7243-7F90-4C42-A711-52F2DF361C4B/data/Containers/Data/Application/00689D4C-15B0-42AF-A04B-0FAEED33487D/Documents/default.realm"; sourceTree = "<group>"; };
 		09E728511FA95342007B7F5F /* RecorderModalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecorderModalViewController.swift; sourceTree = "<group>"; };
@@ -169,6 +173,7 @@
 				0957D61C1FA93C9F00A91705 /* PlayerXibView.swift */,
 				0910BB371FAD28EE006AEA85 /* CategoryTableViewCell.swift */,
 				0910BB3B1FAD30C0006AEA85 /* QuestionTavleViewCell.swift */,
+				099F7B801FB2878F0069C73E /* CreateCategoryCellXib.swift */,
 			);
 			path = MonoTalk;
 			sourceTree = "<group>";
@@ -209,6 +214,7 @@
 				094ABF101FA7E85F00BA23AB /* LaunchScreen.storyboard */,
 				0957D61A1FA9373000A91705 /* PlayerXibView.xib */,
 				0910BB381FAD28EE006AEA85 /* CategoryCellXibView.xib */,
+				099F7B811FB2878F0069C73E /* CreateCategoryCellXib.xib */,
 			);
 			path = Storyboards;
 			sourceTree = "<group>";
@@ -367,6 +373,7 @@
 				0910BB3A1FAD28EE006AEA85 /* CategoryCellXibView.xib in Resources */,
 				094ABF121FA7E85F00BA23AB /* LaunchScreen.storyboard in Resources */,
 				094ABF0F1FA7E85F00BA23AB /* Assets.xcassets in Resources */,
+				099F7B831FB2878F0069C73E /* CreateCategoryCellXib.xib in Resources */,
 				094ABF0D1FA7E85F00BA23AB /* Main.storyboard in Resources */,
 				0957D61B1FA9373000A91705 /* PlayerXibView.xib in Resources */,
 			);
@@ -568,6 +575,7 @@
 				0979FA4C1FA80A15000BDB5B /* DataSourse.swift in Sources */,
 				094ABF361FA7EBD100BA23AB /* QuestionDetailViewController.swift in Sources */,
 				0979FA4A1FA80172000BDB5B /* UI.swift in Sources */,
+				099F7B821FB2878F0069C73E /* CreateCategoryCellXib.swift in Sources */,
 				0910BB361FAD23FC006AEA85 /* CategoryTableViewController.swift in Sources */,
 				0910BB3C1FAD30C0006AEA85 /* QuestionTavleViewCell.swift in Sources */,
 				0910BB391FAD28EE006AEA85 /* CategoryTableViewCell.swift in Sources */,

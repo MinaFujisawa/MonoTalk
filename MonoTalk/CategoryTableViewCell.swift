@@ -9,7 +9,8 @@
 import UIKit
 
 class CategoryTableViewCell: UITableViewCell {
-
+    
+    static let id = "CategoryCell"
     @IBOutlet weak var numLabel: UILabel!
     @IBOutlet weak var nameLabel: UILabel!
     override func awakeFromNib() {
