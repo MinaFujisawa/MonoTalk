@@ -10,6 +10,7 @@ import UIKit
 import RealmSwift
 
 class QuestionTableViewController: UIViewController {
+    
     var questions: List<Question>!
     var categoryID: String!
 
@@ -120,13 +121,13 @@ extension QuestionTableViewController: UITableViewDataSource {
 
         // Set cell
         cell.questionLabel.text = question.questionBody
-
         cell.recordNumLabel.text = String(question.records.count)
         if question.note == nil {
-            //            cell.noteIcon.removeFromSuperview()
+            cell.noteIcon.image = nil
+            cell.repositionStarIcon()
         }
         if question.isFavorited == false {
-            //            cell.starIcon.removeFromSuperview()
+            cell.starIcon.image = nil
         }
         cell.rateIcon.image = Question.Rate(rawValue: question.rate)?.rateImage
 

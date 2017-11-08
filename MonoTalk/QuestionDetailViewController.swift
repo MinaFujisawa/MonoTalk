@@ -18,8 +18,7 @@ class QuestionDetailViewController: UIViewController {
     @IBOutlet weak var sampleButton: UIButton!
     @IBOutlet weak var recordButton: UIButton!
     @IBOutlet weak var categoryLabel: UILabel!
-    @IBAction func starButton(_ sender: Any) {
-    }
+    
     @IBOutlet weak var starButton: UIButton!
     @IBOutlet weak var questionLabel: UILabel!
 
@@ -29,10 +28,12 @@ class QuestionDetailViewController: UIViewController {
     let notaificationIdDeletedUserInfo = "indexOfDletedItem"
     var currentIndexTitle: String!
     var question: Question!
+    var realm : Realm!
 
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpUI()
+        realm = try! Realm()
         
         // From model
         NotificationCenter.default.addObserver(self, selector: #selector(self.setPlayerViews), name: NSNotification.Name(rawValue: notificationIdDismssedModel), object: nil)
@@ -44,7 +45,6 @@ class QuestionDetailViewController: UIViewController {
 
     override func viewWillAppear(_ animated: Bool) {
         // Init contents
-        let realm = try! Realm()
         questionLabel.text = question.questionBody
         print(question.categoryID)
         let category = realm.object(ofType: Category.self, forPrimaryKey: question.categoryID)
@@ -61,6 +61,12 @@ class QuestionDetailViewController: UIViewController {
         recordButton.dropShadow(isCircle: true)
         self.view.bringSubview(toFront: recordButton)
         
+        // Star
+        if question.isFavorited {
+            starButton.setImage(UIImage(named: "icon_star_filled"), for: .normal)
+        } else{
+            starButton.setImage(UIImage(named: "icon_star_outline"), for: .normal)
+        }
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -118,8 +124,21 @@ class QuestionDetailViewController: UIViewController {
         }
         return result
     }
-
-
+    
+    // MARK: Star button
+    @IBAction func starButton(_ sender: Any) {
+        if question.isFavorited {
+            starButton.setImage(UIImage(named: "icon_star_outline"), for: .normal)
+            try! realm.write {
+                question.isFavorited = false
+            }
+        } else{
+            starButton.setImage(UIImage(named: "icon_star_filled"), for: .normal)
+            try! realm.write {
+                question.isFavorited = true
+            }
+        }
+    }
 }
 
 

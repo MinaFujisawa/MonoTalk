@@ -408,10 +408,12 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="noteIcon" destination="VTR-De-V06" id="bkW-Fz-HoJ"/>
+                                            <outlet property="noteIcon" destination="VTR-De-V06" id="KGy-xa-6d1"/>
                                             <outlet property="questionLabel" destination="mrR-8t-dWr" id="1wM-YX-LRN"/>
                                             <outlet property="rateIcon" destination="q6H-cN-Ke1" id="KgZ-M7-Pfg"/>
                                             <outlet property="recordNumLabel" destination="fEH-KH-QjM" id="PCp-WS-cS0"/>
+                                            <outlet property="starIcon" destination="39C-i3-Uky" id="pS3-HY-v5F"/>
+                                            <outlet property="starLeadingConstraint" destination="drg-qp-tDj" id="p4w-2L-lgb"/>
                                             <segue destination="seL-pe-Fje" kind="show" identifier="GoToPages" id="oy2-Ac-nb8"/>
                                         </connections>
                                     </tableViewCell>
