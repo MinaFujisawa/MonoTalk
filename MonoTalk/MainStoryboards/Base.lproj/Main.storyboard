@@ -22,26 +22,30 @@
                                 <rect key="frame" x="0.0" y="20" width="375" height="240"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9gI-nY-cO2">
-                                        <rect key="frame" x="24" y="78" width="327" height="20.5"/>
+                                        <rect key="frame" x="24" y="80" width="327" height="20.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="b06-qE-cl2">
-                                        <rect key="frame" x="331" y="16" width="20" height="22"/>
+                                        <rect key="frame" x="327" y="16" width="24" height="24"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="24" id="KB2-b8-i5a"/>
+                                            <constraint firstAttribute="width" constant="24" id="iAh-eN-CRy"/>
+                                        </constraints>
                                         <state key="normal" image="icon_star_outline"/>
                                         <connections>
                                             <action selector="starButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="nLQ-JN-V8h"/>
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1PV-b5-a8j">
-                                        <rect key="frame" x="24" y="16" width="34" height="24"/>
+                                        <rect key="frame" x="24" y="16" width="247" height="24"/>
                                         <fontDescription key="fontDescription" type="system" weight="medium" pointSize="13"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hc6-U5-Eoc">
-                                        <rect key="frame" x="291" y="16" width="24" height="24"/>
+                                        <rect key="frame" x="287" y="16" width="24" height="24"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="24" id="8dN-f3-Dkj"/>
                                             <constraint firstAttribute="width" constant="24" id="v64-0v-nrK"/>
@@ -59,8 +63,9 @@
                                     <constraint firstItem="1PV-b5-a8j" firstAttribute="leading" secondItem="H99-O6-PSB" secondAttribute="leading" constant="24" id="9hd-hS-KKZ"/>
                                     <constraint firstAttribute="trailing" secondItem="b06-qE-cl2" secondAttribute="trailing" constant="24" id="A5m-wE-umo"/>
                                     <constraint firstItem="1PV-b5-a8j" firstAttribute="top" secondItem="H99-O6-PSB" secondAttribute="top" constant="16" id="DPm-WD-hvm"/>
+                                    <constraint firstItem="b06-qE-cl2" firstAttribute="centerY" secondItem="1PV-b5-a8j" secondAttribute="centerY" id="Dmv-wV-LtS"/>
                                     <constraint firstAttribute="trailing" secondItem="9gI-nY-cO2" secondAttribute="trailing" constant="24" id="JAf-hV-aTM"/>
-                                    <constraint firstItem="hc6-U5-Eoc" firstAttribute="top" secondItem="b06-qE-cl2" secondAttribute="top" id="efa-wC-pX6"/>
+                                    <constraint firstItem="hc6-U5-Eoc" firstAttribute="leading" secondItem="1PV-b5-a8j" secondAttribute="trailing" constant="16" id="b3a-sy-jRu"/>
                                     <constraint firstAttribute="height" constant="240" id="ftB-t7-Bd1"/>
                                     <constraint firstItem="9gI-nY-cO2" firstAttribute="leading" secondItem="H99-O6-PSB" secondAttribute="leading" constant="24" id="mN7-Xu-xh5"/>
                                     <constraint firstItem="b06-qE-cl2" firstAttribute="leading" secondItem="hc6-U5-Eoc" secondAttribute="trailing" constant="16" id="nOP-7V-xms"/>
@@ -249,7 +254,7 @@
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Question" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yVI-TP-NzA">
-                                <rect key="frame" x="24" y="88" width="69" height="21"/>
+                                <rect key="frame" x="24" y="88" width="327" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -264,7 +269,7 @@
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Note (optional)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CbH-ac-uPU">
-                                <rect key="frame" x="24" y="269" width="115" height="21"/>
+                                <rect key="frame" x="24" y="269" width="327" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -279,7 +284,9 @@
                             <constraint firstItem="EM7-RE-ICa" firstAttribute="leading" secondItem="Saw-ZC-Sef" secondAttribute="leading" id="eER-ec-sVL"/>
                             <constraint firstItem="v5n-Av-Dsd" firstAttribute="top" secondItem="CbH-ac-uPU" secondAttribute="bottom" constant="8" id="fpi-8S-Dzq"/>
                             <constraint firstItem="yVI-TP-NzA" firstAttribute="top" secondItem="Saw-ZC-Sef" secondAttribute="top" constant="24" id="h3v-CW-QQ7"/>
+                            <constraint firstItem="Saw-ZC-Sef" firstAttribute="trailing" secondItem="CbH-ac-uPU" secondAttribute="trailing" constant="24" id="jXw-sA-Sdw"/>
                             <constraint firstItem="CbH-ac-uPU" firstAttribute="top" secondItem="EM7-RE-ICa" secondAttribute="bottom" constant="24" id="lpX-zi-2IG"/>
+                            <constraint firstItem="Saw-ZC-Sef" firstAttribute="trailing" secondItem="yVI-TP-NzA" secondAttribute="trailing" constant="24" id="mXj-pR-3Uh"/>
                             <constraint firstItem="Saw-ZC-Sef" firstAttribute="trailing" secondItem="EM7-RE-ICa" secondAttribute="trailing" id="xqH-j0-Npg"/>
                             <constraint firstItem="v5n-Av-Dsd" firstAttribute="trailing" secondItem="Saw-ZC-Sef" secondAttribute="trailing" id="xxD-xf-wzp"/>
                         </constraints>
@@ -412,7 +419,7 @@
                                 <rect key="frame" x="0.0" y="84" width="375" height="44"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Creation date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="i2x-Fe-z4d">
-                                        <rect key="frame" x="24" y="12" width="104" height="21"/>
+                                        <rect key="frame" x="24" y="12" width="291" height="21"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -428,6 +435,7 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstItem="i2x-Fe-z4d" firstAttribute="centerY" secondItem="gew-am-upE" secondAttribute="centerY" id="33F-DN-pfu"/>
+                                    <constraint firstItem="UUl-95-5Pk" firstAttribute="leading" secondItem="i2x-Fe-z4d" secondAttribute="trailing" constant="16" id="4Zw-db-5ri"/>
                                     <constraint firstAttribute="trailing" secondItem="UUl-95-5Pk" secondAttribute="trailing" constant="24" id="959-Iz-vIg"/>
                                     <constraint firstItem="i2x-Fe-z4d" firstAttribute="leading" secondItem="gew-am-upE" secondAttribute="leading" constant="24" id="Pl7-xO-vwC"/>
                                     <constraint firstItem="UUl-95-5Pk" firstAttribute="centerY" secondItem="gew-am-upE" secondAttribute="centerY" id="XWm-Rf-QlH"/>
