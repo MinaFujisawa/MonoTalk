@@ -125,9 +125,13 @@ extension QuestionTableViewController: UITableViewDataSource {
         if question.note == nil {
             cell.noteIcon.image = nil
             cell.repositionStarIcon()
+        } else {
+            cell.noteIcon.image = UIImage(named: "icon_cell_note")
         }
         if question.isFavorited == false {
             cell.starIcon.image = nil
+        } else {
+            cell.starIcon.image = UIImage(named: "icon_star_filled")
         }
         cell.rateIcon.image = Question.Rate(rawValue: question.rate)?.rateImage
 
