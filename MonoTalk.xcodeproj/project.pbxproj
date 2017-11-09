@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		090C31C41FB38FAC005D9858 /* BalloonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 090C31C31FB38FAC005D9858 /* BalloonView.swift */; };
-		090C31C61FB39235005D9858 /* CG.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 090C31C51FB39235005D9858 /* CG.storyboard */; };
 		0910BB361FAD23FC006AEA85 /* CategoryTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0910BB351FAD23FC006AEA85 /* CategoryTableViewController.swift */; };
 		0910BB391FAD28EE006AEA85 /* CategoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0910BB371FAD28EE006AEA85 /* CategoryTableViewCell.swift */; };
 		0910BB3A1FAD28EE006AEA85 /* CategoryCellXibView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0910BB381FAD28EE006AEA85 /* CategoryCellXibView.xib */; };
@@ -28,7 +27,6 @@
 		095E33401FA8131C0010B1F3 /* QuestionsPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 095E333F1FA8131C0010B1F3 /* QuestionsPageViewController.swift */; };
 		0972A8081FB0FE4D002E9E88 /* AddEditQuestionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0972A8071FB0FE4D002E9E88 /* AddEditQuestionViewController.swift */; };
 		0979FA4A1FA80172000BDB5B /* UI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0979FA491FA80172000BDB5B /* UI.swift */; };
-		0979FA4C1FA80A15000BDB5B /* DataSourse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0979FA4B1FA80A15000BDB5B /* DataSourse.swift */; };
 		099F7B821FB2878F0069C73E /* CreateCategoryCellXib.swift in Sources */ = {isa = PBXBuildFile; fileRef = 099F7B801FB2878F0069C73E /* CreateCategoryCellXib.swift */; };
 		099F7B831FB2878F0069C73E /* CreateCategoryCellXib.xib in Resources */ = {isa = PBXBuildFile; fileRef = 099F7B811FB2878F0069C73E /* CreateCategoryCellXib.xib */; };
 		09A958B31FAE39FD000DD9AF /* default.realm in Frameworks */ = {isa = PBXBuildFile; fileRef = 09A958B21FAE39FD000DD9AF /* default.realm */; };
@@ -36,7 +34,6 @@
 		09E728521FA95342007B7F5F /* RecorderModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09E728511FA95342007B7F5F /* RecorderModalViewController.swift */; };
 		09E728541FA96B91007B7F5F /* Time.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09E728531FA96B91007B7F5F /* Time.swift */; };
 		09F2A7681FAE3383001DEBD6 /* RealmInitializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09F2A7671FAE3383001DEBD6 /* RealmInitializer.swift */; };
-		09F2A76A1FAE3425001DEBD6 /* MyRealm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09F2A7691FAE3425001DEBD6 /* MyRealm.swift */; };
 		76D8F864D1B0FBBD8D237AF8 /* Pods_MonoTalkTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2645F8DA66821BEDDE56A428 /* Pods_MonoTalkTests.framework */; };
 		F6CEE0F6CACEA01984875347 /* Pods_MonoTalkUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 30391151E5FE1E147BC2EE3B /* Pods_MonoTalkUITests.framework */; };
 		FF336F827C8547CD9DE09F68 /* Pods_MonoTalk.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A3B299541C4A4170D0E3A6B0 /* Pods_MonoTalk.framework */; };
@@ -61,7 +58,6 @@
 
 /* Begin PBXFileReference section */
 		090C31C31FB38FAC005D9858 /* BalloonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BalloonView.swift; sourceTree = "<group>"; };
-		090C31C51FB39235005D9858 /* CG.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CG.storyboard; sourceTree = "<group>"; };
 		0910BB351FAD23FC006AEA85 /* CategoryTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryTableViewController.swift; sourceTree = "<group>"; };
 		0910BB371FAD28EE006AEA85 /* CategoryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryTableViewCell.swift; sourceTree = "<group>"; };
 		0910BB381FAD28EE006AEA85 /* CategoryCellXibView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CategoryCellXibView.xib; sourceTree = "<group>"; };
@@ -87,7 +83,6 @@
 		095E333F1FA8131C0010B1F3 /* QuestionsPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionsPageViewController.swift; sourceTree = "<group>"; };
 		0972A8071FB0FE4D002E9E88 /* AddEditQuestionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEditQuestionViewController.swift; sourceTree = "<group>"; };
 		0979FA491FA80172000BDB5B /* UI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UI.swift; sourceTree = "<group>"; };
-		0979FA4B1FA80A15000BDB5B /* DataSourse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataSourse.swift; sourceTree = "<group>"; };
 		099F7B801FB2878F0069C73E /* CreateCategoryCellXib.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateCategoryCellXib.swift; sourceTree = "<group>"; };
 		099F7B811FB2878F0069C73E /* CreateCategoryCellXib.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CreateCategoryCellXib.xib; sourceTree = "<group>"; };
 		09A958B11FAE39D9000DD9AF /* default.realm */ = {isa = PBXFileReference; lastKnownFileType = file; path = default.realm; sourceTree = "<group>"; };
@@ -95,7 +90,6 @@
 		09E728511FA95342007B7F5F /* RecorderModalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecorderModalViewController.swift; sourceTree = "<group>"; };
 		09E728531FA96B91007B7F5F /* Time.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Time.swift; sourceTree = "<group>"; };
 		09F2A7671FAE3383001DEBD6 /* RealmInitializer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmInitializer.swift; sourceTree = "<group>"; };
-		09F2A7691FAE3425001DEBD6 /* MyRealm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyRealm.swift; sourceTree = "<group>"; };
 		1DEE21F88B40CB9E251D52C8 /* Pods-MonoTalkTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MonoTalkTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MonoTalkTests/Pods-MonoTalkTests.debug.xcconfig"; sourceTree = "<group>"; };
 		2645F8DA66821BEDDE56A428 /* Pods_MonoTalkTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MonoTalkTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		30391151E5FE1E147BC2EE3B /* Pods_MonoTalkUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MonoTalkUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -136,6 +130,66 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		090C10ED1FB4D50B003E7AAD /* Presentation */ = {
+			isa = PBXGroup;
+			children = (
+				090C10F11FB4D68B003E7AAD /* AddEditQuestion */,
+				090C10F01FB4D643003E7AAD /* QuestionPage */,
+				090C10EF1FB4D5E3003E7AAD /* QuestionList */,
+				090C10EE1FB4D589003E7AAD /* CategoryList */,
+			);
+			path = Presentation;
+			sourceTree = "<group>";
+		};
+		090C10EE1FB4D589003E7AAD /* CategoryList */ = {
+			isa = PBXGroup;
+			children = (
+				0910BB351FAD23FC006AEA85 /* CategoryTableViewController.swift */,
+				0910BB371FAD28EE006AEA85 /* CategoryTableViewCell.swift */,
+				0910BB381FAD28EE006AEA85 /* CategoryCellXibView.xib */,
+				099F7B801FB2878F0069C73E /* CreateCategoryCellXib.swift */,
+				099F7B811FB2878F0069C73E /* CreateCategoryCellXib.xib */,
+			);
+			path = CategoryList;
+			sourceTree = "<group>";
+		};
+		090C10EF1FB4D5E3003E7AAD /* QuestionList */ = {
+			isa = PBXGroup;
+			children = (
+				0910BB3D1FAD30DC006AEA85 /* QuestionTableViewController.swift */,
+				0910BB3B1FAD30C0006AEA85 /* QuestionTavleViewCell.swift */,
+			);
+			path = QuestionList;
+			sourceTree = "<group>";
+		};
+		090C10F01FB4D643003E7AAD /* QuestionPage */ = {
+			isa = PBXGroup;
+			children = (
+				095E333F1FA8131C0010B1F3 /* QuestionsPageViewController.swift */,
+				094ABF351FA7EBD100BA23AB /* QuestionDetailViewController.swift */,
+				09E728511FA95342007B7F5F /* RecorderModalViewController.swift */,
+				0957D61C1FA93C9F00A91705 /* PlayerXibView.swift */,
+				0957D61A1FA9373000A91705 /* PlayerXibView.xib */,
+			);
+			path = QuestionPage;
+			sourceTree = "<group>";
+		};
+		090C10F11FB4D68B003E7AAD /* AddEditQuestion */ = {
+			isa = PBXGroup;
+			children = (
+				0972A8071FB0FE4D002E9E88 /* AddEditQuestionViewController.swift */,
+			);
+			path = AddEditQuestion;
+			sourceTree = "<group>";
+		};
+		090C10F21FB4D70C003E7AAD /* View */ = {
+			isa = PBXGroup;
+			children = (
+				090C31C31FB38FAC005D9858 /* BalloonView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		094ABEFB1FA7E85F00BA23AB = {
 			isa = PBXGroup;
 			children = (
@@ -162,23 +216,12 @@
 			isa = PBXGroup;
 			children = (
 				094ABF071FA7E85F00BA23AB /* AppDelegate.swift */,
-				098446C31FAE4A81005F72E8 /* Storyboards */,
+				098446C31FAE4A81005F72E8 /* MainStoryboards */,
+				090C10ED1FB4D50B003E7AAD /* Presentation */,
 				098446C41FAE4ABE005F72E8 /* Common */,
 				098446C21FAE3DA7005F72E8 /* DataBase */,
-				0910BB351FAD23FC006AEA85 /* CategoryTableViewController.swift */,
-				0910BB3D1FAD30DC006AEA85 /* QuestionTableViewController.swift */,
-				0972A8071FB0FE4D002E9E88 /* AddEditQuestionViewController.swift */,
-				095E333F1FA8131C0010B1F3 /* QuestionsPageViewController.swift */,
-				094ABF351FA7EBD100BA23AB /* QuestionDetailViewController.swift */,
-				09E728511FA95342007B7F5F /* RecorderModalViewController.swift */,
 				094ABF0E1FA7E85F00BA23AB /* Assets.xcassets */,
 				094ABF131FA7E85F00BA23AB /* Info.plist */,
-				0979FA4B1FA80A15000BDB5B /* DataSourse.swift */,
-				0957D61C1FA93C9F00A91705 /* PlayerXibView.swift */,
-				0910BB371FAD28EE006AEA85 /* CategoryTableViewCell.swift */,
-				0910BB3B1FAD30C0006AEA85 /* QuestionTavleViewCell.swift */,
-				099F7B801FB2878F0069C73E /* CreateCategoryCellXib.swift */,
-				090C31C31FB38FAC005D9858 /* BalloonView.swift */,
 			);
 			path = MonoTalk;
 			sourceTree = "<group>";
@@ -205,29 +248,25 @@
 			isa = PBXGroup;
 			children = (
 				09F2A7671FAE3383001DEBD6 /* RealmInitializer.swift */,
-				09F2A7691FAE3425001DEBD6 /* MyRealm.swift */,
 				09A958B11FAE39D9000DD9AF /* default.realm */,
 				094ABF391FA7F85200BA23AB /* Model.swift */,
 			);
 			path = DataBase;
 			sourceTree = "<group>";
 		};
-		098446C31FAE4A81005F72E8 /* Storyboards */ = {
+		098446C31FAE4A81005F72E8 /* MainStoryboards */ = {
 			isa = PBXGroup;
 			children = (
 				094ABF0B1FA7E85F00BA23AB /* Main.storyboard */,
 				094ABF101FA7E85F00BA23AB /* LaunchScreen.storyboard */,
-				0957D61A1FA9373000A91705 /* PlayerXibView.xib */,
-				0910BB381FAD28EE006AEA85 /* CategoryCellXibView.xib */,
-				099F7B811FB2878F0069C73E /* CreateCategoryCellXib.xib */,
-				090C31C51FB39235005D9858 /* CG.storyboard */,
 			);
-			path = Storyboards;
+			path = MainStoryboards;
 			sourceTree = "<group>";
 		};
 		098446C41FAE4ABE005F72E8 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				090C10F21FB4D70C003E7AAD /* View */,
 				09E728531FA96B91007B7F5F /* Time.swift */,
 				0979FA491FA80172000BDB5B /* UI.swift */,
 				094ABF371FA7F05200BA23AB /* Colors.swift */,
@@ -381,7 +420,6 @@
 				094ABF0F1FA7E85F00BA23AB /* Assets.xcassets in Resources */,
 				099F7B831FB2878F0069C73E /* CreateCategoryCellXib.xib in Resources */,
 				094ABF0D1FA7E85F00BA23AB /* Main.storyboard in Resources */,
-				090C31C61FB39235005D9858 /* CG.storyboard in Resources */,
 				0957D61B1FA9373000A91705 /* PlayerXibView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -580,14 +618,12 @@
 				094ABF081FA7E85F00BA23AB /* AppDelegate.swift in Sources */,
 				095E33401FA8131C0010B1F3 /* QuestionsPageViewController.swift in Sources */,
 				09E728521FA95342007B7F5F /* RecorderModalViewController.swift in Sources */,
-				0979FA4C1FA80A15000BDB5B /* DataSourse.swift in Sources */,
 				094ABF361FA7EBD100BA23AB /* QuestionDetailViewController.swift in Sources */,
 				0979FA4A1FA80172000BDB5B /* UI.swift in Sources */,
 				099F7B821FB2878F0069C73E /* CreateCategoryCellXib.swift in Sources */,
 				0910BB361FAD23FC006AEA85 /* CategoryTableViewController.swift in Sources */,
 				0910BB3C1FAD30C0006AEA85 /* QuestionTavleViewCell.swift in Sources */,
 				0910BB391FAD28EE006AEA85 /* CategoryTableViewCell.swift in Sources */,
-				09F2A76A1FAE3425001DEBD6 /* MyRealm.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

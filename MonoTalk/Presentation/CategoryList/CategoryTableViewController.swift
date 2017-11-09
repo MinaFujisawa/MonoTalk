@@ -13,7 +13,6 @@ class CategoryTableViewController: UITableViewController {
     var realm: Realm!
     var categories: Results<Category>!
 
-    let myRealm = MyRealm()
     var notificationToken: NotificationToken? = nil
     let cellID = "CategoryCell"
     let createCategorycellID = "CreateCategoryCellXib"
