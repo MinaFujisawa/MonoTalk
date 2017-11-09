@@ -26,7 +26,7 @@ class Question: Object {
     @objc dynamic var note: String? = nil
     @objc dynamic var isFavorited = false
     @objc dynamic var categoryID = ""
-    var rate = Rate.soso.rawValue
+    @objc dynamic var rate = Rate.soso.rawValue
     var records = List<Record>()
 
     override static func primaryKey() -> String? {
@@ -54,6 +54,8 @@ class Question: Object {
                 return UIImage(named: "rate_bad")!
             }
         }
+        
+        static let allValues = [great, good, soso, notGood, bad]
     }
 
     var rateAsEnum: Rate {

@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		090C31C41FB38FAC005D9858 /* BalloonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 090C31C31FB38FAC005D9858 /* BalloonView.swift */; };
+		090C31C61FB39235005D9858 /* CG.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 090C31C51FB39235005D9858 /* CG.storyboard */; };
 		0910BB361FAD23FC006AEA85 /* CategoryTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0910BB351FAD23FC006AEA85 /* CategoryTableViewController.swift */; };
 		0910BB391FAD28EE006AEA85 /* CategoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0910BB371FAD28EE006AEA85 /* CategoryTableViewCell.swift */; };
 		0910BB3A1FAD28EE006AEA85 /* CategoryCellXibView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0910BB381FAD28EE006AEA85 /* CategoryCellXibView.xib */; };
@@ -58,6 +60,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		090C31C31FB38FAC005D9858 /* BalloonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BalloonView.swift; sourceTree = "<group>"; };
+		090C31C51FB39235005D9858 /* CG.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CG.storyboard; sourceTree = "<group>"; };
 		0910BB351FAD23FC006AEA85 /* CategoryTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryTableViewController.swift; sourceTree = "<group>"; };
 		0910BB371FAD28EE006AEA85 /* CategoryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryTableViewCell.swift; sourceTree = "<group>"; };
 		0910BB381FAD28EE006AEA85 /* CategoryCellXibView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CategoryCellXibView.xib; sourceTree = "<group>"; };
@@ -174,6 +178,7 @@
 				0910BB371FAD28EE006AEA85 /* CategoryTableViewCell.swift */,
 				0910BB3B1FAD30C0006AEA85 /* QuestionTavleViewCell.swift */,
 				099F7B801FB2878F0069C73E /* CreateCategoryCellXib.swift */,
+				090C31C31FB38FAC005D9858 /* BalloonView.swift */,
 			);
 			path = MonoTalk;
 			sourceTree = "<group>";
@@ -215,6 +220,7 @@
 				0957D61A1FA9373000A91705 /* PlayerXibView.xib */,
 				0910BB381FAD28EE006AEA85 /* CategoryCellXibView.xib */,
 				099F7B811FB2878F0069C73E /* CreateCategoryCellXib.xib */,
+				090C31C51FB39235005D9858 /* CG.storyboard */,
 			);
 			path = Storyboards;
 			sourceTree = "<group>";
@@ -375,6 +381,7 @@
 				094ABF0F1FA7E85F00BA23AB /* Assets.xcassets in Resources */,
 				099F7B831FB2878F0069C73E /* CreateCategoryCellXib.xib in Resources */,
 				094ABF0D1FA7E85F00BA23AB /* Main.storyboard in Resources */,
+				090C31C61FB39235005D9858 /* CG.storyboard in Resources */,
 				0957D61B1FA9373000A91705 /* PlayerXibView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -564,6 +571,7 @@
 			files = (
 				094ABF3A1FA7F85200BA23AB /* Model.swift in Sources */,
 				09F2A7681FAE3383001DEBD6 /* RealmInitializer.swift in Sources */,
+				090C31C41FB38FAC005D9858 /* BalloonView.swift in Sources */,
 				0972A8081FB0FE4D002E9E88 /* AddEditQuestionViewController.swift in Sources */,
 				0910BB3E1FAD30DC006AEA85 /* QuestionTableViewController.swift in Sources */,
 				0957D61D1FA93C9F00A91705 /* PlayerXibView.swift in Sources */,
