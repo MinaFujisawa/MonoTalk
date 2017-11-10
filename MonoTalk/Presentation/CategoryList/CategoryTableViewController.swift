@@ -24,6 +24,9 @@ class CategoryTableViewController: UITableViewController {
 
         categories = realm.objects(Category.self)
 
+        let nib = UINib(nibName: "CreateCategoryCellXib", bundle: nil)
+        tableView.register(nib, forCellReuseIdentifier: createCategorycellID)
+
         // MARK:Observe Results Notifications
         notificationToken = categories.observe { [weak self] (changes: RealmCollectionChange) in
             guard let tableView = self?.tableView else { return }
@@ -43,25 +46,20 @@ class CategoryTableViewController: UITableViewController {
                 fatalError("\(error)")
             }
         }
-
-        // MARK: UI
-        self.tableView.separatorStyle = UITableViewCellSeparatorStyle.none
-//        tableView.separatorInset = UIEdgeInsets.zero
-//        tableView.layoutMargins = UIEdgeInsets.zero
-
-        let nib = UINib(nibName: "CreateCategoryCellXib", bundle: nil)
-        tableView.register(nib, forCellReuseIdentifier: createCategorycellID)
-
-        self.tableView.bounces = true
     }
-    
+
+    func setUpUI() {
+        self.tableView.rowHeight = 88;
+        tableView.separatorStyle = UITableViewCellSeparatorStyle.none
+        tableView.bounces = true
+    }
+
     deinit {
         notificationToken?.invalidate()
     }
 
     // MARK: - Table view data source
     override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
         return 1
     }
 
@@ -77,10 +75,10 @@ class CategoryTableViewController: UITableViewController {
             return cell
         } else {
             // Normal Cells
-            let cell = tableView.dequeueReusableCell(withIdentifier: CategoryTableViewCell.id, for: indexPath) as! CategoryTableViewCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: cellID, for: indexPath) as! CategoryTableViewCell
             let category = categories[indexPath.row]
             cell.nameLabel.text = category.name
-            cell.numLabel.text = String(category.questions.count)
+            cell.numTextView.text = String(category.questions.count)
             return cell
         }
     }
@@ -99,47 +97,47 @@ class CategoryTableViewController: UITableViewController {
 
 
 extension CategoryTableViewController: UITabBarControllerDelegate {
-    
+
     // MARK: Edit actions
     override func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
-        let deleteAction = UITableViewRowAction(style: .default, title: "Delete") { (action , indexPath ) -> Void in
+        let deleteAction = UITableViewRowAction(style: .default, title: "Delete") { (action, indexPath) -> Void in
             self.isEditing = false
             self.deleteAlerm(deleteItem: self.categories[indexPath.row])
         }
         deleteAction.backgroundColor = MyColor.red.value
-        
-        let renameAction = UITableViewRowAction(style: .default, title: "Edit") { (action , indexPath) -> Void in
+
+        let renameAction = UITableViewRowAction(style: .default, title: "Edit") { (action, indexPath) -> Void in
             self.isEditing = false
             self.showCategoryAlert(isEdit: true, category: self.categories[indexPath.row])
         }
         renameAction.backgroundColor = MyColor.lightText.value
         return [deleteAction, renameAction]
     }
-    
-    
+
+
     // MARK: Create Category
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
+
         tableView.deselectRow(at: indexPath, animated: true)
-        
+
         if indexPath.row >= categories.count {
             showCategoryAlert(isEdit: false, category: nil)
         }
     }
-    
-    func showCategoryAlert(isEdit : Bool, category : Category?) {
-        
+
+    func showCategoryAlert(isEdit: Bool, category: Category?) {
+
         let alertController: UIAlertController = UIAlertController(title: "Create Category", message: nil, preferredStyle: .alert)
-        
+
         alertController.addTextField { (textField: UITextField) in
             textField.placeholder = "Category name"
             if isEdit {
                 textField.text = category?.name
             }
         }
-        
+
         let okAction = UIAlertAction(title: "OK", style: .default) { (result) in
-            
+
             let textField = alertController.textFields![0] as UITextField
             if (textField.text?.isEmpty)! {
                 self.dismiss(animated: false, completion: nil)
@@ -149,7 +147,7 @@ extension CategoryTableViewController: UITabBarControllerDelegate {
                     try! self.realm.write {
                         category?.name = textField.text!
                     }
-                } else{
+                } else {
                     let newCategory = Category()
                     newCategory.name = textField.text!
                     try! self.realm.write {
@@ -158,27 +156,27 @@ extension CategoryTableViewController: UITabBarControllerDelegate {
                 }
             }
         }
-        
+
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
-        
+
         alertController.addAction(okAction)
         alertController.addAction(cancelAction)
         self.present(alertController, animated: true, completion: nil)
     }
-    
+
     // MARK: Delete Category
-    func deleteAlerm(deleteItem : Category) {
+    func deleteAlerm(deleteItem: Category) {
         let message = deleteItem.name + "will be deleted forever."
         let alert: UIAlertController = UIAlertController(title: nil, message: message, preferredStyle: .actionSheet)
         let cancel = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
-        
+
         let delete: UIAlertAction = UIAlertAction(title: "Delete Category", style: .destructive, handler: {
             (action: UIAlertAction!) -> Void in
             try! self.realm.write {
                 self.realm.delete(deleteItem)
             }
         })
-        
+
         alert.addAction(cancel)
         alert.addAction(delete)
         present(alert, animated: true, completion: nil)

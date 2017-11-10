@@ -9,9 +9,15 @@
 import UIKit
 
 class CreateCategoryCellXib: UITableViewCell {
+    @IBOutlet weak var iconImage: UIImageView!
+    @IBOutlet weak var label: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
+        label.textColor = MyColor.theme.value
+        iconImage.image = iconImage.image?.withRenderingMode(.alwaysTemplate)
+        iconImage.tintColor = MyColor.theme.value
         self.separatorInset = UIEdgeInsets.zero
+        self.preservesSuperviewLayoutMargins = false
         self.layoutMargins = UIEdgeInsets.zero
     }
 

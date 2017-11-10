@@ -17,16 +17,19 @@ class QuestionTableViewController: UIViewController {
 
     @IBOutlet weak var tableViewHeightConstraint: NSLayoutConstraint!
     @IBOutlet var tableView: UITableView!
-    @IBOutlet weak var sortContainerView: UIView!
-    @IBOutlet weak var sortLabel: UILabel!
     @IBOutlet weak var addButton: UIBarButtonItem!
     let cellID = "QuestionCell"
+    let sortCellID = "SortCell"
     var notificationToken: NotificationToken? = nil
+    var currentSortMode = "Creation Date"
 
 
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpUI()
+        
+        let nib = UINib(nibName: "SortCellXib", bundle: nil)
+        tableView.register(nib, forCellReuseIdentifier: sortCellID)
 
         let realm = try! Realm()
         category = realm.object(ofType: Category.self, forPrimaryKey: categoryID)
@@ -34,6 +37,7 @@ class QuestionTableViewController: UIViewController {
 
         self.title = category?.name
         tableView.dataSource = self
+        tableView.delegate = self
 
         // MARK:Observe Results Notifications
         notificationToken = questions.observe { [weak self] (changes: RealmCollectionChange) in
@@ -65,13 +69,6 @@ class QuestionTableViewController: UIViewController {
         // TODO : fix this
 //        tableViewHeightConstraint.constant = tableView.contentSize.height
 
-        // sort
-        let bottomLine = CALayer()
-        bottomLine.frame = CGRect(x: 0, y: sortContainerView.frame.height, width: self.view.frame.width, height: 1.0)
-        bottomLine.backgroundColor = MyColor.border.value.cgColor
-        sortContainerView.layer.addSublayer(bottomLine)
-        sortContainerView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(sortActionSheet)))
-
         // Navigation bar
         addButton.image = UIImage(named: "navi_plus")!
     }
@@ -81,19 +78,13 @@ class QuestionTableViewController: UIViewController {
     }
 
 
-    @objc func openMenu() {
-
-    }
-
-
-
     // MARK: segue
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "GoToPages" {
             let pageVC = segue.destination as! QuestionsPageViewController
             let cell = sender as! QuestionTavleViewCell
             if let indexPath = self.tableView!.indexPath(for: cell) {
-                pageVC.startIndex = indexPath.row
+                pageVC.startIndex = indexPath.row - 1
                 pageVC.categoryID = categoryID
                 tableView.deselectRow(at: indexPath, animated: true)
             }
@@ -105,49 +96,6 @@ class QuestionTableViewController: UIViewController {
         }
     }
 
-    // MARK: Sort Action Sheet
-    @objc func sortActionSheet() {
-        let alert: UIAlertController = UIAlertController(title: nil, message: "Sort questions by:", preferredStyle: .actionSheet)
-
-        let creationDate = UIAlertAction(title: "Creation date", style: .default, handler: {
-            (action: UIAlertAction!) -> Void in
-            self.questions = self.category.questions.sorted(byKeyPath: "date", ascending: true)
-            self.sortLabel.text = "Creation date"
-            self.tableView.reloadData()
-        })
-
-        let rate = UIAlertAction(title: "Rate", style: .default, handler: {
-            (action: UIAlertAction!) -> Void in
-            self.questions = self.category.questions.sorted(byKeyPath: "rate", ascending: false)
-            self.sortLabel.text = "Rate"
-            self.tableView.reloadData()
-        })
-
-        let record = UIAlertAction(title: "Record", style: .default, handler: {
-            (action: UIAlertAction!) -> Void in
-            self.questions = self.category.questions.sorted(byKeyPath: "recordsNum", ascending: false)
-            self.sortLabel.text = "Record"
-            self.tableView.reloadData()
-        })
-        
-        let favo = UIAlertAction(title: "Favorite", style: .default, handler: {
-            (action: UIAlertAction!) -> Void in
-            self.questions = self.category.questions.sorted(byKeyPath: "isFavorited", ascending: false)
-            self.sortLabel.text = "Favorite"
-            self.tableView.reloadData()
-        })
-
-
-        let cancel = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
-
-
-        alert.addAction(creationDate)
-        alert.addAction(rate)
-        alert.addAction(record)
-        alert.addAction(favo)
-        alert.addAction(cancel)
-        present(alert, animated: true, completion: nil)
-    }
 }
 
 extension QuestionTableViewController: UITableViewDataSource {
@@ -157,29 +105,96 @@ extension QuestionTableViewController: UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return questions.count
+        return questions.count + 1
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: cellID, for: indexPath) as! QuestionTavleViewCell
-        let question = questions[indexPath.row]
 
         // Set cell
-        cell.questionLabel.text = question.questionBody
-        cell.recordNumLabel.text = String(question.records.count)
-        if question.note == nil {
-            cell.noteIcon.image = nil
-            cell.repositionStarIcon()
+        if indexPath.row == 0 {
+            let cell = tableView.dequeueReusableCell(withIdentifier: sortCellID, for: indexPath) as! SortCellXib
+            cell.sortLabel.text = currentSortMode
+            return cell
         } else {
-            cell.noteIcon.image = UIImage(named: "icon_cell_note")
+            let cell = tableView.dequeueReusableCell(withIdentifier: cellID, for: indexPath) as! QuestionTavleViewCell
+            let question = questions[indexPath.row - 1]
+            
+            cell.questionLabel.text = question.questionBody
+            cell.recordNumLabel.text = String(question.records.count)
+            if question.note == nil {
+                cell.noteIcon.image = nil
+                cell.repositionStarIcon()
+            } else {
+                cell.noteIcon.image = UIImage(named: "icon_cell_note")
+            }
+            if question.isFavorited == false {
+                cell.starIcon.image = nil
+            } else {
+                cell.starIcon.image = UIImage(named: "icon_star_filled")
+            }
+            cell.rateIcon.image = Question.Rate(rawValue: question.rate)?.rateImage
+            
+            return cell
         }
-        if question.isFavorited == false {
-            cell.starIcon.image = nil
-        } else {
-            cell.starIcon.image = UIImage(named: "icon_star_filled")
-        }
-        cell.rateIcon.image = Question.Rate(rawValue: question.rate)?.rateImage
-
-        return cell
     }
+}
+
+extension QuestionTableViewController : UITableViewDelegate {
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        if indexPath.row == 0 {
+            return 56
+        } else {
+            return 120
+        }
+    }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if indexPath.row == 0 {
+            sortActionSheet()
+        }
+    }
+    
+    // MARK: Sort Action Sheet
+    func sortActionSheet() {
+        let alert: UIAlertController = UIAlertController(title: nil, message: "Sort questions by:", preferredStyle: .actionSheet)
+        
+        let creationDate = UIAlertAction(title: "Creation date", style: .default, handler: {
+            (action: UIAlertAction!) -> Void in
+            self.questions = self.category.questions.sorted(byKeyPath: "date", ascending: true)
+            self.currentSortMode = "Creation date"
+            self.tableView.reloadData()
+        })
+        
+        let rate = UIAlertAction(title: "Rate", style: .default, handler: {
+            (action: UIAlertAction!) -> Void in
+            self.questions = self.category.questions.sorted(byKeyPath: "rate", ascending: false)
+            self.currentSortMode = "Rate"
+            self.tableView.reloadData()
+        })
+        
+        let record = UIAlertAction(title: "Record", style: .default, handler: {
+            (action: UIAlertAction!) -> Void in
+            self.questions = self.category.questions.sorted(byKeyPath: "recordsNum", ascending: false)
+            self.currentSortMode = "Record"
+            self.tableView.reloadData()
+        })
+        
+        let favo = UIAlertAction(title: "Favorite", style: .default, handler: {
+            (action: UIAlertAction!) -> Void in
+            self.questions = self.category.questions.sorted(byKeyPath: "isFavorited", ascending: false)
+            self.currentSortMode = "Favorite"
+            self.tableView.reloadData()
+        })
+        
+        
+        let cancel = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        
+        
+        alert.addAction(creationDate)
+        alert.addAction(rate)
+        alert.addAction(record)
+        alert.addAction(favo)
+        alert.addAction(cancel)
+        present(alert, animated: true, completion: nil)
+    }
+
 }
