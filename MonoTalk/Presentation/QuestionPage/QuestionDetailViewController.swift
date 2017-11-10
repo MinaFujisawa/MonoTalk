@@ -8,6 +8,7 @@
 
 import UIKit
 import RealmSwift
+import AVFoundation
 
 class QuestionDetailViewController: UIViewController {
 
@@ -29,6 +30,8 @@ class QuestionDetailViewController: UIViewController {
     var currentIndexTitle: String!
     var question: Question!
     var realm: Realm!
+    var isShowingBalloon = false
+    var speakGestureReconizer : UITapGestureRecognizer!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,6 +46,12 @@ class QuestionDetailViewController: UIViewController {
 
         // Close Rate Balloon
         self.view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(closeRateBalloon)))
+
+
+        // Speak
+        speakGestureReconizer = UITapGestureRecognizer(target: self, action: #selector(speak))
+        questionAreaView.addGestureRecognizer(speakGestureReconizer)
+        
     }
 
 
@@ -149,11 +158,17 @@ class QuestionDetailViewController: UIViewController {
 
     // MARK: Rate button
     @IBAction func rateButtonAction(_ sender: Any) {
-        addBaloonView()
-
+        if isShowingBalloon {
+            closeRateBalloon()
+        } else {
+            showRateBaloon()
+        }
     }
 
-    func addBaloonView() {
+    func showRateBaloon() {
+        questionAreaView.removeGestureRecognizer(speakGestureReconizer)
+        isShowingBalloon = true
+        
         // Set up Baloon view base
         guard let rateButtonframe = rateButton.superview?.convert(rateButton.frame, to: nil) else { return }
         let iconButtonSize: CGFloat = 28
@@ -203,5 +218,14 @@ class QuestionDetailViewController: UIViewController {
 
     @objc func closeRateBalloon() {
         balloonView.removeFromSuperview()
+        isShowingBalloon = false
+        questionAreaView.addGestureRecognizer(speakGestureReconizer)
+    }
+
+    //MARK: Speak Question
+    @objc func speak() {
+        let synthesizer = AVSpeechSynthesizer()
+        let utterance = AVSpeechUtterance(string: question.questionBody)
+        synthesizer.speak(utterance)
     }
 }
