@@ -166,6 +166,7 @@ class PlayerXibView: UIView {
         let indexOfRecord = parentQuestion?.records.index(of: currentRecord!)
         
         try! realm.write() {
+            parentQuestion?.recordsNum -= 1
             realm.delete(record)
             if let indexOfRecord = indexOfRecord {
                 let positionYDict:[String: Int] = [notaificationIdDeletedUserInfo: indexOfRecord]

@@ -46,6 +46,7 @@ class RecorderModalViewController: UIViewController {
         if let question = realm.object(ofType: Question.self, forPrimaryKey: questionId) {
             try! realm.write() {
                 question.records.append(newRecord)
+                question.recordsNum += 1
             }
         }
 

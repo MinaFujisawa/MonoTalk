@@ -28,6 +28,7 @@ class Question: Object {
     @objc dynamic var categoryID = ""
     @objc dynamic var rate = Rate.soso.rawValue
     var records = List<Record>()
+    @objc dynamic var recordsNum = 0
 
     override static func primaryKey() -> String? {
         return "id"
@@ -39,8 +40,8 @@ class Question: Object {
         case soso
         case notGood
         case bad
-        
-        var rateImage : UIImage {
+
+        var rateImage: UIImage {
             switch self {
             case .great:
                 return UIImage(named: "rate_great")!
@@ -54,7 +55,7 @@ class Question: Object {
                 return UIImage(named: "rate_bad")!
             }
         }
-        
+
         static let allValues = [great, good, soso, notGood, bad]
     }
 

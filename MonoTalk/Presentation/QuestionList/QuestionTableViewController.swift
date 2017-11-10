@@ -10,8 +10,9 @@ import UIKit
 import RealmSwift
 
 class QuestionTableViewController: UIViewController {
-    
-    var questions: List<Question>!
+
+    var category: Category!
+    var questions: Results<Question>!
     var categoryID: String!
 
     @IBOutlet weak var tableViewHeightConstraint: NSLayoutConstraint!
@@ -28,8 +29,8 @@ class QuestionTableViewController: UIViewController {
         setUpUI()
 
         let realm = try! Realm()
-        let category = realm.object(ofType: Category.self, forPrimaryKey: categoryID)
-        questions = category?.questions
+        category = realm.object(ofType: Category.self, forPrimaryKey: categoryID)
+        questions = category?.questions.sorted(byKeyPath: "date", ascending: true)
 
         self.title = category?.name
         tableView.dataSource = self
@@ -67,8 +68,9 @@ class QuestionTableViewController: UIViewController {
         // sort
         let bottomLine = CALayer()
         bottomLine.frame = CGRect(x: 0, y: sortContainerView.frame.height, width: self.view.frame.width, height: 1.0)
-        bottomLine.backgroundColor = UIColor.black.cgColor
+        bottomLine.backgroundColor = MyColor.border.value.cgColor
         sortContainerView.layer.addSublayer(bottomLine)
+        sortContainerView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(sortActionSheet)))
 
         // Navigation bar
         addButton.image = UIImage(named: "navi_plus")!
@@ -101,7 +103,50 @@ class QuestionTableViewController: UIViewController {
             editVC.isFromAdd = true
             editVC.categoryID = categoryID
         }
+    }
 
+    // MARK: Sort Action Sheet
+    @objc func sortActionSheet() {
+        let alert: UIAlertController = UIAlertController(title: nil, message: "Sort questions by:", preferredStyle: .actionSheet)
+
+        let creationDate = UIAlertAction(title: "Creation date", style: .default, handler: {
+            (action: UIAlertAction!) -> Void in
+            self.questions = self.category.questions.sorted(byKeyPath: "date", ascending: true)
+            self.sortLabel.text = "Creation date"
+            self.tableView.reloadData()
+        })
+
+        let rate = UIAlertAction(title: "Rate", style: .default, handler: {
+            (action: UIAlertAction!) -> Void in
+            self.questions = self.category.questions.sorted(byKeyPath: "rate", ascending: false)
+            self.sortLabel.text = "Rate"
+            self.tableView.reloadData()
+        })
+
+        let record = UIAlertAction(title: "Record", style: .default, handler: {
+            (action: UIAlertAction!) -> Void in
+            self.questions = self.category.questions.sorted(byKeyPath: "recordsNum", ascending: false)
+            self.sortLabel.text = "Record"
+            self.tableView.reloadData()
+        })
+        
+        let favo = UIAlertAction(title: "Favorite", style: .default, handler: {
+            (action: UIAlertAction!) -> Void in
+            self.questions = self.category.questions.sorted(byKeyPath: "isFavorited", ascending: false)
+            self.sortLabel.text = "Favorite"
+            self.tableView.reloadData()
+        })
+
+
+        let cancel = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+
+
+        alert.addAction(creationDate)
+        alert.addAction(rate)
+        alert.addAction(record)
+        alert.addAction(favo)
+        alert.addAction(cancel)
+        present(alert, animated: true, completion: nil)
     }
 }
 
