@@ -30,47 +30,14 @@ class RecorderModalViewController: UIViewController {
     var questionId: String!
     var notificationIdDismssedModel: String!
 
-    @IBAction func deleteButton(_ sender: Any) {
-        stopAudio()
-        dismiss(animated: true, completion: nil)
-    }
-    @IBAction func okButton(_ sender: Any) {
-        stopAudio()
-        // MARK: Save the record to DB
-        let newRecord = Record()
-        newRecord.id = id
-
-        realm = try! Realm()
-
-        // Save new record
-        if let question = realm.object(ofType: Question.self, forPrimaryKey: questionId) {
-            try! realm.write() {
-                question.records.append(newRecord)
-                question.recordsNum += 1
-            }
-        }
-
-        NotificationCenter.default.post(name: NSNotification.Name(rawValue: notificationIdDismssedModel), object: nil)
-        dismiss(animated: true, completion: nil)
-    }
-    @IBAction func mainButton(_ sender: Any) {
-
-        // Recorder
-        if audioRecorder != nil {
-            finishRecording(success: true)
-        } else {
-            togglePlayOrStop()
-        }
-    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        setUpUI()
         okButton.isHidden = true
         deleteButton.isHidden = true
 
-        // TODO: circle
-
-        //add event to the button
+        // Set up recordingSession
         recordingSession = AVAudioSession.sharedInstance()
         do {
             try recordingSession.setCategory(AVAudioSessionCategoryPlayAndRecord)
@@ -87,6 +54,18 @@ class RecorderModalViewController: UIViewController {
         } catch {
             print("failed to record!")
         }
+    }
+
+    func setUpUI() {
+        mainButton.circle()
+        okButton.circle()
+        deleteButton.circle()
+        mainButton.aroundBorder()
+        okButton.aroundBorder()
+        deleteButton.aroundBorder()
+        
+        timeLabel.textColor = MyColor.darkText.value
+        timeLabel.font = UIFont.systemFont(ofSize: TextSize.normal.rawValue)
     }
 
     // MARK: Record
@@ -186,16 +165,41 @@ class RecorderModalViewController: UIViewController {
             }
         }
     }
+    
+    // MARK: Main button
+    @IBAction func mainButton(_ sender: Any) {
+        if audioRecorder != nil {
+            finishRecording(success: true)
+        } else {
+            togglePlayOrStop()
+        }
+    }
 
-    // Close this view
-    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-        super.touchesEnded(touches, with: event)
-        for touch: UITouch in touches {
-            let tag = touch.view!.tag
-            if tag == 1 {
-                dismiss(animated: true, completion: nil)
+    // MARK: Delete button
+    @IBAction func deleteButton(_ sender: Any) {
+        stopAudio()
+        dismiss(animated: true, completion: nil)
+    }
+    
+    // MARK: OK button
+    @IBAction func okButton(_ sender: Any) {
+        stopAudio()
+        // MARK: Save the record to DB
+        let newRecord = Record()
+        newRecord.id = id
+
+        realm = try! Realm()
+
+        // Save new record
+        if let question = realm.object(ofType: Question.self, forPrimaryKey: questionId) {
+            try! realm.write() {
+                question.records.append(newRecord)
+                question.recordsNum += 1
             }
         }
+
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: notificationIdDismssedModel), object: nil)
+        dismiss(animated: true, completion: nil)
     }
 }
 

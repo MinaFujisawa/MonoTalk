@@ -69,9 +69,9 @@ class QuestionDetailViewController: UIViewController {
 
     func setUpUI() {
         // Record Button
-        recordButton.clipsToBounds = true
         recordButton.backgroundColor = MyColor.theme.value
-        recordButton.dropShadow(isCircle: true)
+        recordButton.circle()
+        recordButton.dropShadow()
         self.view.bringSubview(toFront: recordButton)
 
         // Star
@@ -83,6 +83,12 @@ class QuestionDetailViewController: UIViewController {
 
         // Rate
         rateButton.setImage(Question.Rate.allValues[question.rate].rateImage, for: .normal)
+        
+        // Text
+        questionLabel.textColor = MyColor.theme.value
+        questionLabel.font = UIFont.systemFont(ofSize: TextSize.questionBody.rawValue)
+        categoryLabel.textColor = MyColor.darkText.value
+        categoryLabel.font = UIFont.systemFont(ofSize: TextSize.small.rawValue)
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -101,7 +107,7 @@ class QuestionDetailViewController: UIViewController {
         for i in 0..<question.records.count {
             let width = UIScreen.main.bounds.size.width
             let height = 64
-            let y = (height + 40) * i
+            let y = (height + 24) * i
             let playerView = PlayerXibView(frame: CGRect(x: 0, y: y, width: Int(width), height: height),
                                            record: question.records[i], questionID: question.id)
             playerView.tag = 100
@@ -118,7 +124,7 @@ class QuestionDetailViewController: UIViewController {
             // Relocate playerViews
             for i in indexOfDeletedItem + 1..<playerViews.count {
                 let x = playerViews[i].frame.origin.x
-                let y = playerViews[i].frame.origin.y - 64 - 40
+                let y = playerViews[i].frame.origin.y - 64 - 24
                 let width = playerViews[i].frame.size.width
                 let height = playerViews[i].frame.size.height
 

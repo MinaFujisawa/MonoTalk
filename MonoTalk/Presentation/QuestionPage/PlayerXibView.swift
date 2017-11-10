@@ -11,17 +11,11 @@ import RealmSwift
 import AVFoundation
 
 class PlayerXibView: UIView {
-
-    
-
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var timeLabel: UILabel!
-    @IBOutlet weak var tappableView: UIView!
-    @IBOutlet weak var playButton: UIButton!
-
-    
-    @IBOutlet weak var slider: UISlider!
     @IBOutlet weak var containerView: UIView!
+    @IBOutlet weak var playButton: UIButton!
+    @IBOutlet weak var slider: UISlider!
 
     var audioPlayer: AVAudioPlayer!
     let fileExtension = ".caf"
@@ -36,11 +30,13 @@ class PlayerXibView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         loadNib()
+        setUpUI()
     }
 
     init(frame: CGRect, record: Record, questionID: String) {
         super.init(frame: frame)
         loadNib()
+        setUpUI()
 
         self.record = record
         self.questionID = questionID
@@ -71,7 +67,18 @@ class PlayerXibView: UIView {
 
         displayDurationTime()
         let gestureRec = UITapGestureRecognizer(target: self, action: #selector (self.tapped (_:)))
-        tappableView.addGestureRecognizer(gestureRec)
+        containerView.addGestureRecognizer(gestureRec)
+    }
+    
+    func setUpUI() {
+        // Text
+        timeLabel.textColor = MyColor.lightText.value
+        timeLabel.font = UIFont.systemFont(ofSize: 14)
+        dateLabel.textColor = MyColor.lightText.value
+        dateLabel.font = UIFont.systemFont(ofSize: TextSize.small.rawValue)
+        
+        // Add border
+        containerView.aroundBorder()
     }
 
 

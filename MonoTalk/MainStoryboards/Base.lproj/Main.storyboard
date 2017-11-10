@@ -50,7 +50,7 @@
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="If you were rich and something something, would you help poor poeple?And Whey would you think so?" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9gI-nY-cO2">
-                                        <rect key="frame" x="24" y="64" width="327" height="104"/>
+                                        <rect key="frame" x="24" y="56" width="327" height="112"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -70,17 +70,17 @@
                                     <constraint firstAttribute="bottom" secondItem="9gI-nY-cO2" secondAttribute="bottom" constant="32" id="hex-5A-czW"/>
                                     <constraint firstItem="9gI-nY-cO2" firstAttribute="leading" secondItem="H99-O6-PSB" secondAttribute="leading" constant="24" id="mN7-Xu-xh5"/>
                                     <constraint firstItem="b06-qE-cl2" firstAttribute="leading" secondItem="hc6-U5-Eoc" secondAttribute="trailing" constant="16" id="nOP-7V-xms"/>
-                                    <constraint firstItem="9gI-nY-cO2" firstAttribute="top" secondItem="b06-qE-cl2" secondAttribute="bottom" constant="24" id="r2J-0i-g8z"/>
+                                    <constraint firstItem="9gI-nY-cO2" firstAttribute="top" secondItem="b06-qE-cl2" secondAttribute="bottom" constant="16" id="r2J-0i-g8z"/>
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4Zs-Z1-Pod">
-                                <rect key="frame" x="151.5" y="571" width="72" height="72"/>
+                                <rect key="frame" x="112.5" y="599" width="150" height="44"/>
                                 <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="72" id="BOG-VD-ARX"/>
-                                    <constraint firstAttribute="width" constant="72" id="uBD-ZJ-Mt3"/>
+                                    <constraint firstAttribute="height" constant="44" id="BOG-VD-ARX"/>
+                                    <constraint firstAttribute="width" constant="150" id="uBD-ZJ-Mt3"/>
                                 </constraints>
-                                <state key="normal" image="icon_record_microphone"/>
+                                <state key="normal" title="Answer" image="icon_record_microphone"/>
                                 <connections>
                                     <segue destination="VDQ-qS-3oC" kind="presentation" identifier="recoder" modalTransitionStyle="crossDissolve" id="ydW-zZ-kkT"/>
                                 </connections>
@@ -137,7 +137,7 @@
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZeD-W5-iOi">
                                         <rect key="frame" x="151" y="79" width="72" height="72"/>
-                                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="72" id="Wmf-L9-H4R"/>
                                             <constraint firstAttribute="width" constant="72" id="qz3-8T-Fwm"/>
@@ -149,7 +149,7 @@
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YAD-hk-kmA">
                                         <rect key="frame" x="275" y="91" width="48" height="48"/>
-                                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="48" id="Coh-fg-vWy"/>
                                             <constraint firstAttribute="width" constant="48" id="wH0-55-PpO"/>
@@ -161,7 +161,7 @@
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OqX-hd-npL">
                                         <rect key="frame" x="51" y="91" width="48" height="48"/>
-                                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="48" id="ZRB-9m-Q7x"/>
                                             <constraint firstAttribute="width" constant="48" id="lpO-Si-RWU"/>

@@ -11,10 +11,10 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PlayerXibView" customModule="MonoTalk" customModuleProvider="target">
             <connections>
+                <outlet property="containerView" destination="8Q3-9Q-k5C" id="xu0-TE-XQz"/>
                 <outlet property="dateLabel" destination="CnA-Ja-Rlg" id="dmR-ZP-gdD"/>
                 <outlet property="playButton" destination="i2Z-kZ-FkT" id="Kef-1L-vEo"/>
                 <outlet property="slider" destination="G0t-P3-A28" id="brR-6I-MgA"/>
-                <outlet property="tappableView" destination="8Q3-9Q-k5C" id="xu0-TE-XQz"/>
                 <outlet property="timeLabel" destination="JlU-9z-ggh" id="MXD-l4-H2K"/>
             </connections>
         </placeholder>
@@ -40,18 +40,21 @@
                                 <action selector="playButton:" destination="-1" eventType="touchUpInside" id="Oqh-2Z-iN7"/>
                             </connections>
                         </button>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0:00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JlU-9z-ggh">
-                            <rect key="frame" x="245" y="14" width="36" height="21"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                            <nil key="textColor"/>
-                            <nil key="highlightedColor"/>
-                        </label>
                         <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="G0t-P3-A28">
-                            <rect key="frame" x="42" y="8" width="189" height="31"/>
+                            <rect key="frame" x="42" y="9" width="195" height="31"/>
                             <connections>
                                 <action selector="sliderChanged:" destination="-1" eventType="valueChanged" id="CQg-0y-kWv"/>
                             </connections>
                         </slider>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00:00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JlU-9z-ggh">
+                            <rect key="frame" x="247" y="13" width="46" height="21"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="46" id="QHz-aQ-DhY"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
@@ -60,15 +63,15 @@
                         <constraint firstItem="i2Z-kZ-FkT" firstAttribute="leading" secondItem="8Q3-9Q-k5C" secondAttribute="leading" constant="16" id="DzN-jl-x6K"/>
                         <constraint firstItem="G0t-P3-A28" firstAttribute="centerY" secondItem="8Q3-9Q-k5C" secondAttribute="centerY" id="QGW-hs-tzN"/>
                         <constraint firstItem="G0t-P3-A28" firstAttribute="leading" secondItem="i2Z-kZ-FkT" secondAttribute="trailing" constant="16" id="Y1I-eR-h32"/>
-                        <constraint firstItem="JlU-9z-ggh" firstAttribute="leading" secondItem="G0t-P3-A28" secondAttribute="trailing" constant="16" id="q5K-S1-94d"/>
+                        <constraint firstItem="JlU-9z-ggh" firstAttribute="leading" secondItem="G0t-P3-A28" secondAttribute="trailing" constant="12" id="q5K-S1-94d"/>
                         <constraint firstItem="i2Z-kZ-FkT" firstAttribute="centerY" secondItem="8Q3-9Q-k5C" secondAttribute="centerY" id="uSK-fm-iOu"/>
                         <constraint firstAttribute="trailing" secondItem="tuT-il-Tqj" secondAttribute="trailing" constant="16" id="utE-pe-Gkt"/>
-                        <constraint firstItem="tuT-il-Tqj" firstAttribute="leading" secondItem="JlU-9z-ggh" secondAttribute="trailing" constant="16" id="wcZ-7Q-cEk"/>
+                        <constraint firstItem="tuT-il-Tqj" firstAttribute="leading" secondItem="JlU-9z-ggh" secondAttribute="trailing" constant="4" id="wcZ-7Q-cEk"/>
                         <constraint firstItem="tuT-il-Tqj" firstAttribute="centerY" secondItem="8Q3-9Q-k5C" secondAttribute="centerY" id="yUZ-wc-JZq"/>
                     </constraints>
                 </view>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CnA-Ja-Rlg">
-                    <rect key="frame" x="24" y="76" width="42" height="21"/>
+                    <rect key="frame" x="24" y="74" width="42" height="21"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
@@ -79,7 +82,7 @@
                 <constraint firstItem="8Q3-9Q-k5C" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="24" id="TDm-1k-vRf"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="8Q3-9Q-k5C" secondAttribute="trailing" constant="24" id="ef6-n2-PKT"/>
                 <constraint firstItem="CnA-Ja-Rlg" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="24" id="f6P-ep-yBk"/>
-                <constraint firstItem="CnA-Ja-Rlg" firstAttribute="top" secondItem="8Q3-9Q-k5C" secondAttribute="bottom" constant="8" id="tIA-dG-8Zi"/>
+                <constraint firstItem="CnA-Ja-Rlg" firstAttribute="top" secondItem="8Q3-9Q-k5C" secondAttribute="bottom" constant="6" id="tIA-dG-8Zi"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <point key="canvasLocation" x="34.5" y="66.5"/>

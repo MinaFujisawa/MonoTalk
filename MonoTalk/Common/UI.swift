@@ -10,18 +10,23 @@ import Foundation
 import UIKit
 
 extension UIView {
-
-    func dropShadow(isCircle: Bool) {
-
-        if isCircle {
-            self.layer.cornerRadius = self.frame.width / 2
-        }
-
-        self.layer.shadowColor = UIColor.darkGray.cgColor
-        self.layer.shadowOffset = CGSize(width: 1.5, height: 1.5)
-        self.layer.shadowRadius = 1.0
-        self.layer.shadowOpacity = 0.7
+    
+    func circle() {
+        self.layer.cornerRadius = self.frame.height / 2
+    }
+    
+    func aroundBorder() {
+        self.layer.borderWidth = 1
+        self.layer.borderColor = MyColor.border.value.cgColor
+    }
+    
+    func dropShadow() {
+        self.clipsToBounds = true
         self.layer.masksToBounds = false
+        self.layer.shadowColor = MyColor.shadow.value.cgColor
+        self.layer.shadowOffset = CGSize(width: 0.0, height: 3.0)
+        self.layer.shadowRadius = 5
+        self.layer.shadowOpacity = 0.3
     }
 }
 
