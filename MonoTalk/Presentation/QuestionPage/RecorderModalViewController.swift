@@ -63,7 +63,7 @@ class RecorderModalViewController: UIViewController {
         mainButton.aroundBorder()
         okButton.aroundBorder()
         deleteButton.aroundBorder()
-        
+
         timeLabel.textColor = MyColor.darkText.value
         timeLabel.font = UIFont.systemFont(ofSize: TextSize.normal.rawValue)
     }
@@ -88,7 +88,7 @@ class RecorderModalViewController: UIViewController {
 
         // Display recording time
         startTime = Date()
-        recordingTimer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(displayRecordingTime), userInfo: nil, repeats: true)
+        recordingTimer = Timer.scheduledTimer(timeInterval: 0, target: self, selector: #selector(displayRecordingTime), userInfo: nil, repeats: true)
     }
 
     func getFileURL() -> URL {
@@ -117,12 +117,12 @@ class RecorderModalViewController: UIViewController {
 
     @objc func displayRecordingTime() {
         let interval = Date().timeIntervalSince(startTime)
-        timeLabel.text = Time.getFormatedTime(timeInterval: interval)
+        timeLabel.text = Time.getFormattedTime(timeInterval: interval)
     }
 
     func displayDurationTime() {
         let duration = Time.getDuration(url: getFileURL())
-        timeLabel.text = Time.getFormatedTime(timeInterval: duration)
+        timeLabel.text = Time.getFormattedTime(timeInterval: duration)
     }
 
 
@@ -144,7 +144,7 @@ class RecorderModalViewController: UIViewController {
     }
 
     @objc func displayPlayingTime() {
-        timeLabel.text = Time.getFormatedTime(timeInterval: audioPlayer!.currentTime)
+        timeLabel.text = Time.getFormattedTime(timeInterval: audioPlayer!.currentTime)
     }
 
     func togglePlayOrStop() {
@@ -165,7 +165,7 @@ class RecorderModalViewController: UIViewController {
             }
         }
     }
-    
+
     // MARK: Main button
     @IBAction func mainButton(_ sender: Any) {
         if audioRecorder != nil {
@@ -180,7 +180,7 @@ class RecorderModalViewController: UIViewController {
         stopAudio()
         dismiss(animated: true, completion: nil)
     }
-    
+
     // MARK: OK button
     @IBAction func okButton(_ sender: Any) {
         stopAudio()

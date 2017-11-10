@@ -20,7 +20,7 @@ class PlayerXibView: UIView {
     var audioPlayer: AVAudioPlayer!
     let fileExtension = ".caf"
     var isPaused = true
-    var questionID : String!
+    var questionID: String!
     var record: Record!
     var recordUrl: URL!
     var timer: Timer!
@@ -46,11 +46,7 @@ class PlayerXibView: UIView {
         recordUrl = documentsDirectory.appendingPathComponent(record.id + fileExtension)
 
         // Set date
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy MM dd h:mm a"
-        dateFormatter.amSymbol = "am"
-        dateFormatter.pmSymbol = "pm"
-        dateLabel.text = dateFormatter.string(from: record.date)
+        dateLabel.text = Time.getFormattedDate(date: record.date)
 
         // Set audioPlayer
         do {
@@ -66,17 +62,17 @@ class PlayerXibView: UIView {
         slider.setThumbImage(UIImage(named: "icon_player_thumb"), for: .normal)
 
         displayDurationTime()
-        let gestureRec = UITapGestureRecognizer(target: self, action: #selector (self.tapped (_:)))
-        containerView.addGestureRecognizer(gestureRec)
+//        let gestureRec = UITapGestureRecognizer(target: self, action: #selector (self.tapped (_:)))
+//        containerView.addGestureRecognizer(gestureRec)
     }
-    
+
     func setUpUI() {
         // Text
         timeLabel.textColor = MyColor.lightText.value
         timeLabel.font = UIFont.systemFont(ofSize: 14)
         dateLabel.textColor = MyColor.lightText.value
         dateLabel.font = UIFont.systemFont(ofSize: TextSize.small.rawValue)
-        
+
         // Add border
         containerView.aroundBorder()
     }
@@ -85,11 +81,6 @@ class PlayerXibView: UIView {
     required init(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)!
         loadNib()
-    }
-
-    @objc func tapped(_ sender: UITapGestureRecognizer) {
-        
-//        togglePlayOrStop()
     }
 
     func loadNib() {
@@ -116,7 +107,7 @@ class PlayerXibView: UIView {
     func displayDurationTime() {
         var duration = Time.getDuration(url: recordUrl)
         duration.round(.up)
-        timeLabel.text = Time.getFormatedTime(timeInterval: duration)
+        timeLabel.text = Time.getFormattedTime(timeInterval: duration)
     }
 
     func playAudio() {
@@ -126,7 +117,7 @@ class PlayerXibView: UIView {
         timer = Timer.scheduledTimer(timeInterval: 0.0, target: self, selector: #selector(updateSlider), userInfo: nil, repeats: true)
 
         if audioPlayer?.currentTime == 0 {
-            timeLabel.text = Time.getFormatedTime(timeInterval: 0)
+            timeLabel.text = Time.getFormattedTime(timeInterval: 0)
         }
         isPaused = false
     }
@@ -150,7 +141,7 @@ class PlayerXibView: UIView {
 
     @objc func updateSlider() {
         slider.value = Float(audioPlayer!.currentTime)
-        timeLabel.text = Time.getFormatedTime(timeInterval: audioPlayer.currentTime)
+        timeLabel.text = Time.getFormattedTime(timeInterval: audioPlayer.currentTime)
     }
 
     @IBAction func sliderChanged(_ sender: Any) {
@@ -160,23 +151,23 @@ class PlayerXibView: UIView {
         if !isPaused {
             audioPlayer?.play()
         }
-        timeLabel.text = Time.getFormatedTime(timeInterval: audioPlayer.currentTime)
+        timeLabel.text = Time.getFormattedTime(timeInterval: audioPlayer.currentTime)
     }
-    
+
     // MARK: Delete
     @IBAction func trashButton(_ sender: Any) {
         let realm = try! Realm()
-        
+
         // Get current index of records
         let parentQuestion = realm.object(ofType: Question.self, forPrimaryKey: questionID)
         let currentRecord = realm.object(ofType: Record.self, forPrimaryKey: record.id)
         let indexOfRecord = parentQuestion?.records.index(of: currentRecord!)
-        
+
         try! realm.write() {
             parentQuestion?.recordsNum -= 1
             realm.delete(record)
             if let indexOfRecord = indexOfRecord {
-                let positionYDict:[String: Int] = [notaificationIdDeletedUserInfo: indexOfRecord]
+                let positionYDict: [String: Int] = [notaificationIdDeletedUserInfo: indexOfRecord]
                 NotificationCenter.default.post(name: NSNotification.Name(rawValue: notaificationIdDeleted),
                                                 object: nil, userInfo: positionYDict)
             }
