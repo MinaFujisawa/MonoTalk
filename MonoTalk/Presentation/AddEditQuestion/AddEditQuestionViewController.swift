@@ -11,18 +11,17 @@ import RealmSwift
 
 class AddEditQuestionViewController: UIViewController {
 
+    @IBOutlet weak var noteLabel: UILabel!
+    @IBOutlet weak var questionLabel: UILabel!
     @IBOutlet weak var questionTextView: UITextView!
     @IBOutlet weak var noteTextView: UITextView!
 
-    var textViews = [UITextView]()
     var isFromAdd = false // true: new, false: edit
     var existingQuestion: Question!
     var categoryID: String!
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        textViews.append(questionTextView)
-        textViews.append(noteTextView)
         setUpUI()
         questionTextView.tag = 1000
 
@@ -32,7 +31,6 @@ class AddEditQuestionViewController: UIViewController {
             self.navigationItem.rightBarButtonItem?.isEnabled = false
         } else {
             self.title = "Edit Question"
-            print(existingQuestion.questionBody)
             questionTextView.text = existingQuestion.questionBody
             // TODO: Set PH
             noteTextView.text = existingQuestion.note ?? ""
@@ -42,20 +40,31 @@ class AddEditQuestionViewController: UIViewController {
     func setUpUI() {
         view.backgroundColor = MyColor.bluishGrayBackground.value
 
-        // Add padding to textviews
-        for textView in textViews {
-            textView.delegate = self
-            textView.textContainerInset = UIEdgeInsets(top: 16, left: 24, bottom: 16, right: 24)
-        }
+        questionTextView.delegate = self
+        noteTextView.delegate = self
+
+        // TextView
+        questionTextView.setPadding()
+        noteTextView.setPadding()
+        questionTextView.setTopAndBottomBorder()
+        noteTextView.setTopAndBottomBorder()
+
+        questionTextView.textColor = MyColor.placeHolderText.value
+        noteTextView.textColor = MyColor.placeHolderText.value
+        questionTextView.font = UIFont.systemFont(ofSize: TextSize.normal.rawValue)
+        noteTextView.font = UIFont.systemFont(ofSize: TextSize.normal.rawValue)
+
+        // Label
+        questionLabel.textColor = MyColor.darkText.value
+        noteLabel.textColor = MyColor.darkText.value
+        questionLabel.font = UIFont.systemFont(ofSize: TextSize.heading.rawValue)
+        noteLabel.font = UIFont.systemFont(ofSize: TextSize.heading.rawValue)
     }
 
     func setPlaceHolder() {
         // TODO: set valid place holder
         questionTextView.text = "Placeholder"
         noteTextView.text = "Placeholder"
-        for textView in textViews {
-            textView.textColor = MyColor.placeHolderText.value
-        }
     }
 
     // MARK: Navi bar action
