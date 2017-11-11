@@ -126,6 +126,8 @@ extension QuestionTableViewController: UITableViewDataSource {
             // Add full length of separator to the last cell
             if indexPath.row == questions.count {
                 cell.separatorInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+            } else {
+                cell.separatorInset = UIEdgeInsets(top: 0, left: 24, bottom: 0, right: 0)
             }
 
             return cell
@@ -192,5 +194,4 @@ extension QuestionTableViewController: UITableViewDelegate {
         alert.addAction(cancel)
         present(alert, animated: true, completion: nil)
     }
-
 }
