@@ -6,6 +6,7 @@
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Navigation items with more than one left or right bar item" minToolsVersion="7.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -318,13 +319,15 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="noteLabel" destination="CbH-ac-uPU" id="dm4-pF-HFj"/>
                         <outlet property="noteTextView" destination="v5n-Av-Dsd" id="61n-yh-YqZ"/>
+                        <outlet property="questionLabel" destination="yVI-TP-NzA" id="O5p-ap-ZCg"/>
                         <outlet property="questionTextView" destination="EM7-RE-ICa" id="bVO-Tl-y4V"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uOd-cO-eVF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3719" y="1303"/>
+            <point key="canvasLocation" x="3804" y="1303"/>
         </scene>
         <!--Question Table View Controller-->
         <scene sceneID="5Tn-Mp-R2e">
@@ -459,24 +462,94 @@
             <objects>
                 <pageViewController autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="seL-pe-Fje" customClass="QuestionsPageViewController" customModule="MonoTalk" customModuleProvider="target" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" title="title" id="pV6-jE-t94">
-                        <barButtonItem key="rightBarButtonItem" style="plain" id="k2X-k6-R2M">
-                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="gDH-73-dGS">
-                                <rect key="frame" x="288" y="11" width="71" height="22"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" image="navi_menu"/>
-                                <connections>
-                                    <action selector="menuButton:" destination="seL-pe-Fje" eventType="touchUpInside" id="tcM-gx-nbk"/>
-                                </connections>
-                            </button>
-                        </barButtonItem>
+                        <rightBarButtonItems>
+                            <barButtonItem style="plain" id="k2X-k6-R2M">
+                                <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="gDH-73-dGS">
+                                    <rect key="frame" x="288" y="11" width="71" height="22"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <state key="normal" image="navi_menu"/>
+                                    <connections>
+                                        <action selector="menuButton:" destination="seL-pe-Fje" eventType="touchUpInside" id="tcM-gx-nbk"/>
+                                    </connections>
+                                </button>
+                            </barButtonItem>
+                            <barButtonItem style="plain" id="8XL-eO-Hbf">
+                                <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="9Dq-uJ-JRz">
+                                    <rect key="frame" x="261" y="11" width="19" height="22"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <state key="normal" image="icon_note"/>
+                                    <connections>
+                                        <segue destination="LN8-ap-TyE" kind="presentation" identifier="GoToNote" id="IV3-jA-Vni"/>
+                                    </connections>
+                                </button>
+                            </barButtonItem>
+                        </rightBarButtonItems>
                     </navigationItem>
                     <connections>
+                        <outlet property="noteButton" destination="9Dq-uJ-JRz" id="W3o-tM-rfz"/>
                         <segue destination="WrU-IG-9PQ" kind="presentation" identifier="GoToEdit" id="Gr9-Mh-UhM"/>
                     </connections>
                 </pageViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rRq-46-dAx" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4370" y="493"/>
+            <point key="canvasLocation" x="3804" y="493"/>
+        </scene>
+        <!--Edit note-->
+        <scene sceneID="UI2-VY-ckX">
+            <objects>
+                <viewController id="r0g-gE-qep" customClass="NoteViewController" customModule="MonoTalk" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="UfA-Jh-rKW">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="E11-fj-rMj">
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="128" id="cng-AA-jyr"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="E11-fj-rMj" firstAttribute="leading" secondItem="TRk-tu-mUo" secondAttribute="leading" id="9r8-W2-RxW"/>
+                            <constraint firstItem="TRk-tu-mUo" firstAttribute="bottom" secondItem="E11-fj-rMj" secondAttribute="bottom" id="Rdo-Es-f2F"/>
+                            <constraint firstItem="E11-fj-rMj" firstAttribute="top" secondItem="TRk-tu-mUo" secondAttribute="top" id="dKj-AX-zlF"/>
+                            <constraint firstItem="E11-fj-rMj" firstAttribute="trailing" secondItem="TRk-tu-mUo" secondAttribute="trailing" id="kfs-Et-B9e"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="TRk-tu-mUo"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Edit note" id="k8G-4L-gih">
+                        <barButtonItem key="leftBarButtonItem" image="navi_close" style="plain" id="r2U-28-c39">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="ewH-TO-efU">
+                                <rect key="frame" x="16" y="11" width="69" height="22"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button" image="navi_close"/>
+                                <connections>
+                                    <action selector="closeButton:" destination="r0g-gE-qep" eventType="touchUpInside" id="FUD-4Y-c6s"/>
+                                </connections>
+                            </button>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" style="plain" id="HBP-c2-Guk">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="iwk-KN-8ZL">
+                                <rect key="frame" x="322" y="7" width="37" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Done"/>
+                                <connections>
+                                    <action selector="doneButton:" destination="r0g-gE-qep" eventType="touchUpInside" id="7cP-QF-ZjH"/>
+                                </connections>
+                            </button>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="textView" destination="E11-fj-rMj" id="bbn-R2-m6D"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="UYs-QX-OSY" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5561" y="493"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="RDl-KD-yAT">
@@ -512,12 +585,31 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mWK-fn-WRW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2863" y="1303"/>
+            <point key="canvasLocation" x="3041" y="1303"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="eNY-CL-MHZ">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="LN8-ap-TyE" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="yeT-Em-oS5">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="r0g-gE-qep" kind="relationship" relationship="rootViewController" id="aRO-9l-Ciw"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="wxq-fg-JF3" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4766" y="493"/>
         </scene>
     </scenes>
     <resources>
         <image name="icon_cell_note" width="12" height="12"/>
         <image name="icon_cell_record" width="8" height="14"/>
+        <image name="icon_note" width="19" height="19"/>
         <image name="icon_record_microphone" width="33" height="41"/>
         <image name="icon_record_ok" width="18" height="14"/>
         <image name="icon_record_stop" width="24" height="24"/>
@@ -688,6 +780,6 @@ AEEAAAAAAAAAAAAAAAAAACNMA
         <image name="rate_soso" width="40" height="40"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="gOp-rz-1Dc"/>
+        <segue reference="Gr9-Mh-UhM"/>
     </inferredMetricsTieBreakers>
 </document>

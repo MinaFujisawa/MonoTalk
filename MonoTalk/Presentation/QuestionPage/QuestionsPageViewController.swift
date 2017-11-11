@@ -10,6 +10,7 @@ import UIKit
 import RealmSwift
 
 class QuestionsPageViewController: UIPageViewController {
+    @IBOutlet weak var noteButton: UIButton!
     var startIndex: Int!
     var currentIndex: Int!
     var questions: List<Question>?
@@ -48,6 +49,7 @@ class QuestionsPageViewController: UIPageViewController {
         currentIndex = startIndex
         self.setViewControllers([pageCollection[startIndex]], direction: .forward, animated: true, completion: nil)
     }
+
 
     // MARK: Action sheet
     @IBAction func menuButton(_ sender: Any) {
@@ -93,9 +95,7 @@ class QuestionsPageViewController: UIPageViewController {
         }
     }
 
-    func setTitle(index: Int) {
-        self.title = String(format: "%d / %d", index + 1, pageCollection.count)
-    }
+
 
     // MARK: segue
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -106,6 +106,17 @@ class QuestionsPageViewController: UIPageViewController {
                 editVC.existingQuestion = questions[self.currentIndex]
             }
         }
+        if segue.identifier == "GoToNote" {
+            let nav = segue.destination as! UINavigationController
+            let noteVC = nav.topViewController as! NoteViewController
+            if let questions = questions {
+                noteVC.question = questions[self.currentIndex]
+            }
+        }
+    }
+
+    func setTitle(index: Int) {
+        self.title = String(format: "%d / %d", index + 1, pageCollection.count)
     }
 }
 
