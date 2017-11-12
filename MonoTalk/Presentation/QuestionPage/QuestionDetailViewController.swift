@@ -73,6 +73,11 @@ class QuestionDetailViewController: UIViewController {
         recordButton.circle()
         recordButton.dropShadow()
         self.view.bringSubview(toFront: recordButton)
+        
+        let origImage = UIImage(named: "icon_microphone")
+        let tintedImage = origImage?.withRenderingMode(.alwaysTemplate)
+        recordButton.setImage(tintedImage, for: .normal)
+        recordButton.tintColor = .white
 
         // Star
         if question.isFavorited {

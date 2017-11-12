@@ -14,11 +14,14 @@ class QuestionTavleViewCell: UITableViewCell {
     @IBOutlet weak var starIcon: UIImageView!
     @IBOutlet weak var noteIcon: UIImageView!
     @IBOutlet weak var rateIcon: UIImageView!
+    @IBOutlet weak var microphoneIcon: UIImageView!
     @IBOutlet weak var recordNumLabel: UILabel!
     @IBOutlet weak var questionLabel: UILabel!
-
+    
     override func awakeFromNib() {
         super.awakeFromNib()
+        
+        // Label
         questionLabel.textColor = MyColor.darkText.value
         questionLabel.font = UIFont.systemFont(ofSize: TextSize.normal.rawValue)
         questionLabel.font = UIFont.boldSystemFont(ofSize: questionLabel.font.pointSize)
@@ -26,8 +29,14 @@ class QuestionTavleViewCell: UITableViewCell {
         recordNumLabel.textColor = MyColor.lightText.value
         recordNumLabel.font = UIFont.systemFont(ofSize: TextSize.small.rawValue)
         
+        // Icon
+        noteIcon.image = noteIcon.image?.withRenderingMode(.alwaysTemplate)
+        noteIcon.tintColor = MyColor.lightText.value
+        microphoneIcon.image = microphoneIcon.image?.withRenderingMode(.alwaysTemplate)
+        microphoneIcon.tintColor = MyColor.lightText.value
+        
+        // Margin
         self.preservesSuperviewLayoutMargins = false
-        self.separatorInset = UIEdgeInsets(top: 0, left: 24, bottom: 0, right: 0)
         self.layoutMargins = UIEdgeInsets.zero
     }
 

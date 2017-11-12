@@ -32,6 +32,10 @@ class AddEditQuestionViewController: UIViewController {
             questionTextView.text = existingQuestion.questionBody
         }
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        questionTextView.becomeFirstResponder()
+    }
 
     func setUpUI() {
         questionTextView.setPadding()

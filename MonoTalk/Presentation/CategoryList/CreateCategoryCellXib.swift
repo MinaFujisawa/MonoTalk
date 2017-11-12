@@ -14,6 +14,7 @@ class CreateCategoryCellXib: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         label.textColor = MyColor.theme.value
+        label.font = UIFont.systemFont(ofSize: TextSize.normal.rawValue)
         iconImage.image = iconImage.image?.withRenderingMode(.alwaysTemplate)
         iconImage.tintColor = MyColor.theme.value
         
