@@ -31,7 +31,7 @@ class QuestionDetailViewController: UIViewController {
     var question: Question!
     var realm: Realm!
     var isShowingBalloon = false
-    var speakGestureReconizer : UITapGestureRecognizer!
+    var speakGestureReconizer: UITapGestureRecognizer!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -51,7 +51,7 @@ class QuestionDetailViewController: UIViewController {
         // Speak
         speakGestureReconizer = UITapGestureRecognizer(target: self, action: #selector(speak))
         questionAreaView.addGestureRecognizer(speakGestureReconizer)
-        
+
     }
 
 
@@ -83,7 +83,7 @@ class QuestionDetailViewController: UIViewController {
 
         // Rate
         rateButton.setImage(Question.Rate.allValues[question.rate].rateImage, for: .normal)
-        
+
         // Text
         questionLabel.textColor = MyColor.theme.value
         questionLabel.font = UIFont.systemFont(ofSize: TextSize.questionBody.rawValue)
@@ -104,15 +104,19 @@ class QuestionDetailViewController: UIViewController {
         for view in self.scrollView.subviews {
             view.removeFromSuperview()
         }
+        
+        let width = UIScreen.main.bounds.size.width
+        let height = 64
+        let marginBottom = 24
         for i in 0..<question.records.count {
-            let width = UIScreen.main.bounds.size.width
-            let height = 64
-            let y = (height + 24) * i
+            let y = (height + marginBottom) * i
             let playerView = PlayerXibView(frame: CGRect(x: 0, y: y, width: Int(width), height: height),
                                            record: question.records[i], questionID: question.id)
             playerView.tag = 100
             scrollView.addSubview(playerView)
         }
+        let contentSizeHieght: CGFloat = CGFloat((height + marginBottom) * question.records.count) + 100
+        scrollView.contentSize = CGSize(width: self.view.frame.width, height:contentSizeHieght)
     }
 
     @objc func rearrangePlayerViews(_ notification: NSNotification) {
@@ -174,7 +178,7 @@ class QuestionDetailViewController: UIViewController {
     func showRateBaloon() {
         questionAreaView.removeGestureRecognizer(speakGestureReconizer)
         isShowingBalloon = true
-        
+
         // Set up Baloon view base
         guard let rateButtonframe = rateButton.superview?.convert(rateButton.frame, to: nil) else { return }
         let iconButtonSize: CGFloat = 28
