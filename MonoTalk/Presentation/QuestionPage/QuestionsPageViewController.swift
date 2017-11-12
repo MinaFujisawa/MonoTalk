@@ -48,6 +48,8 @@ class QuestionsPageViewController: UIPageViewController {
         setTitle(index: startIndex)
         currentIndex = startIndex
         self.setViewControllers([pageCollection[startIndex]], direction: .forward, animated: true, completion: nil)
+        
+        self.view.backgroundColor = MyColor.border.value
     }
     
     func setUpNavigationBarItems() {
