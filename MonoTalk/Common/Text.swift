@@ -29,7 +29,7 @@ extension String {
 }
 
 // MARK: Place holder
-extension UITextView: UITextViewDelegate {
+extension UITextView {
     /// Resize the placeholder when the UITextView bounds change
     override open var bounds: CGRect {
         didSet {
@@ -37,12 +37,12 @@ extension UITextView: UITextViewDelegate {
         }
     }
 
-    /// When the UITextView did change, show or hide the label based on if the UITextView is empty or not
-    public func textViewDidChange(_ textView: UITextView) {
-        if let placeholderLabel = self.viewWithTag(100) as? UILabel {
-            placeholderLabel.isHidden = self.text.characters.count > 0
-        }
-    }
+    /// Add following code to VC
+//    public func textViewDidChange(_ textView: UITextView) {
+//        if let placeholderLabel = textView.viewWithTag(100) as? UILabel {
+//            placeholderLabel.isHidden = textView > 0
+//        }
+//    }
 
     /// Resize the placeholder UILabel to make sure it's in the same position as the UITextView text
     private func resizePlaceholder() {
@@ -71,7 +71,6 @@ extension UITextView: UITextViewDelegate {
 
         self.addSubview(placeholderLabel)
         self.resizePlaceholder()
-        self.delegate = self
     }
 }
 

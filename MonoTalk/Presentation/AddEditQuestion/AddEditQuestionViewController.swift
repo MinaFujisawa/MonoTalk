@@ -11,60 +11,31 @@ import RealmSwift
 
 class AddEditQuestionViewController: UIViewController {
 
-    @IBOutlet weak var noteLabel: UILabel!
-    @IBOutlet weak var questionLabel: UILabel!
     @IBOutlet weak var questionTextView: UITextView!
-    @IBOutlet weak var noteTextView: UITextView!
 
     var isFromAdd = false // true: new, false: edit
     var existingQuestion: Question!
     var categoryID: String!
+    let placeholderText = "e.g. How's it going?"
 
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpUI()
-        questionTextView.tag = 1000
+        questionTextView.delegate = self
 
         if isFromAdd {
             self.title = "Create new Question"
-            setPlaceHolder()
+            questionTextView.addPlaceholder(placeholderText)
             self.navigationItem.rightBarButtonItem?.isEnabled = false
         } else {
             self.title = "Edit Question"
             questionTextView.text = existingQuestion.questionBody
-            // TODO: Set PH
-            noteTextView.text = existingQuestion.note ?? ""
         }
     }
 
     func setUpUI() {
-        view.backgroundColor = MyColor.bluishGrayBackground.value
-
-        questionTextView.delegate = self
-        noteTextView.delegate = self
-
-        // TextView
         questionTextView.setPadding()
-        noteTextView.setPadding()
-        questionTextView.setTopAndBottomBorder()
-        noteTextView.setTopAndBottomBorder()
-
-        questionTextView.textColor = MyColor.placeHolderText.value
-        noteTextView.textColor = MyColor.placeHolderText.value
         questionTextView.font = UIFont.systemFont(ofSize: TextSize.normal.rawValue)
-        noteTextView.font = UIFont.systemFont(ofSize: TextSize.normal.rawValue)
-
-        // Label
-        questionLabel.textColor = MyColor.darkText.value
-        noteLabel.textColor = MyColor.darkText.value
-        questionLabel.font = UIFont.systemFont(ofSize: TextSize.heading.rawValue)
-        noteLabel.font = UIFont.systemFont(ofSize: TextSize.heading.rawValue)
-    }
-
-    func setPlaceHolder() {
-        // TODO: set valid place holder
-        questionTextView.text = "Placeholder"
-        noteTextView.text = "Placeholder"
     }
 
     // MARK: Navi bar action
@@ -74,14 +45,10 @@ class AddEditQuestionViewController: UIViewController {
         if isFromAdd {
             // Add new question
             let newQuestion = Question()
-            newQuestion.questionBody = questionTextView.text
             newQuestion.categoryID = categoryID
-
-            if noteTextView.textColor == MyColor.placeHolderText.value {
-                newQuestion.note = nil
-            } else {
-                newQuestion.note = noteTextView.text
-            }
+            
+            
+            newQuestion.questionBody = questionTextView.text
 
             let category = realm.object(ofType: Category.self, forPrimaryKey: categoryID)
             try! realm.write {
@@ -91,12 +58,6 @@ class AddEditQuestionViewController: UIViewController {
             // Update question
             try! realm.write {
                 existingQuestion.questionBody = questionTextView.text
-
-                if noteTextView.textColor == MyColor.placeHolderText.value {
-                    existingQuestion.note = nil
-                } else {
-                    existingQuestion.note = noteTextView.text
-                }
             }
         }
         dismiss(animated: true, completion: nil)
@@ -108,26 +69,15 @@ class AddEditQuestionViewController: UIViewController {
 }
 
 extension AddEditQuestionViewController: UITextViewDelegate {
-    func textViewDidBeginEditing(_ textView: UITextView) {
-        if textView.textColor == MyColor.placeHolderText.value {
-            textView.text = nil
-            textView.textColor = MyColor.darkText.value
+    public func textViewDidChange(_ textView: UITextView) {
+        if let placeholderLabel = textView.viewWithTag(100) as? UILabel {
+            placeholderLabel.isHidden = textView.text.characters.count > 0
         }
-    }
-
-    func textViewDidEndEditing(_ textView: UITextView) {
+        
         if textView.text.isEmpty {
-            setPlaceHolder()
-        }
-    }
-
-    func textViewDidChange(_ textView: UITextView) {
-        if textView.tag == 1000 {
-            if textView.text.isEmpty {
-                self.navigationItem.rightBarButtonItem?.isEnabled = false
-            } else {
-                self.navigationItem.rightBarButtonItem?.isEnabled = true
-            }
+            self.navigationItem.rightBarButtonItem?.isEnabled = false
+        } else {
+            self.navigationItem.rightBarButtonItem?.isEnabled = true
         }
     }
 }
