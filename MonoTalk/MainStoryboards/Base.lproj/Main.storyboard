@@ -6,7 +6,6 @@
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
-        <capability name="Navigation items with more than one left or right bar item" minToolsVersion="7.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -429,33 +428,10 @@
         <scene sceneID="kIw-2J-6vU">
             <objects>
                 <pageViewController autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="seL-pe-Fje" customClass="QuestionsPageViewController" customModule="MonoTalk" customModuleProvider="target" sceneMemberID="viewController">
-                    <navigationItem key="navigationItem" title="title" id="pV6-jE-t94">
-                        <rightBarButtonItems>
-                            <barButtonItem style="plain" id="k2X-k6-R2M">
-                                <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="gDH-73-dGS">
-                                    <rect key="frame" x="288" y="11" width="71" height="22"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    <state key="normal" image="navi_menu"/>
-                                    <connections>
-                                        <action selector="menuButton:" destination="seL-pe-Fje" eventType="touchUpInside" id="tcM-gx-nbk"/>
-                                    </connections>
-                                </button>
-                            </barButtonItem>
-                            <barButtonItem style="plain" id="8XL-eO-Hbf">
-                                <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="9Dq-uJ-JRz">
-                                    <rect key="frame" x="261" y="11" width="19" height="22"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    <state key="normal" image="icon_note"/>
-                                    <connections>
-                                        <segue destination="LN8-ap-TyE" kind="presentation" identifier="GoToNote" id="IV3-jA-Vni"/>
-                                    </connections>
-                                </button>
-                            </barButtonItem>
-                        </rightBarButtonItems>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="title" id="pV6-jE-t94"/>
                     <connections>
-                        <outlet property="noteButton" destination="9Dq-uJ-JRz" id="W3o-tM-rfz"/>
                         <segue destination="WrU-IG-9PQ" kind="presentation" identifier="GoToEdit" id="Gr9-Mh-UhM"/>
+                        <segue destination="LN8-ap-TyE" kind="presentation" identifier="GoToNote" id="EcE-E7-4hJ"/>
                     </connections>
                 </pageViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rRq-46-dAx" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -577,7 +553,6 @@
     <resources>
         <image name="icon_cell_note" width="12" height="12"/>
         <image name="icon_cell_record" width="8" height="14"/>
-        <image name="icon_note" width="19" height="19"/>
         <image name="icon_record_microphone" width="33" height="41"/>
         <image name="icon_record_ok" width="18" height="14"/>
         <image name="icon_record_stop" width="24" height="24"/>
@@ -743,7 +718,6 @@ AEEAAAAAAAAAAAAAAAAAACNMA
 </mutableData>
         </image>
         <image name="navi_close" width="15" height="15"/>
-        <image name="navi_menu" width="17" height="5"/>
         <image name="navi_plus" width="17" height="17"/>
         <image name="rate_soso" width="40" height="40"/>
     </resources>

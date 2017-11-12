@@ -10,7 +10,6 @@ import UIKit
 import RealmSwift
 
 class QuestionsPageViewController: UIPageViewController {
-    @IBOutlet weak var noteButton: UIButton!
     var startIndex: Int!
     var currentIndex: Int!
     var questions: List<Question>?
@@ -30,6 +29,7 @@ class QuestionsPageViewController: UIPageViewController {
         let category = realm.object(ofType: Category.self, forPrimaryKey: categoryID)
         questions = category?.questions
 
+        setUpNavigationBarItems()
         setUp()
     }
 
@@ -49,10 +49,29 @@ class QuestionsPageViewController: UIPageViewController {
         currentIndex = startIndex
         self.setViewControllers([pageCollection[startIndex]], direction: .forward, animated: true, completion: nil)
     }
-
+    
+    func setUpNavigationBarItems() {
+        let noteButton = UIButton(type: UIButtonType.custom)
+        noteButton.setImage(UIImage(named: "icon_note"), for: .normal)
+        noteButton.addTarget(self, action: #selector(noteButtonPressed), for: .touchUpInside)
+        noteButton.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
+        let noteBarButton = UIBarButtonItem(customView: noteButton)
+        
+        let menuButton = UIButton(type: UIButtonType.custom)
+        menuButton.setImage(UIImage(named: "navi_menu"), for: .normal)
+        menuButton.addTarget(self, action: #selector(menuButtonPressed), for: .touchUpInside)
+        menuButton.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
+        let menuBarButton = UIBarButtonItem(customView: menuButton)
+        
+        self.navigationItem.setRightBarButtonItems([menuBarButton, noteBarButton], animated: false)
+    }
+    
+    @objc func noteButtonPressed() {
+        performSegue(withIdentifier: "GoToNote", sender: nil)
+    }
 
     // MARK: Action sheet
-    @IBAction func menuButton(_ sender: Any) {
+    @objc func menuButtonPressed() {
         let alert: UIAlertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
         let edit = UIAlertAction(title: "Edit", style: .default, handler: {
             (action: UIAlertAction!) -> Void in
@@ -95,8 +114,7 @@ class QuestionsPageViewController: UIPageViewController {
         }
     }
 
-
-
+    
     // MARK: segue
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "GoToEdit" {
