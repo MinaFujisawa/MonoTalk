@@ -208,7 +208,7 @@
         <!--MonoTalk-->
         <scene sceneID="iLF-ZJ-767">
             <objects>
-                <tableViewController id="vyT-sE-zbd" customClass="CategoryTableViewController" customModule="MonoTalk" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController automaticallyAdjustsScrollViewInsets="NO" id="vyT-sE-zbd" customClass="CategoryTableViewController" customModule="MonoTalk" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="48" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="t26-sX-pyz">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

@@ -24,8 +24,9 @@ class CategoryTableViewController: UITableViewController {
 
         categories = realm.objects(Category.self)
 
-        let nib = UINib(nibName: "CreateCategoryCellXib", bundle: nil)
-        tableView.register(nib, forCellReuseIdentifier: createCategorycellID)
+        tableView.register(UINib(nibName: "CreateCategoryCellXib", bundle: nil), forCellReuseIdentifier: createCategorycellID)
+        
+//        tableView.register(UINib(nibName: "CategoryCellXib", bundle: nil), forCellReuseIdentifier: cellID)
 
         // MARK:Observe Results Notifications
         notificationToken = categories.observe { [weak self] (changes: RealmCollectionChange) in
@@ -49,7 +50,6 @@ class CategoryTableViewController: UITableViewController {
     }
 
     func setUpUI() {
-        self.tableView.rowHeight = 88;
         tableView.separatorStyle = UITableViewCellSeparatorStyle.none
         tableView.bounces = true
     }
@@ -61,6 +61,15 @@ class CategoryTableViewController: UITableViewController {
     // MARK: - Table view data source
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
+    }
+    
+    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let headerView = UIView(frame: CGRect(x: 0, y: 0, width: tableView.bounds.size.width, height: 16))
+        headerView.backgroundColor = UIColor.white
+        return headerView
+    }
+    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return ""
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -126,8 +135,14 @@ extension CategoryTableViewController: UITabBarControllerDelegate {
     }
 
     func showCategoryAlert(isEdit: Bool, category: Category?) {
-
-        let alertController: UIAlertController = UIAlertController(title: "Create Category", message: nil, preferredStyle: .alert)
+        
+        var title  = ""
+        if isEdit{
+            title = "Edit Category"
+        } else {
+            title = "Create Category"
+        }
+        let alertController: UIAlertController = UIAlertController(title: title, message: nil, preferredStyle: .alert)
 
         alertController.addTextField { (textField: UITextField) in
             textField.placeholder = "Category name"

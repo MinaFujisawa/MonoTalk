@@ -16,8 +16,9 @@ class CreateCategoryCellXib: UITableViewCell {
         label.textColor = MyColor.theme.value
         iconImage.image = iconImage.image?.withRenderingMode(.alwaysTemplate)
         iconImage.tintColor = MyColor.theme.value
-        self.separatorInset = UIEdgeInsets.zero
+        
         self.preservesSuperviewLayoutMargins = false
+        self.separatorInset = UIEdgeInsets.zero
         self.layoutMargins = UIEdgeInsets.zero
     }
 
