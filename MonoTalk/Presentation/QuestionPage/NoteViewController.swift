@@ -13,6 +13,7 @@ class NoteViewController: UIViewController {
     @IBOutlet weak var textView: UITextView!
 
     var question: Question!
+    let placeholderText = "Add note"
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,15 +21,15 @@ class NoteViewController: UIViewController {
         textView.setPadding()
         textView.delegate = self
         textView.font = UIFont.systemFont(ofSize: TextSize.normal.rawValue)
-        
+
         if question.note != nil {
             textView.text = question.note
             textView.textColor = MyColor.darkText.value
         } else {
-            textView.addPlaceholder("Add note")
+            textView.addPlaceholder(placeholderText)
         }
     }
-    
+
     override func viewWillAppear(_ animated: Bool) {
         textView.becomeFirstResponder()
     }
@@ -38,12 +39,11 @@ class NoteViewController: UIViewController {
         let realm = try! Realm()
         try! realm.write {
             if textView.textColor == MyColor.placeHolderText.value ||
-                textView.text.isEmpty || !textView.text.isValidString(){
+                textView.text.isEmpty || !textView.text.isValidString() {
                 question.note = nil
             } else {
                 question.note = textView.text
             }
-
         }
         dismiss(animated: true, completion: nil)
     }
@@ -53,9 +53,13 @@ class NoteViewController: UIViewController {
 }
 
 extension NoteViewController: UITextViewDelegate {
-    func textViewDidChange(_ textView: UITextView) {
+    public func textViewDidChange(_ textView: UITextView) {
+        if let placeholderLabel = textView.viewWithTag(100) as? UILabel {
+            placeholderLabel.isHidden = textView.text.characters.count > 0
+        }
+
         if textView.text.isEmpty {
-            textView.addPlaceholder("Add note")
+            textView.addPlaceholder(placeholderText)
         }
     }
 }

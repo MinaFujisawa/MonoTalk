@@ -40,14 +40,14 @@ extension UITextView {
     /// Add following code to VC
 //    public func textViewDidChange(_ textView: UITextView) {
 //        if let placeholderLabel = textView.viewWithTag(100) as? UILabel {
-//            placeholderLabel.isHidden = textView > 0
+//            placeholderLabel.isHidden = textView.text.characters.count > 0
 //        }
 //    }
 
     /// Resize the placeholder UILabel to make sure it's in the same position as the UITextView text
     private func resizePlaceholder() {
         if let placeholderLabel = self.viewWithTag(100) as! UILabel? {
-            let labelX = self.textContainerInset.left + 2
+            let labelX = self.textContainerInset.left + 4
             let labelY = self.textContainerInset.top
             let labelWidth = self.frame.width - (labelX * 2)
             let labelHeight = placeholderLabel.frame.height
@@ -58,6 +58,12 @@ extension UITextView {
 
     /// Adds a placeholder UILabel to this UITextView
     public func addPlaceholder(_ placeholderText: String) {
+        
+        // Remove PH label if it exists already
+        if let placeholderLabel = self.viewWithTag(100) as? UILabel {
+            placeholderLabel.removeFromSuperview()
+        }
+
         let placeholderLabel = UILabel()
 
         placeholderLabel.text = placeholderText
