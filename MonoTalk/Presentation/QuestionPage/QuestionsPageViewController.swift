@@ -29,8 +29,8 @@ class QuestionsPageViewController: UIPageViewController {
         let category = realm.object(ofType: Category.self, forPrimaryKey: categoryID)
         questions = category?.questions
 
-        setUpNavigationBarItems()
         setUp()
+        setUpNavigationBarItems()
     }
 
     func setUp() {
@@ -48,26 +48,43 @@ class QuestionsPageViewController: UIPageViewController {
         setTitle(index: startIndex)
         currentIndex = startIndex
         self.setViewControllers([pageCollection[startIndex]], direction: .forward, animated: true, completion: nil)
-        
+
         self.view.backgroundColor = MyColor.border.value
     }
-    
+
     func setUpNavigationBarItems() {
-        let noteButton = UIButton(type: UIButtonType.custom)
-        noteButton.setImage(UIImage(named: "icon_note"), for: .normal)
-        noteButton.addTarget(self, action: #selector(noteButtonPressed), for: .touchUpInside)
-        noteButton.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
-        let noteBarButton = UIBarButtonItem(customView: noteButton)
-        
+        let noteBarButton = UIBarButtonItem()
+
         let menuButton = UIButton(type: UIButtonType.custom)
         menuButton.setImage(UIImage(named: "navi_menu"), for: .normal)
         menuButton.addTarget(self, action: #selector(menuButtonPressed), for: .touchUpInside)
         menuButton.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
         let menuBarButton = UIBarButtonItem(customView: menuButton)
-        
+
         self.navigationItem.setRightBarButtonItems([menuBarButton, noteBarButton], animated: false)
+        
+        setNoteIcon()
     }
     
+    // Change note icon based on it's nil or not
+    func setNoteIcon() {
+        let noteButton = UIButton(type: UIButtonType.custom)
+        noteButton.addTarget(self, action: #selector(noteButtonPressed), for: .touchUpInside)
+        noteButton.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
+        
+        var noteIcon = UIImage()
+        if let questions = questions {
+            let currentQuestion = questions[self.currentIndex]
+            if currentQuestion.note != nil {
+                noteIcon = UIImage(named: "navi_note_badge")!
+            } else {
+                noteIcon = UIImage(named: "navi_note")!
+            }
+        }
+        noteButton.setImage(noteIcon, for: .normal)
+        self.navigationItem.rightBarButtonItems![1].customView = noteButton
+    }
+
     @objc func noteButtonPressed() {
         performSegue(withIdentifier: "GoToNote", sender: nil)
     }
@@ -102,12 +119,14 @@ class QuestionsPageViewController: UIPageViewController {
 
         // Page optimize
         if currentIndex - 1 > 0 {
-            self.setViewControllers([pageCollection[currentIndex - 1]], direction: .reverse, animated: false, completion: nil)
+            self.setViewControllers([pageCollection[currentIndex - 1]], direction: .reverse,
+                                    animated: false, completion: nil)
             currentIndex = currentIndex - 1
             setTitle(index: currentIndex)
         } else {
             if pageCollection.count > 0 {
-                self.setViewControllers([pageCollection[currentIndex]], direction: .forward, animated: false, completion: nil)
+                self.setViewControllers([pageCollection[currentIndex]], direction: .forward,
+                                        animated: false, completion: nil)
                 setTitle(index: currentIndex)
             } else {
                 // No item
@@ -116,7 +135,7 @@ class QuestionsPageViewController: UIPageViewController {
         }
     }
 
-    
+
     // MARK: segue
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "GoToEdit" {
@@ -163,10 +182,13 @@ extension QuestionsPageViewController: UIPageViewControllerDataSource {
 extension QuestionsPageViewController: UIPageViewControllerDelegate {
     func pageViewController(_ pageViewController: UIPageViewController, didFinishAnimating finished: Bool, previousViewControllers: [UIViewController], transitionCompleted completed: Bool) {
         if (!completed) { return }
+        
         // Add Title
         guard let viewController = self.viewControllers?.last else { return }
         guard let index = pageCollection.index(of: viewController) else { return }
         currentIndex = index
         setTitle(index: currentIndex)
+        
+        setNoteIcon()
     }
 }
