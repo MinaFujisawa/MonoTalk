@@ -8,43 +8,45 @@
 
 import Foundation
 import RealmSwift
+import CSV
 
 struct RealmInitializer {
     static func setUp() {
         let realm = try! Realm()
-
-        let category1 = Category()
-        category1.name = "Dairy1"
-
-        let question1 = Question()
-        question1.questionBody = "Dairy1 how's it going?"
-        question1.categoryID = category1.id
-
-        let question2 = Question()
-        question2.questionBody = "Dairy1 Are you fine?"
-        question2.categoryID = category1.id
-
-        category1.questions.append(question1)
-        category1.questions.append(question2)
         
-        let category2 = Category()
-        category2.name = "Dairy2"
+        let path : String = Bundle.main.path(forResource: "seed", ofType: "csv")!
+        let stream = InputStream(fileAtPath: path)!
+        var categoryNames = [String]()
+        var categoris = [Category]()
         
-        let question3 = Question()
-        question3.questionBody = "Dairy2 how's it going?"
-        question3.categoryID = category2.id
-        
-        let question4 = Question()
-        question4.questionBody = "Dairy2 Are you fine?"
-        question4.categoryID = category2.id
-        
-        category2.questions.append(question3)
-        category2.questions.append(question4)
-
-        try! realm.write {
-            realm.add(category1)
-            realm.add(category2)
+        // Read CSV
+        for row in try! CSV(stream: stream, hasHeaderRow: true) {
+            let categoryName = row[0]
+            let questionBody = row[1]
+            
+            if categoryNames.contains(categoryName) {
+                let question = Question()
+                question.questionBody = questionBody
+                guard let categoryIndex = categoryNames.index(of: categoryName) else { return }
+                
+                try! realm.write {
+                    categoris[categoryIndex].questions.append(question)
+                }
+            } else{
+                let category = Category()
+                category.name = categoryName
+                
+                let question = Question()
+                question.questionBody = questionBody
+                category.questions.append(question)
+                
+                categoryNames.append(categoryName)
+                categoris.append(category)
+                
+                try! realm.write {
+                    realm.add(category)
+                }
+            }
         }
-        print(Realm.Configuration.defaultConfiguration.fileURL!)
     }
 }

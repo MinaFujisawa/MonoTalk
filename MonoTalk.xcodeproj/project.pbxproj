@@ -10,9 +10,11 @@
 		090C31C41FB38FAC005D9858 /* BalloonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 090C31C31FB38FAC005D9858 /* BalloonView.swift */; };
 		0910BB361FAD23FC006AEA85 /* CategoryTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0910BB351FAD23FC006AEA85 /* CategoryTableViewController.swift */; };
 		0910BB391FAD28EE006AEA85 /* CategoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0910BB371FAD28EE006AEA85 /* CategoryTableViewCell.swift */; };
-		0910BB3A1FAD28EE006AEA85 /* CategoryCellXibView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0910BB381FAD28EE006AEA85 /* CategoryCellXibView.xib */; };
+		0910BB3A1FAD28EE006AEA85 /* CategoryCellXib.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0910BB381FAD28EE006AEA85 /* CategoryCellXib.xib */; };
 		0910BB3C1FAD30C0006AEA85 /* QuestionTavleViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0910BB3B1FAD30C0006AEA85 /* QuestionTavleViewCell.swift */; };
 		0910BB3E1FAD30DC006AEA85 /* QuestionTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0910BB3D1FAD30DC006AEA85 /* QuestionTableViewController.swift */; };
+		092B628A1FBD2ECE001AF0F8 /* seed.csv in Frameworks */ = {isa = PBXBuildFile; fileRef = 092B62891FBD2ECE001AF0F8 /* seed.csv */; };
+		092B628B1FBD2F7A001AF0F8 /* seed.csv in Resources */ = {isa = PBXBuildFile; fileRef = 092B62881FBD2C5D001AF0F8 /* seed.csv */; };
 		094ABF081FA7E85F00BA23AB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 094ABF071FA7E85F00BA23AB /* AppDelegate.swift */; };
 		094ABF0D1FA7E85F00BA23AB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 094ABF0B1FA7E85F00BA23AB /* Main.storyboard */; };
 		094ABF0F1FA7E85F00BA23AB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 094ABF0E1FA7E85F00BA23AB /* Assets.xcassets */; };
@@ -27,10 +29,14 @@
 		095E33401FA8131C0010B1F3 /* QuestionsPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 095E333F1FA8131C0010B1F3 /* QuestionsPageViewController.swift */; };
 		0972A8081FB0FE4D002E9E88 /* AddEditQuestionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0972A8071FB0FE4D002E9E88 /* AddEditQuestionViewController.swift */; };
 		0979FA4A1FA80172000BDB5B /* UI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0979FA491FA80172000BDB5B /* UI.swift */; };
+		097F3BD11FB4E964005B6BD1 /* Text.swift in Sources */ = {isa = PBXBuildFile; fileRef = 097F3BD01FB4E964005B6BD1 /* Text.swift */; };
 		099F7B821FB2878F0069C73E /* CreateCategoryCellXib.swift in Sources */ = {isa = PBXBuildFile; fileRef = 099F7B801FB2878F0069C73E /* CreateCategoryCellXib.swift */; };
 		099F7B831FB2878F0069C73E /* CreateCategoryCellXib.xib in Resources */ = {isa = PBXBuildFile; fileRef = 099F7B811FB2878F0069C73E /* CreateCategoryCellXib.xib */; };
 		09A958B31FAE39FD000DD9AF /* default.realm in Frameworks */ = {isa = PBXBuildFile; fileRef = 09A958B21FAE39FD000DD9AF /* default.realm */; };
 		09A958B41FAE3C5B000DD9AF /* default.realm in Resources */ = {isa = PBXBuildFile; fileRef = 09A958B11FAE39D9000DD9AF /* default.realm */; };
+		09B0E2F21FB6ACF40028444B /* NoteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B0E2F11FB6ACF40028444B /* NoteViewController.swift */; };
+		09C899D71FB539BC007A9263 /* SortCellXib.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09C899D51FB539BC007A9263 /* SortCellXib.swift */; };
+		09C899D81FB539BC007A9263 /* SortCellXib.xib in Resources */ = {isa = PBXBuildFile; fileRef = 09C899D61FB539BC007A9263 /* SortCellXib.xib */; };
 		09E728521FA95342007B7F5F /* RecorderModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09E728511FA95342007B7F5F /* RecorderModalViewController.swift */; };
 		09E728541FA96B91007B7F5F /* Time.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09E728531FA96B91007B7F5F /* Time.swift */; };
 		09F2A7681FAE3383001DEBD6 /* RealmInitializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09F2A7671FAE3383001DEBD6 /* RealmInitializer.swift */; };
@@ -60,9 +66,11 @@
 		090C31C31FB38FAC005D9858 /* BalloonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BalloonView.swift; sourceTree = "<group>"; };
 		0910BB351FAD23FC006AEA85 /* CategoryTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryTableViewController.swift; sourceTree = "<group>"; };
 		0910BB371FAD28EE006AEA85 /* CategoryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryTableViewCell.swift; sourceTree = "<group>"; };
-		0910BB381FAD28EE006AEA85 /* CategoryCellXibView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CategoryCellXibView.xib; sourceTree = "<group>"; };
+		0910BB381FAD28EE006AEA85 /* CategoryCellXib.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CategoryCellXib.xib; sourceTree = "<group>"; };
 		0910BB3B1FAD30C0006AEA85 /* QuestionTavleViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionTavleViewCell.swift; sourceTree = "<group>"; };
 		0910BB3D1FAD30DC006AEA85 /* QuestionTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionTableViewController.swift; sourceTree = "<group>"; };
+		092B62881FBD2C5D001AF0F8 /* seed.csv */ = {isa = PBXFileReference; lastKnownFileType = text; path = seed.csv; sourceTree = "<group>"; };
+		092B62891FBD2ECE001AF0F8 /* seed.csv */ = {isa = PBXFileReference; lastKnownFileType = text; name = seed.csv; path = ../../../temporal/seed.csv; sourceTree = "<group>"; };
 		094ABF041FA7E85F00BA23AB /* MonoTalk.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MonoTalk.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		094ABF071FA7E85F00BA23AB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		094ABF0C1FA7E85F00BA23AB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -83,10 +91,14 @@
 		095E333F1FA8131C0010B1F3 /* QuestionsPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionsPageViewController.swift; sourceTree = "<group>"; };
 		0972A8071FB0FE4D002E9E88 /* AddEditQuestionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEditQuestionViewController.swift; sourceTree = "<group>"; };
 		0979FA491FA80172000BDB5B /* UI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UI.swift; sourceTree = "<group>"; };
+		097F3BD01FB4E964005B6BD1 /* Text.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Text.swift; sourceTree = "<group>"; };
 		099F7B801FB2878F0069C73E /* CreateCategoryCellXib.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateCategoryCellXib.swift; sourceTree = "<group>"; };
 		099F7B811FB2878F0069C73E /* CreateCategoryCellXib.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CreateCategoryCellXib.xib; sourceTree = "<group>"; };
 		09A958B11FAE39D9000DD9AF /* default.realm */ = {isa = PBXFileReference; lastKnownFileType = file; path = default.realm; sourceTree = "<group>"; };
 		09A958B21FAE39FD000DD9AF /* default.realm */ = {isa = PBXFileReference; lastKnownFileType = file; name = default.realm; path = "../../../Library/Developer/CoreSimulator/Devices/F4BF7243-7F90-4C42-A711-52F2DF361C4B/data/Containers/Data/Application/00689D4C-15B0-42AF-A04B-0FAEED33487D/Documents/default.realm"; sourceTree = "<group>"; };
+		09B0E2F11FB6ACF40028444B /* NoteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteViewController.swift; sourceTree = "<group>"; };
+		09C899D51FB539BC007A9263 /* SortCellXib.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortCellXib.swift; sourceTree = "<group>"; };
+		09C899D61FB539BC007A9263 /* SortCellXib.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SortCellXib.xib; sourceTree = "<group>"; };
 		09E728511FA95342007B7F5F /* RecorderModalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecorderModalViewController.swift; sourceTree = "<group>"; };
 		09E728531FA96B91007B7F5F /* Time.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Time.swift; sourceTree = "<group>"; };
 		09F2A7671FAE3383001DEBD6 /* RealmInitializer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmInitializer.swift; sourceTree = "<group>"; };
@@ -106,6 +118,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				092B628A1FBD2ECE001AF0F8 /* seed.csv in Frameworks */,
 				09A958B31FAE39FD000DD9AF /* default.realm in Frameworks */,
 				FF336F827C8547CD9DE09F68 /* Pods_MonoTalk.framework in Frameworks */,
 			);
@@ -133,10 +146,10 @@
 		090C10ED1FB4D50B003E7AAD /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
-				090C10F11FB4D68B003E7AAD /* AddEditQuestion */,
-				090C10F01FB4D643003E7AAD /* QuestionPage */,
-				090C10EF1FB4D5E3003E7AAD /* QuestionList */,
 				090C10EE1FB4D589003E7AAD /* CategoryList */,
+				090C10EF1FB4D5E3003E7AAD /* QuestionList */,
+				090C10F01FB4D643003E7AAD /* QuestionPage */,
+				090C10F11FB4D68B003E7AAD /* AddEditQuestion */,
 			);
 			path = Presentation;
 			sourceTree = "<group>";
@@ -146,7 +159,7 @@
 			children = (
 				0910BB351FAD23FC006AEA85 /* CategoryTableViewController.swift */,
 				0910BB371FAD28EE006AEA85 /* CategoryTableViewCell.swift */,
-				0910BB381FAD28EE006AEA85 /* CategoryCellXibView.xib */,
+				0910BB381FAD28EE006AEA85 /* CategoryCellXib.xib */,
 				099F7B801FB2878F0069C73E /* CreateCategoryCellXib.swift */,
 				099F7B811FB2878F0069C73E /* CreateCategoryCellXib.xib */,
 			);
@@ -158,6 +171,8 @@
 			children = (
 				0910BB3D1FAD30DC006AEA85 /* QuestionTableViewController.swift */,
 				0910BB3B1FAD30C0006AEA85 /* QuestionTavleViewCell.swift */,
+				09C899D51FB539BC007A9263 /* SortCellXib.swift */,
+				09C899D61FB539BC007A9263 /* SortCellXib.xib */,
 			);
 			path = QuestionList;
 			sourceTree = "<group>";
@@ -170,6 +185,7 @@
 				09E728511FA95342007B7F5F /* RecorderModalViewController.swift */,
 				0957D61C1FA93C9F00A91705 /* PlayerXibView.swift */,
 				0957D61A1FA9373000A91705 /* PlayerXibView.xib */,
+				09B0E2F11FB6ACF40028444B /* NoteViewController.swift */,
 			);
 			path = QuestionPage;
 			sourceTree = "<group>";
@@ -222,6 +238,7 @@
 				098446C21FAE3DA7005F72E8 /* DataBase */,
 				094ABF0E1FA7E85F00BA23AB /* Assets.xcassets */,
 				094ABF131FA7E85F00BA23AB /* Info.plist */,
+				092B62881FBD2C5D001AF0F8 /* seed.csv */,
 			);
 			path = MonoTalk;
 			sourceTree = "<group>";
@@ -270,6 +287,7 @@
 				09E728531FA96B91007B7F5F /* Time.swift */,
 				0979FA491FA80172000BDB5B /* UI.swift */,
 				094ABF371FA7F05200BA23AB /* Colors.swift */,
+				097F3BD01FB4E964005B6BD1 /* Text.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -277,6 +295,7 @@
 		2190F73CF7241A551C2E921C /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				092B62891FBD2ECE001AF0F8 /* seed.csv */,
 				09A958B21FAE39FD000DD9AF /* default.realm */,
 				A3B299541C4A4170D0E3A6B0 /* Pods_MonoTalk.framework */,
 				2645F8DA66821BEDDE56A428 /* Pods_MonoTalkTests.framework */,
@@ -414,9 +433,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				092B628B1FBD2F7A001AF0F8 /* seed.csv in Resources */,
 				09A958B41FAE3C5B000DD9AF /* default.realm in Resources */,
-				0910BB3A1FAD28EE006AEA85 /* CategoryCellXibView.xib in Resources */,
+				0910BB3A1FAD28EE006AEA85 /* CategoryCellXib.xib in Resources */,
 				094ABF121FA7E85F00BA23AB /* LaunchScreen.storyboard in Resources */,
+				09C899D81FB539BC007A9263 /* SortCellXib.xib in Resources */,
 				094ABF0F1FA7E85F00BA23AB /* Assets.xcassets in Resources */,
 				099F7B831FB2878F0069C73E /* CreateCategoryCellXib.xib in Resources */,
 				094ABF0D1FA7E85F00BA23AB /* Main.storyboard in Resources */,
@@ -448,11 +469,13 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-MonoTalk/Pods-MonoTalk-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/CSV.swift/CSV.framework",
 				"${BUILT_PRODUCTS_DIR}/Realm/Realm.framework",
 				"${BUILT_PRODUCTS_DIR}/RealmSwift/RealmSwift.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CSV.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RealmSwift.framework",
 			);
@@ -611,9 +634,11 @@
 				09F2A7681FAE3383001DEBD6 /* RealmInitializer.swift in Sources */,
 				090C31C41FB38FAC005D9858 /* BalloonView.swift in Sources */,
 				0972A8081FB0FE4D002E9E88 /* AddEditQuestionViewController.swift in Sources */,
+				097F3BD11FB4E964005B6BD1 /* Text.swift in Sources */,
 				0910BB3E1FAD30DC006AEA85 /* QuestionTableViewController.swift in Sources */,
 				0957D61D1FA93C9F00A91705 /* PlayerXibView.swift in Sources */,
 				09E728541FA96B91007B7F5F /* Time.swift in Sources */,
+				09B0E2F21FB6ACF40028444B /* NoteViewController.swift in Sources */,
 				094ABF381FA7F05200BA23AB /* Colors.swift in Sources */,
 				094ABF081FA7E85F00BA23AB /* AppDelegate.swift in Sources */,
 				095E33401FA8131C0010B1F3 /* QuestionsPageViewController.swift in Sources */,
@@ -621,6 +646,7 @@
 				094ABF361FA7EBD100BA23AB /* QuestionDetailViewController.swift in Sources */,
 				0979FA4A1FA80172000BDB5B /* UI.swift in Sources */,
 				099F7B821FB2878F0069C73E /* CreateCategoryCellXib.swift in Sources */,
+				09C899D71FB539BC007A9263 /* SortCellXib.swift in Sources */,
 				0910BB361FAD23FC006AEA85 /* CategoryTableViewController.swift in Sources */,
 				0910BB3C1FAD30C0006AEA85 /* QuestionTavleViewCell.swift in Sources */,
 				0910BB391FAD28EE006AEA85 /* CategoryTableViewCell.swift in Sources */,
@@ -791,6 +817,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 3LWPTJLC7P;
 				INFOPLIST_FILE = MonoTalk/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = test.MonoTalk;
@@ -806,6 +833,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 3LWPTJLC7P;
 				INFOPLIST_FILE = MonoTalk/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = test.MonoTalk;
