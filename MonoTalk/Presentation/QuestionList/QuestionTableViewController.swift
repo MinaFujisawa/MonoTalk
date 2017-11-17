@@ -10,7 +10,7 @@ import UIKit
 import RealmSwift
 
 class QuestionTableViewController: UIViewController {
-
+    var realm: Realm!
     var category: Category!
     var questions: Results<Question>!
     var categoryID: String!
@@ -20,7 +20,7 @@ class QuestionTableViewController: UIViewController {
     let cellID = "QuestionCell"
     let sortCellID = "SortCell"
     var notificationToken: NotificationToken? = nil
-    var currentSortMode = "Creation Date"
+    var sortMode: SortMode = .date
 
 
     override func viewDidLoad() {
@@ -30,7 +30,7 @@ class QuestionTableViewController: UIViewController {
         let nib = UINib(nibName: "SortCellXib", bundle: nil)
         tableView.register(nib, forCellReuseIdentifier: sortCellID)
 
-        let realm = try! Realm()
+        realm = try! Realm()
         category = realm.object(ofType: Category.self, forPrimaryKey: categoryID)
         questions = category?.questions.sorted(byKeyPath: "date", ascending: true)
 
@@ -73,6 +73,7 @@ class QuestionTableViewController: UIViewController {
             if let indexPath = self.tableView!.indexPath(for: cell) {
                 pageVC.startIndex = indexPath.row - 1
                 pageVC.categoryID = categoryID
+                pageVC.sortMode = sortMode
                 tableView.deselectRow(at: indexPath, animated: true)
             }
         } else if segue.identifier == "GoToAdd" {
@@ -100,7 +101,7 @@ extension QuestionTableViewController: UITableViewDataSource {
         if indexPath.row == 0 {
             // Sort cell
             let cell = tableView.dequeueReusableCell(withIdentifier: sortCellID, for: indexPath) as! SortCellXib
-            cell.sortLabel.text = currentSortMode
+            cell.sortLabel.text = sortMode.title
             return cell
         } else {
             // Normal cell
@@ -157,41 +158,17 @@ extension QuestionTableViewController: UITableViewDelegate {
     func sortActionSheet() {
         let alert: UIAlertController = UIAlertController(title: nil, message: "Sort questions by:", preferredStyle: .actionSheet)
 
-        let creationDate = UIAlertAction(title: "Creation date", style: .default, handler: {
-            (action: UIAlertAction!) -> Void in
-            self.questions = self.category.questions.sorted(byKeyPath: "date", ascending: true)
-            self.currentSortMode = "Creation date"
-            self.tableView.reloadData()
-        })
+        for sortMode in SortMode.allValues {
+            let alertAction = UIAlertAction(title: sortMode.title, style: .default, handler: {
+                (action: UIAlertAction!) -> Void in
+                self.questions = self.category.questions.sorted(byKeyPath: sortMode.rawValue, ascending: sortMode.acsending)
+                self.sortMode = sortMode
+                self.tableView.reloadData()
+            })
+            alert.addAction(alertAction)
+        }
 
-        let rate = UIAlertAction(title: "Rate", style: .default, handler: {
-            (action: UIAlertAction!) -> Void in
-            self.questions = self.category.questions.sorted(byKeyPath: "rate", ascending: false)
-            self.currentSortMode = "Rate"
-            self.tableView.reloadData()
-        })
-
-        let record = UIAlertAction(title: "Record", style: .default, handler: {
-            (action: UIAlertAction!) -> Void in
-            self.questions = self.category.questions.sorted(byKeyPath: "recordsNum", ascending: false)
-            self.currentSortMode = "Record"
-            self.tableView.reloadData()
-        })
-
-        let favo = UIAlertAction(title: "Favorite", style: .default, handler: {
-            (action: UIAlertAction!) -> Void in
-            self.questions = self.category.questions.sorted(byKeyPath: "isFavorited", ascending: false)
-            self.currentSortMode = "Favorite"
-            self.tableView.reloadData()
-        })
-
-        let cancel = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
-
-        alert.addAction(creationDate)
-        alert.addAction(rate)
-        alert.addAction(record)
-        alert.addAction(favo)
-        alert.addAction(cancel)
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
         present(alert, animated: true, completion: nil)
     }
 }

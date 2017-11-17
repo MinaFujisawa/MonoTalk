@@ -12,7 +12,8 @@ import RealmSwift
 class QuestionsPageViewController: UIPageViewController {
     var startIndex: Int!
     var currentIndex: Int!
-    var questions: List<Question>?
+    var questions: Results<Question>?
+    var sortMode : SortMode!
     var categoryID: String!
     var notificationToken: NotificationToken? = nil
     var realm: Realm!
@@ -27,7 +28,20 @@ class QuestionsPageViewController: UIPageViewController {
         // Fetch questions data
         realm = try! Realm()
         let category = realm.object(ofType: Category.self, forPrimaryKey: categoryID)
-        questions = category?.questions
+        questions = category?.questions.sorted(byKeyPath: sortMode.rawValue, ascending: sortMode.acsending)
+        
+        // MARK:Observe Results Notifications
+        guard let questions = questions else { return }
+        notificationToken = questions.observe { [weak self] (changes: RealmCollectionChange) in
+            switch changes {
+            case .initial:
+                break
+            case .update:
+                self?.setNoteIcon()
+            case .error(let error):
+                fatalError("\(error)")
+            }
+        }
 
         setUp()
         setUpNavigationBarItems()
@@ -84,6 +98,8 @@ class QuestionsPageViewController: UIPageViewController {
         noteButton.setImage(noteIcon, for: .normal)
         self.navigationItem.rightBarButtonItems![1].customView = noteButton
     }
+    
+
 
     @objc func noteButtonPressed() {
         performSegue(withIdentifier: "GoToNote", sender: nil)
