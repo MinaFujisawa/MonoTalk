@@ -55,6 +55,21 @@ class Question: Object {
                 return UIImage(named: "rate_bad")!
             }
         }
+        
+        var tutorialText: String {
+            switch self {
+            case .great:
+                return "Easy!"
+            case .good:
+                return "Not bad"
+            case .soso:
+                return "So-so"
+            case .notGood:
+                return "Difficult"
+            case .bad:
+                return "Oh no!"
+            }
+        }
 
         static let allValues = [great, good, soso, notGood, bad]
     }

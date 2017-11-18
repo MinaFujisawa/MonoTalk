@@ -55,7 +55,7 @@ class NoteViewController: UIViewController {
 extension NoteViewController: UITextViewDelegate {
     public func textViewDidChange(_ textView: UITextView) {
         if let placeholderLabel = textView.viewWithTag(100) as? UILabel {
-            placeholderLabel.isHidden = textView.text.characters.count > 0
+            placeholderLabel.isHidden = textView.text.count > 0
         }
 
         if textView.text.isEmpty {

@@ -8,12 +8,16 @@
 
 /* Begin PBXBuildFile section */
 		090C31C41FB38FAC005D9858 /* BalloonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 090C31C31FB38FAC005D9858 /* BalloonView.swift */; };
+		090E303F1FBE5AA70071F714 /* SortMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 090E303E1FBE5AA70071F714 /* SortMode.swift */; };
+		090E30411FBE6A5B0071F714 /* RateTutorial.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 090E30401FBE6A5B0071F714 /* RateTutorial.storyboard */; };
+		090E30431FBE90E10071F714 /* RateTutorialItem.xib in Resources */ = {isa = PBXBuildFile; fileRef = 090E30421FBE90E10071F714 /* RateTutorialItem.xib */; };
+		090E30451FBE918D0071F714 /* RateTutorialItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 090E30441FBE918D0071F714 /* RateTutorialItemView.swift */; };
+		090E30471FBE92790071F714 /* RateTutorialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 090E30461FBE92790071F714 /* RateTutorialViewController.swift */; };
 		0910BB361FAD23FC006AEA85 /* CategoryTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0910BB351FAD23FC006AEA85 /* CategoryTableViewController.swift */; };
 		0910BB391FAD28EE006AEA85 /* CategoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0910BB371FAD28EE006AEA85 /* CategoryTableViewCell.swift */; };
 		0910BB3A1FAD28EE006AEA85 /* CategoryCellXib.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0910BB381FAD28EE006AEA85 /* CategoryCellXib.xib */; };
 		0910BB3C1FAD30C0006AEA85 /* QuestionTavleViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0910BB3B1FAD30C0006AEA85 /* QuestionTavleViewCell.swift */; };
 		0910BB3E1FAD30DC006AEA85 /* QuestionTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0910BB3D1FAD30DC006AEA85 /* QuestionTableViewController.swift */; };
-		092B628A1FBD2ECE001AF0F8 /* seed.csv in Frameworks */ = {isa = PBXBuildFile; fileRef = 092B62891FBD2ECE001AF0F8 /* seed.csv */; };
 		092B628B1FBD2F7A001AF0F8 /* seed.csv in Resources */ = {isa = PBXBuildFile; fileRef = 092B62881FBD2C5D001AF0F8 /* seed.csv */; };
 		094ABF081FA7E85F00BA23AB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 094ABF071FA7E85F00BA23AB /* AppDelegate.swift */; };
 		094ABF0D1FA7E85F00BA23AB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 094ABF0B1FA7E85F00BA23AB /* Main.storyboard */; };
@@ -64,6 +68,11 @@
 
 /* Begin PBXFileReference section */
 		090C31C31FB38FAC005D9858 /* BalloonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BalloonView.swift; sourceTree = "<group>"; };
+		090E303E1FBE5AA70071F714 /* SortMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortMode.swift; sourceTree = "<group>"; };
+		090E30401FBE6A5B0071F714 /* RateTutorial.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = RateTutorial.storyboard; sourceTree = "<group>"; };
+		090E30421FBE90E10071F714 /* RateTutorialItem.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RateTutorialItem.xib; sourceTree = "<group>"; };
+		090E30441FBE918D0071F714 /* RateTutorialItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RateTutorialItemView.swift; sourceTree = "<group>"; };
+		090E30461FBE92790071F714 /* RateTutorialViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RateTutorialViewController.swift; sourceTree = "<group>"; };
 		0910BB351FAD23FC006AEA85 /* CategoryTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryTableViewController.swift; sourceTree = "<group>"; };
 		0910BB371FAD28EE006AEA85 /* CategoryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryTableViewCell.swift; sourceTree = "<group>"; };
 		0910BB381FAD28EE006AEA85 /* CategoryCellXib.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CategoryCellXib.xib; sourceTree = "<group>"; };
@@ -118,7 +127,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				092B628A1FBD2ECE001AF0F8 /* seed.csv in Frameworks */,
 				09A958B31FAE39FD000DD9AF /* default.realm in Frameworks */,
 				FF336F827C8547CD9DE09F68 /* Pods_MonoTalk.framework in Frameworks */,
 			);
@@ -173,6 +181,7 @@
 				0910BB3B1FAD30C0006AEA85 /* QuestionTavleViewCell.swift */,
 				09C899D51FB539BC007A9263 /* SortCellXib.swift */,
 				09C899D61FB539BC007A9263 /* SortCellXib.xib */,
+				090E303E1FBE5AA70071F714 /* SortMode.swift */,
 			);
 			path = QuestionList;
 			sourceTree = "<group>";
@@ -180,6 +189,7 @@
 		090C10F01FB4D643003E7AAD /* QuestionPage */ = {
 			isa = PBXGroup;
 			children = (
+				090E30481FBE989B0071F714 /* RateTutorial */,
 				095E333F1FA8131C0010B1F3 /* QuestionsPageViewController.swift */,
 				094ABF351FA7EBD100BA23AB /* QuestionDetailViewController.swift */,
 				09E728511FA95342007B7F5F /* RecorderModalViewController.swift */,
@@ -204,6 +214,17 @@
 				090C31C31FB38FAC005D9858 /* BalloonView.swift */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		090E30481FBE989B0071F714 /* RateTutorial */ = {
+			isa = PBXGroup;
+			children = (
+				090E30461FBE92790071F714 /* RateTutorialViewController.swift */,
+				090E30421FBE90E10071F714 /* RateTutorialItem.xib */,
+				090E30441FBE918D0071F714 /* RateTutorialItemView.swift */,
+				090E30401FBE6A5B0071F714 /* RateTutorial.storyboard */,
+			);
+			path = RateTutorial;
 			sourceTree = "<group>";
 		};
 		094ABEFB1FA7E85F00BA23AB = {
@@ -437,7 +458,9 @@
 				09A958B41FAE3C5B000DD9AF /* default.realm in Resources */,
 				0910BB3A1FAD28EE006AEA85 /* CategoryCellXib.xib in Resources */,
 				094ABF121FA7E85F00BA23AB /* LaunchScreen.storyboard in Resources */,
+				090E30411FBE6A5B0071F714 /* RateTutorial.storyboard in Resources */,
 				09C899D81FB539BC007A9263 /* SortCellXib.xib in Resources */,
+				090E30431FBE90E10071F714 /* RateTutorialItem.xib in Resources */,
 				094ABF0F1FA7E85F00BA23AB /* Assets.xcassets in Resources */,
 				099F7B831FB2878F0069C73E /* CreateCategoryCellXib.xib in Resources */,
 				094ABF0D1FA7E85F00BA23AB /* Main.storyboard in Resources */,
@@ -630,8 +653,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				090E30471FBE92790071F714 /* RateTutorialViewController.swift in Sources */,
 				094ABF3A1FA7F85200BA23AB /* Model.swift in Sources */,
 				09F2A7681FAE3383001DEBD6 /* RealmInitializer.swift in Sources */,
+				090E30451FBE918D0071F714 /* RateTutorialItemView.swift in Sources */,
 				090C31C41FB38FAC005D9858 /* BalloonView.swift in Sources */,
 				0972A8081FB0FE4D002E9E88 /* AddEditQuestionViewController.swift in Sources */,
 				097F3BD11FB4E964005B6BD1 /* Text.swift in Sources */,
@@ -646,6 +671,7 @@
 				094ABF361FA7EBD100BA23AB /* QuestionDetailViewController.swift in Sources */,
 				0979FA4A1FA80172000BDB5B /* UI.swift in Sources */,
 				099F7B821FB2878F0069C73E /* CreateCategoryCellXib.swift in Sources */,
+				090E303F1FBE5AA70071F714 /* SortMode.swift in Sources */,
 				09C899D71FB539BC007A9263 /* SortCellXib.swift in Sources */,
 				0910BB361FAD23FC006AEA85 /* CategoryTableViewController.swift in Sources */,
 				0910BB3C1FAD30C0006AEA85 /* QuestionTavleViewCell.swift in Sources */,

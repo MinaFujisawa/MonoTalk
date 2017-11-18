@@ -195,6 +195,20 @@ extension QuestionsPageViewController: UIPageViewControllerDataSource {
     }
 }
 
+class RateTutorial {
+    let userDefault = UserDefaults.standard
+    
+    func showRateTurorial() {
+//        let dict = ["firstAnswer": true]
+//        userDefault.register(defaults: dict)
+//        if userDefault.bool(forKey: "firstAnswer") {
+//            // Code
+//            userDefault.set(false, forKey: "firstAnswer")
+//        }
+        
+    }
+}
+
 extension QuestionsPageViewController: UIPageViewControllerDelegate {
     func pageViewController(_ pageViewController: UIPageViewController, didFinishAnimating finished: Bool, previousViewControllers: [UIViewController], transitionCompleted completed: Bool) {
         if (!completed) { return }

@@ -73,7 +73,7 @@ extension UITextView {
         placeholderLabel.textColor = MyColor.placeHolderText.value
         placeholderLabel.tag = 100
 
-        placeholderLabel.isHidden = self.text.characters.count > 0
+        placeholderLabel.isHidden = self.text.count > 0
 
         self.addSubview(placeholderLabel)
         self.resizePlaceholder()

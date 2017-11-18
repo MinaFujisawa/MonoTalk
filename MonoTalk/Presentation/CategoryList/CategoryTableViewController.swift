@@ -23,10 +23,10 @@ class CategoryTableViewController: UITableViewController {
         realm = try! Realm()
 
         categories = realm.objects(Category.self)
-
         tableView.register(UINib(nibName: "CreateCategoryCellXib", bundle: nil), forCellReuseIdentifier: createCategorycellID)
-        
-//        tableView.register(UINib(nibName: "CategoryCellXib", bundle: nil), forCellReuseIdentifier: cellID)
+
+//        let longPressRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(longPress))
+//        self.view.addGestureRecognizer(longPressRecognizer)
 
         // MARK:Observe Results Notifications
         notificationToken = categories.observe { [weak self] (changes: RealmCollectionChange) in
@@ -58,11 +58,33 @@ class CategoryTableViewController: UITableViewController {
         notificationToken?.invalidate()
     }
 
+    //MARK: - Cell order
+//    @objc func longPress(longPressGestureRecognizer: UILongPressGestureRecognizer) {
+//
+//        if longPressGestureRecognizer.state == UIGestureRecognizerState.began {
+//
+//            let touchPoint = longPressGestureRecognizer.location(in: self.view)
+//            if let indexPath = tableView.indexPathForRow(at: touchPoint) {
+//                func tableView(tableView: UITableView, moveRowAtIndexPath sourceIndexPath: NSIndexPath, toIndexPath destinationIndexPath: NSIndexPath) {
+//                    try! realm.write {
+//                        let sourceObject = categories[sourceIndexPath.row]
+//                        categories.remove(at: sourceIndexPath.row)
+//                        categories.insert(sourceObject, at: destinationIndexPath.row)
+//                    }
+//                }
+//
+//                func tableView(tableView: UITableView, canMoveRowAtIndexPath indexPath: NSIndexPath) -> Bool {
+//                    return true
+//                }
+//            }
+//        }
+//    }
+
     // MARK: - Table view data source
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
-    
+
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let headerView = UIView(frame: CGRect(x: 0, y: 0, width: tableView.bounds.size.width, height: 16))
         headerView.backgroundColor = UIColor.white
@@ -135,9 +157,9 @@ extension CategoryTableViewController: UITabBarControllerDelegate {
     }
 
     func showCategoryAlert(isEdit: Bool, category: Category?) {
-        
-        var title  = ""
-        if isEdit{
+
+        var title = ""
+        if isEdit {
             title = "Edit Category"
         } else {
             title = "Create Category"
@@ -197,3 +219,4 @@ extension CategoryTableViewController: UITabBarControllerDelegate {
         present(alert, animated: true, completion: nil)
     }
 }
+

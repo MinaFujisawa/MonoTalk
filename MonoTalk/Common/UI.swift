@@ -10,6 +10,10 @@ import Foundation
 import UIKit
 
 extension UIView {
+    
+    func setCornerRadius() {
+        self.layer.cornerRadius = 5
+    }
 
     func circle() {
         self.layer.cornerRadius = self.frame.height / 2
@@ -29,6 +33,36 @@ extension UIView {
         self.layer.shadowOpacity = 0.3
     }
 }
+
+//extension UILabel {
+//    func setLineSpacing(lineHeightMultiple: CGFloat = 0.0) {
+//        let lineSpacing:CGFloat = 1.5
+//        
+//        guard let labelText = self.text else { return }
+//        
+//        let paragraphStyle = NSMutableParagraphStyle()
+//        paragraphStyle.lineSpacing = lineSpacing
+//        paragraphStyle.lineHeightMultiple = lineHeightMultiple
+//        
+//        // Set alignmnet
+////        let style = NSMutableParagraphStyle()
+////        style.alignment = NSTextAlignment.center
+//        
+//        let attributedString:NSMutableAttributedString
+//        if let labelattributedText = self.attributedText {
+//            attributedString = NSMutableAttributedString(attributedString: labelattributedText)
+//        } else {
+//            attributedString = NSMutableAttributedString(string: labelText)
+//        }
+//        
+//        
+//        
+//        // Line spacing attribute
+//        attributedString.addAttribute(NSAttributedStringKey.paragraphStyle, value:paragraphStyle, range:NSMakeRange(0, attributedString.length))
+//        
+//        self.attributedText = attributedString
+//    }
+//}
 
 extension UITextView {
     func setPadding() {

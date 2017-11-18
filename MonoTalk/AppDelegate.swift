@@ -14,11 +14,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
-
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-//        MyRealm.resetRealm()
         
-        // Check if user opens the app for very first time
+
         let userDefault = UserDefaults.standard
         let dict = ["firstLaunch": true]
         userDefault.register(defaults: dict)
@@ -41,9 +39,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UINavigationBar.appearance().shadowImage = MyColor.border.value.as1ptImage()
         
         // Back button icon
-        let backIcon = UIImage(named: "navi_arrow_back")
+        let backIcon = UIImage(named: "navi_back")
         UINavigationBar.appearance().backIndicatorImage = backIcon
         UINavigationBar.appearance().backIndicatorTransitionMaskImage = backIcon
+        
         
         // Back position
         UIBarButtonItem.appearance().setBackButtonTitlePositionAdjustment(UIOffsetMake(2, 0), for: UIBarMetrics.default)

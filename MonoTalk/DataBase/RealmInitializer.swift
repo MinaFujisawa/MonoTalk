@@ -48,5 +48,7 @@ struct RealmInitializer {
                 }
             }
         }
+        let realmPath = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0] + "/default"
+        try! Realm().writeCopy(toFile: URL(string: realmPath)!, encryptionKey: Data(base64Encoded: "default"))
     }
 }
