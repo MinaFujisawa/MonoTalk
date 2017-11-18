@@ -31,7 +31,8 @@ class QuestionDetailViewController: UIViewController {
     var question: Question!
     var realm: Realm!
     var isShowingBalloon = false
-    var speakGestureReconizer: UITapGestureRecognizer!
+    var speachGestureReconizer: UITapGestureRecognizer!
+    var synthesizer : AVSpeechSynthesizer!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -48,13 +49,11 @@ class QuestionDetailViewController: UIViewController {
         self.view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(closeRateBalloon)))
 
 
-        // Speak
-        speakGestureReconizer = UITapGestureRecognizer(target: self, action: #selector(speak))
-        questionAreaView.addGestureRecognizer(speakGestureReconizer)
-
+        // Speach
+        speachGestureReconizer = UITapGestureRecognizer(target: self, action: #selector(speach))
+        questionAreaView.addGestureRecognizer(speachGestureReconizer)
+        synthesizer = AVSpeechSynthesizer()
     }
-
-
 
     override func viewWillAppear(_ animated: Bool) {
         // Init contents
@@ -73,7 +72,7 @@ class QuestionDetailViewController: UIViewController {
         recordButton.circle()
         recordButton.dropShadow()
         self.view.bringSubview(toFront: recordButton)
-        
+
         let origImage = UIImage(named: "icon_microphone")
         let tintedImage = origImage?.withRenderingMode(.alwaysTemplate)
         recordButton.setImage(tintedImage, for: .normal)
@@ -109,7 +108,7 @@ class QuestionDetailViewController: UIViewController {
         for view in self.scrollView.subviews {
             view.removeFromSuperview()
         }
-        
+
         let width = UIScreen.main.bounds.size.width
         let height = 64
         let marginBottom = 24
@@ -121,7 +120,7 @@ class QuestionDetailViewController: UIViewController {
             scrollView.addSubview(playerView)
         }
         let contentSizeHieght: CGFloat = CGFloat((height + marginBottom) * question.records.count) + 100
-        scrollView.contentSize = CGSize(width: self.view.frame.width, height:contentSizeHieght)
+        scrollView.contentSize = CGSize(width: self.view.frame.width, height: contentSizeHieght)
     }
 
     @objc func rearrangePlayerViews(_ notification: NSNotification) {
@@ -181,7 +180,7 @@ class QuestionDetailViewController: UIViewController {
     }
 
     func showRateBaloon() {
-        questionAreaView.removeGestureRecognizer(speakGestureReconizer)
+        questionAreaView.removeGestureRecognizer(speachGestureReconizer)
         isShowingBalloon = true
 
         // Set up Baloon view base
@@ -234,13 +233,14 @@ class QuestionDetailViewController: UIViewController {
     @objc func closeRateBalloon() {
         balloonView.removeFromSuperview()
         isShowingBalloon = false
-        questionAreaView.addGestureRecognizer(speakGestureReconizer)
+        questionAreaView.addGestureRecognizer(speachGestureReconizer)
     }
 
-    //MARK: Speak Question
-    @objc func speak() {
-        let synthesizer = AVSpeechSynthesizer()
-        let utterance = AVSpeechUtterance(string: question.questionBody)
-        synthesizer.speak(utterance)
+    //MARK: Speach Question
+    @objc func speach() {
+        if !self.synthesizer.isSpeaking {
+            let utterance = AVSpeechUtterance(string: self.question.questionBody)
+            synthesizer.speak(utterance)
+        }
     }
 }
