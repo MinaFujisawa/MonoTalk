@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -20,20 +20,24 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Create Category" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="egx-DZ-PRz">
-                        <rect key="frame" x="49" y="11.5" width="126" height="21"/>
+                        <rect key="frame" x="52" y="11.5" width="126" height="21"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="navi_plus" translatesAutoresizingMaskIntoConstraints="NO" id="AqG-yA-Opd">
-                        <rect key="frame" x="24" y="12.5" width="17" height="17"/>
+                        <rect key="frame" x="28" y="14" width="16" height="16"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="16" id="CQL-Hu-flC"/>
+                            <constraint firstAttribute="height" constant="16" id="mZx-ll-lfu"/>
+                        </constraints>
                     </imageView>
                 </subviews>
                 <constraints>
                     <constraint firstItem="egx-DZ-PRz" firstAttribute="leading" secondItem="AqG-yA-Opd" secondAttribute="trailing" constant="8" id="3fY-IS-COK"/>
                     <constraint firstItem="AqG-yA-Opd" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="Dax-lv-znd"/>
                     <constraint firstItem="egx-DZ-PRz" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="JxQ-0I-6P1"/>
-                    <constraint firstItem="AqG-yA-Opd" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="16" id="bAK-hj-5z9"/>
+                    <constraint firstItem="AqG-yA-Opd" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="12" id="bAK-hj-5z9"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
@@ -44,6 +48,6 @@
         </tableViewCell>
     </objects>
     <resources>
-        <image name="navi_plus" width="17" height="17"/>
+        <image name="navi_plus" width="20" height="20"/>
     </resources>
 </document>
