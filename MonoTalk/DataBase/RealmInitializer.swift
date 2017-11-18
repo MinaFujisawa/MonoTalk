@@ -25,12 +25,15 @@ struct RealmInitializer {
             let questionBody = row[1]
             
             if categoryNames.contains(categoryName) {
+                guard let categoryIndex = categoryNames.index(of: categoryName) else { return }
+                let category = categoris[categoryIndex]
+                
                 let question = Question()
                 question.questionBody = questionBody
-                guard let categoryIndex = categoryNames.index(of: categoryName) else { return }
+                question.categoryID = category.id
                 
                 try! realm.write {
-                    categoris[categoryIndex].questions.append(question)
+                    category.questions.append(question)
                 }
             } else{
                 let category = Category()
@@ -38,6 +41,7 @@ struct RealmInitializer {
                 
                 let question = Question()
                 question.questionBody = questionBody
+                question.categoryID = category.id
                 category.questions.append(question)
                 
                 categoryNames.append(categoryName)
