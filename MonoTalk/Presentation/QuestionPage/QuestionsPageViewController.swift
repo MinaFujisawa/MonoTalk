@@ -15,7 +15,6 @@ class QuestionsPageViewController: UIPageViewController {
     var questions: Results<Question>?
     var sortMode : SortMode!
     var categoryID: String!
-    var notificationToken: NotificationToken? = nil
     var realm: Realm!
 
     var pageCollection = [UIViewController]()
@@ -29,19 +28,6 @@ class QuestionsPageViewController: UIPageViewController {
         realm = try! Realm()
         let category = realm.object(ofType: Category.self, forPrimaryKey: categoryID)
         questions = category?.questions.sorted(byKeyPath: sortMode.rawValue, ascending: sortMode.acsending)
-        
-        // MARK:Observe Results Notifications
-        guard let questions = questions else { return }
-        notificationToken = questions.observe { [weak self] (changes: RealmCollectionChange) in
-            switch changes {
-            case .initial:
-                break
-            case .update:
-                self?.setNoteIcon()
-            case .error(let error):
-                fatalError("\(error)")
-            }
-        }
 
         setUp()
         setUpNavigationBarItems()
@@ -67,42 +53,13 @@ class QuestionsPageViewController: UIPageViewController {
     }
 
     func setUpNavigationBarItems() {
-        let noteBarButton = UIBarButtonItem()
-
         let menuButton = UIButton(type: UIButtonType.custom)
         menuButton.setImage(UIImage(named: "navi_menu"), for: .normal)
         menuButton.addTarget(self, action: #selector(menuButtonPressed), for: .touchUpInside)
         menuButton.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
         let menuBarButton = UIBarButtonItem(customView: menuButton)
 
-        self.navigationItem.setRightBarButtonItems([menuBarButton, noteBarButton], animated: false)
-        
-        setNoteIcon()
-    }
-    
-    // Change note icon based on it's nil or not
-    func setNoteIcon() {
-        let noteButton = UIButton(type: UIButtonType.custom)
-        noteButton.addTarget(self, action: #selector(noteButtonPressed), for: .touchUpInside)
-        noteButton.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
-        
-        var noteIcon = UIImage()
-        if let questions = questions {
-            let currentQuestion = questions[self.currentIndex]
-            if currentQuestion.note != nil {
-                noteIcon = UIImage(named: "navi_note_badge")!
-            } else {
-                noteIcon = UIImage(named: "navi_note")!
-            }
-        }
-        noteButton.setImage(noteIcon, for: .normal)
-        self.navigationItem.rightBarButtonItems![1].customView = noteButton
-    }
-    
-
-
-    @objc func noteButtonPressed() {
-        performSegue(withIdentifier: "GoToNote", sender: nil)
+        self.navigationItem.setRightBarButtonItems([menuBarButton], animated: false)
     }
 
     // MARK: Action sheet
@@ -161,13 +118,6 @@ class QuestionsPageViewController: UIPageViewController {
                 editVC.existingQuestion = questions[self.currentIndex]
             }
         }
-        if segue.identifier == "GoToNote" {
-            let nav = segue.destination as! UINavigationController
-            let noteVC = nav.topViewController as! NoteViewController
-            if let questions = questions {
-                noteVC.question = questions[self.currentIndex]
-            }
-        }
     }
 
     func setTitle(index: Int) {
@@ -195,20 +145,6 @@ extension QuestionsPageViewController: UIPageViewControllerDataSource {
     }
 }
 
-class RateTutorial {
-    let userDefault = UserDefaults.standard
-    
-    func showRateTurorial() {
-//        let dict = ["firstAnswer": true]
-//        userDefault.register(defaults: dict)
-//        if userDefault.bool(forKey: "firstAnswer") {
-//            // Code
-//            userDefault.set(false, forKey: "firstAnswer")
-//        }
-        
-    }
-}
-
 extension QuestionsPageViewController: UIPageViewControllerDelegate {
     func pageViewController(_ pageViewController: UIPageViewController, didFinishAnimating finished: Bool, previousViewControllers: [UIViewController], transitionCompleted completed: Bool) {
         if (!completed) { return }
@@ -218,7 +154,5 @@ extension QuestionsPageViewController: UIPageViewControllerDelegate {
         guard let index = pageCollection.index(of: viewController) else { return }
         currentIndex = index
         setTitle(index: currentIndex)
-        
-        setNoteIcon()
     }
 }

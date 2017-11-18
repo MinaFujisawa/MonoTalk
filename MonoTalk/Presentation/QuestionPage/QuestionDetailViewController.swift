@@ -14,15 +14,17 @@ class QuestionDetailViewController: UIViewController {
 
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var questionAreaView: UIView!
-    @IBAction func noteButton(_ sender: Any) {
-    }
     @IBOutlet weak var recordButton: UIButton!
     @IBOutlet weak var categoryLabel: UILabel!
     @IBOutlet weak var rateButton: UIButton!
     @IBOutlet weak var starButton: UIButton!
+    @IBOutlet weak var noteButton: UIButton!
     @IBOutlet weak var questionLabel: UILabel!
+    
+    var notificationToken: NotificationToken? = nil
     var balloonView = UIView()
-
+    
+    
     let cellID = "PlayerCell"
     let notificationIdDismssedModel = "dismissedModal"
     let notaificationIdDeleted = "deleted"
@@ -32,20 +34,20 @@ class QuestionDetailViewController: UIViewController {
     var realm: Realm!
     var isShowingBalloon = false
     var speachGestureReconizer: UITapGestureRecognizer!
-    var synthesizer : AVSpeechSynthesizer!
+    var synthesizer: AVSpeechSynthesizer!
 
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpUI()
         realm = try! Realm()
 
-        // From model
+        // Notification From model
         NotificationCenter.default.addObserver(self, selector: #selector(self.setPlayerViews), name: NSNotification.Name(rawValue: notificationIdDismssedModel), object: nil)
 
         // From player xib
         NotificationCenter.default.addObserver(self, selector: #selector(self.rearrangePlayerViews(_:)), name: NSNotification.Name(rawValue: notaificationIdDeleted), object: nil)
 
-        // Close Rate Balloon
+        // Gesture to Close Rate Balloon
         self.view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(closeRateBalloon)))
 
 
@@ -53,6 +55,22 @@ class QuestionDetailViewController: UIViewController {
         speachGestureReconizer = UITapGestureRecognizer(target: self, action: #selector(speach))
         questionAreaView.addGestureRecognizer(speachGestureReconizer)
         synthesizer = AVSpeechSynthesizer()
+        
+        // MARK:Observe Results Notifications
+        notificationToken = question.observe { [weak self] (changes: ObjectChange) in
+            switch changes {
+            case .error(let error):
+                fatalError("\(error)")
+            case .change(_):
+                self?.setNoteButtonIcon()
+            case .deleted:
+                break
+            }
+        }
+    }
+    
+    deinit {
+        notificationToken?.invalidate()
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -79,6 +97,7 @@ class QuestionDetailViewController: UIViewController {
         recordButton.tintColor = .white
 
         // Star
+        starButton.setImageAspectFit()
         if question.isFavorited {
             starButton.setImage(UIImage(named: "icon_star_filled"), for: .normal)
         } else {
@@ -87,6 +106,10 @@ class QuestionDetailViewController: UIViewController {
 
         // Rate
         rateButton.setImage(Question.Rate.allValues[question.rate].rateImage, for: .normal)
+        
+        // Note
+        noteButton.setImageAspectFit()
+        setNoteButtonIcon()
 
         // Text
         questionLabel.textColor = MyColor.theme.value
@@ -94,12 +117,25 @@ class QuestionDetailViewController: UIViewController {
         categoryLabel.textColor = MyColor.darkText.value
         categoryLabel.font = UIFont.systemFont(ofSize: TextSize.small.rawValue)
     }
+    
+    func setNoteButtonIcon() {
+        if question.note != nil {
+            noteButton.setImage(UIImage(named: "icon_note_badge"), for: .normal)
+        } else {
+            noteButton.setImage(UIImage(named: "icon_note_badge_none"), for: .normal)
+        }
+    }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if (segue.identifier == "recoder") {
             let modal = segue.destination as! RecorderModalViewController
             modal.questionId = question.id
             modal.notificationIdDismssedModel = notificationIdDismssedModel
+        }
+        if segue.identifier == "GoToNote" {
+            let nav = segue.destination as! UINavigationController
+            let noteVC = nav.topViewController as! NoteViewController
+            noteVC.question = question
         }
     }
 

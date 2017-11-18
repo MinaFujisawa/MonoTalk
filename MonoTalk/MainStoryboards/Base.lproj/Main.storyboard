@@ -30,10 +30,10 @@
                                 <rect key="frame" x="0.0" y="20" width="375" height="200"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="b06-qE-cl2">
-                                        <rect key="frame" x="327" y="16" width="24" height="22"/>
+                                        <rect key="frame" x="339" y="16" width="20" height="18"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="22" id="KB2-b8-i5a"/>
-                                            <constraint firstAttribute="width" constant="24" id="iAh-eN-CRy"/>
+                                            <constraint firstAttribute="height" constant="18" id="KB2-b8-i5a"/>
+                                            <constraint firstAttribute="width" constant="20" id="iAh-eN-CRy"/>
                                         </constraints>
                                         <state key="normal" image="icon_star_outline"/>
                                         <connections>
@@ -41,16 +41,16 @@
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1PV-b5-a8j">
-                                        <rect key="frame" x="24" y="16" width="247" height="22"/>
+                                        <rect key="frame" x="16" y="16" width="227" height="18"/>
                                         <fontDescription key="fontDescription" type="system" weight="medium" pointSize="13"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hc6-U5-Eoc">
-                                        <rect key="frame" x="287" y="15" width="24" height="24"/>
+                                        <rect key="frame" x="299" y="15" width="20" height="20"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="24" id="8dN-f3-Dkj"/>
-                                            <constraint firstAttribute="width" constant="24" id="v64-0v-nrK"/>
+                                            <constraint firstAttribute="height" constant="20" id="8dN-f3-Dkj"/>
+                                            <constraint firstAttribute="width" constant="20" id="v64-0v-nrK"/>
                                         </constraints>
                                         <state key="normal" image="rate_soso"/>
                                         <connections>
@@ -58,38 +58,50 @@
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="If you were rich and something something, would you help poor poeple?And Whey would you think so?" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9gI-nY-cO2">
-                                        <rect key="frame" x="24" y="54" width="327" height="114"/>
+                                        <rect key="frame" x="24" y="50" width="327" height="118"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2jA-sb-gSS">
+                                        <rect key="frame" x="259" y="14" width="20" height="20"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="20" id="8aP-Rp-fHW"/>
+                                            <constraint firstAttribute="height" constant="20" id="FbE-0p-u7l"/>
+                                        </constraints>
+                                        <state key="normal" image="icon_note_badge_none"/>
+                                        <connections>
+                                            <segue destination="LN8-ap-TyE" kind="presentation" identifier="GoToNote" id="zFY-3B-Owx"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstItem="1PV-b5-a8j" firstAttribute="centerY" secondItem="hc6-U5-Eoc" secondAttribute="centerY" id="1Tv-WA-wD9"/>
                                     <constraint firstItem="b06-qE-cl2" firstAttribute="top" secondItem="H99-O6-PSB" secondAttribute="top" constant="16" id="3t7-cR-6eP"/>
-                                    <constraint firstItem="1PV-b5-a8j" firstAttribute="leading" secondItem="H99-O6-PSB" secondAttribute="leading" constant="24" id="9hd-hS-KKZ"/>
-                                    <constraint firstAttribute="trailing" secondItem="b06-qE-cl2" secondAttribute="trailing" constant="24" id="A5m-wE-umo"/>
+                                    <constraint firstItem="2jA-sb-gSS" firstAttribute="top" secondItem="hc6-U5-Eoc" secondAttribute="top" constant="-1" id="8f8-um-DlB"/>
+                                    <constraint firstItem="1PV-b5-a8j" firstAttribute="leading" secondItem="H99-O6-PSB" secondAttribute="leading" constant="16" id="9hd-hS-KKZ"/>
+                                    <constraint firstAttribute="trailing" secondItem="b06-qE-cl2" secondAttribute="trailing" constant="16" id="A5m-wE-umo"/>
                                     <constraint firstItem="1PV-b5-a8j" firstAttribute="top" secondItem="H99-O6-PSB" secondAttribute="top" constant="16" id="DPm-WD-hvm"/>
                                     <constraint firstItem="b06-qE-cl2" firstAttribute="centerY" secondItem="1PV-b5-a8j" secondAttribute="centerY" id="Dmv-wV-LtS"/>
                                     <constraint firstAttribute="trailing" secondItem="9gI-nY-cO2" secondAttribute="trailing" constant="24" id="JAf-hV-aTM"/>
-                                    <constraint firstItem="hc6-U5-Eoc" firstAttribute="leading" secondItem="1PV-b5-a8j" secondAttribute="trailing" constant="16" id="b3a-sy-jRu"/>
+                                    <constraint firstItem="2jA-sb-gSS" firstAttribute="leading" secondItem="1PV-b5-a8j" secondAttribute="trailing" constant="16" id="bAt-sK-cUA"/>
                                     <constraint firstAttribute="height" constant="200" id="ftB-t7-Bd1"/>
                                     <constraint firstAttribute="bottom" secondItem="9gI-nY-cO2" secondAttribute="bottom" constant="32" id="hex-5A-czW"/>
                                     <constraint firstItem="9gI-nY-cO2" firstAttribute="leading" secondItem="H99-O6-PSB" secondAttribute="leading" constant="24" id="mN7-Xu-xh5"/>
-                                    <constraint firstItem="b06-qE-cl2" firstAttribute="leading" secondItem="hc6-U5-Eoc" secondAttribute="trailing" constant="16" id="nOP-7V-xms"/>
+                                    <constraint firstItem="b06-qE-cl2" firstAttribute="leading" secondItem="hc6-U5-Eoc" secondAttribute="trailing" constant="20" id="nOP-7V-xms"/>
                                     <constraint firstItem="9gI-nY-cO2" firstAttribute="top" secondItem="b06-qE-cl2" secondAttribute="bottom" constant="16" id="r2J-0i-g8z"/>
+                                    <constraint firstItem="hc6-U5-Eoc" firstAttribute="leading" secondItem="2jA-sb-gSS" secondAttribute="trailing" constant="20" id="w2g-ik-z0t"/>
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4Zs-Z1-Pod">
-                                <rect key="frame" x="112.5" y="599" width="150" height="44"/>
+                                <rect key="frame" x="112.5" y="603" width="150" height="40"/>
                                 <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="44" id="BOG-VD-ARX"/>
+                                    <constraint firstAttribute="height" constant="40" id="BOG-VD-ARX"/>
                                     <constraint firstAttribute="width" constant="150" id="uBD-ZJ-Mt3"/>
                                 </constraints>
                                 <inset key="titleEdgeInsets" minX="0.0" minY="-1" maxX="0.0" maxY="0.0"/>
-                                <inset key="imageEdgeInsets" minX="0.0" minY="1" maxX="0.0" maxY="0.0"/>
                                 <state key="normal" title="  Answer" image="icon_microphone"/>
                                 <connections>
                                     <segue destination="VDQ-qS-3oC" kind="presentation" identifier="recoder" id="WlJ-xN-Ago"/>
@@ -116,6 +128,7 @@
                     <navigationItem key="navigationItem" id="1Xp-km-1cd"/>
                     <connections>
                         <outlet property="categoryLabel" destination="1PV-b5-a8j" id="Hed-Cx-PRM"/>
+                        <outlet property="noteButton" destination="2jA-sb-gSS" id="z5O-CF-WCN"/>
                         <outlet property="questionAreaView" destination="H99-O6-PSB" id="hxz-l0-yeY"/>
                         <outlet property="questionLabel" destination="9gI-nY-cO2" id="e64-oC-XmK"/>
                         <outlet property="rateButton" destination="hc6-U5-Eoc" id="q7O-ii-F5A"/>
@@ -439,7 +452,6 @@
                     <navigationItem key="navigationItem" title="title" id="pV6-jE-t94"/>
                     <connections>
                         <segue destination="WrU-IG-9PQ" kind="presentation" identifier="GoToEdit" id="Gr9-Mh-UhM"/>
-                        <segue destination="LN8-ap-TyE" kind="presentation" identifier="GoToNote" id="EcE-E7-4hJ"/>
                     </connections>
                 </pageViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rRq-46-dAx" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -498,7 +510,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UYs-QX-OSY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5561" y="493"/>
+            <point key="canvasLocation" x="5630" y="-237"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="RDl-KD-yAT">
@@ -552,12 +564,13 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wxq-fg-JF3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4766" y="493"/>
+            <point key="canvasLocation" x="4838" y="-237"/>
         </scene>
     </scenes>
     <resources>
         <image name="icon_microphone" width="15" height="22"/>
         <image name="icon_note" width="18" height="21"/>
+        <image name="icon_note_badge_none" width="21" height="25"/>
         <image name="icon_record_ok" width="21" height="16"/>
         <image name="icon_record_stop" width="24" height="24"/>
         <image name="icon_star_filled" width="25" height="23"/>
