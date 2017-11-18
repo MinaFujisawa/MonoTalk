@@ -8,6 +8,7 @@
 
 import UIKit
 import RealmSwift
+import AVFoundation
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -16,7 +17,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
-
+        // Load seed data when first launch
         let userDefault = UserDefaults.standard
         let dict = ["firstLaunch": true]
         userDefault.register(defaults: dict)
@@ -24,6 +25,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             RealmInitializer.setUp()
             userDefault.set(false, forKey: "firstLaunch")
         }
+        
+        // Request access to michrophone
+        AVCaptureDevice.requestAccess(for: .audio, completionHandler: {(granted: Bool) in})
         
         setNaviBarStyle()
         return true
