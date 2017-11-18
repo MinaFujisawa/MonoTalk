@@ -86,7 +86,7 @@ class CategoryTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let headerView = UIView(frame: CGRect(x: 0, y: 0, width: tableView.bounds.size.width, height: 16))
+        let headerView = UIView(frame: CGRect(x: 0, y: 0, width: tableView.bounds.size.width, height: 0))
         headerView.backgroundColor = UIColor.white
         return headerView
     }
@@ -131,18 +131,27 @@ extension CategoryTableViewController: UITabBarControllerDelegate {
 
     // MARK: Edit actions
     override func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
-        let deleteAction = UITableViewRowAction(style: .default, title: "Delete") { (action, indexPath) -> Void in
-            self.isEditing = false
-            self.deleteAlerm(deleteItem: self.categories[indexPath.row])
-        }
-        deleteAction.backgroundColor = MyColor.red.value
+        if indexPath.row < categories.count {
+            let deleteAction = UITableViewRowAction(style: .default, title: "Delete") { (action, indexPath) -> Void in
+                self.isEditing = false
+                self.deleteAlerm(deleteItem: self.categories[indexPath.row])
+            }
+            deleteAction.backgroundColor = MyColor.red.value
 
-        let renameAction = UITableViewRowAction(style: .default, title: "Edit") { (action, indexPath) -> Void in
-            self.isEditing = false
-            self.showCategoryAlert(isEdit: true, category: self.categories[indexPath.row])
+            let renameAction = UITableViewRowAction(style: .default, title: "Edit") { (action, indexPath) -> Void in
+                self.isEditing = false
+                self.showCategoryAlert(isEdit: true, category: self.categories[indexPath.row])
+            }
+            renameAction.backgroundColor = MyColor.lightText.value
+            return [deleteAction, renameAction]
+        } else {
+            return .none
         }
-        renameAction.backgroundColor = MyColor.lightText.value
-        return [deleteAction, renameAction]
+    }
+    
+    // Disable swipe to delete for Create cell
+    override func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCellEditingStyle {
+        return .none
     }
 
 
@@ -203,7 +212,7 @@ extension CategoryTableViewController: UITabBarControllerDelegate {
 
     // MARK: Delete Category
     func deleteAlerm(deleteItem: Category) {
-        let message = deleteItem.name + "will be deleted forever."
+        let message = deleteItem.name + " will be deleted forever."
         let alert: UIAlertController = UIAlertController(title: nil, message: message, preferredStyle: .actionSheet)
         let cancel = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
 
