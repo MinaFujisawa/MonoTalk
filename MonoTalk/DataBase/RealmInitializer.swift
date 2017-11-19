@@ -17,14 +17,12 @@ struct RealmInitializer {
         // Read Category CSV
         let categoriesPath: String = Bundle.main.path(forResource: "seed_categories", ofType: "csv")!
         let categoriesStream = InputStream(fileAtPath: categoriesPath)!
-        var categoris = [Category]()
 
         for row in try! CSV(stream: categoriesStream, hasHeaderRow: true) {
             let category = Category()
             category.id = row[0]
             category.name = row[1]
             category.imageName = row[2]
-            categoris.append(category)
 
             try! realm.write {
                 realm.add(category)

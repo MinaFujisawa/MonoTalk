@@ -17,10 +17,6 @@ class CreateCategoryCellXib: UITableViewCell {
         label.font = UIFont.systemFont(ofSize: TextSize.normal.rawValue)
         iconImage.image = iconImage.image?.withRenderingMode(.alwaysTemplate)
         iconImage.tintColor = MyColor.theme.value
-        
-        self.preservesSuperviewLayoutMargins = false
-        self.separatorInset = UIEdgeInsets.zero
-        self.layoutMargins = UIEdgeInsets.zero
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

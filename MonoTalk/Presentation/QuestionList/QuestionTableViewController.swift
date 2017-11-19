@@ -128,7 +128,7 @@ extension QuestionTableViewController: UITableViewDataSource {
             if indexPath.row == questions.count {
                 cell.separatorInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
             } else {
-                cell.separatorInset = UIEdgeInsets(top: 0, left: 24, bottom: 0, right: 0)
+                cell.separatorInset = UIEdgeInsets(top: 0, left: 20, bottom: 0, right: 0)
             }
 
             return cell

@@ -10,10 +10,10 @@ import Foundation
 import UIKit
 
 enum TextSize: CGFloat {
-    case normal = 17
-    case heading = 15
-    case small = 12
-    case questionBody = 19
+    case normal = 16
+    case heading = 14
+    case small = 11
+    case questionBody = 18
 }
 
 extension String {

@@ -14,7 +14,7 @@ import RealmSwift
 class Category: Object {
     @objc dynamic var id = UUID().uuidString
     @objc dynamic var name = ""
-    var imageName = ""
+    @objc dynamic var imageName = ""
     var questions = List<Question>()
     override static func primaryKey() -> String? {
         return "id"

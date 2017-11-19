@@ -25,9 +25,6 @@ class CategoryTableViewController: UITableViewController {
         categories = realm.objects(Category.self)
         tableView.register(UINib(nibName: "CreateCategoryCellXib", bundle: nil), forCellReuseIdentifier: createCategorycellID)
 
-//        let longPressRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(longPress))
-//        self.view.addGestureRecognizer(longPressRecognizer)
-
         // MARK:Observe Results Notifications
         notificationToken = categories.observe { [weak self] (changes: RealmCollectionChange) in
             guard let tableView = self?.tableView else { return }
@@ -49,47 +46,15 @@ class CategoryTableViewController: UITableViewController {
         }
     }
 
-    func setUpUI() {
-        tableView.separatorStyle = UITableViewCellSeparatorStyle.none
-        tableView.bounces = true
-    }
-
     deinit {
         notificationToken?.invalidate()
     }
-
-    //MARK: - Cell order
-//    @objc func longPress(longPressGestureRecognizer: UILongPressGestureRecognizer) {
-//
-//        if longPressGestureRecognizer.state == UIGestureRecognizerState.began {
-//
-//            let touchPoint = longPressGestureRecognizer.location(in: self.view)
-//            if let indexPath = tableView.indexPathForRow(at: touchPoint) {
-//                func tableView(tableView: UITableView, moveRowAtIndexPath sourceIndexPath: NSIndexPath, toIndexPath destinationIndexPath: NSIndexPath) {
-//                    try! realm.write {
-//                        let sourceObject = categories[sourceIndexPath.row]
-//                        categories.remove(at: sourceIndexPath.row)
-//                        categories.insert(sourceObject, at: destinationIndexPath.row)
-//                    }
-//                }
-//
-//                func tableView(tableView: UITableView, canMoveRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-//                    return true
-//                }
-//            }
-//        }
-//    }
 
     // MARK: - Table view data source
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
 
-//    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-//        let headerView = UIView(frame: CGRect(x: 0, y: 0, width: tableView.bounds.size.width, height: 0))
-//        headerView.backgroundColor = UIColor.white
-//        return headerView
-//    }
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         return ""
     }
@@ -103,13 +68,24 @@ class CategoryTableViewController: UITableViewController {
             // Create Category Cell
             tableView.deselectRow(at: indexPath, animated: true)
             let cell = tableView.dequeueReusableCell(withIdentifier: createCategorycellID, for: indexPath) as! CreateCategoryCellXib
+
+            cell.separatorInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
             return cell
         } else {
             // Normal Cells
             let cell = tableView.dequeueReusableCell(withIdentifier: cellID, for: indexPath) as! CategoryTableViewCell
             let category = categories[indexPath.row]
             cell.nameLabel.text = category.name
-            cell.numTextView.text = String(category.questions.count)
+            // TODO: add
+            cell.fileSizeLabel.text = "00 KB"
+            cell.questionNumLabel.text = String(category.questions.count) + " Questions"
+            cell.categoryImageView.image = UIImage(named: category.imageName)
+            
+            // TODO: fix
+            if indexPath.row < categories.count-1 {
+                cell.separatorInset = UIEdgeInsets(top: 0, left: 20, bottom: 0, right: 0)
+            }
+
             return cell
         }
     }
@@ -128,6 +104,13 @@ class CategoryTableViewController: UITableViewController {
 
 
 extension CategoryTableViewController: UITabBarControllerDelegate {
+    // MARK: Cell height
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        if indexPath.row == categories.count {
+            return 48
+        }
+        return 88
+    }
 
     // MARK: Edit actions
     override func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
@@ -148,7 +131,7 @@ extension CategoryTableViewController: UITabBarControllerDelegate {
             return .none
         }
     }
-    
+
     // Disable swipe to delete for Create cell
     override func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCellEditingStyle {
         return .none
