@@ -13,46 +13,42 @@ import CSV
 struct RealmInitializer {
     static func setUp() {
         let realm = try! Realm()
-        
-        let path : String = Bundle.main.path(forResource: "seed", ofType: "csv")!
-        let stream = InputStream(fileAtPath: path)!
-        var categoryNames = [String]()
+
+        // Read Category CSV
+        let categoriesPath: String = Bundle.main.path(forResource: "seed_categories", ofType: "csv")!
+        let categoriesStream = InputStream(fileAtPath: categoriesPath)!
         var categoris = [Category]()
+
+        for row in try! CSV(stream: categoriesStream, hasHeaderRow: true) {
+            let category = Category()
+            category.id = row[0]
+            category.name = row[1]
+            category.imageName = row[2]
+            categoris.append(category)
+
+            try! realm.write {
+                realm.add(category)
+            }
+        }
         
-        // Read CSV
-        for row in try! CSV(stream: stream, hasHeaderRow: true) {
-            let categoryName = row[0]
-            let questionBody = row[1]
+        // Read Questions CSV
+        let questionsPath: String = Bundle.main.path(forResource: "seed_questions", ofType: "csv")!
+        let questionsStream = InputStream(fileAtPath: questionsPath)!
+        
+        for row in try! CSV(stream: questionsStream, hasHeaderRow: true) {
+            let question = Question()
+            question.categoryID = row[0]
+            question.questionBody = row[2]
             
-            if categoryNames.contains(categoryName) {
-                guard let categoryIndex = categoryNames.index(of: categoryName) else { return }
-                let category = categoris[categoryIndex]
-                
-                let question = Question()
-                question.questionBody = questionBody
-                question.categoryID = category.id
-                
+            if let category = realm.object(ofType: Category.self, forPrimaryKey: row[0]) {
                 try! realm.write {
                     category.questions.append(question)
                 }
-            } else{
-                let category = Category()
-                category.name = categoryName
-                
-                let question = Question()
-                question.questionBody = questionBody
-                question.categoryID = category.id
-                category.questions.append(question)
-                
-                categoryNames.append(categoryName)
-                categoris.append(category)
-                
-                try! realm.write {
-                    realm.add(category)
-                }
             }
         }
+        
         let realmPath = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0] + "/default"
         try! Realm().writeCopy(toFile: URL(string: realmPath)!, encryptionKey: Data(base64Encoded: "default"))
     }
 }
+
