@@ -34,6 +34,13 @@ extension UIView {
     }
 }
 
+extension UIImageView {
+    func setTintColor(_ color : UIColor) {
+        self.image = self.image?.withRenderingMode(.alwaysTemplate)
+        self.tintColor = color
+    }
+}
+
 extension UIButton {
     func setImageAspectFit() {
         self.imageView?.contentMode = .scaleAspectFit

@@ -52,7 +52,7 @@
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Start" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="BBS-Vh-99U">
+                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="Start" textAlignment="center" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BBS-Vh-99U">
                         <rect key="frame" x="301" y="34.5" width="46" height="20"/>
                         <color key="backgroundColor" red="0.70191564269999995" green="0.32217916279999997" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>

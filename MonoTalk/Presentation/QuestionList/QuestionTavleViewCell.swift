@@ -24,7 +24,7 @@ class QuestionTavleViewCell: UITableViewCell {
         // Label
         questionLabel.textColor = MyColor.darkText.value
         questionLabel.font = UIFont.systemFont(ofSize: TextSize.normal.rawValue)
-        questionLabel.font = UIFont.boldSystemFont(ofSize: questionLabel.font.pointSize)
+//        questionLabel.font = UIFont.boldSystemFont(ofSize: questionLabel.font.pointSize)
 
         recordNumLabel.textColor = MyColor.lightText.value
         recordNumLabel.font = UIFont.systemFont(ofSize: TextSize.small.rawValue)

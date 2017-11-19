@@ -10,15 +10,22 @@ import UIKit
 
 class SortCellXib: UITableViewCell {
 
+    
+    @IBOutlet weak var arrowIconImageView: UIImageView!
+    @IBOutlet weak var sortIconImageView: UIImageView!
     @IBOutlet weak var sortLabel: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        sortLabel.textColor = MyColor.darkText.value
+        sortLabel.textColor = MyColor.lightText.value
         sortLabel.font = UIFont.systemFont(ofSize: TextSize.heading.rawValue)
         self.preservesSuperviewLayoutMargins = false
         self.separatorInset = UIEdgeInsets.zero
         self.layoutMargins = UIEdgeInsets.zero
+        
+        // Icons
+        sortIconImageView.setTintColor(MyColor.lightText.value)
+        arrowIconImageView.setTintColor(MyColor.lightText.value)
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

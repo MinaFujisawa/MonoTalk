@@ -15,8 +15,8 @@ class CreateCategoryCellXib: UITableViewCell {
         super.awakeFromNib()
         label.textColor = MyColor.theme.value
         label.font = UIFont.systemFont(ofSize: TextSize.normal.rawValue)
-        iconImage.image = iconImage.image?.withRenderingMode(.alwaysTemplate)
-        iconImage.tintColor = MyColor.theme.value
+        
+        iconImage.setTintColor(MyColor.theme.value)
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

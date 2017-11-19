@@ -51,6 +51,8 @@
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
+                <outlet property="arrowIconImageView" destination="65g-ch-wwM" id="yzF-Ce-PF0"/>
+                <outlet property="sortIconImageView" destination="X19-G0-cuw" id="yhH-gJ-YXV"/>
                 <outlet property="sortLabel" destination="f8e-GW-Scp" id="7wD-hP-1fn"/>
             </connections>
         </tableViewCell>
