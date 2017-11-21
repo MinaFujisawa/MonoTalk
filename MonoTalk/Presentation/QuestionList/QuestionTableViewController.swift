@@ -58,6 +58,7 @@ class QuestionTableViewController: UIViewController {
         tableView.estimatedRowHeight = 100
         // Navigation bar
         addButton.image = UIImage(named: "navi_plus")!
+
     }
 
     deinit {
