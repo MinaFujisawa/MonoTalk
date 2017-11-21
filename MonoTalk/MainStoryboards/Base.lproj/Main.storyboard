@@ -232,7 +232,7 @@
             </objects>
             <point key="canvasLocation" x="3804" y="-237.03148425787109"/>
         </scene>
-        <!--MonoTalk-->
+        <!--Categories-->
         <scene sceneID="iLF-ZJ-767">
             <objects>
                 <tableViewController automaticallyAdjustsScrollViewInsets="NO" id="vyT-sE-zbd" customClass="CategoryTableViewController" customModule="MonoTalk" customModuleProvider="target" sceneMemberID="viewController">
@@ -258,7 +258,7 @@
                             <outlet property="delegate" destination="vyT-sE-zbd" id="MwE-E6-VZO"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="MonoTalk" id="4us-Fl-WAT">
+                    <navigationItem key="navigationItem" title="Categories" id="4us-Fl-WAT">
                         <barButtonItem key="backBarButtonItem" title=" " id="dNW-ai-DPu"/>
                     </navigationItem>
                 </tableViewController>
