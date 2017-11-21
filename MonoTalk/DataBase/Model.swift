@@ -56,7 +56,7 @@ class Question: Object {
                 return UIImage(named: "rate_bad")!
             }
         }
-        
+
         var tutorialText: String {
             switch self {
             case .great:
@@ -89,6 +89,7 @@ class Question: Object {
 class Record: Object {
     @objc dynamic var id = ""
     @objc dynamic var date = Date()
+    @objc dynamic var fileSize: Int64 = 0
     override static func primaryKey() -> String? {
         return "id"
     }

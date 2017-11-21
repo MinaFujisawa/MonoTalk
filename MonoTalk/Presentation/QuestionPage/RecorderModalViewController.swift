@@ -36,6 +36,7 @@ class RecorderModalViewController: UIViewController {
         setUpUI()
         okButton.isHidden = true
         deleteButton.isHidden = true
+//        self.transitioningDelegate = self
 
         // Set up recordingSession
         recordingSession = AVAudioSession.sharedInstance()
@@ -54,6 +55,8 @@ class RecorderModalViewController: UIViewController {
         } catch {
             print("failed to record!")
         }
+        
+        
     }
 
     func setUpUI() {
@@ -187,6 +190,12 @@ class RecorderModalViewController: UIViewController {
         // MARK: Save the record to DB
         let newRecord = Record()
         newRecord.id = id
+        do {
+            let resources = try getFileURL().resourceValues(forKeys:[.fileSizeKey])
+            newRecord.fileSize = Int64(resources.fileSize!)
+        } catch {
+            print("Error: \(error)")
+        }
 
         realm = try! Realm()
 
@@ -202,6 +211,16 @@ class RecorderModalViewController: UIViewController {
         dismiss(animated: true, completion: nil)
     }
 }
+
+//extension RecorderModalViewController: UIViewControllerTransitioningDelegate{
+//    func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+//        return SimplePushAnimator()
+//    }
+//
+//    func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+//        return SimplePushAnimator()
+//    }
+//}
 
 extension RecorderModalViewController: AVAudioRecorderDelegate {
     func audioRecorderDidFinishRecording(_ recorder: AVAudioRecorder, successfully flag: Bool) {

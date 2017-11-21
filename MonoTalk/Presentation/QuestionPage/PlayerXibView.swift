@@ -16,7 +16,8 @@ class PlayerXibView: UIView {
     @IBOutlet weak var containerView: UIView!
     @IBOutlet weak var playButton: UIButton!
     @IBOutlet weak var slider: UISlider!
-
+    @IBOutlet weak var fileSizeLabel: UILabel!
+    
     var audioPlayer: AVAudioPlayer!
     let fileExtension = ".caf"
     var isPaused = true
@@ -58,8 +59,10 @@ class PlayerXibView: UIView {
 
         // Set slider
         slider.maximumValue = Float(Time.getDuration(url: recordUrl))
-
         slider.setThumbImage(UIImage(named: "icon_player_thumb"), for: .normal)
+        
+        // Set File size
+        fileSizeLabel.text = ByteCountFormatter.string(fromByteCount: record.fileSize, countStyle: .file)
 
         displayDurationTime()
 //        let gestureRec = UITapGestureRecognizer(target: self, action: #selector (self.tapped (_:)))
@@ -72,6 +75,8 @@ class PlayerXibView: UIView {
         timeLabel.font = UIFont.systemFont(ofSize: 14)
         dateLabel.textColor = MyColor.lightText.value
         dateLabel.font = UIFont.systemFont(ofSize: TextSize.small.rawValue)
+        fileSizeLabel.textColor = MyColor.lightText.value
+        fileSizeLabel.font = UIFont.systemFont(ofSize: TextSize.small.rawValue)
 
         // Add border
         containerView.aroundBorder()
@@ -173,6 +178,8 @@ class PlayerXibView: UIView {
             }
         }
     }
+    
+    
 }
 
 extension PlayerXibView: AVAudioPlayerDelegate {

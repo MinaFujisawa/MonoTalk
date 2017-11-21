@@ -123,6 +123,12 @@ extension QuestionTableViewController: UITableViewDataSource {
                 cell.starIcon.isHidden = false
             }
             cell.rateIcon.image = Question.Rate(rawValue: question.rate)?.rateImage
+            
+            var fileSizeNum:Int64 = 0
+            for record in question.records {
+                fileSizeNum += record.fileSize
+            }
+            cell.fileSizeLabel.text = ByteCountFormatter.string(fromByteCount: fileSizeNum, countStyle: .file)
 
             // Add full length of separator to the last cell
             if indexPath.row == questions.count {

@@ -76,8 +76,15 @@ class CategoryTableViewController: UITableViewController {
             let cell = tableView.dequeueReusableCell(withIdentifier: cellID, for: indexPath) as! CategoryTableViewCell
             let category = categories[indexPath.row]
             cell.nameLabel.text = category.name
-            // TODO: add
-            cell.fileSizeLabel.text = "00 KB"
+            
+            var fileSizeNum:Int64 = 0
+            for question in category.questions {
+                for record in question.records {
+                    fileSizeNum += record.fileSize
+                }
+            }
+            cell.fileSizeLabel.text = ByteCountFormatter.string(fromByteCount: fileSizeNum, countStyle: .file)
+            
             cell.questionNumLabel.text = String(category.questions.count) + " Questions"
             cell.categoryImageView.image = UIImage(named: category.imageName)
             

@@ -17,6 +17,7 @@ class QuestionTavleViewCell: UITableViewCell {
     @IBOutlet weak var microphoneIcon: UIImageView!
     @IBOutlet weak var recordNumLabel: UILabel!
     @IBOutlet weak var questionLabel: UILabel!
+    @IBOutlet weak var fileSizeLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -28,6 +29,9 @@ class QuestionTavleViewCell: UITableViewCell {
 
         recordNumLabel.textColor = MyColor.lightText.value
         recordNumLabel.font = UIFont.systemFont(ofSize: TextSize.small.rawValue)
+        
+        fileSizeLabel.textColor = MyColor.lightText.value
+        fileSizeLabel.font = UIFont.systemFont(ofSize: TextSize.small.rawValue)
         
         // Icon
         noteIcon.image = noteIcon.image?.withRenderingMode(.alwaysTemplate)
