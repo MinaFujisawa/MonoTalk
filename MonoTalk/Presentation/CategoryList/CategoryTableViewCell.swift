@@ -10,7 +10,7 @@ import UIKit
 
 class CategoryTableViewCell: UITableViewCell {
 
-    @IBOutlet weak var startTextView: UITextView!
+    @IBOutlet weak var startTextLabel: UILabel!
     @IBOutlet weak var fileSizeLabel: UILabel!
     @IBOutlet weak var questionNumLabel: UILabel!
     @IBOutlet weak var categoryImageView: UIImageView!
@@ -32,12 +32,11 @@ class CategoryTableViewCell: UITableViewCell {
         categoryImageView.setCornerRadius()
         categoryImageView.layer.masksToBounds = true
         
-        startTextView.textColor = MyColor.theme.value
-        startTextView.textContainerInset = UIEdgeInsetsMake(3, 0, 0, 0)
-        startTextView.font = UIFont.systemFont(ofSize: TextSize.small.rawValue)
-        startTextView.backgroundColor = MyColor.paledTheme.value
-        startTextView.layer.cornerRadius = startTextView.frame.height / 2
-        startTextView.layer.masksToBounds = true
+        startTextLabel.textColor = MyColor.theme.value
+        startTextLabel.font = UIFont.systemFont(ofSize: TextSize.small.rawValue)
+        startTextLabel.backgroundColor = MyColor.paledTheme.value
+        startTextLabel.layer.cornerRadius = startTextLabel.frame.height / 2
+        startTextLabel.layer.masksToBounds = true
         
         self.preservesSuperviewLayoutMargins = false
         self.separatorInset = UIEdgeInsets.zero
