@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="rB3-f6-JQi">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="rB3-f6-JQi">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -152,13 +152,13 @@
                                 <rect key="frame" x="22" y="231.5" width="330" height="204"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="How difficult?" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2L0-FX-hfd">
-                                        <rect key="frame" x="8" y="28" width="314" height="20.5"/>
+                                        <rect key="frame" x="16" y="28" width="298" height="52"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QBR-SR-JCx">
-                                        <rect key="frame" x="8" y="80.5" width="314" height="64"/>
+                                        <rect key="frame" x="8" y="112" width="314" height="64"/>
                                         <color key="backgroundColor" red="0.9049141839" green="0.9049141839" blue="0.9049141839" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="64" id="cIA-Al-baf"/>
@@ -168,14 +168,16 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstItem="2L0-FX-hfd" firstAttribute="top" secondItem="ZUm-SF-OUw" secondAttribute="top" constant="28" id="0hj-nt-Zq5"/>
+                                    <constraint firstAttribute="bottom" secondItem="QBR-SR-JCx" secondAttribute="bottom" constant="28" id="50a-Az-TcD"/>
                                     <constraint firstAttribute="trailing" secondItem="QBR-SR-JCx" secondAttribute="trailing" constant="8" id="B0i-BX-f1L"/>
                                     <constraint firstItem="QBR-SR-JCx" firstAttribute="centerX" secondItem="ZUm-SF-OUw" secondAttribute="centerX" id="BeN-Th-MUV"/>
                                     <constraint firstItem="QBR-SR-JCx" firstAttribute="top" secondItem="2L0-FX-hfd" secondAttribute="bottom" constant="32" id="BhK-7c-rND"/>
                                     <constraint firstAttribute="width" constant="330" id="FCO-wM-Skg"/>
                                     <constraint firstItem="QBR-SR-JCx" firstAttribute="leading" secondItem="ZUm-SF-OUw" secondAttribute="leading" constant="8" id="XbG-52-nyc"/>
-                                    <constraint firstAttribute="height" constant="204" id="YFb-ho-NeB"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="204" id="YFb-ho-NeB"/>
                                     <constraint firstItem="2L0-FX-hfd" firstAttribute="centerX" secondItem="ZUm-SF-OUw" secondAttribute="centerX" id="bHW-rl-0n8"/>
-                                    <constraint firstAttribute="trailing" secondItem="2L0-FX-hfd" secondAttribute="trailing" constant="8" id="rtP-d0-jGt"/>
+                                    <constraint firstItem="2L0-FX-hfd" firstAttribute="leading" secondItem="ZUm-SF-OUw" secondAttribute="leading" constant="16" id="bXW-r7-3lb"/>
+                                    <constraint firstAttribute="trailing" secondItem="2L0-FX-hfd" secondAttribute="trailing" constant="16" id="rtP-d0-jGt"/>
                                 </constraints>
                             </view>
                         </subviews>

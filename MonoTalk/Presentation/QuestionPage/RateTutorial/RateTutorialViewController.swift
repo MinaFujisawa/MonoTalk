@@ -23,6 +23,7 @@ class RateTutorialViewController: UIViewController {
         titleLabel.font = UIFont.systemFont(ofSize: TextSize.normal.rawValue)
         setUpButtons()
         baseView.setCornerRadius()
+        self.view.tag = 200
     }
 
     func setUpButtons() {
@@ -36,7 +37,7 @@ class RateTutorialViewController: UIViewController {
             // Set items
             itemView.rateButton.setImage(rate.rateImage, for: .normal)
             itemView.rateButton.tag = rate.rawValue
-            itemView.rateButton.addTarget(self, action: #selector(tappedRate), for: .touchUpInside)
+            itemView.rateButton.addTarget(self, action: #selector(tappedRate(_:)), for: .touchUpInside)
             itemView.label.text = rate.tutorialText
             
             // UI
@@ -45,17 +46,18 @@ class RateTutorialViewController: UIViewController {
             
             stackView.addArrangedSubview(itemView)
         }
-
-        self.view.tag = 200
     }
 
-    @objc func tappedRate(sender: UIButton) {
+    // MARK: Save selected Rate
+    @objc func tappedRate(_ sender: UIButton) {
         let realm = try! Realm()
         try! realm.write {
             question.rate = Question.Rate.allValues[sender.tag].rawValue
         }
+        dismiss(animated: false, completion: nil)
     }
-
+    
+    // MARK: Close this VC
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         super.touchesEnded(touches, with: event)
         for touch: UITouch in touches {

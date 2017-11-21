@@ -27,7 +27,8 @@ class RecorderModalViewController: UIViewController {
     var playTimer: Timer?
 
     var realm: Realm!
-    var questionId: String!
+//    var questionId: String!
+    var question: Question!
     var notificationIdDismssedModel: String!
 
 
@@ -55,8 +56,8 @@ class RecorderModalViewController: UIViewController {
         } catch {
             print("failed to record!")
         }
-        
-        
+
+
     }
 
     func setUpUI() {
@@ -115,7 +116,6 @@ class RecorderModalViewController: UIViewController {
         if !success {
             print("recording failed")
         }
-
     }
 
     @objc func displayRecordingTime() {
@@ -181,7 +181,7 @@ class RecorderModalViewController: UIViewController {
     // MARK: Delete button
     @IBAction func deleteButton(_ sender: Any) {
         stopAudio()
-        dismiss(animated: true, completion: nil)
+        dismiss(animated: false, completion: nil)
     }
 
     // MARK: OK button
@@ -191,7 +191,7 @@ class RecorderModalViewController: UIViewController {
         let newRecord = Record()
         newRecord.id = id
         do {
-            let resources = try getFileURL().resourceValues(forKeys:[.fileSizeKey])
+            let resources = try getFileURL().resourceValues(forKeys: [.fileSizeKey])
             newRecord.fileSize = Int64(resources.fileSize!)
         } catch {
             print("Error: \(error)")
@@ -200,15 +200,25 @@ class RecorderModalViewController: UIViewController {
         realm = try! Realm()
 
         // Save new record
-        if let question = realm.object(ofType: Question.self, forPrimaryKey: questionId) {
-            try! realm.write() {
-                question.records.append(newRecord)
-                question.recordsNum += 1
-            }
+        try! realm.write() {
+            question.records.append(newRecord)
+            question.recordsNum += 1
         }
 
         NotificationCenter.default.post(name: NSNotification.Name(rawValue: notificationIdDismssedModel), object: nil)
-        dismiss(animated: true, completion: nil)
+
+        dismiss(animated: false, completion: {
+            // MARK: Display Rate Tutorial
+            // TODO: only first time
+            let storyboard = UIStoryboard(name: "RateTutorial", bundle: Bundle.main)
+            let rateTutorialModal = storyboard.instantiateViewController(withIdentifier: "RateTutorial") as! RateTutorialViewController
+            rateTutorialModal.question = self.question
+
+            let additionalTime = DispatchTimeInterval.milliseconds(500)
+            DispatchQueue.main.asyncAfter(deadline: .now() + additionalTime) {
+                UIApplication.topViewController()?.present(rateTutorialModal, animated: false, completion: nil)
+            }
+        })
     }
 }
 
@@ -233,5 +243,22 @@ extension RecorderModalViewController: AVAudioRecorderDelegate {
 extension RecorderModalViewController: AVAudioPlayerDelegate {
     func audioPlayerDidFinishPlaying(_ player: AVAudioPlayer, successfully flag: Bool) {
         stopAudio()
+    }
+}
+
+extension UIApplication {
+    class func topViewController(base: UIViewController? = UIApplication.shared.keyWindow?.rootViewController) -> UIViewController? {
+        if let nav = base as? UINavigationController {
+            return topViewController(base: nav.visibleViewController)
+        }
+        if let tab = base as? UITabBarController {
+            if let selected = tab.selectedViewController {
+                return topViewController(base: selected)
+            }
+        }
+        if let presented = base?.presentedViewController {
+            return topViewController(base: presented)
+        }
+        return base
     }
 }
