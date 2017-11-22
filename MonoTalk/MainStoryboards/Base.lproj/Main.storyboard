@@ -11,14 +11,6 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--RateTutorial-->
-        <scene sceneID="Cgr-Hw-Guc">
-            <objects>
-                <viewControllerPlaceholder storyboardName="RateTutorial" referencedIdentifier="RateTutorial" id="WEn-UY-cuo" sceneMemberID="viewController"/>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="qI3-7H-jPk" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="4322" y="2"/>
-        </scene>
         <!--Question Detail View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
@@ -50,7 +42,7 @@
                                 <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="BOG-VD-ARX"/>
-                                    <constraint firstAttribute="width" constant="150" id="uBD-ZJ-Mt3"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="150" id="uBD-ZJ-Mt3"/>
                                 </constraints>
                                 <inset key="titleEdgeInsets" minX="0.0" minY="-1" maxX="0.0" maxY="0.0"/>
                                 <inset key="imageEdgeInsets" minX="0.0" minY="10" maxX="0.0" maxY="10"/>
@@ -305,7 +297,7 @@
                         <viewLayoutGuide key="safeArea" id="Saw-ZC-Sef"/>
                     </view>
                     <navigationItem key="navigationItem" id="emH-RC-e3F">
-                        <barButtonItem key="leftBarButtonItem" style="plain" id="BVF-rQ-sdn">
+                        <barButtonItem key="leftBarButtonItem" style="done" id="BVF-rQ-sdn">
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="k6r-lg-got">
                                 <rect key="frame" x="16" y="11" width="69" height="22"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -315,7 +307,7 @@
                                 </connections>
                             </button>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" style="plain" id="Wit-vd-wOZ">
+                        <barButtonItem key="rightBarButtonItem" style="done" id="Wit-vd-wOZ">
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="fCn-zU-mcA">
                                 <rect key="frame" x="322" y="7" width="37" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -458,7 +450,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="wI8-50-m6i">
                         <barButtonItem key="backBarButtonItem" title=" " id="idp-xF-Opv"/>
-                        <barButtonItem key="rightBarButtonItem" image="navi_plus" style="plain" id="ziT-Yl-0tb">
+                        <barButtonItem key="rightBarButtonItem" image="navi_plus" id="ziT-Yl-0tb">
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Ozo-dk-ona">
                                 <rect key="frame" x="311" y="11" width="48" height="22"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -519,7 +511,7 @@
                         <viewLayoutGuide key="safeArea" id="TRk-tu-mUo"/>
                     </view>
                     <navigationItem key="navigationItem" title="Edit note" id="k8G-4L-gih">
-                        <barButtonItem key="leftBarButtonItem" image="navi_close" style="plain" id="r2U-28-c39">
+                        <barButtonItem key="leftBarButtonItem" image="navi_close" style="done" id="r2U-28-c39">
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="ewH-TO-efU">
                                 <rect key="frame" x="16" y="11" width="72" height="22"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -529,7 +521,7 @@
                                 </connections>
                             </button>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" style="plain" id="HBP-c2-Guk">
+                        <barButtonItem key="rightBarButtonItem" style="done" id="HBP-c2-Guk">
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="iwk-KN-8ZL">
                                 <rect key="frame" x="322" y="7" width="37" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -775,6 +767,6 @@ AEEAAAAAAAAAAAAAAAAAACNMA
         <image name="rate_soso" width="40" height="40"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="gOp-rz-1Dc"/>
+        <segue reference="Gr9-Mh-UhM"/>
     </inferredMetricsTieBreakers>
 </document>
