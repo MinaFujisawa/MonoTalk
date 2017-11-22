@@ -27,6 +27,24 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="88" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="U6i-MN-Zcq">
+                                <rect key="frame" x="0.0" y="188" width="375" height="479"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="PlayerCell" rowHeight="88" id="rdD-Wd-Nws" customClass="PlayerCellXib" customModule="MonoTalk" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="88"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="rdD-Wd-Nws" id="Kab-EO-fMG">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="87.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="BYZ-38-t0r" id="cLS-ZX-EvK"/>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="0mz-TM-rFj"/>
+                                </connections>
+                            </tableView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4Zs-Z1-Pod">
                                 <rect key="frame" x="112.5" y="603" width="150" height="40"/>
                                 <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -41,9 +59,6 @@
                                     <action selector="answerButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="BIp-le-52x"/>
                                 </connections>
                             </button>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cHb-xj-h58">
-                                <rect key="frame" x="0.0" y="188" width="375" height="479"/>
-                            </scrollView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="H99-O6-PSB">
                                 <rect key="frame" x="0.0" y="20" width="375" height="168"/>
                                 <subviews>
@@ -115,16 +130,15 @@
                                 </constraints>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" red="0.96862745098039216" green="0.96862745098039216" blue="0.96862745098039216" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="4Zs-Z1-Pod" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="4wg-Xf-80K"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="U6i-MN-Zcq" secondAttribute="trailing" id="8O8-Ue-Uku"/>
                             <constraint firstItem="H99-O6-PSB" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="LvV-zd-LRZ"/>
-                            <constraint firstItem="cHb-xj-h58" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="STR-6C-y1F"/>
+                            <constraint firstItem="U6i-MN-Zcq" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="S55-93-p4d"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="4Zs-Z1-Pod" secondAttribute="bottom" constant="24" id="Tbx-vo-Yb6"/>
-                            <constraint firstItem="cHb-xj-h58" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="ae5-hN-p5L"/>
                             <constraint firstItem="H99-O6-PSB" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="fS2-PU-Cyo"/>
-                            <constraint firstItem="cHb-xj-h58" firstAttribute="top" secondItem="H99-O6-PSB" secondAttribute="bottom" id="gcH-vF-e4V"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="cHb-xj-h58" secondAttribute="trailing" id="u1n-jd-d3C"/>
+                            <constraint firstItem="U6i-MN-Zcq" firstAttribute="top" secondItem="H99-O6-PSB" secondAttribute="bottom" id="ko0-nI-JlE"/>
+                            <constraint firstItem="U6i-MN-Zcq" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="rEq-6A-Bfm"/>
                             <constraint firstItem="H99-O6-PSB" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="uGy-gr-miN"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
@@ -137,8 +151,8 @@
                         <outlet property="questionLabel" destination="9gI-nY-cO2" id="e64-oC-XmK"/>
                         <outlet property="rateButton" destination="hc6-U5-Eoc" id="q7O-ii-F5A"/>
                         <outlet property="recordButton" destination="4Zs-Z1-Pod" id="MM5-1S-Aai"/>
-                        <outlet property="scrollView" destination="cHb-xj-h58" id="rch-hH-UmW"/>
                         <outlet property="starButton" destination="b06-qE-cl2" id="hH1-zW-1Tv"/>
+                        <outlet property="tableView" destination="U6i-MN-Zcq" id="U8C-45-TGY"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -588,20 +602,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wxq-fg-JF3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="4838" y="-237"/>
-        </scene>
-        <!--View Controller-->
-        <scene sceneID="soB-M2-uat">
-            <objects>
-                <viewController id="GJb-mR-qTK" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="P0j-3h-hCn">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <viewLayoutGuide key="safeArea" id="BKk-ko-bHk"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="QXw-9O-XsS" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
         </scene>
     </scenes>
     <resources>

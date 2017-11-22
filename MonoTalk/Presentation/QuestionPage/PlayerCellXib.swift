@@ -10,66 +10,34 @@ import UIKit
 import RealmSwift
 import AVFoundation
 
-class PlayerXibView: UIView {
+class PlayerCellXib: UITableViewCell {
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var timeLabel: UILabel!
     @IBOutlet weak var containerView: UIView!
     @IBOutlet weak var playButton: UIButton!
     @IBOutlet weak var slider: UISlider!
     @IBOutlet weak var fileSizeLabel: UILabel!
-    
+
     var audioPlayer: AVAudioPlayer!
     let fileExtension = ".caf"
     var isPaused = true
-    var questionID: String!
+    var question: Question!
     var record: Record!
     var recordUrl: URL!
     var timer: Timer!
     let notaificationIdDeleted = "deleted"
     let notaificationIdDeletedUserInfo = "indexOfDletedItem"
 
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        loadNib()
+    override func awakeFromNib() {
+        super.awakeFromNib()
         setUpUI()
+        audioPlayer?.delegate = self
     }
-
-    init(frame: CGRect, record: Record, questionID: String) {
-        super.init(frame: frame)
-        loadNib()
-        setUpUI()
-
-        self.record = record
-        self.questionID = questionID
-
-        // Get record URL
-        let documentsDirectory = FileManager().urls(for: .documentDirectory, in: .userDomainMask)[0]
-        recordUrl = documentsDirectory.appendingPathComponent(record.id + fileExtension)
-
-        // Set date
-        dateLabel.text = Time.getFormattedDate(date: record.date)
-
-        // Set audioPlayer
-        do {
-            try audioPlayer = AVAudioPlayer(contentsOf: recordUrl)
-            audioPlayer?.delegate = self
-        } catch {
-            print(error)
-        }
-
-        // Set slider
-        slider.maximumValue = Float(Time.getDuration(url: recordUrl))
-        slider.setThumbImage(UIImage(named: "icon_player_thumb"), for: .normal)
-        
-        // Set File size
-        fileSizeLabel.text = ByteCountFormatter.string(fromByteCount: record.fileSize, countStyle: .file)
-
-        displayDurationTime()
-//        let gestureRec = UITapGestureRecognizer(target: self, action: #selector (self.tapped (_:)))
-//        containerView.addGestureRecognizer(gestureRec)
-    }
+    
 
     func setUpUI() {
+        self.backgroundColor = MyColor.lightGrayBackground.value
+        
         // Text
         timeLabel.textColor = MyColor.lightText.value
         timeLabel.font = UIFont.systemFont(ofSize: 14)
@@ -80,22 +48,15 @@ class PlayerXibView: UIView {
 
         // Add border
         containerView.aroundBorder()
+        
+        self.preservesSuperviewLayoutMargins = false
+        self.separatorInset = UIEdgeInsets.zero
+        self.layoutMargins = UIEdgeInsets.zero
     }
 
-
-    required init(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)!
-        loadNib()
-    }
-
-    func loadNib() {
-        let view = Bundle.main.loadNibNamed("PlayerXibView", owner: self, options: nil)?.first as! UIView
-        view.frame = self.bounds
-        self.addSubview(view)
-    }
 
     // MARK : Play
-    @IBAction func playButton(_ sender: Any) {
+    @IBAction func tappedPlayButton(_ sender: Any) {
         togglePlayOrStop()
     }
 
@@ -160,30 +121,19 @@ class PlayerXibView: UIView {
     }
 
     // MARK: Delete
-    @IBAction func trashButton(_ sender: Any) {
+    @IBAction func tappedDeleteButton(_ sender: Any) {
         let realm = try! Realm()
-
-        // Get current index of records
-        let parentQuestion = realm.object(ofType: Question.self, forPrimaryKey: questionID)
-        let currentRecord = realm.object(ofType: Record.self, forPrimaryKey: record.id)
-        let indexOfRecord = parentQuestion?.records.index(of: currentRecord!)
-
+        
         try! realm.write() {
-            parentQuestion?.recordsNum -= 1
+            question.recordsNum -= 1
             realm.delete(record)
-            if let indexOfRecord = indexOfRecord {
-                let positionYDict: [String: Int] = [notaificationIdDeletedUserInfo: indexOfRecord]
-                NotificationCenter.default.post(name: NSNotification.Name(rawValue: notaificationIdDeleted),
-                                                object: nil, userInfo: positionYDict)
-            }
         }
     }
-    
-    
 }
 
-extension PlayerXibView: AVAudioPlayerDelegate {
+extension PlayerCellXib: AVAudioPlayerDelegate {
     func audioPlayerDidFinishPlaying(_ player: AVAudioPlayer, successfully flag: Bool) {
         resetAudio()
     }
 }
+

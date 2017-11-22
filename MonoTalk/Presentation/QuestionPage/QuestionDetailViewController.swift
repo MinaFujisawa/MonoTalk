@@ -13,6 +13,7 @@ import AVFoundation
 class QuestionDetailViewController: UIViewController {
 
 
+    @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var questionAreaView: UIView!
     @IBOutlet weak var recordButton: UIButton!
@@ -23,15 +24,15 @@ class QuestionDetailViewController: UIViewController {
     @IBOutlet weak var questionLabel: UILabel!
 
     var notificationToken: NotificationToken? = nil
+    var notificationTokenForRecords: NotificationToken? = nil
     var balloonView = UIView()
-
-
     let cellID = "PlayerCell"
     let notificationIdDismssedModel = "dismissedModal"
     let notaificationIdDeleted = "deleted"
     let notaificationIdDeletedUserInfo = "indexOfDletedItem"
     var currentIndexTitle: String!
     var question: Question!
+    var records: Results<Record>!
     var realm: Realm!
     var isShowingBalloon = false
     var speachGestureReconizer: UITapGestureRecognizer!
@@ -40,25 +41,18 @@ class QuestionDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpUI()
+        setupTableView()
         realm = try! Realm()
 
-
-        // Notification From model
-        NotificationCenter.default.addObserver(self, selector: #selector(self.setPlayerViews), name: NSNotification.Name(rawValue: notificationIdDismssedModel), object: nil)
-
-        // From player xib
-        NotificationCenter.default.addObserver(self, selector: #selector(self.rearrangePlayerViews(_:)), name: NSNotification.Name(rawValue: notaificationIdDeleted), object: nil)
-
-        // Gesture to Close Rate Balloon
+        // Gesture to Close the Rate Balloon
         self.view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(closeRateBalloon)))
-
 
         // Speach
         speachGestureReconizer = UITapGestureRecognizer(target: self, action: #selector(speach))
         questionAreaView.addGestureRecognizer(speachGestureReconizer)
         synthesizer = AVSpeechSynthesizer()
 
-        // MARK:Observe Results Notifications
+        // MARK:Observe Results Notifications For Question
         notificationToken = question.observe { [weak self] (changes: ObjectChange) in
             switch changes {
             case .error(let error):
@@ -70,10 +64,46 @@ class QuestionDetailViewController: UIViewController {
                 break
             }
         }
+
+        // MARK:Observe Results Notifications For Records
+        notificationTokenForRecords = question.records.observe { [weak self] (changes: RealmCollectionChange) in
+            guard let tableView = self?.tableView else { return }
+            switch changes {
+            case .initial:
+                tableView.reloadData()
+            case .update(_, let deletions, let insertions, let modifications):
+                tableView.beginUpdates()
+                if !insertions.isEmpty {
+                    tableView.insertRows(at: [IndexPath.init(row: 0, section: 0)], with: .automatic)
+                }
+                let i = (self?.question.records.count)!
+                tableView.deleteRows(at: deletions.map({ IndexPath(row: abs($0 - i), section: 0) }),
+                                     with: .automatic)
+                tableView.reloadRows(at: modifications.map({ IndexPath(row: $0, section: 0) }),
+                                     with: .automatic)
+                tableView.endUpdates()
+            case .error(let error):
+                fatalError("\(error)")
+            }
+        }
+    }
+    
+    private func setupTableView() {
+        tableView.dataSource = self
+        tableView.delegate = self
+        records = question.records.sorted(byKeyPath: SortMode.date.rawValue, ascending: SortMode.date.acsending)
+        
+        tableView.estimatedRowHeight = 88
+        tableView.backgroundColor = MyColor.lightGrayBackground.value
+        tableView.separatorStyle = .none
+        
+        let nib = UINib(nibName: "PlayerXibView", bundle: nil)
+        tableView.register(nib, forCellReuseIdentifier: cellID)
     }
 
     deinit {
         notificationToken?.invalidate()
+        notificationTokenForRecords?.invalidate()
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -82,9 +112,9 @@ class QuestionDetailViewController: UIViewController {
         let category = realm.object(ofType: Category.self, forPrimaryKey: question.categoryID)
         categoryLabel.text = category?.name
         self.title = currentIndexTitle
-
-        setPlayerViews()
+        tableView.tableFooterView = UIView()
     }
+
 
     func setUpUI() {
         // Record Button
@@ -151,56 +181,6 @@ class QuestionDetailViewController: UIViewController {
         self.present(modal, animated: true, completion: nil)
     }
 
-    @objc func setPlayerViews() {
-        // remove all subviews
-        for view in self.scrollView.subviews {
-            view.removeFromSuperview()
-        }
-
-        let width = UIScreen.main.bounds.size.width
-        let height = 64
-        let marginTop = 24
-        for i in 0..<question.records.count {
-            let y = (height + marginTop) * i
-            let playerView = PlayerXibView(frame: CGRect(x: 0, y: y, width: Int(width), height: height),
-                                           record: question.records[i], questionID: question.id)
-            playerView.tag = 100
-            scrollView.addSubview(playerView)
-        }
-        let contentSizeHieght: CGFloat = CGFloat((height + marginTop) * question.records.count) + 100
-        scrollView.contentSize = CGSize(width: self.view.frame.width, height: contentSizeHieght)
-    }
-
-    @objc func rearrangePlayerViews(_ notification: NSNotification) {
-
-        if let indexOfDeletedItem = notification.userInfo?[notaificationIdDeletedUserInfo] as? Int {
-            var playerViews = getPlayerViews()
-            playerViews[indexOfDeletedItem].removeFromSuperview()
-
-            // Relocate playerViews
-            for i in indexOfDeletedItem + 1..<playerViews.count {
-                let x = playerViews[i].frame.origin.x
-                let y = playerViews[i].frame.origin.y - 64 - 24
-                let width = playerViews[i].frame.size.width
-                let height = playerViews[i].frame.size.height
-
-                UIView.animate(withDuration: 0.5, animations: {
-                    playerViews[i].frame = CGRect(x: x, y: y, width: width, height: height)
-                })
-            }
-        }
-    }
-
-    func getPlayerViews() -> [UIView] {
-        var result = [UIView]()
-        let playViews = scrollView.subviews.filter({ $0 is PlayerXibView })
-        for view in playViews {
-            if view.tag == 100 {
-                result.append(view)
-            }
-        }
-        return result
-    }
 
     // MARK: Star button
     @IBAction func starButton(_ sender: Any) {
@@ -225,7 +205,7 @@ class QuestionDetailViewController: UIViewController {
             showRateBaloon()
         }
     }
-
+    
     func showRateBaloon() {
         questionAreaView.removeGestureRecognizer(speachGestureReconizer)
         isShowingBalloon = true
@@ -263,13 +243,13 @@ class QuestionDetailViewController: UIViewController {
             let rateButton = UIButton(frame: CGRect(x: 0, y: y, width: iconButtonSize, height: iconButtonSize))
             rateButton.setImage(Question.Rate.allValues[index].rateImage, for: .normal)
             rateButton.frame.origin.x = iconButtonMargin * CGFloat(index + 1) + iconButtonSize * CGFloat(index)
-            rateButton.addTarget(self, action: #selector(tappedRateButton), for: .touchUpInside)
+            rateButton.addTarget(self, action: #selector(tappedRateButtonFromBalloon), for: .touchUpInside)
             rateButton.tag = index
             balloonView.addSubview(rateButton)
         }
     }
 
-    @objc func tappedRateButton(_ sender: UIButton) {
+    @objc func tappedRateButtonFromBalloon(_ sender: UIButton) {
         try! realm.write {
             question.rate = Question.Rate.allValues[sender.tag].rawValue
         }
@@ -289,5 +269,55 @@ class QuestionDetailViewController: UIViewController {
             let utterance = AVSpeechUtterance(string: self.question.questionBody)
             synthesizer.speak(utterance)
         }
+    }
+}
+
+// MARK: TabelView
+extension QuestionDetailViewController: UITableViewDataSource {
+
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return records.count
+    }
+
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+
+        // MARK: Set cell
+        let cell = tableView.dequeueReusableCell(withIdentifier: cellID, for: indexPath) as! PlayerCellXib
+        let record = records[indexPath.row]
+        cell.record = record
+
+        // Get record URL
+        let documentsDirectory = FileManager().urls(for: .documentDirectory, in: .userDomainMask)[0]
+        cell.recordUrl = documentsDirectory.appendingPathComponent(record.id + cell.fileExtension)
+        cell.question = question
+
+        // Set audioPlayer
+        do {
+            try cell.audioPlayer = AVAudioPlayer(contentsOf: cell.recordUrl)
+        } catch {
+            print(error)
+        }
+
+        // Set date
+        cell.dateLabel.text = Time.getFormattedDate(date: record.date)
+
+        // Set slider
+        cell.slider.maximumValue = Float(Time.getDuration(url: cell.recordUrl))
+        cell.slider.setThumbImage(UIImage(named: "icon_player_thumb"), for: .normal)
+
+        // Set File size
+        cell.fileSizeLabel.text = ByteCountFormatter.string(fromByteCount: record.fileSize, countStyle: .file)
+        cell.displayDurationTime()
+
+        return cell
+    }
+}
+extension QuestionDetailViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return UITableViewAutomaticDimension
     }
 }
