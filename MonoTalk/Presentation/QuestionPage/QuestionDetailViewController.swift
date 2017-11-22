@@ -14,7 +14,6 @@ class QuestionDetailViewController: UIViewController {
 
 
     @IBOutlet weak var tableView: UITableView!
-    @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var questionAreaView: UIView!
     @IBOutlet weak var recordButton: UIButton!
     @IBOutlet weak var categoryLabel: UILabel!
@@ -289,30 +288,8 @@ extension QuestionDetailViewController: UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: cellID, for: indexPath) as! PlayerCellXib
         let record = records[indexPath.row]
         cell.record = record
-
-        // Get record URL
-        let documentsDirectory = FileManager().urls(for: .documentDirectory, in: .userDomainMask)[0]
-        cell.recordUrl = documentsDirectory.appendingPathComponent(record.id + cell.fileExtension)
         cell.question = question
-
-        // Set audioPlayer
-        do {
-            try cell.audioPlayer = AVAudioPlayer(contentsOf: cell.recordUrl)
-        } catch {
-            print(error)
-        }
-
-        // Set date
-        cell.dateLabel.text = Time.getFormattedDate(date: record.date)
-
-        // Set slider
-        cell.slider.maximumValue = Float(Time.getDuration(url: cell.recordUrl))
-        cell.slider.setThumbImage(UIImage(named: "icon_player_thumb"), for: .normal)
-
-        // Set File size
-        cell.fileSizeLabel.text = ByteCountFormatter.string(fromByteCount: record.fileSize, countStyle: .file)
-        cell.displayDurationTime()
-
+        cell.setUp()
         return cell
     }
 }

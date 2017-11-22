@@ -31,13 +31,37 @@ class PlayerCellXib: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         setUpUI()
-        audioPlayer?.delegate = self
     }
-    
 
-    func setUpUI() {
+    func setUp() {
+        // Get record URL
+        let documentsDirectory = FileManager().urls(for: .documentDirectory, in: .userDomainMask)[0]
+        recordUrl = documentsDirectory.appendingPathComponent(record.id + fileExtension)
+
+        // Set audioPlayer
+        do {
+            try audioPlayer = AVAudioPlayer(contentsOf: recordUrl)
+            audioPlayer.delegate = self
+        } catch {
+            print(error)
+        }
+
+        // Set date
+        dateLabel.text = Time.getFormattedDate(date: record.date)
+
+        // Set slider
+        slider.maximumValue = Float(Time.getDuration(url: recordUrl))
+        slider.setThumbImage(UIImage(named: "icon_player_thumb"), for: .normal)
+
+        // Set File size
+        fileSizeLabel.text = ByteCountFormatter.string(fromByteCount: record.fileSize, countStyle: .file)
+        displayDurationTime()
+    }
+
+
+    private func setUpUI() {
         self.backgroundColor = MyColor.lightGrayBackground.value
-        
+
         // Text
         timeLabel.textColor = MyColor.lightText.value
         timeLabel.font = UIFont.systemFont(ofSize: 14)
@@ -48,7 +72,7 @@ class PlayerCellXib: UITableViewCell {
 
         // Add border
         containerView.aroundBorder()
-        
+
         self.preservesSuperviewLayoutMargins = false
         self.separatorInset = UIEdgeInsets.zero
         self.layoutMargins = UIEdgeInsets.zero
@@ -70,13 +94,13 @@ class PlayerCellXib: UITableViewCell {
         }
     }
 
-    func displayDurationTime() {
+    private func displayDurationTime() {
         var duration = Time.getDuration(url: recordUrl)
         duration.round(.up)
         timeLabel.text = Time.getFormattedTime(timeInterval: duration)
     }
 
-    func playAudio() {
+    private func playAudio() {
         audioPlayer.play()
         playButton.setImage(UIImage(named: "icon_pause"), for: .normal)
 
@@ -88,14 +112,14 @@ class PlayerCellXib: UITableViewCell {
         isPaused = false
     }
 
-    func pauseAudio() {
+    private func pauseAudio() {
         audioPlayer?.stop()
         timer.invalidate()
         playButton.setImage(UIImage(named: "icon_play"), for: .normal)
         isPaused = true
     }
 
-    func resetAudio() {
+    private func resetAudio() {
         audioPlayer?.stop()
         audioPlayer?.currentTime = 0
         isPaused = true
@@ -123,7 +147,7 @@ class PlayerCellXib: UITableViewCell {
     // MARK: Delete
     @IBAction func tappedDeleteButton(_ sender: Any) {
         let realm = try! Realm()
-        
+
         try! realm.write() {
             question.recordsNum -= 1
             realm.delete(record)
