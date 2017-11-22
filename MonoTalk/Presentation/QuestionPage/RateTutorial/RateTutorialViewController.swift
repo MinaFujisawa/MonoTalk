@@ -25,6 +25,27 @@ class RateTutorialViewController: UIViewController {
         baseView.setCornerRadius()
         self.view.tag = 200
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        animateIn()
+    }
+    
+    func animateIn() {
+        baseView.transform = CGAffineTransform.init(scaleX: 1.2, y: 1.2)
+        baseView.alpha = 0
+        
+        UIView.animate(withDuration: 0.3) {
+            self.baseView.alpha = 1
+            self.baseView.transform = CGAffineTransform.identity
+        }
+    }
+    
+    func animateOut() {
+        UIView.animate(withDuration: 0.2, animations: {
+            self.baseView.transform = CGAffineTransform.init(scaleX: 1.1, y: 1.1)
+            self.baseView.alpha = 0
+        })
+    }
 
     func setUpButtons() {
         for rate in Question.Rate.allValues {
@@ -54,7 +75,8 @@ class RateTutorialViewController: UIViewController {
         try! realm.write {
             question.rate = Question.Rate.allValues[sender.tag].rawValue
         }
-        dismiss(animated: false, completion: nil)
+        animateOut()
+        dismiss(animated: true, completion: nil)
     }
     
     // MARK: Close this VC
@@ -63,6 +85,7 @@ class RateTutorialViewController: UIViewController {
         for touch: UITouch in touches {
             let tag = touch.view!.tag
             if tag == 200 {
+                animateOut()
                 dismiss(animated: true, completion: nil)
             }
         }

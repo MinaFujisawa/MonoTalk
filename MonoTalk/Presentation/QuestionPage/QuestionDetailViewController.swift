@@ -12,6 +12,7 @@ import AVFoundation
 
 class QuestionDetailViewController: UIViewController {
 
+
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var questionAreaView: UIView!
     @IBOutlet weak var recordButton: UIButton!
@@ -20,11 +21,11 @@ class QuestionDetailViewController: UIViewController {
     @IBOutlet weak var starButton: UIButton!
     @IBOutlet weak var noteButton: UIButton!
     @IBOutlet weak var questionLabel: UILabel!
-    
+
     var notificationToken: NotificationToken? = nil
     var balloonView = UIView()
-    
-    
+
+
     let cellID = "PlayerCell"
     let notificationIdDismssedModel = "dismissedModal"
     let notaificationIdDeleted = "deleted"
@@ -41,6 +42,7 @@ class QuestionDetailViewController: UIViewController {
         setUpUI()
         realm = try! Realm()
 
+
         // Notification From model
         NotificationCenter.default.addObserver(self, selector: #selector(self.setPlayerViews), name: NSNotification.Name(rawValue: notificationIdDismssedModel), object: nil)
 
@@ -55,7 +57,7 @@ class QuestionDetailViewController: UIViewController {
         speachGestureReconizer = UITapGestureRecognizer(target: self, action: #selector(speach))
         questionAreaView.addGestureRecognizer(speachGestureReconizer)
         synthesizer = AVSpeechSynthesizer()
-        
+
         // MARK:Observe Results Notifications
         notificationToken = question.observe { [weak self] (changes: ObjectChange) in
             switch changes {
@@ -63,12 +65,13 @@ class QuestionDetailViewController: UIViewController {
                 fatalError("\(error)")
             case .change(_):
                 self?.setNoteButtonIcon()
+                self?.setRateButtonIcon()
             case .deleted:
                 break
             }
         }
     }
-    
+
     deinit {
         notificationToken?.invalidate()
     }
@@ -76,7 +79,6 @@ class QuestionDetailViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         // Init contents
         questionLabel.text = question.questionBody
-        print(question.categoryID)
         let category = realm.object(ofType: Category.self, forPrimaryKey: question.categoryID)
         categoryLabel.text = category?.name
         self.title = currentIndexTitle
@@ -89,6 +91,7 @@ class QuestionDetailViewController: UIViewController {
         recordButton.backgroundColor = MyColor.theme.value
         recordButton.circle()
         recordButton.dropShadow()
+        recordButton.imageView?.contentMode = .scaleAspectFit
         self.view.bringSubview(toFront: recordButton)
 
         let origImage = UIImage(named: "icon_microphone")
@@ -105,19 +108,23 @@ class QuestionDetailViewController: UIViewController {
         }
 
         // Rate
-        rateButton.setImage(Question.Rate.allValues[question.rate].rateImage, for: .normal)
-        
+        setRateButtonIcon()
+
         // Note
         noteButton.setImageAspectFit()
         setNoteButtonIcon()
 
         // Text
-        questionLabel.textColor = MyColor.theme.value
+        questionLabel.textColor = MyColor.darkText.value
         questionLabel.font = UIFont.systemFont(ofSize: TextSize.questionBody.rawValue)
         categoryLabel.textColor = MyColor.darkText.value
         categoryLabel.font = UIFont.systemFont(ofSize: TextSize.small.rawValue)
     }
-    
+
+    func setRateButtonIcon() {
+        rateButton.setImage(Question.Rate.allValues[question.rate].rateImage, for: .normal)
+    }
+
     func setNoteButtonIcon() {
         if question.note != nil {
             noteButton.setImage(UIImage(named: "icon_note_badge"), for: .normal)
@@ -126,17 +133,22 @@ class QuestionDetailViewController: UIViewController {
         }
     }
 
+    // MARK: Segue
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if (segue.identifier == "recoder") {
-            let modal = segue.destination as! RecorderModalViewController
-            modal.questionId = question.id
-            modal.notificationIdDismssedModel = notificationIdDismssedModel
-        }
         if segue.identifier == "GoToNote" {
             let nav = segue.destination as! UINavigationController
             let noteVC = nav.topViewController as! NoteViewController
             noteVC.question = question
         }
+    }
+
+    // MARK: Answer Button
+    @IBAction func answerButtonTapped(_ sender: Any) {
+        let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
+        let modal = storyboard.instantiateViewController(withIdentifier: "ModalViewController") as! RecorderModalViewController
+        modal.question = question
+        modal.notificationIdDismssedModel = notificationIdDismssedModel
+        self.present(modal, animated: true, completion: nil)
     }
 
     @objc func setPlayerViews() {
@@ -147,15 +159,15 @@ class QuestionDetailViewController: UIViewController {
 
         let width = UIScreen.main.bounds.size.width
         let height = 64
-        let marginBottom = 24
+        let marginTop = 24
         for i in 0..<question.records.count {
-            let y = (height + marginBottom) * i
+            let y = (height + marginTop) * i
             let playerView = PlayerXibView(frame: CGRect(x: 0, y: y, width: Int(width), height: height),
                                            record: question.records[i], questionID: question.id)
             playerView.tag = 100
             scrollView.addSubview(playerView)
         }
-        let contentSizeHieght: CGFloat = CGFloat((height + marginBottom) * question.records.count) + 100
+        let contentSizeHieght: CGFloat = CGFloat((height + marginTop) * question.records.count) + 100
         scrollView.contentSize = CGSize(width: self.view.frame.width, height: contentSizeHieght)
     }
 
@@ -174,7 +186,6 @@ class QuestionDetailViewController: UIViewController {
 
                 UIView.animate(withDuration: 0.5, animations: {
                     playerViews[i].frame = CGRect(x: x, y: y, width: width, height: height)
-
                 })
             }
         }

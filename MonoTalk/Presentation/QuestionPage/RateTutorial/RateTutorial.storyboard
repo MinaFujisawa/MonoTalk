@@ -143,7 +143,7 @@
         <!--Rate Tutorial View Controller-->
         <scene sceneID="pMI-XK-f1T">
             <objects>
-                <viewController storyboardIdentifier="RateTutorial" modalPresentationStyle="overCurrentContext" id="rB3-f6-JQi" customClass="RateTutorialViewController" customModule="MonoTalk" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="RateTutorial" modalTransitionStyle="crossDissolve" modalPresentationStyle="overCurrentContext" id="rB3-f6-JQi" customClass="RateTutorialViewController" customModule="MonoTalk" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="IaT-em-Xos">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

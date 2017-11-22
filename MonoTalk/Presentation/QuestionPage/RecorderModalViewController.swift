@@ -37,7 +37,6 @@ class RecorderModalViewController: UIViewController {
         setUpUI()
         okButton.isHidden = true
         deleteButton.isHidden = true
-//        self.transitioningDelegate = self
 
         // Set up recordingSession
         recordingSession = AVAudioSession.sharedInstance()
@@ -181,7 +180,7 @@ class RecorderModalViewController: UIViewController {
     // MARK: Delete button
     @IBAction func deleteButton(_ sender: Any) {
         stopAudio()
-        dismiss(animated: false, completion: nil)
+        dismiss(animated: true, completion: nil)
     }
 
     // MARK: OK button
@@ -207,30 +206,21 @@ class RecorderModalViewController: UIViewController {
 
         NotificationCenter.default.post(name: NSNotification.Name(rawValue: notificationIdDismssedModel), object: nil)
 
-        dismiss(animated: false, completion: {
+        dismiss(animated: true, completion: {
             // MARK: Display Rate Tutorial
             // TODO: only first time
             let storyboard = UIStoryboard(name: "RateTutorial", bundle: Bundle.main)
             let rateTutorialModal = storyboard.instantiateViewController(withIdentifier: "RateTutorial") as! RateTutorialViewController
             rateTutorialModal.question = self.question
 
-            let additionalTime = DispatchTimeInterval.milliseconds(500)
+            let additionalTime = DispatchTimeInterval.milliseconds(800)
             DispatchQueue.main.asyncAfter(deadline: .now() + additionalTime) {
-                UIApplication.topViewController()?.present(rateTutorialModal, animated: false, completion: nil)
+                UIApplication.topViewController()?.present(rateTutorialModal, animated: true, completion: nil)
             }
         })
     }
 }
 
-//extension RecorderModalViewController: UIViewControllerTransitioningDelegate{
-//    func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-//        return SimplePushAnimator()
-//    }
-//
-//    func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-//        return SimplePushAnimator()
-//    }
-//}
 
 extension RecorderModalViewController: AVAudioRecorderDelegate {
     func audioRecorderDidFinishRecording(_ recorder: AVAudioRecorder, successfully flag: Bool) {
