@@ -149,19 +149,19 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZUm-SF-OUw">
-                                <rect key="frame" x="22" y="231.5" width="330" height="204"/>
+                                <rect key="frame" x="24" y="231.5" width="327" height="204"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="How difficult?" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2L0-FX-hfd">
-                                        <rect key="frame" x="16" y="28" width="298" height="52"/>
+                                        <rect key="frame" x="16" y="28" width="295" height="52"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QBR-SR-JCx">
-                                        <rect key="frame" x="8" y="112" width="314" height="64"/>
+                                        <rect key="frame" x="4" y="112" width="319" height="64"/>
                                         <color key="backgroundColor" red="0.9049141839" green="0.9049141839" blue="0.9049141839" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="64" id="cIA-Al-baf"/>
+                                            <constraint firstAttribute="height" relation="lessThanOrEqual" constant="64" id="cIA-Al-baf"/>
                                         </constraints>
                                     </stackView>
                                 </subviews>
@@ -169,11 +169,10 @@
                                 <constraints>
                                     <constraint firstItem="2L0-FX-hfd" firstAttribute="top" secondItem="ZUm-SF-OUw" secondAttribute="top" constant="28" id="0hj-nt-Zq5"/>
                                     <constraint firstAttribute="bottom" secondItem="QBR-SR-JCx" secondAttribute="bottom" constant="28" id="50a-Az-TcD"/>
-                                    <constraint firstAttribute="trailing" secondItem="QBR-SR-JCx" secondAttribute="trailing" constant="8" id="B0i-BX-f1L"/>
+                                    <constraint firstAttribute="trailing" secondItem="QBR-SR-JCx" secondAttribute="trailing" constant="4" id="B0i-BX-f1L"/>
                                     <constraint firstItem="QBR-SR-JCx" firstAttribute="centerX" secondItem="ZUm-SF-OUw" secondAttribute="centerX" id="BeN-Th-MUV"/>
                                     <constraint firstItem="QBR-SR-JCx" firstAttribute="top" secondItem="2L0-FX-hfd" secondAttribute="bottom" constant="32" id="BhK-7c-rND"/>
-                                    <constraint firstAttribute="width" constant="330" id="FCO-wM-Skg"/>
-                                    <constraint firstItem="QBR-SR-JCx" firstAttribute="leading" secondItem="ZUm-SF-OUw" secondAttribute="leading" constant="8" id="XbG-52-nyc"/>
+                                    <constraint firstItem="QBR-SR-JCx" firstAttribute="leading" secondItem="ZUm-SF-OUw" secondAttribute="leading" constant="4" id="XbG-52-nyc"/>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="204" id="YFb-ho-NeB"/>
                                     <constraint firstItem="2L0-FX-hfd" firstAttribute="centerX" secondItem="ZUm-SF-OUw" secondAttribute="centerX" id="bHW-rl-0n8"/>
                                     <constraint firstItem="2L0-FX-hfd" firstAttribute="leading" secondItem="ZUm-SF-OUw" secondAttribute="leading" constant="16" id="bXW-r7-3lb"/>
@@ -185,6 +184,8 @@
                         <constraints>
                             <constraint firstItem="ZUm-SF-OUw" firstAttribute="centerX" secondItem="IaT-em-Xos" secondAttribute="centerX" id="Rmg-xn-4oH"/>
                             <constraint firstItem="ZUm-SF-OUw" firstAttribute="centerY" secondItem="IaT-em-Xos" secondAttribute="centerY" id="c4p-55-p8p"/>
+                            <constraint firstItem="8E7-FJ-B44" firstAttribute="trailing" secondItem="ZUm-SF-OUw" secondAttribute="trailing" constant="24" id="vor-cu-spw"/>
+                            <constraint firstItem="ZUm-SF-OUw" firstAttribute="leading" secondItem="8E7-FJ-B44" secondAttribute="leading" constant="24" id="xcg-ak-azV"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="8E7-FJ-B44"/>
                     </view>
