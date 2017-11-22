@@ -113,16 +113,10 @@ extension QuestionTableViewController: UITableViewDataSource {
             cell.recordNumLabel.text = String(question.records.count)
             if question.note == nil {
                 cell.noteIcon.isHidden = true
-                cell.repositionStarIcon(hasNote: false)
             } else {
                 cell.noteIcon.isHidden = false
-                cell.repositionStarIcon(hasNote: true)
             }
-            if question.isFavorited == false {
-                cell.starIcon.isHidden = true
-            } else {
-                cell.starIcon.isHidden = false
-            }
+            cell.starIcon.isHidden = !question.isFavorited
             cell.rateIcon.image = Question.Rate(rawValue: question.rate)?.rateImage
             
             var fileSizeNum:Int64 = 0

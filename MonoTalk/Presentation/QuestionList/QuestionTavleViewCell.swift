@@ -10,7 +10,6 @@ import UIKit
 
 class QuestionTavleViewCell: UITableViewCell {
 
-    @IBOutlet weak var starLeadingConstraint: NSLayoutConstraint!
     @IBOutlet weak var starIcon: UIImageView!
     @IBOutlet weak var noteIcon: UIImageView!
     @IBOutlet weak var rateIcon: UIImageView!
@@ -49,16 +48,4 @@ class QuestionTavleViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
-
-    func repositionStarIcon(hasNote: Bool) {
-        starLeadingConstraint.isActive = false
-        if hasNote {
-            starLeadingConstraint = NSLayoutConstraint(item: starIcon, attribute: .leading, relatedBy: .equal, toItem: noteIcon, attribute: .trailing, multiplier: 1.0, constant: 8.0)
-        } else {
-            starLeadingConstraint = NSLayoutConstraint(item: starIcon, attribute: .leading, relatedBy: .equal, toItem: recordNumLabel, attribute: .trailing, multiplier: 1.0, constant: 8.0)
-        }
-
-        starLeadingConstraint.isActive = true
-    }
-
 }
