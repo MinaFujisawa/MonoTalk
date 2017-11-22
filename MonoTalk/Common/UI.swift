@@ -9,6 +9,7 @@
 import Foundation
 import UIKit
 
+// MARK: UIView
 extension UIView {
     
     func setCornerRadius() {
@@ -34,6 +35,7 @@ extension UIView {
     }
 }
 
+// MARK: UIImageView
 extension UIImageView {
     func setTintColor(_ color : UIColor) {
         self.image = self.image?.withRenderingMode(.alwaysTemplate)
@@ -41,6 +43,7 @@ extension UIImageView {
     }
 }
 
+// MARK: UIButton
 extension UIButton {
     func setImageAspectFit() {
         self.imageView?.contentMode = .scaleAspectFit
@@ -49,6 +52,7 @@ extension UIButton {
     }
 }
 
+// MARK: TextView
 extension UITextView {
     func setPadding() {
         self.preservesSuperviewLayoutMargins = false
@@ -67,26 +71,4 @@ extension UITextView {
         self.layer.addSublayer(bottomBorder)
     }
 }
-
-//extension UINavigationItem{
-//
-//    override open func awakeFromNib() {
-//        super.awakeFromNib()
-//
-//        let backItem = UIBarButtonItem()
-//
-//        let backIcon = UIImage(named: "navi_arrow_back")
-//        backItem.image = backIcon
-//
-//        self.backBarButtonItem = backItem
-//    }
-//}
-
-//extension UINavigationController {
-//    override open func awakeFromNib() {
-//        super.awakeFromNib()
-//        let backIcon = UIImage(named: "navi_arrow_back")
-//        self.navigationBar.backIndicatorImage = backIcon
-//    }
-//}
 

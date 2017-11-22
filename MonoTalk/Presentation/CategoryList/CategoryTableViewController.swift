@@ -19,7 +19,7 @@ class CategoryTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        tableView.delegate = self
+//        tableView.delegate = self
         realm = try! Realm()
 
         categories = realm.objects(Category.self)
@@ -67,7 +67,7 @@ class CategoryTableViewController: UITableViewController {
         if categories.count <= indexPath.row {
             // Create Category Cell
             tableView.deselectRow(at: indexPath, animated: true)
-            let cell = tableView.dequeueReusableCell(withIdentifier: createCategorycellID, for: indexPath) as! CreateCategoryCellXib
+            let cell = tableView.dequeueReusableCell(withIdentifier: createCategorycellID, for: indexPath) as! CreateCategoryCell
 
             cell.separatorInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
             return cell
@@ -96,22 +96,8 @@ class CategoryTableViewController: UITableViewController {
             return cell
         }
     }
-
-    // MARK: segue
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "GoToQuestions" {
-            let questionsVC = segue.destination as! QuestionTableViewController
-            let cell = sender as! CategoryTableViewCell
-            if let indexPath = self.tableView!.indexPath(for: cell) {
-                questionsVC.categoryID = categories[indexPath.row].id
-            }
-        }
-    }
-}
-
-
-extension CategoryTableViewController: UITabBarControllerDelegate {
-    // MARK: Cell height
+    
+    // MARK: TableViewDelegate
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if indexPath.row == categories.count {
             return 48
@@ -119,6 +105,20 @@ extension CategoryTableViewController: UITabBarControllerDelegate {
         return 88
     }
 
+    // MARK: segue
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "GoToQuestions" {
+            let questionsVC = segue.destination as! QuestionTableViewController
+            let cell = sender as! CategoryTableViewCell
+            if let indexPath = self.tableView!.indexPath(for: cell) {
+                questionsVC.category = categories[indexPath.row]
+            }
+        }
+    }
+}
+
+
+extension CategoryTableViewController {
     // MARK: Edit actions
     override func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
         if indexPath.row < categories.count {
@@ -155,7 +155,7 @@ extension CategoryTableViewController: UITabBarControllerDelegate {
         }
     }
 
-    func showCategoryAlert(isEdit: Bool, category: Category?) {
+    private func showCategoryAlert(isEdit: Bool, category: Category?) {
 
         var title = ""
         if isEdit {
@@ -201,7 +201,7 @@ extension CategoryTableViewController: UITabBarControllerDelegate {
     }
 
     // MARK: Delete Category
-    func deleteAlerm(deleteItem: Category) {
+    private func deleteAlerm(deleteItem: Category) {
         let message = deleteItem.name + " will be deleted forever."
         let alert: UIAlertController = UIAlertController(title: nil, message: message, preferredStyle: .actionSheet)
         let cancel = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)

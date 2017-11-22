@@ -55,8 +55,6 @@ class RecorderModalViewController: UIViewController {
         } catch {
             print("failed to record!")
         }
-
-
     }
 
     func setUpUI() {

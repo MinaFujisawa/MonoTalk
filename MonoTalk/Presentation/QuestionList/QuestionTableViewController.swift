@@ -13,7 +13,6 @@ class QuestionTableViewController: UIViewController {
     var realm: Realm!
     var category: Category!
     var questions: Results<Question>!
-    var categoryID: String!
 
     @IBOutlet var tableView: UITableView!
     @IBOutlet weak var addButton: UIBarButtonItem!
@@ -31,7 +30,6 @@ class QuestionTableViewController: UIViewController {
         tableView.register(nib, forCellReuseIdentifier: sortCellID)
 
         realm = try! Realm()
-        category = realm.object(ofType: Category.self, forPrimaryKey: categoryID)
         questions = category.questions.sorted(byKeyPath: sortMode.rawValue, ascending: sortMode.acsending)
 
         self.title = category?.name
@@ -73,7 +71,7 @@ class QuestionTableViewController: UIViewController {
             let cell = sender as! QuestionTavleViewCell
             if let indexPath = self.tableView!.indexPath(for: cell) {
                 pageVC.startIndex = indexPath.row - 1
-                pageVC.categoryID = categoryID
+                pageVC.categoryID = category.id
                 pageVC.sortMode = sortMode
                 tableView.deselectRow(at: indexPath, animated: true)
             }
@@ -81,7 +79,7 @@ class QuestionTableViewController: UIViewController {
             let nav = segue.destination as! UINavigationController
             let editVC = nav.topViewController as! AddEditQuestionViewController
             editVC.isFromAdd = true
-            editVC.categoryID = categoryID
+            editVC.categoryID = category.id
         }
     }
 

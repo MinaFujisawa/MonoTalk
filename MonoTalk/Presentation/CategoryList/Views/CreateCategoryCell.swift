@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CreateCategoryCellXib: UITableViewCell {
+class CreateCategoryCell: UITableViewCell {
     @IBOutlet weak var iconImage: UIImageView!
     @IBOutlet weak var label: UILabel!
     override func awakeFromNib() {
@@ -17,11 +17,5 @@ class CreateCategoryCellXib: UITableViewCell {
         label.font = UIFont.systemFont(ofSize: TextSize.normal.rawValue)
         
         iconImage.setTintColor(MyColor.theme.value)
-    }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
     }
 }

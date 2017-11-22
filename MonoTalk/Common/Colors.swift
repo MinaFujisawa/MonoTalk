@@ -39,13 +39,6 @@ extension UIColor {
         self.init(red: red, green: green, blue: blue, alpha: 1)
     }
 
-    /**
-     Creates an UIColor Object based on provided RGB value in integer
-     - parameter red:   Red Value in integer (0-255)
-     - parameter green: Green Value in integer (0-255)
-     - parameter blue:  Blue Value in integer (0-255)
-     - returns: UIColor with specified RGB values
-     */
     convenience init(red: Int, green: Int, blue: Int) {
         assert(red >= 0 && red <= 255, "Invalid red component")
         assert(green >= 0 && green <= 255, "Invalid green component")
@@ -78,10 +71,6 @@ enum MyColor {
     func withAlpha(_ alpha: Double) -> UIColor {
         return self.value.withAlphaComponent(CGFloat(alpha))
     }
-    
-    
-    
-    
 }
 
 extension MyColor {
@@ -129,9 +118,6 @@ extension UIColor {
         UIGraphicsEndImageContext()
         return image!
     }
-    
 }
-
-
 
 

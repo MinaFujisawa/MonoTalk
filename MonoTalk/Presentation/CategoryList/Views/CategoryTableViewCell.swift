@@ -18,38 +18,35 @@ class CategoryTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         loadNib()
+        setUpUI()
+    }
 
-        // UI
+    private func setUpUI() {
         nameLabel.textColor = MyColor.darkText.value
         nameLabel.font = UIFont.systemFont(ofSize: TextSize.normal.rawValue)
-        
+
         questionNumLabel.textColor = MyColor.lightText.value
         questionNumLabel.font = UIFont.systemFont(ofSize: TextSize.small.rawValue)
-        
+
         fileSizeLabel.textColor = MyColor.lightText.value
         fileSizeLabel.font = UIFont.systemFont(ofSize: TextSize.small.rawValue)
-        
+
         categoryImageView.setCornerRadius()
         categoryImageView.layer.masksToBounds = true
-        
+
         startTextLabel.textColor = MyColor.theme.value
         startTextLabel.font = UIFont.systemFont(ofSize: TextSize.small.rawValue)
         startTextLabel.backgroundColor = MyColor.paledTheme.value
         startTextLabel.layer.cornerRadius = startTextLabel.frame.height / 2
         startTextLabel.layer.masksToBounds = true
-        
+
         self.preservesSuperviewLayoutMargins = false
         self.separatorInset = UIEdgeInsets.zero
         self.layoutMargins = UIEdgeInsets.zero
     }
 
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
 
-        // Configure the view for the selected state
-    }
-
-    func loadNib() {
+    private func loadNib() {
         let view = Bundle.main.loadNibNamed("CategoryCellXib", owner: self, options: nil)?.first as! UIView
         view.frame = CGRect(x: self.bounds.origin.x, y: self.bounds.origin.y, width: UIScreen.main.bounds.width, height: self.bounds.height)
         self.addSubview(view)

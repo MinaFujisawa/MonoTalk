@@ -29,19 +29,16 @@
 		094ABF381FA7F05200BA23AB /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 094ABF371FA7F05200BA23AB /* Colors.swift */; };
 		094ABF3A1FA7F85200BA23AB /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 094ABF391FA7F85200BA23AB /* Model.swift */; };
 		0957D61B1FA9373000A91705 /* PlayerXibView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0957D61A1FA9373000A91705 /* PlayerXibView.xib */; };
-		0957D61D1FA93C9F00A91705 /* PlayerXibView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0957D61C1FA93C9F00A91705 /* PlayerXibView.swift */; };
+		0957D61D1FA93C9F00A91705 /* PlayerCellXib.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0957D61C1FA93C9F00A91705 /* PlayerCellXib.swift */; };
 		095A09E21FC1528100793B45 /* SeedAssets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 095A09E11FC1528100793B45 /* SeedAssets.xcassets */; };
 		095A09E51FC20DD700793B45 /* seed_categories.csv in Resources */ = {isa = PBXBuildFile; fileRef = 095A09E31FC20DD700793B45 /* seed_categories.csv */; };
 		095A09E61FC20DD700793B45 /* seed_questions.csv in Resources */ = {isa = PBXBuildFile; fileRef = 095A09E41FC20DD700793B45 /* seed_questions.csv */; };
 		095E33401FA8131C0010B1F3 /* QuestionsPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 095E333F1FA8131C0010B1F3 /* QuestionsPageViewController.swift */; };
-		096383F81FC2561F0065F7F8 /* PopFadeSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 096383F71FC2561F0065F7F8 /* PopFadeSegue.swift */; };
-		096383FD1FC25B820065F7F8 /* ModalTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 096383FC1FC25B820065F7F8 /* ModalTransition.swift */; };
 		0972A8081FB0FE4D002E9E88 /* AddEditQuestionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0972A8071FB0FE4D002E9E88 /* AddEditQuestionViewController.swift */; };
 		0979FA4A1FA80172000BDB5B /* UI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0979FA491FA80172000BDB5B /* UI.swift */; };
 		097F3BD11FB4E964005B6BD1 /* Text.swift in Sources */ = {isa = PBXBuildFile; fileRef = 097F3BD01FB4E964005B6BD1 /* Text.swift */; };
-		099F7B821FB2878F0069C73E /* CreateCategoryCellXib.swift in Sources */ = {isa = PBXBuildFile; fileRef = 099F7B801FB2878F0069C73E /* CreateCategoryCellXib.swift */; };
+		099F7B821FB2878F0069C73E /* CreateCategoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 099F7B801FB2878F0069C73E /* CreateCategoryCell.swift */; };
 		099F7B831FB2878F0069C73E /* CreateCategoryCellXib.xib in Resources */ = {isa = PBXBuildFile; fileRef = 099F7B811FB2878F0069C73E /* CreateCategoryCellXib.xib */; };
-		09A958B31FAE39FD000DD9AF /* default.realm in Frameworks */ = {isa = PBXBuildFile; fileRef = 09A958B21FAE39FD000DD9AF /* default.realm */; };
 		09A958B41FAE3C5B000DD9AF /* default.realm in Resources */ = {isa = PBXBuildFile; fileRef = 09A958B11FAE39D9000DD9AF /* default.realm */; };
 		09B0E2F21FB6ACF40028444B /* NoteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B0E2F11FB6ACF40028444B /* NoteViewController.swift */; };
 		09C899D71FB539BC007A9263 /* SortCellXib.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09C899D51FB539BC007A9263 /* SortCellXib.swift */; };
@@ -101,17 +98,15 @@
 		094ABF371FA7F05200BA23AB /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		094ABF391FA7F85200BA23AB /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		0957D61A1FA9373000A91705 /* PlayerXibView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PlayerXibView.xib; sourceTree = "<group>"; };
-		0957D61C1FA93C9F00A91705 /* PlayerXibView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerXibView.swift; sourceTree = "<group>"; };
+		0957D61C1FA93C9F00A91705 /* PlayerCellXib.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerCellXib.swift; sourceTree = "<group>"; };
 		095A09E11FC1528100793B45 /* SeedAssets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = SeedAssets.xcassets; sourceTree = "<group>"; };
 		095A09E31FC20DD700793B45 /* seed_categories.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = seed_categories.csv; sourceTree = "<group>"; };
 		095A09E41FC20DD700793B45 /* seed_questions.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = seed_questions.csv; sourceTree = "<group>"; };
 		095E333F1FA8131C0010B1F3 /* QuestionsPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionsPageViewController.swift; sourceTree = "<group>"; };
-		096383F71FC2561F0065F7F8 /* PopFadeSegue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopFadeSegue.swift; sourceTree = "<group>"; };
-		096383FC1FC25B820065F7F8 /* ModalTransition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalTransition.swift; sourceTree = "<group>"; };
 		0972A8071FB0FE4D002E9E88 /* AddEditQuestionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEditQuestionViewController.swift; sourceTree = "<group>"; };
 		0979FA491FA80172000BDB5B /* UI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UI.swift; sourceTree = "<group>"; };
 		097F3BD01FB4E964005B6BD1 /* Text.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Text.swift; sourceTree = "<group>"; };
-		099F7B801FB2878F0069C73E /* CreateCategoryCellXib.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateCategoryCellXib.swift; sourceTree = "<group>"; };
+		099F7B801FB2878F0069C73E /* CreateCategoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateCategoryCell.swift; sourceTree = "<group>"; };
 		099F7B811FB2878F0069C73E /* CreateCategoryCellXib.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CreateCategoryCellXib.xib; sourceTree = "<group>"; };
 		09A958B11FAE39D9000DD9AF /* default.realm */ = {isa = PBXFileReference; lastKnownFileType = file; path = default.realm; sourceTree = "<group>"; };
 		09A958B21FAE39FD000DD9AF /* default.realm */ = {isa = PBXFileReference; lastKnownFileType = file; name = default.realm; path = "../../../Library/Developer/CoreSimulator/Devices/F4BF7243-7F90-4C42-A711-52F2DF361C4B/data/Containers/Data/Application/00689D4C-15B0-42AF-A04B-0FAEED33487D/Documents/default.realm"; sourceTree = "<group>"; };
@@ -137,7 +132,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				09A958B31FAE39FD000DD9AF /* default.realm in Frameworks */,
 				FF336F827C8547CD9DE09F68 /* Pods_MonoTalk.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -176,10 +170,7 @@
 			isa = PBXGroup;
 			children = (
 				0910BB351FAD23FC006AEA85 /* CategoryTableViewController.swift */,
-				0910BB371FAD28EE006AEA85 /* CategoryTableViewCell.swift */,
-				0910BB381FAD28EE006AEA85 /* CategoryCellXib.xib */,
-				099F7B801FB2878F0069C73E /* CreateCategoryCellXib.swift */,
-				099F7B811FB2878F0069C73E /* CreateCategoryCellXib.xib */,
+				0980E05E1FC60F3300D4DDAB /* Views */,
 			);
 			path = CategoryList;
 			sourceTree = "<group>";
@@ -188,10 +179,7 @@
 			isa = PBXGroup;
 			children = (
 				0910BB3D1FAD30DC006AEA85 /* QuestionTableViewController.swift */,
-				0910BB3B1FAD30C0006AEA85 /* QuestionTavleViewCell.swift */,
-				09C899D51FB539BC007A9263 /* SortCellXib.swift */,
-				09C899D61FB539BC007A9263 /* SortCellXib.xib */,
-				090E303E1FBE5AA70071F714 /* SortMode.swift */,
+				0980E05F1FC60FA400D4DDAB /* Views */,
 			);
 			path = QuestionList;
 			sourceTree = "<group>";
@@ -199,13 +187,9 @@
 		090C10F01FB4D643003E7AAD /* QuestionPage */ = {
 			isa = PBXGroup;
 			children = (
-				090E30481FBE989B0071F714 /* RateTutorial */,
 				095E333F1FA8131C0010B1F3 /* QuestionsPageViewController.swift */,
-				094ABF351FA7EBD100BA23AB /* QuestionDetailViewController.swift */,
-				09E728511FA95342007B7F5F /* RecorderModalViewController.swift */,
-				0957D61C1FA93C9F00A91705 /* PlayerXibView.swift */,
-				0957D61A1FA9373000A91705 /* PlayerXibView.xib */,
-				09B0E2F11FB6ACF40028444B /* NoteViewController.swift */,
+				0980E0611FC6106100D4DDAB /* Detail */,
+				090E30481FBE989B0071F714 /* RateTutorial */,
 			);
 			path = QuestionPage;
 			sourceTree = "<group>";
@@ -218,21 +202,19 @@
 			path = AddEditQuestion;
 			sourceTree = "<group>";
 		};
-		090C10F21FB4D70C003E7AAD /* View */ = {
+		090C10F21FB4D70C003E7AAD /* Views */ = {
 			isa = PBXGroup;
 			children = (
 				090C31C31FB38FAC005D9858 /* BalloonView.swift */,
 			);
-			path = View;
+			path = Views;
 			sourceTree = "<group>";
 		};
 		090E30481FBE989B0071F714 /* RateTutorial */ = {
 			isa = PBXGroup;
 			children = (
 				090E30461FBE92790071F714 /* RateTutorialViewController.swift */,
-				090E30421FBE90E10071F714 /* RateTutorialItem.xib */,
-				090E30441FBE918D0071F714 /* RateTutorialItemView.swift */,
-				090E30401FBE6A5B0071F714 /* RateTutorial.storyboard */,
+				0980E0621FC610A200D4DDAB /* Views */,
 			);
 			path = RateTutorial;
 			sourceTree = "<group>";
@@ -266,6 +248,7 @@
 				098446C31FAE4A81005F72E8 /* MainStoryboards */,
 				090C10ED1FB4D50B003E7AAD /* Presentation */,
 				098446C41FAE4ABE005F72E8 /* Common */,
+				0980E05D1FC6097900D4DDAB /* Models */,
 				098446C21FAE3DA7005F72E8 /* DataBase */,
 				094ABF0E1FA7E85F00BA23AB /* Assets.xcassets */,
 				094ABF131FA7E85F00BA23AB /* Info.plist */,
@@ -292,24 +275,82 @@
 			path = MonoTalkUITests;
 			sourceTree = "<group>";
 		};
-		096383F91FC256C50065F7F8 /* Segue */ = {
+		0980E05C1FC608EC00D4DDAB /* CSV */ = {
 			isa = PBXGroup;
 			children = (
-				096383F71FC2561F0065F7F8 /* PopFadeSegue.swift */,
-				096383FC1FC25B820065F7F8 /* ModalTransition.swift */,
+				095A09E31FC20DD700793B45 /* seed_categories.csv */,
+				095A09E41FC20DD700793B45 /* seed_questions.csv */,
 			);
-			path = Segue;
+			path = CSV;
+			sourceTree = "<group>";
+		};
+		0980E05D1FC6097900D4DDAB /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				094ABF391FA7F85200BA23AB /* Model.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		0980E05E1FC60F3300D4DDAB /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				0910BB371FAD28EE006AEA85 /* CategoryTableViewCell.swift */,
+				0910BB381FAD28EE006AEA85 /* CategoryCellXib.xib */,
+				099F7B801FB2878F0069C73E /* CreateCategoryCell.swift */,
+				099F7B811FB2878F0069C73E /* CreateCategoryCellXib.xib */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		0980E05F1FC60FA400D4DDAB /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				0910BB3B1FAD30C0006AEA85 /* QuestionTavleViewCell.swift */,
+				09C899D51FB539BC007A9263 /* SortCellXib.swift */,
+				09C899D61FB539BC007A9263 /* SortCellXib.xib */,
+				090E303E1FBE5AA70071F714 /* SortMode.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		0980E0601FC6103600D4DDAB /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				0957D61C1FA93C9F00A91705 /* PlayerCellXib.swift */,
+				0957D61A1FA9373000A91705 /* PlayerXibView.xib */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		0980E0611FC6106100D4DDAB /* Detail */ = {
+			isa = PBXGroup;
+			children = (
+				09B0E2F11FB6ACF40028444B /* NoteViewController.swift */,
+				094ABF351FA7EBD100BA23AB /* QuestionDetailViewController.swift */,
+				09E728511FA95342007B7F5F /* RecorderModalViewController.swift */,
+				0980E0601FC6103600D4DDAB /* Views */,
+			);
+			path = Detail;
+			sourceTree = "<group>";
+		};
+		0980E0621FC610A200D4DDAB /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				090E30421FBE90E10071F714 /* RateTutorialItem.xib */,
+				090E30441FBE918D0071F714 /* RateTutorialItemView.swift */,
+				090E30401FBE6A5B0071F714 /* RateTutorial.storyboard */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 		098446C21FAE3DA7005F72E8 /* DataBase */ = {
 			isa = PBXGroup;
 			children = (
-				095A09E31FC20DD700793B45 /* seed_categories.csv */,
-				095A09E41FC20DD700793B45 /* seed_questions.csv */,
 				09F2A7671FAE3383001DEBD6 /* RealmInitializer.swift */,
 				09A958B11FAE39D9000DD9AF /* default.realm */,
-				094ABF391FA7F85200BA23AB /* Model.swift */,
 				095A09E11FC1528100793B45 /* SeedAssets.xcassets */,
+				0980E05C1FC608EC00D4DDAB /* CSV */,
 			);
 			path = DataBase;
 			sourceTree = "<group>";
@@ -326,8 +367,7 @@
 		098446C41FAE4ABE005F72E8 /* Common */ = {
 			isa = PBXGroup;
 			children = (
-				096383F91FC256C50065F7F8 /* Segue */,
-				090C10F21FB4D70C003E7AAD /* View */,
+				090C10F21FB4D70C003E7AAD /* Views */,
 				09E728531FA96B91007B7F5F /* Time.swift */,
 				0979FA491FA80172000BDB5B /* UI.swift */,
 				094ABF371FA7F05200BA23AB /* Colors.swift */,
@@ -684,11 +724,10 @@
 				09F2A7681FAE3383001DEBD6 /* RealmInitializer.swift in Sources */,
 				090E30451FBE918D0071F714 /* RateTutorialItemView.swift in Sources */,
 				090C31C41FB38FAC005D9858 /* BalloonView.swift in Sources */,
-				096383F81FC2561F0065F7F8 /* PopFadeSegue.swift in Sources */,
 				0972A8081FB0FE4D002E9E88 /* AddEditQuestionViewController.swift in Sources */,
 				097F3BD11FB4E964005B6BD1 /* Text.swift in Sources */,
 				0910BB3E1FAD30DC006AEA85 /* QuestionTableViewController.swift in Sources */,
-				0957D61D1FA93C9F00A91705 /* PlayerXibView.swift in Sources */,
+				0957D61D1FA93C9F00A91705 /* PlayerCellXib.swift in Sources */,
 				09E728541FA96B91007B7F5F /* Time.swift in Sources */,
 				09B0E2F21FB6ACF40028444B /* NoteViewController.swift in Sources */,
 				094ABF381FA7F05200BA23AB /* Colors.swift in Sources */,
@@ -697,13 +736,12 @@
 				09E728521FA95342007B7F5F /* RecorderModalViewController.swift in Sources */,
 				094ABF361FA7EBD100BA23AB /* QuestionDetailViewController.swift in Sources */,
 				0979FA4A1FA80172000BDB5B /* UI.swift in Sources */,
-				099F7B821FB2878F0069C73E /* CreateCategoryCellXib.swift in Sources */,
+				099F7B821FB2878F0069C73E /* CreateCategoryCell.swift in Sources */,
 				090E303F1FBE5AA70071F714 /* SortMode.swift in Sources */,
 				09C899D71FB539BC007A9263 /* SortCellXib.swift in Sources */,
 				0910BB361FAD23FC006AEA85 /* CategoryTableViewController.swift in Sources */,
 				0910BB3C1FAD30C0006AEA85 /* QuestionTavleViewCell.swift in Sources */,
 				0910BB391FAD28EE006AEA85 /* CategoryTableViewCell.swift in Sources */,
-				096383FD1FC25B820065F7F8 /* ModalTransition.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
