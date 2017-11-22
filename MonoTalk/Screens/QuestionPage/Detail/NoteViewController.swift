@@ -47,6 +47,7 @@ class NoteViewController: UIViewController {
         }
         dismiss(animated: true, completion: nil)
     }
+    
     @IBAction func closeButton(_ sender: Any) {
         dismiss(animated: true, completion: nil)
     }

@@ -10,12 +10,12 @@ import UIKit
 import RealmSwift
 
 class QuestionTableViewController: UIViewController {
+    @IBOutlet var tableView: UITableView!
+    @IBOutlet weak var addButton: UIBarButtonItem!
+    
     var realm: Realm!
     var category: Category!
     var questions: Results<Question>!
-
-    @IBOutlet var tableView: UITableView!
-    @IBOutlet weak var addButton: UIBarButtonItem!
     let cellID = "QuestionCell"
     let sortCellID = "SortCell"
     var notificationToken: NotificationToken? = nil
@@ -24,17 +24,13 @@ class QuestionTableViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        setUpUI()
-
-        let nib = UINib(nibName: "SortCellXib", bundle: nil)
-        tableView.register(nib, forCellReuseIdentifier: sortCellID)
-
+        setupUI()
+        setupTableView()
+        
+        self.title = category.name
+        
         realm = try! Realm()
         questions = category.questions.sorted(byKeyPath: sortMode.rawValue, ascending: sortMode.acsending)
-
-        self.title = category?.name
-        tableView.dataSource = self
-        tableView.delegate = self
 
         // MARK:Observe Results Notifications
         notificationToken = questions.observe { [weak self] (changes: RealmCollectionChange) in
@@ -50,19 +46,23 @@ class QuestionTableViewController: UIViewController {
             }
         }
     }
-
-    func setUpUI() {
-        // tableView
-        tableView.estimatedRowHeight = 100
-        // Navigation bar
-        addButton.image = UIImage(named: "navi_plus")!
-
-    }
-
+    
     deinit {
         notificationToken?.invalidate()
     }
-
+    
+    //MARK: Setup
+    private func setupUI() {
+        tableView.estimatedRowHeight = 100
+        addButton.image = UIImage(named: "navi_plus")!
+    }
+    
+    private func setupTableView() {
+        let nib = UINib(nibName: "SortCellXib", bundle: nil)
+        tableView.register(nib, forCellReuseIdentifier: sortCellID)
+        tableView.dataSource = self
+        tableView.delegate = self
+    }
 
     // MARK: segue
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -71,7 +71,7 @@ class QuestionTableViewController: UIViewController {
             let cell = sender as! QuestionTavleViewCell
             if let indexPath = self.tableView!.indexPath(for: cell) {
                 pageVC.startIndex = indexPath.row - 1
-                pageVC.categoryID = category.id
+                pageVC.category = category
                 pageVC.sortMode = sortMode
                 tableView.deselectRow(at: indexPath, animated: true)
             }
@@ -79,12 +79,12 @@ class QuestionTableViewController: UIViewController {
             let nav = segue.destination as! UINavigationController
             let editVC = nav.topViewController as! AddEditQuestionViewController
             editVC.isFromAdd = true
-            editVC.categoryID = category.id
+            editVC.category = category
         }
     }
-
 }
 
+//MARK: UITableViewDataSource
 extension QuestionTableViewController: UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
@@ -135,6 +135,7 @@ extension QuestionTableViewController: UITableViewDataSource {
     }
 }
 
+//MARK: UITableViewDelegate
 extension QuestionTableViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if indexPath.row == 0 {

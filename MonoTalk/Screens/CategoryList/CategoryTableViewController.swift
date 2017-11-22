@@ -104,6 +104,19 @@ class CategoryTableViewController: UITableViewController {
         }
         return 88
     }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        
+        if indexPath.row >= categories.count {
+            showCategoryAlert(isEdit: false, category: nil)
+        }
+    }
+    
+    // Disable swipe to delete for Create cell
+    override func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCellEditingStyle {
+        return .none
+    }
 
     // MARK: segue
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -117,9 +130,9 @@ class CategoryTableViewController: UITableViewController {
     }
 }
 
-
+// MARK: Swipe Actions
 extension CategoryTableViewController {
-    // MARK: Edit actions
+    // MARK: set Actions
     override func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
         if indexPath.row < categories.count {
             let deleteAction = UITableViewRowAction(style: .default, title: "Delete") { (action, indexPath) -> Void in
@@ -139,24 +152,28 @@ extension CategoryTableViewController {
         }
     }
 
-    // Disable swipe to delete for Create cell
-    override func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCellEditingStyle {
-        return .none
+    private func deleteAlerm(deleteItem: Category) {
+        let message = deleteItem.name + " will be deleted forever."
+        let alert: UIAlertController = UIAlertController(title: nil, message: message, preferredStyle: .actionSheet)
+        let cancel = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+
+        let delete: UIAlertAction = UIAlertAction(title: "Delete Category", style: .destructive, handler: {
+            (action: UIAlertAction!) -> Void in
+            try! self.realm.write {
+                self.realm.delete(deleteItem)
+            }
+        })
+
+        alert.addAction(cancel)
+        alert.addAction(delete)
+        present(alert, animated: true, completion: nil)
     }
+}
 
-
-    // MARK: Create Category
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-
-        tableView.deselectRow(at: indexPath, animated: true)
-
-        if indexPath.row >= categories.count {
-            showCategoryAlert(isEdit: false, category: nil)
-        }
-    }
-
+// MARK: Create Category
+extension CategoryTableViewController {
     private func showCategoryAlert(isEdit: Bool, category: Category?) {
-
+        
         var title = ""
         if isEdit {
             title = "Edit Category"
@@ -164,16 +181,16 @@ extension CategoryTableViewController {
             title = "Create Category"
         }
         let alertController: UIAlertController = UIAlertController(title: title, message: nil, preferredStyle: .alert)
-
+        
         alertController.addTextField { (textField: UITextField) in
             textField.placeholder = "Category name"
             if isEdit {
                 textField.text = category?.name
             }
         }
-
+        
         let okAction = UIAlertAction(title: "OK", style: .default) { (result) in
-
+            
             let textField = alertController.textFields![0] as UITextField
             if (textField.text?.isEmpty)! {
                 self.dismiss(animated: false, completion: nil)
@@ -192,30 +209,12 @@ extension CategoryTableViewController {
                 }
             }
         }
-
+        
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
-
+        
         alertController.addAction(okAction)
         alertController.addAction(cancelAction)
         self.present(alertController, animated: true, completion: nil)
-    }
-
-    // MARK: Delete Category
-    private func deleteAlerm(deleteItem: Category) {
-        let message = deleteItem.name + " will be deleted forever."
-        let alert: UIAlertController = UIAlertController(title: nil, message: message, preferredStyle: .actionSheet)
-        let cancel = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
-
-        let delete: UIAlertAction = UIAlertAction(title: "Delete Category", style: .destructive, handler: {
-            (action: UIAlertAction!) -> Void in
-            try! self.realm.write {
-                self.realm.delete(deleteItem)
-            }
-        })
-
-        alert.addAction(cancel)
-        alert.addAction(delete)
-        present(alert, animated: true, completion: nil)
     }
 }
 

@@ -18,7 +18,6 @@
 		0910BB3A1FAD28EE006AEA85 /* CategoryCellXib.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0910BB381FAD28EE006AEA85 /* CategoryCellXib.xib */; };
 		0910BB3C1FAD30C0006AEA85 /* QuestionTavleViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0910BB3B1FAD30C0006AEA85 /* QuestionTavleViewCell.swift */; };
 		0910BB3E1FAD30DC006AEA85 /* QuestionTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0910BB3D1FAD30DC006AEA85 /* QuestionTableViewController.swift */; };
-		092B628B1FBD2F7A001AF0F8 /* seed.csv in Resources */ = {isa = PBXBuildFile; fileRef = 092B62881FBD2C5D001AF0F8 /* seed.csv */; };
 		094ABF081FA7E85F00BA23AB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 094ABF071FA7E85F00BA23AB /* AppDelegate.swift */; };
 		094ABF0D1FA7E85F00BA23AB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 094ABF0B1FA7E85F00BA23AB /* Main.storyboard */; };
 		094ABF0F1FA7E85F00BA23AB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 094ABF0E1FA7E85F00BA23AB /* Assets.xcassets */; };
@@ -80,7 +79,6 @@
 		0910BB381FAD28EE006AEA85 /* CategoryCellXib.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CategoryCellXib.xib; sourceTree = "<group>"; };
 		0910BB3B1FAD30C0006AEA85 /* QuestionTavleViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionTavleViewCell.swift; sourceTree = "<group>"; };
 		0910BB3D1FAD30DC006AEA85 /* QuestionTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionTableViewController.swift; sourceTree = "<group>"; };
-		092B62881FBD2C5D001AF0F8 /* seed.csv */ = {isa = PBXFileReference; lastKnownFileType = text; path = seed.csv; sourceTree = "<group>"; };
 		092B62891FBD2ECE001AF0F8 /* seed.csv */ = {isa = PBXFileReference; lastKnownFileType = text; name = seed.csv; path = ../../../temporal/seed.csv; sourceTree = "<group>"; };
 		094ABF041FA7E85F00BA23AB /* MonoTalk.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MonoTalk.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		094ABF071FA7E85F00BA23AB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -155,15 +153,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		090C10ED1FB4D50B003E7AAD /* Presentation */ = {
+		090C10ED1FB4D50B003E7AAD /* Screens */ = {
 			isa = PBXGroup;
 			children = (
+				094ABF0B1FA7E85F00BA23AB /* Main.storyboard */,
+				094ABF0E1FA7E85F00BA23AB /* Assets.xcassets */,
 				090C10EE1FB4D589003E7AAD /* CategoryList */,
 				090C10EF1FB4D5E3003E7AAD /* QuestionList */,
 				090C10F01FB4D643003E7AAD /* QuestionPage */,
 				090C10F11FB4D68B003E7AAD /* AddEditQuestion */,
 			);
-			path = Presentation;
+			path = Screens;
 			sourceTree = "<group>";
 		};
 		090C10EE1FB4D589003E7AAD /* CategoryList */ = {
@@ -244,15 +244,12 @@
 		094ABF061FA7E85F00BA23AB /* MonoTalk */ = {
 			isa = PBXGroup;
 			children = (
-				094ABF071FA7E85F00BA23AB /* AppDelegate.swift */,
-				098446C31FAE4A81005F72E8 /* MainStoryboards */,
-				090C10ED1FB4D50B003E7AAD /* Presentation */,
+				094ABF131FA7E85F00BA23AB /* Info.plist */,
+				0980E0631FC62B8C00D4DDAB /* App */,
+				090C10ED1FB4D50B003E7AAD /* Screens */,
 				098446C41FAE4ABE005F72E8 /* Common */,
 				0980E05D1FC6097900D4DDAB /* Models */,
 				098446C21FAE3DA7005F72E8 /* DataBase */,
-				094ABF0E1FA7E85F00BA23AB /* Assets.xcassets */,
-				094ABF131FA7E85F00BA23AB /* Info.plist */,
-				092B62881FBD2C5D001AF0F8 /* seed.csv */,
 			);
 			path = MonoTalk;
 			sourceTree = "<group>";
@@ -288,6 +285,7 @@
 			isa = PBXGroup;
 			children = (
 				094ABF391FA7F85200BA23AB /* Model.swift */,
+				090E303E1FBE5AA70071F714 /* SortMode.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -309,7 +307,6 @@
 				0910BB3B1FAD30C0006AEA85 /* QuestionTavleViewCell.swift */,
 				09C899D51FB539BC007A9263 /* SortCellXib.swift */,
 				09C899D61FB539BC007A9263 /* SortCellXib.xib */,
-				090E303E1FBE5AA70071F714 /* SortMode.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -344,6 +341,15 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
+		0980E0631FC62B8C00D4DDAB /* App */ = {
+			isa = PBXGroup;
+			children = (
+				094ABF071FA7E85F00BA23AB /* AppDelegate.swift */,
+				098446C31FAE4A81005F72E8 /* Views */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
 		098446C21FAE3DA7005F72E8 /* DataBase */ = {
 			isa = PBXGroup;
 			children = (
@@ -355,13 +361,12 @@
 			path = DataBase;
 			sourceTree = "<group>";
 		};
-		098446C31FAE4A81005F72E8 /* MainStoryboards */ = {
+		098446C31FAE4A81005F72E8 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				094ABF0B1FA7E85F00BA23AB /* Main.storyboard */,
 				094ABF101FA7E85F00BA23AB /* LaunchScreen.storyboard */,
 			);
-			path = MainStoryboards;
+			path = Views;
 			sourceTree = "<group>";
 		};
 		098446C41FAE4ABE005F72E8 /* Common */ = {
@@ -517,7 +522,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				092B628B1FBD2F7A001AF0F8 /* seed.csv in Resources */,
 				09A958B41FAE3C5B000DD9AF /* default.realm in Resources */,
 				0910BB3A1FAD28EE006AEA85 /* CategoryCellXib.xib in Resources */,
 				094ABF121FA7E85F00BA23AB /* LaunchScreen.storyboard in Resources */,

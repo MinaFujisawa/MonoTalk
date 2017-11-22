@@ -19,7 +19,6 @@ class PlayerCellXib: UITableViewCell {
     @IBOutlet weak var fileSizeLabel: UILabel!
 
     var audioPlayer: AVAudioPlayer!
-    let fileExtension = ".caf"
     var isPaused = true
     var question: Question!
     var record: Record!
@@ -32,11 +31,12 @@ class PlayerCellXib: UITableViewCell {
         super.awakeFromNib()
         setUpUI()
     }
-
-    func setUp() {
+    
+    // MARK: Setup
+    internal func setUp() {
         // Get record URL
         let documentsDirectory = FileManager().urls(for: .documentDirectory, in: .userDomainMask)[0]
-        recordUrl = documentsDirectory.appendingPathComponent(record.id + fileExtension)
+        recordUrl = documentsDirectory.appendingPathComponent(record.id + Record.fileExtension)
 
         // Set audioPlayer
         do {
@@ -155,6 +155,7 @@ class PlayerCellXib: UITableViewCell {
     }
 }
 
+// MARK: AVAudioPlayerDelegate
 extension PlayerCellXib: AVAudioPlayerDelegate {
     func audioPlayerDidFinishPlaying(_ player: AVAudioPlayer, successfully flag: Bool) {
         resetAudio()

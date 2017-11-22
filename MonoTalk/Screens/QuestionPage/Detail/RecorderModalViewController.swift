@@ -20,25 +20,21 @@ class RecorderModalViewController: UIViewController {
     var audioRecorder: AVAudioRecorder!
     var audioPlayer: AVAudioPlayer?
     let fileManager = FileManager()
-    let fileExtension = ".caf"
     let id = UUID().uuidString
     var startTime: Date!
     var recordingTimer: Timer?
     var playTimer: Timer?
-
-    var realm: Realm!
-//    var questionId: String!
     var question: Question!
-    var notificationIdDismssedModel: String!
 
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        setUpUI()
-        okButton.isHidden = true
-        deleteButton.isHidden = true
-
-        // Set up recordingSession
+        setupUI()
+        setupRecordingSession()
+    }
+    
+    // MARK: Setup
+    private func setupRecordingSession() {
         recordingSession = AVAudioSession.sharedInstance()
         do {
             try recordingSession.setCategory(AVAudioSessionCategoryPlayAndRecord)
@@ -57,7 +53,10 @@ class RecorderModalViewController: UIViewController {
         }
     }
 
-    func setUpUI() {
+    private func setupUI() {
+        okButton.isHidden = true
+        deleteButton.isHidden = true
+        
         mainButton.circle()
         okButton.circle()
         deleteButton.circle()
@@ -68,123 +67,37 @@ class RecorderModalViewController: UIViewController {
         timeLabel.textColor = MyColor.darkText.value
         timeLabel.font = UIFont.systemFont(ofSize: TextSize.normal.rawValue)
     }
-
-    // MARK: Record
-    func startRecording() {
-        let settings = [
-            AVFormatIDKey: Int(kAudioFormatMPEG4AAC),
-            AVSampleRateKey: 12000,
-            AVNumberOfChannelsKey: 1,
-            AVEncoderAudioQualityKey: AVAudioQuality.high.rawValue
-        ]
-
-        do {
-            audioRecorder = try AVAudioRecorder(url: getFileURL(), settings: settings)
-            audioRecorder.delegate = self
-            audioRecorder.record()
-
-        } catch {
-            finishRecording(success: false)
-        }
-
-        // Display recording time
-        startTime = Date()
-        recordingTimer = Timer.scheduledTimer(timeInterval: 0, target: self, selector: #selector(displayRecordingTime), userInfo: nil, repeats: true)
-    }
-
-    func getFileURL() -> URL {
+    
+    // MARK: Helper functions
+    private func getFileURL() -> URL {
         let urls = fileManager.urls(for: .documentDirectory, in: .userDomainMask) as [NSURL]
         let dirURL = urls[0]
-        return dirURL.appendingPathComponent(id + fileExtension)!
+        return dirURL.appendingPathComponent(id + Record.fileExtension)!
     }
-
-    func finishRecording(success: Bool) {
-        audioRecorder.stop()
-        audioRecorder = nil
-
-        // UI
-        okButton.isHidden = false
-        deleteButton.isHidden = false
-        mainButton.setImage(UIImage(named: "icon_record_play"), for: .normal)
-
-        // Stop timer
-        recordingTimer?.invalidate()
-
-        if !success {
-            print("recording failed")
-        }
-    }
-
-    @objc func displayRecordingTime() {
-        let interval = Date().timeIntervalSince(startTime)
-        timeLabel.text = Time.getFormattedTime(timeInterval: interval)
-    }
-
-    func displayDurationTime() {
+    
+    private func displayDurationTime() {
         let duration = Time.getDuration(url: getFileURL())
         timeLabel.text = Time.getFormattedTime(timeInterval: duration)
     }
-
-
-    // MARK : Play
-    func playAudio() {
-        mainButton.setImage(UIImage(named: "icon_record_stop"), for: .normal)
-
-        // Display playing time
-        playTimer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(displayPlayingTime), userInfo: nil, repeats: true)
-        audioPlayer?.play()
-    }
-
-    func stopAudio() {
-        audioPlayer?.stop()
-        audioPlayer?.currentTime = 0
-        playTimer?.invalidate()
-        mainButton.setImage(UIImage(named: "icon_record_play"), for: .normal)
-        displayDurationTime()
-    }
-
-    @objc func displayPlayingTime() {
-        timeLabel.text = Time.getFormattedTime(timeInterval: audioPlayer!.currentTime)
-    }
-
-    func togglePlayOrStop() {
-        if audioPlayer == nil {
-            do {
-                try audioPlayer = AVAudioPlayer(contentsOf: self.getFileURL())
-                audioPlayer?.delegate = self
-            } catch {
-                print("Error to play")
-            }
-        }
-
-        if let audioPlayer = audioPlayer {
-            if audioPlayer.isPlaying {
-                stopAudio()
-            } else {
-                playAudio()
-            }
-        }
-    }
-
+    
     // MARK: Main button
-    @IBAction func mainButton(_ sender: Any) {
+    @IBAction private func mainButton(_ sender: Any) {
         if audioRecorder != nil {
             finishRecording(success: true)
         } else {
             togglePlayOrStop()
         }
     }
-
+    
     // MARK: Delete button
-    @IBAction func deleteButton(_ sender: Any) {
+    @IBAction private func deleteButton(_ sender: Any) {
         stopAudio()
         dismiss(animated: true, completion: nil)
     }
-
+    
     // MARK: OK button
-    @IBAction func okButton(_ sender: Any) {
+    @IBAction private func okButton(_ sender: Any) {
         stopAudio()
-        // MARK: Save the record to DB
         let newRecord = Record()
         newRecord.id = id
         do {
@@ -193,33 +106,121 @@ class RecorderModalViewController: UIViewController {
         } catch {
             print("Error: \(error)")
         }
-
-        realm = try! Realm()
-
-        // Save new record
+        
+        let realm = try! Realm()
+        
         try! realm.write() {
             question.records.append(newRecord)
             question.recordsNum += 1
         }
-
-        NotificationCenter.default.post(name: NSNotification.Name(rawValue: notificationIdDismssedModel), object: nil)
-
+        
         dismiss(animated: true, completion: {
             // MARK: Display Rate Tutorial
             // TODO: only first time
             let storyboard = UIStoryboard(name: "RateTutorial", bundle: Bundle.main)
             let rateTutorialModal = storyboard.instantiateViewController(withIdentifier: "RateTutorial") as! RateTutorialViewController
             rateTutorialModal.question = self.question
-
+            
             let additionalTime = DispatchTimeInterval.milliseconds(800)
             DispatchQueue.main.asyncAfter(deadline: .now() + additionalTime) {
                 UIApplication.topViewController()?.present(rateTutorialModal, animated: true, completion: nil)
             }
         })
     }
+    
 }
 
+// MARK: Record
+extension RecorderModalViewController {
+    private func startRecording() {
+        let settings = [
+            AVFormatIDKey: Int(kAudioFormatMPEG4AAC),
+            AVSampleRateKey: 12000,
+            AVNumberOfChannelsKey: 1,
+            AVEncoderAudioQualityKey: AVAudioQuality.high.rawValue
+        ]
+        
+        do {
+            audioRecorder = try AVAudioRecorder(url: getFileURL(), settings: settings)
+            audioRecorder.delegate = self
+            audioRecorder.record()
+            
+        } catch {
+            finishRecording(success: false)
+        }
+        
+        // Display recording time
+        startTime = Date()
+        recordingTimer = Timer.scheduledTimer(timeInterval: 0, target: self, selector: #selector(displayRecordingTime), userInfo: nil, repeats: true)
+    }
+    
+    private func finishRecording(success: Bool) {
+        audioRecorder.stop()
+        audioRecorder = nil
+        
+        // UI
+        okButton.isHidden = false
+        deleteButton.isHidden = false
+        mainButton.setImage(UIImage(named: "icon_record_play"), for: .normal)
+        
+        // Stop timer
+        recordingTimer?.invalidate()
+        
+        if !success {
+            print("recording failed")
+        }
+    }
+    
+    @objc private func displayRecordingTime() {
+        let interval = Date().timeIntervalSince(startTime)
+        timeLabel.text = Time.getFormattedTime(timeInterval: interval)
+    }
+}
 
+// MARK: Play
+extension RecorderModalViewController {
+    // MARK : Play methods
+    private func playAudio() {
+        mainButton.setImage(UIImage(named: "icon_record_stop"), for: .normal)
+        
+        // Display playing time
+        playTimer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(displayPlayingTime), userInfo: nil, repeats: true)
+        audioPlayer?.play()
+    }
+    
+    private func stopAudio() {
+        audioPlayer?.stop()
+        audioPlayer?.currentTime = 0
+        playTimer?.invalidate()
+        mainButton.setImage(UIImage(named: "icon_record_play"), for: .normal)
+        displayDurationTime()
+    }
+    
+    @objc func displayPlayingTime() {
+        timeLabel.text = Time.getFormattedTime(timeInterval: audioPlayer!.currentTime)
+    }
+    
+    private func togglePlayOrStop() {
+        if audioPlayer == nil {
+            do {
+                try audioPlayer = AVAudioPlayer(contentsOf: self.getFileURL())
+                audioPlayer?.delegate = self
+            } catch {
+                print("Error to play")
+            }
+        }
+        
+        if let audioPlayer = audioPlayer {
+            if audioPlayer.isPlaying {
+                stopAudio()
+            } else {
+                playAudio()
+            }
+        }
+    }
+}
+
+// MARK: AVAudioRecorderDelegate
 extension RecorderModalViewController: AVAudioRecorderDelegate {
     func audioRecorderDidFinishRecording(_ recorder: AVAudioRecorder, successfully flag: Bool) {
         if !flag {
@@ -228,12 +229,14 @@ extension RecorderModalViewController: AVAudioRecorderDelegate {
     }
 }
 
+// MARK: AVAudioPlayerDelegate
 extension RecorderModalViewController: AVAudioPlayerDelegate {
     func audioPlayerDidFinishPlaying(_ player: AVAudioPlayer, successfully flag: Bool) {
         stopAudio()
     }
 }
 
+// MARK: UIApplication
 extension UIApplication {
     class func topViewController(base: UIViewController? = UIApplication.shared.keyWindow?.rootViewController) -> UIViewController? {
         if let nav = base as? UINavigationController {

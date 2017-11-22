@@ -93,5 +93,7 @@ class Record: Object {
     override static func primaryKey() -> String? {
         return "id"
     }
+    
+    static let fileExtension = ".caf"
 }
 

@@ -15,12 +15,12 @@ class AddEditQuestionViewController: UIViewController {
 
     var isFromAdd = false // true: new, false: edit
     var existingQuestion: Question!
-    var categoryID: String!
+    var category: Category!
     let placeholderText = "e.g. How's it going?"
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        setUpUI()
+        setupUI()
         questionTextView.delegate = self
 
         if isFromAdd {
@@ -37,24 +37,21 @@ class AddEditQuestionViewController: UIViewController {
         questionTextView.becomeFirstResponder()
     }
 
-    func setUpUI() {
+    private func setupUI() {
         questionTextView.setPadding()
         questionTextView.font = UIFont.systemFont(ofSize: TextSize.normal.rawValue)
     }
 
     // MARK: Navi bar action
-    @IBAction func doneButton(_ sender: Any) {
+    @IBAction private func doneButton(_ sender: Any) {
         // MARK: Save
         let realm = try! Realm()
         if isFromAdd {
             // Add new question
             let newQuestion = Question()
-            newQuestion.categoryID = categoryID
-            
-            
+            newQuestion.categoryID = category.id
             newQuestion.questionBody = questionTextView.text
 
-            let category = realm.object(ofType: Category.self, forPrimaryKey: categoryID)
             try! realm.write {
                 category?.questions.append(newQuestion)
             }
@@ -67,11 +64,11 @@ class AddEditQuestionViewController: UIViewController {
         dismiss(animated: true, completion: nil)
     }
 
-    @IBAction func closeButton(_ sender: Any) {
+    @IBAction private func closeButton(_ sender: Any) {
         dismiss(animated: true, completion: nil)
     }
 }
-
+// MARK: UITextViewDelegate
 extension AddEditQuestionViewController: UITextViewDelegate {
     public func textViewDidChange(_ textView: UITextView) {
         if let placeholderLabel = textView.viewWithTag(100) as? UILabel {

@@ -12,7 +12,6 @@ import AVFoundation
 
 class QuestionDetailViewController: UIViewController {
 
-
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var questionAreaView: UIView!
     @IBOutlet weak var recordButton: UIButton!
@@ -26,10 +25,6 @@ class QuestionDetailViewController: UIViewController {
     var notificationTokenForRecords: NotificationToken? = nil
     var balloonView = UIView()
     let cellID = "PlayerCell"
-    let notificationIdDismssedModel = "dismissedModal"
-    let notaificationIdDeleted = "deleted"
-    let notaificationIdDeletedUserInfo = "indexOfDletedItem"
-    var currentIndexTitle: String!
     var question: Question!
     var records: Results<Record>!
     var realm: Realm!
@@ -87,6 +82,12 @@ class QuestionDetailViewController: UIViewController {
         }
     }
     
+    deinit {
+        notificationToken?.invalidate()
+        notificationTokenForRecords?.invalidate()
+    }
+    
+    // MARK: Setup
     private func setupTableView() {
         tableView.dataSource = self
         tableView.delegate = self
@@ -99,35 +100,20 @@ class QuestionDetailViewController: UIViewController {
         let nib = UINib(nibName: "PlayerXibView", bundle: nil)
         tableView.register(nib, forCellReuseIdentifier: cellID)
     }
-
-    deinit {
-        notificationToken?.invalidate()
-        notificationTokenForRecords?.invalidate()
-    }
-
-    override func viewWillAppear(_ animated: Bool) {
-        // Init contents
-        questionLabel.text = question.questionBody
-        let category = realm.object(ofType: Category.self, forPrimaryKey: question.categoryID)
-        categoryLabel.text = category?.name
-        self.title = currentIndexTitle
-        tableView.tableFooterView = UIView()
-    }
-
-
-    func setUpUI() {
+    
+    private func setUpUI() {
         // Record Button
         recordButton.backgroundColor = MyColor.theme.value
         recordButton.circle()
         recordButton.dropShadow()
         recordButton.imageView?.contentMode = .scaleAspectFit
         self.view.bringSubview(toFront: recordButton)
-
+        
         let origImage = UIImage(named: "icon_microphone")
         let tintedImage = origImage?.withRenderingMode(.alwaysTemplate)
         recordButton.setImage(tintedImage, for: .normal)
         recordButton.tintColor = .white
-
+        
         // Star
         starButton.setImageAspectFit()
         if question.isFavorited {
@@ -135,26 +121,26 @@ class QuestionDetailViewController: UIViewController {
         } else {
             starButton.setImage(UIImage(named: "icon_star_outline"), for: .normal)
         }
-
+        
         // Rate
         setRateButtonIcon()
-
+        
         // Note
         noteButton.setImageAspectFit()
         setNoteButtonIcon()
-
+        
         // Text
         questionLabel.textColor = MyColor.darkText.value
         questionLabel.font = UIFont.systemFont(ofSize: TextSize.questionBody.rawValue)
         categoryLabel.textColor = MyColor.darkText.value
         categoryLabel.font = UIFont.systemFont(ofSize: TextSize.small.rawValue)
     }
-
-    func setRateButtonIcon() {
+    
+    private func setRateButtonIcon() {
         rateButton.setImage(Question.Rate.allValues[question.rate].rateImage, for: .normal)
     }
-
-    func setNoteButtonIcon() {
+    
+    private func setNoteButtonIcon() {
         if question.note != nil {
             noteButton.setImage(UIImage(named: "icon_note_badge"), for: .normal)
         } else {
@@ -162,6 +148,15 @@ class QuestionDetailViewController: UIViewController {
         }
     }
 
+    override func viewWillAppear(_ animated: Bool) {
+        // Init contents
+        questionLabel.text = question.questionBody
+        let category = realm.object(ofType: Category.self, forPrimaryKey: question.categoryID)
+        categoryLabel.text = category?.name
+        tableView.tableFooterView = UIView()
+    }
+
+    
     // MARK: Segue
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "GoToNote" {
@@ -176,7 +171,6 @@ class QuestionDetailViewController: UIViewController {
         let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
         let modal = storyboard.instantiateViewController(withIdentifier: "ModalViewController") as! RecorderModalViewController
         modal.question = question
-        modal.notificationIdDismssedModel = notificationIdDismssedModel
         self.present(modal, animated: true, completion: nil)
     }
 
@@ -205,7 +199,7 @@ class QuestionDetailViewController: UIViewController {
         }
     }
     
-    func showRateBaloon() {
+    private func showRateBaloon() {
         questionAreaView.removeGestureRecognizer(speachGestureReconizer)
         isShowingBalloon = true
 
@@ -248,7 +242,7 @@ class QuestionDetailViewController: UIViewController {
         }
     }
 
-    @objc func tappedRateButtonFromBalloon(_ sender: UIButton) {
+    @objc private func tappedRateButtonFromBalloon(_ sender: UIButton) {
         try! realm.write {
             question.rate = Question.Rate.allValues[sender.tag].rawValue
         }
@@ -256,14 +250,14 @@ class QuestionDetailViewController: UIViewController {
         closeRateBalloon()
     }
 
-    @objc func closeRateBalloon() {
+    @objc private func closeRateBalloon() {
         balloonView.removeFromSuperview()
         isShowingBalloon = false
         questionAreaView.addGestureRecognizer(speachGestureReconizer)
     }
 
     //MARK: Speach Question
-    @objc func speach() {
+    @objc private func speach() {
         if !self.synthesizer.isSpeaking {
             let utterance = AVSpeechUtterance(string: self.question.questionBody)
             synthesizer.speak(utterance)
@@ -271,7 +265,7 @@ class QuestionDetailViewController: UIViewController {
     }
 }
 
-// MARK: TabelView
+// MARK: UITableViewDataSource
 extension QuestionDetailViewController: UITableViewDataSource {
 
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -293,6 +287,8 @@ extension QuestionDetailViewController: UITableViewDataSource {
         return cell
     }
 }
+
+// MARK: UITableViewDelegate
 extension QuestionDetailViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return UITableViewAutomaticDimension
