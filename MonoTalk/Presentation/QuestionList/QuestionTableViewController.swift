@@ -32,7 +32,7 @@ class QuestionTableViewController: UIViewController {
 
         realm = try! Realm()
         category = realm.object(ofType: Category.self, forPrimaryKey: categoryID)
-        questions = category?.questions.sorted(byKeyPath: "date", ascending: true)
+        questions = category.questions.sorted(byKeyPath: sortMode.rawValue, ascending: sortMode.acsending)
 
         self.title = category?.name
         tableView.dataSource = self

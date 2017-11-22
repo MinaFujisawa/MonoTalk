@@ -31,7 +31,7 @@ enum SortMode: String {
     var acsending: Bool {
         switch self {
         case .date:
-            return true
+            return false
         case .rate:
             return false
         case .isFavorited:
