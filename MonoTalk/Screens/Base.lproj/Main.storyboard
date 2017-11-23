@@ -20,7 +20,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="88" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="U6i-MN-Zcq">
-                                <rect key="frame" x="0.0" y="188" width="375" height="479"/>
+                                <rect key="frame" x="0.0" y="164" width="375" height="503"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="PlayerCell" rowHeight="88" id="rdD-Wd-Nws" customClass="PlayerCellXib" customModule="MonoTalk" customModuleProvider="target">
@@ -52,7 +52,7 @@
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="H99-O6-PSB">
-                                <rect key="frame" x="0.0" y="20" width="375" height="168"/>
+                                <rect key="frame" x="0.0" y="20" width="375" height="144"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1PV-b5-a8j">
                                         <rect key="frame" x="16" y="15" width="221" height="16"/>
@@ -72,8 +72,8 @@
                                             <action selector="rateButtonAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="bX3-ow-PU7"/>
                                         </connections>
                                     </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="If you were rich and something something, would you help poor poeple?And Whey would you think so?" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9gI-nY-cO2">
-                                        <rect key="frame" x="24" y="54" width="327" height="82"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="If you were rich , would you help poor poeple?And Whey would you think so?" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9gI-nY-cO2">
+                                        <rect key="frame" x="24" y="54" width="327" height="58"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -113,7 +113,7 @@
                                     <constraint firstItem="b06-qE-cl2" firstAttribute="centerY" secondItem="1PV-b5-a8j" secondAttribute="centerY" id="Dmv-wV-LtS"/>
                                     <constraint firstAttribute="trailing" secondItem="9gI-nY-cO2" secondAttribute="trailing" constant="24" id="JAf-hV-aTM"/>
                                     <constraint firstItem="2jA-sb-gSS" firstAttribute="leading" secondItem="1PV-b5-a8j" secondAttribute="trailing" constant="16" id="bAt-sK-cUA"/>
-                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="168" id="ftB-t7-Bd1"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="144" id="ftB-t7-Bd1"/>
                                     <constraint firstAttribute="bottom" secondItem="9gI-nY-cO2" secondAttribute="bottom" constant="32" id="hex-5A-czW"/>
                                     <constraint firstItem="9gI-nY-cO2" firstAttribute="leading" secondItem="H99-O6-PSB" secondAttribute="leading" constant="24" id="mN7-Xu-xh5"/>
                                     <constraint firstItem="b06-qE-cl2" firstAttribute="leading" secondItem="hc6-U5-Eoc" secondAttribute="trailing" constant="8" id="nOP-7V-xms"/>
@@ -767,6 +767,6 @@ AEEAAAAAAAAAAAAAAAAAACNMA
         <image name="rate_soso" width="40" height="40"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Gr9-Mh-UhM"/>
+        <segue reference="gOp-rz-1Dc"/>
     </inferredMetricsTieBreakers>
 </document>

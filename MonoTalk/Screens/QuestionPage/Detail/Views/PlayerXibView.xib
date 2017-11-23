@@ -18,16 +18,16 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nr3-pq-2l3">
-                        <rect key="frame" x="20" y="16" width="335" height="48"/>
+                        <rect key="frame" x="16" y="16" width="343" height="40"/>
                         <subviews>
                             <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="VBt-QL-hx3">
-                                <rect key="frame" x="44" y="9" width="207" height="31"/>
+                                <rect key="frame" x="44" y="5" width="215" height="31"/>
                                 <connections>
                                     <action selector="sliderChanged:" destination="J11-qV-APo" eventType="valueChanged" id="RW7-ot-jX6"/>
                                 </connections>
                             </slider>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gWL-CE-UAn">
-                                <rect key="frame" x="8" y="9" width="30" height="30"/>
+                                <rect key="frame" x="8" y="5" width="30" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="aD0-wL-dLO"/>
                                     <constraint firstAttribute="width" constant="30" id="r23-eN-FfI"/>
@@ -37,19 +37,19 @@
                                     <action selector="tappedPlayButton:" destination="J11-qV-APo" eventType="touchUpInside" id="2er-4N-DEi"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="q2X-me-h1q">
-                                <rect key="frame" x="297" y="9.5" width="30" height="30"/>
+                            <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="q2X-me-h1q">
+                                <rect key="frame" x="305" y="5.5" width="30" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="lhF-ca-yca"/>
                                     <constraint firstAttribute="width" constant="30" id="ptM-Ai-TOM"/>
                                 </constraints>
-                                <state key="normal" image="icon_trash"/>
+                                <state key="normal" image="icon_remove"/>
                                 <connections>
                                     <action selector="tappedDeleteButton:" destination="J11-qV-APo" eventType="touchUpInside" id="JMV-gj-C47"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00:00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="E3i-cy-grq">
-                                <rect key="frame" x="257" y="17" width="40" height="14.5"/>
+                                <rect key="frame" x="265" y="13" width="40" height="14.5"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="40" id="7jd-pU-Aan"/>
                                 </constraints>
@@ -69,17 +69,17 @@
                             <constraint firstItem="q2X-me-h1q" firstAttribute="centerY" secondItem="nr3-pq-2l3" secondAttribute="centerY" id="ZFT-uu-W5e"/>
                             <constraint firstItem="q2X-me-h1q" firstAttribute="leading" secondItem="E3i-cy-grq" secondAttribute="trailing" id="nSY-Fh-yzW"/>
                             <constraint firstItem="gWL-CE-UAn" firstAttribute="leading" secondItem="nr3-pq-2l3" secondAttribute="leading" constant="8" id="stI-yV-r8Q"/>
-                            <constraint firstAttribute="height" constant="48" id="tdD-6j-tJ8"/>
+                            <constraint firstAttribute="height" constant="40" id="tdD-6j-tJ8"/>
                         </constraints>
                     </view>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00 KB" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KBb-44-3sI">
-                        <rect key="frame" x="318" y="67.5" width="37" height="16"/>
+                        <rect key="frame" x="322" y="67.5" width="37" height="16"/>
                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="L26-Kl-7cr">
-                        <rect key="frame" x="20" y="70" width="33" height="13.5"/>
+                        <rect key="frame" x="16" y="62" width="33" height="21.5"/>
                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
@@ -90,8 +90,8 @@
                     <constraint firstItem="KBb-44-3sI" firstAttribute="trailing" secondItem="nr3-pq-2l3" secondAttribute="trailing" id="Dp0-zT-K9m"/>
                     <constraint firstItem="L26-Kl-7cr" firstAttribute="leading" secondItem="nr3-pq-2l3" secondAttribute="leading" id="PUv-nC-fb9"/>
                     <constraint firstItem="nr3-pq-2l3" firstAttribute="top" secondItem="5qf-pb-G0e" secondAttribute="top" constant="16" id="RhI-ge-RCv"/>
-                    <constraint firstAttribute="trailing" secondItem="nr3-pq-2l3" secondAttribute="trailing" constant="20" id="ZX7-Xt-Orl"/>
-                    <constraint firstItem="nr3-pq-2l3" firstAttribute="leading" secondItem="5qf-pb-G0e" secondAttribute="leading" constant="20" id="azc-Tm-Ej1"/>
+                    <constraint firstAttribute="trailing" secondItem="nr3-pq-2l3" secondAttribute="trailing" constant="16" id="ZX7-Xt-Orl"/>
+                    <constraint firstItem="nr3-pq-2l3" firstAttribute="leading" secondItem="5qf-pb-G0e" secondAttribute="leading" constant="16" id="azc-Tm-Ej1"/>
                     <constraint firstAttribute="bottom" secondItem="L26-Kl-7cr" secondAttribute="bottom" id="ujR-LG-mFh"/>
                     <constraint firstItem="L26-Kl-7cr" firstAttribute="top" secondItem="nr3-pq-2l3" secondAttribute="bottom" constant="6" id="zaQ-Vl-fzq"/>
                 </constraints>
@@ -108,7 +108,7 @@
         </tableViewCell>
     </objects>
     <resources>
-        <image name="icon_play" width="12" height="15"/>
-        <image name="icon_trash" width="15" height="18"/>
+        <image name="icon_play" width="20" height="24"/>
+        <image name="icon_remove" width="15" height="15"/>
     </resources>
 </document>
