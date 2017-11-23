@@ -37,7 +37,7 @@ class RecorderModalViewController: UIViewController {
     private func setupRecordingSession() {
         recordingSession = AVAudioSession.sharedInstance()
         do {
-            try recordingSession.setCategory(AVAudioSessionCategoryPlayAndRecord)
+            try recordingSession.setCategory(AVAudioSessionCategoryRecord)
             try recordingSession.setActive(true)
             recordingSession.requestRecordPermission() { [unowned self] allowed in
                 DispatchQueue.main.async {
@@ -167,6 +167,12 @@ extension RecorderModalViewController {
         
         // Stop timer
         recordingTimer?.invalidate()
+        
+        do {
+            try recordingSession.setCategory(AVAudioSessionCategoryPlayback)
+        } catch{
+            
+        }
         
         if !success {
             print("recording failed")
