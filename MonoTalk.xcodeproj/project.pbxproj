@@ -323,8 +323,8 @@
 		0980E0611FC6106100D4DDAB /* Detail */ = {
 			isa = PBXGroup;
 			children = (
-				09B0E2F11FB6ACF40028444B /* NoteViewController.swift */,
 				094ABF351FA7EBD100BA23AB /* QuestionDetailViewController.swift */,
+				09B0E2F11FB6ACF40028444B /* NoteViewController.swift */,
 				09E728511FA95342007B7F5F /* RecorderModalViewController.swift */,
 				0980E0601FC6103600D4DDAB /* Views */,
 			);
@@ -484,6 +484,11 @@
 					094ABF031FA7E85F00BA23AB = {
 						CreatedOnToolsVersion = 9.0;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+						};
 					};
 					094ABF171FA7E85F00BA23AB = {
 						CreatedOnToolsVersion = 9.0;
