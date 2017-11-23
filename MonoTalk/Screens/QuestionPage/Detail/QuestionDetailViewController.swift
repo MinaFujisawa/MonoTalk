@@ -132,7 +132,7 @@ class QuestionDetailViewController: UIViewController {
         // Text
         questionLabel.textColor = MyColor.darkText.value
         questionLabel.font = UIFont.systemFont(ofSize: TextSize.questionBody.rawValue)
-        categoryLabel.textColor = MyColor.darkText.value
+        categoryLabel.textColor = MyColor.lightText.value
         categoryLabel.font = UIFont.systemFont(ofSize: TextSize.small.rawValue)
     }
     

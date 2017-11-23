@@ -80,9 +80,9 @@ extension MyColor {
 
         switch self {
         case .theme:
-            instanceColor = UIColor(hexString: "#2EA1F2")
+            instanceColor = UIColor(hexString: "#04BFDC")
         case .paledTheme:
-            instanceColor = UIColor(hexString: "#DFF1FF")
+            instanceColor = UIColor(hexString: "#CDEFF4")
         case .border:
             instanceColor = UIColor(hexString: "#EAEAEA")
         case .shadow:
@@ -94,14 +94,13 @@ extension MyColor {
         case .darkText:
             instanceColor = UIColor(hexString: "#4A4A4A")
         case .lightText:
-            instanceColor = UIColor(hexString: "#A6ACB4")
+            instanceColor = UIColor(hexString: "#989DA4")
         case .placeHolderText:
             instanceColor = UIColor(hexString: "#A6ACB4")
         case .red:
             instanceColor = UIColor(hexString: "#FD344C")
         case .custom(let hexValue, let opacity):
             instanceColor = UIColor(hexString: hexValue).withAlphaComponent(CGFloat(opacity))
-            
         }
         return instanceColor
     }

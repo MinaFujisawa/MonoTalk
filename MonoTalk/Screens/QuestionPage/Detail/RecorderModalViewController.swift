@@ -63,6 +63,7 @@ class RecorderModalViewController: UIViewController {
         mainButton.aroundBorder()
         okButton.aroundBorder()
         deleteButton.aroundBorder()
+        okButton.tintColor = MyColor.theme.value
 
         timeLabel.textColor = MyColor.darkText.value
         timeLabel.font = UIFont.systemFont(ofSize: TextSize.normal.rawValue)
@@ -162,6 +163,7 @@ extension RecorderModalViewController {
         okButton.isHidden = false
         deleteButton.isHidden = false
         mainButton.setImage(UIImage(named: "icon_record_play"), for: .normal)
+        mainButton.tintColor = MyColor.theme.value
         
         // Stop timer
         recordingTimer?.invalidate()
@@ -182,6 +184,7 @@ extension RecorderModalViewController {
     // MARK : Play methods
     private func playAudio() {
         mainButton.setImage(UIImage(named: "icon_record_stop"), for: .normal)
+        mainButton.tintColor = MyColor.red.value
         
         // Display playing time
         playTimer = Timer.scheduledTimer(timeInterval: 0, target: self, selector: #selector(displayPlayingTime), userInfo: nil, repeats: true)
@@ -193,6 +196,7 @@ extension RecorderModalViewController {
         audioPlayer?.currentTime = 0
         playTimer?.invalidate()
         mainButton.setImage(UIImage(named: "icon_record_play"), for: .normal)
+        mainButton.tintColor = MyColor.theme.value
         displayDurationTime()
     }
     
