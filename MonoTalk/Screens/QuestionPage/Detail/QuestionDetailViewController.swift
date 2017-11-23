@@ -217,7 +217,7 @@ class QuestionDetailViewController: UIViewController {
         balloonView = BalloonView(topCornerX: baloonWidth - diff)
         balloonView.backgroundColor = UIColor.clear
         balloonView.translatesAutoresizingMaskIntoConstraints = false
-        self.view.addSubview(balloonView)
+        addBalloonSubView()
 
         // Constraints
         balloonView.widthAnchor.constraint(equalToConstant: baloonWidth).isActive = true
@@ -242,6 +242,7 @@ class QuestionDetailViewController: UIViewController {
         }
     }
 
+
     @objc private func tappedRateButtonFromBalloon(_ sender: UIButton) {
         try! realm.write {
             question.rate = Question.Rate.allValues[sender.tag].rawValue
@@ -251,10 +252,29 @@ class QuestionDetailViewController: UIViewController {
     }
 
     @objc private func closeRateBalloon() {
-        balloonView.removeFromSuperview()
+        removeBalloonSubView()
         isShowingBalloon = false
         questionAreaView.addGestureRecognizer(speachGestureReconizer)
     }
+    
+    // MARK: Animation for Balloon
+    private func addBalloonSubView() {
+        self.view.addSubview(balloonView)
+        balloonView.alpha = 0
+        UIView.animate(withDuration: 0.2) {
+            self.balloonView.alpha = 1
+            self.balloonView.transform = CGAffineTransform.identity
+        }
+    }
+    
+    func removeBalloonSubView() {
+        UIView.animate(withDuration: 0.1, animations: {
+            self.balloonView.alpha = 0
+        }) { (success: Bool) in
+            self.balloonView.removeFromSuperview()
+        }
+    }
+    
 
     //MARK: Speach Question
     @objc private func speach() {
