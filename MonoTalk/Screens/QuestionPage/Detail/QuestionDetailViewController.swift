@@ -80,27 +80,30 @@ class QuestionDetailViewController: UIViewController {
                 fatalError("\(error)")
             }
         }
+
     }
-    
+
     deinit {
         notificationToken?.invalidate()
         notificationTokenForRecords?.invalidate()
     }
-    
+
     // MARK: Setup
     private func setupTableView() {
         tableView.dataSource = self
         tableView.delegate = self
         records = question.records.sorted(byKeyPath: SortMode.date.rawValue, ascending: SortMode.date.acsending)
-        
+
         tableView.estimatedRowHeight = 88
         tableView.backgroundColor = MyColor.lightGrayBackground.value
         tableView.separatorStyle = .none
-        
+        tableView.contentInset = UIEdgeInsetsMake(0, 0, 88, 0)
+        tableView.allowsSelection = false
+
         let nib = UINib(nibName: "PlayerXibView", bundle: nil)
         tableView.register(nib, forCellReuseIdentifier: cellID)
     }
-    
+
     private func setUpUI() {
         // Record Button
         recordButton.backgroundColor = MyColor.theme.value
@@ -108,12 +111,12 @@ class QuestionDetailViewController: UIViewController {
         recordButton.dropShadow()
         recordButton.imageView?.contentMode = .scaleAspectFit
         self.view.bringSubview(toFront: recordButton)
-        
+
         let origImage = UIImage(named: "icon_microphone")
         let tintedImage = origImage?.withRenderingMode(.alwaysTemplate)
         recordButton.setImage(tintedImage, for: .normal)
         recordButton.tintColor = .white
-        
+
         // Star
         starButton.setImageAspectFit()
         if question.isFavorited {
@@ -121,14 +124,14 @@ class QuestionDetailViewController: UIViewController {
         } else {
             starButton.setImage(UIImage(named: "icon_star_outline"), for: .normal)
         }
-        
+
         // Rate
         setRateButtonIcon()
-        
+
         // Note
         noteButton.setImageAspectFit()
         setNoteButtonIcon()
-        
+
         // Text
         questionLabel.textColor = MyColor.darkText.value
         questionLabel.font = UIFont.systemFont(ofSize: TextSize.questionBody.rawValue)
@@ -139,7 +142,7 @@ class QuestionDetailViewController: UIViewController {
     private func setRateButtonIcon() {
         rateButton.setImage(Question.Rate.allValues[question.rate].rateImage, for: .normal)
     }
-    
+
     private func setNoteButtonIcon() {
         if question.note != nil {
             noteButton.setImage(UIImage(named: "icon_note_badge"), for: .normal)
@@ -156,7 +159,7 @@ class QuestionDetailViewController: UIViewController {
         tableView.tableFooterView = UIView()
     }
 
-    
+
     // MARK: Segue
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "GoToNote" {
@@ -198,7 +201,7 @@ class QuestionDetailViewController: UIViewController {
             showRateBaloon()
         }
     }
-    
+
     private func showRateBaloon() {
         questionAreaView.removeGestureRecognizer(speachGestureReconizer)
         isShowingBalloon = true
@@ -256,7 +259,7 @@ class QuestionDetailViewController: UIViewController {
         isShowingBalloon = false
         questionAreaView.addGestureRecognizer(speachGestureReconizer)
     }
-    
+
     // MARK: Animation for Balloon
     private func addBalloonSubView() {
         self.view.addSubview(balloonView)
@@ -266,7 +269,7 @@ class QuestionDetailViewController: UIViewController {
             self.balloonView.transform = CGAffineTransform.identity
         }
     }
-    
+
     func removeBalloonSubView() {
         UIView.animate(withDuration: 0.1, animations: {
             self.balloonView.alpha = 0
@@ -274,7 +277,7 @@ class QuestionDetailViewController: UIViewController {
             self.balloonView.removeFromSuperview()
         }
     }
-    
+
 
     //MARK: Speach Question
     @objc private func speach() {
@@ -303,8 +306,34 @@ extension QuestionDetailViewController: UITableViewDataSource {
         let record = records[indexPath.row]
         cell.record = record
         cell.question = question
+        cell.playButton.tag = indexPath.row
+        cell.playButton.addTarget(self, action: #selector(playButtontapped(_:)), for: .touchUpInside)
         cell.setUp()
         return cell
+    }
+}
+
+// MARK: Manipulate Cell
+extension QuestionDetailViewController {
+    private func stopAudioCompulsory(tappedPlayButtonAt: Int?) {
+        for i in 0..<records.count {
+            let indexPath = IndexPath(row: i, section: 0)
+            if let cell = tableView.cellForRow(at: indexPath) {
+                let cell = cell as! PlayerCellXib
+                
+                if cell.audioPlayer.isPlaying && i != tappedPlayButtonAt {
+                    cell.pauseAudio()
+                }
+            }
+        }
+    }
+
+    @objc func playButtontapped(_ sender: UIButton) {
+        stopAudioCompulsory(tappedPlayButtonAt: sender.tag)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        stopAudioCompulsory(tappedPlayButtonAt: nil)
     }
 }
 

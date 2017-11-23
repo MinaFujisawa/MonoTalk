@@ -108,7 +108,7 @@
         </tableViewCell>
     </objects>
     <resources>
-        <image name="icon_play" width="20" height="24"/>
+        <image name="icon_play" width="11" height="12"/>
         <image name="icon_remove" width="15" height="15"/>
     </resources>
 </document>

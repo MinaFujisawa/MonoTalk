@@ -52,6 +52,7 @@ class PlayerCellXib: UITableViewCell {
         // Set slider
         slider.maximumValue = Float(Time.getDuration(url: recordUrl))
         slider.setThumbImage(UIImage(named: "icon_player_thumb"), for: .normal)
+        slider.tintColor = MyColor.darkText.value
 
         // Set File size
         fileSizeLabel.text = ByteCountFormatter.string(fromByteCount: record.fileSize, countStyle: .file)
@@ -112,7 +113,7 @@ class PlayerCellXib: UITableViewCell {
         isPaused = false
     }
 
-    private func pauseAudio() {
+    internal func pauseAudio() {
         audioPlayer?.stop()
         timer.invalidate()
         playButton.setImage(UIImage(named: "icon_play"), for: .normal)
