@@ -19,7 +19,6 @@ class CategoryTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-//        tableView.delegate = self
         realm = try! Realm()
 
         categories = realm.objects(Category.self)
@@ -76,27 +75,38 @@ class CategoryTableViewController: UITableViewController {
             let cell = tableView.dequeueReusableCell(withIdentifier: cellID, for: indexPath) as! CategoryTableViewCell
             let category = categories[indexPath.row]
             cell.nameLabel.text = category.name
-            
-            var fileSizeNum:Int64 = 0
+
+            var fileSizeNum: Int64 = 0
             for question in category.questions {
                 for record in question.records {
                     fileSizeNum += record.fileSize
                 }
             }
             cell.fileSizeLabel.text = ByteCountFormatter.string(fromByteCount: fileSizeNum, countStyle: .file)
-            
+
             cell.questionNumLabel.text = String(category.questions.count) + " Questions"
-            cell.categoryImageView.image = UIImage(named: category.imageName)
-            
+
+            if !category.imageName.isEmpty {
+                cell.initialLabel.isHidden = true
+                cell.categoryImageView.image = UIImage(named: category.imageName)
+            } else {
+                cell.categoryImageView.image = nil
+                cell.initialLabel.isHidden = false
+                if let char = category.name.first {
+                    cell.initialLabel.text = String(char).uppercased()
+                    cell.categoryImageView.backgroundColor = MyColor.paledTheme.value
+                }
+            }
+
             // TODO: fix
-            if indexPath.row < categories.count-1 {
+            if indexPath.row < categories.count - 1 {
                 cell.separatorInset = UIEdgeInsets(top: 0, left: 20, bottom: 0, right: 0)
             }
 
             return cell
         }
     }
-    
+
     // MARK: TableViewDelegate
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if indexPath.row == categories.count {
@@ -104,15 +114,15 @@ class CategoryTableViewController: UITableViewController {
         }
         return 88
     }
-    
+
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        
+
         if indexPath.row >= categories.count {
             showCategoryAlert(isEdit: false, category: nil)
         }
     }
-    
+
     // Disable swipe to delete for Create cell
     override func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCellEditingStyle {
         return .none
@@ -173,7 +183,7 @@ extension CategoryTableViewController {
 // MARK: Create Category
 extension CategoryTableViewController {
     private func showCategoryAlert(isEdit: Bool, category: Category?) {
-        
+
         var title = ""
         if isEdit {
             title = "Edit Category"
@@ -181,16 +191,16 @@ extension CategoryTableViewController {
             title = "Create Category"
         }
         let alertController: UIAlertController = UIAlertController(title: title, message: nil, preferredStyle: .alert)
-        
+
         alertController.addTextField { (textField: UITextField) in
             textField.placeholder = "Category name"
             if isEdit {
                 textField.text = category?.name
             }
         }
-        
+
         let okAction = UIAlertAction(title: "OK", style: .default) { (result) in
-            
+
             let textField = alertController.textFields![0] as UITextField
             if (textField.text?.isEmpty)! {
                 self.dismiss(animated: false, completion: nil)
@@ -209,9 +219,9 @@ extension CategoryTableViewController {
                 }
             }
         }
-        
+
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
-        
+
         alertController.addAction(okAction)
         alertController.addAction(cancelAction)
         self.present(alertController, animated: true, completion: nil)

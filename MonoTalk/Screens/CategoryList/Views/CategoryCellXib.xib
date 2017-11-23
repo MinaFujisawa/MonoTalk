@@ -15,6 +15,7 @@
                 <outlet property="arrowImageView" destination="Ij8-kp-Qes" id="zVX-FW-QQa"/>
                 <outlet property="categoryImageView" destination="5ua-gQ-Z1S" id="fiR-LM-fgX"/>
                 <outlet property="fileSizeLabel" destination="pSR-bD-tKS" id="YOg-7w-NVn"/>
+                <outlet property="initialLabel" destination="ZCF-5g-LxE" id="iyV-21-NDf"/>
                 <outlet property="nameLabel" destination="drn-WM-ap0" id="ket-um-gOi"/>
                 <outlet property="questionNumLabel" destination="sU9-oS-YK1" id="B5p-Fl-6jL"/>
             </connections>
@@ -27,7 +28,7 @@
                 <rect key="frame" x="0.0" y="0.0" width="375" height="87.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="health" translatesAutoresizingMaskIntoConstraints="NO" id="5ua-gQ-Z1S">
+                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="5ua-gQ-Z1S">
                         <rect key="frame" x="20" y="12" width="64" height="64"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="64" id="NHI-Wp-rpz"/>
@@ -59,17 +60,25 @@
                             <constraint firstAttribute="height" constant="14" id="qVJ-8H-Clt"/>
                         </constraints>
                     </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="A" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZCF-5g-LxE">
+                        <rect key="frame" x="46" y="33" width="12" height="21"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                 </subviews>
                 <constraints>
                     <constraint firstAttribute="trailingMargin" secondItem="Ij8-kp-Qes" secondAttribute="trailing" constant="12" id="0Ui-m3-uTj"/>
                     <constraint firstItem="pSR-bD-tKS" firstAttribute="leading" secondItem="sU9-oS-YK1" secondAttribute="trailing" constant="8" id="36i-cl-l5M"/>
                     <constraint firstItem="5ua-gQ-Z1S" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="ByU-sU-sra"/>
                     <constraint firstAttribute="trailingMargin" secondItem="drn-WM-ap0" secondAttribute="trailing" constant="12" id="Fzq-WX-1fY"/>
+                    <constraint firstItem="ZCF-5g-LxE" firstAttribute="centerY" secondItem="5ua-gQ-Z1S" secondAttribute="centerY" id="KLE-J6-gy0"/>
                     <constraint firstItem="drn-WM-ap0" firstAttribute="leading" secondItem="5ua-gQ-Z1S" secondAttribute="trailing" constant="16" id="LhZ-n0-v5B"/>
                     <constraint firstItem="sU9-oS-YK1" firstAttribute="leading" secondItem="drn-WM-ap0" secondAttribute="leading" id="M0L-1Q-jPl"/>
                     <constraint firstItem="sU9-oS-YK1" firstAttribute="bottom" secondItem="5ua-gQ-Z1S" secondAttribute="bottom" constant="-8" id="UJa-Lt-eVd"/>
                     <constraint firstItem="pSR-bD-tKS" firstAttribute="bottom" secondItem="sU9-oS-YK1" secondAttribute="bottom" id="Yob-r1-smw"/>
                     <constraint firstItem="5ua-gQ-Z1S" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="dlG-Vx-Dq7"/>
+                    <constraint firstItem="ZCF-5g-LxE" firstAttribute="centerX" secondItem="5ua-gQ-Z1S" secondAttribute="centerX" id="mpI-b8-hfp"/>
                     <constraint firstItem="drn-WM-ap0" firstAttribute="top" secondItem="5ua-gQ-Z1S" secondAttribute="top" constant="8" id="oWy-GO-kn4"/>
                     <constraint firstItem="Ij8-kp-Qes" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="sqL-Kd-RNb"/>
                 </constraints>
@@ -79,7 +88,6 @@
         </tableViewCell>
     </objects>
     <resources>
-        <image name="health" width="300" height="300"/>
         <image name="icon_arrow_right" width="8" height="15"/>
     </resources>
 </document>
