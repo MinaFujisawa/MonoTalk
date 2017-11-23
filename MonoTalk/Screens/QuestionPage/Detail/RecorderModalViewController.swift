@@ -184,7 +184,7 @@ extension RecorderModalViewController {
         mainButton.setImage(UIImage(named: "icon_record_stop"), for: .normal)
         
         // Display playing time
-        playTimer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(displayPlayingTime), userInfo: nil, repeats: true)
+        playTimer = Timer.scheduledTimer(timeInterval: 0, target: self, selector: #selector(displayPlayingTime), userInfo: nil, repeats: true)
         audioPlayer?.play()
     }
     

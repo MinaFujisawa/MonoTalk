@@ -12,11 +12,11 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CategoryTableViewCell" customModule="MonoTalk" customModuleProvider="target">
             <connections>
+                <outlet property="arrowImageView" destination="Ij8-kp-Qes" id="zVX-FW-QQa"/>
                 <outlet property="categoryImageView" destination="5ua-gQ-Z1S" id="fiR-LM-fgX"/>
                 <outlet property="fileSizeLabel" destination="pSR-bD-tKS" id="YOg-7w-NVn"/>
                 <outlet property="nameLabel" destination="drn-WM-ap0" id="ket-um-gOi"/>
                 <outlet property="questionNumLabel" destination="sU9-oS-YK1" id="B5p-Fl-6jL"/>
-                <outlet property="startTextLabel" destination="eEN-6q-f1C" id="luF-BB-to2"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
@@ -52,31 +52,26 @@
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Start" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eEN-6q-f1C">
-                        <rect key="frame" x="309" y="34" width="46" height="20"/>
-                        <color key="backgroundColor" red="1" green="0.9449511786" blue="0.1890240346" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_arrow_right" translatesAutoresizingMaskIntoConstraints="NO" id="Ij8-kp-Qes">
+                        <rect key="frame" x="337" y="37" width="10" height="14"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="46" id="26Y-T3-bKp"/>
-                            <constraint firstAttribute="height" constant="20" id="R9k-PB-pao"/>
+                            <constraint firstAttribute="width" constant="10" id="ZGN-UB-Mq2"/>
+                            <constraint firstAttribute="height" constant="14" id="qVJ-8H-Clt"/>
                         </constraints>
-                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                        <nil key="textColor"/>
-                        <nil key="highlightedColor"/>
-                    </label>
+                    </imageView>
                 </subviews>
                 <constraints>
+                    <constraint firstAttribute="trailingMargin" secondItem="Ij8-kp-Qes" secondAttribute="trailing" constant="12" id="0Ui-m3-uTj"/>
                     <constraint firstItem="pSR-bD-tKS" firstAttribute="leading" secondItem="sU9-oS-YK1" secondAttribute="trailing" constant="8" id="36i-cl-l5M"/>
-                    <constraint firstItem="eEN-6q-f1C" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="3R6-5q-6hX"/>
                     <constraint firstItem="5ua-gQ-Z1S" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="ByU-sU-sra"/>
                     <constraint firstAttribute="trailingMargin" secondItem="drn-WM-ap0" secondAttribute="trailing" constant="12" id="Fzq-WX-1fY"/>
-                    <constraint firstAttribute="trailing" secondItem="eEN-6q-f1C" secondAttribute="trailing" constant="20" id="GEF-v7-ieI"/>
                     <constraint firstItem="drn-WM-ap0" firstAttribute="leading" secondItem="5ua-gQ-Z1S" secondAttribute="trailing" constant="16" id="LhZ-n0-v5B"/>
                     <constraint firstItem="sU9-oS-YK1" firstAttribute="leading" secondItem="drn-WM-ap0" secondAttribute="leading" id="M0L-1Q-jPl"/>
                     <constraint firstItem="sU9-oS-YK1" firstAttribute="bottom" secondItem="5ua-gQ-Z1S" secondAttribute="bottom" constant="-8" id="UJa-Lt-eVd"/>
                     <constraint firstItem="pSR-bD-tKS" firstAttribute="bottom" secondItem="sU9-oS-YK1" secondAttribute="bottom" id="Yob-r1-smw"/>
                     <constraint firstItem="5ua-gQ-Z1S" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="dlG-Vx-Dq7"/>
                     <constraint firstItem="drn-WM-ap0" firstAttribute="top" secondItem="5ua-gQ-Z1S" secondAttribute="top" constant="8" id="oWy-GO-kn4"/>
-                    <constraint firstItem="eEN-6q-f1C" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="pSR-bD-tKS" secondAttribute="trailing" constant="16" id="thT-PB-NnD"/>
+                    <constraint firstItem="Ij8-kp-Qes" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="sqL-Kd-RNb"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
@@ -85,5 +80,6 @@
     </objects>
     <resources>
         <image name="health" width="300" height="300"/>
+        <image name="icon_arrow_right" width="8" height="15"/>
     </resources>
 </document>

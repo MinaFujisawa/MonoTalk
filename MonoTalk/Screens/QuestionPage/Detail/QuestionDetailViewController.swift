@@ -232,7 +232,7 @@ class QuestionDetailViewController: UIViewController {
 
         // Add Rate Buttons
         for index in 0..<5 {
-            let y = (baloonHeight / 2) + (7 / 2) - (iconButtonSize / 2) // 7 = height of triangle
+            let y = (baloonHeight / 2) + (7 / 2) - (iconButtonSize / 2) // 7 = height of the triangle
             let rateButton = UIButton(frame: CGRect(x: 0, y: y, width: iconButtonSize, height: iconButtonSize))
             rateButton.setImage(Question.Rate.allValues[index].rateImage, for: .normal)
             rateButton.frame.origin.x = iconButtonMargin * CGFloat(index + 1) + iconButtonSize * CGFloat(index)

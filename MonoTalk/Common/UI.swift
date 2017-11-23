@@ -11,9 +11,8 @@ import UIKit
 
 // MARK: UIView
 extension UIView {
-    
-    func setCornerRadius() {
-        self.layer.cornerRadius = 5
+    func setCornerRadius(_ num: CGFloat = 5.0) {
+        self.layer.cornerRadius = num
     }
 
     func circle() {
@@ -37,7 +36,7 @@ extension UIView {
 
 // MARK: UIImageView
 extension UIImageView {
-    func setTintColor(_ color : UIColor) {
+    func setTintColor(_ color: UIColor) {
         self.image = self.image?.withRenderingMode(.alwaysTemplate)
         self.tintColor = color
     }

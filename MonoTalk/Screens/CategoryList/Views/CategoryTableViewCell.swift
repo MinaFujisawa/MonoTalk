@@ -10,7 +10,7 @@ import UIKit
 
 class CategoryTableViewCell: UITableViewCell {
 
-    @IBOutlet weak var startTextLabel: UILabel!
+    @IBOutlet weak var arrowImageView: UIImageView!
     @IBOutlet weak var fileSizeLabel: UILabel!
     @IBOutlet weak var questionNumLabel: UILabel!
     @IBOutlet weak var categoryImageView: UIImageView!
@@ -31,14 +31,10 @@ class CategoryTableViewCell: UITableViewCell {
         fileSizeLabel.textColor = MyColor.lightText.value
         fileSizeLabel.font = UIFont.systemFont(ofSize: TextSize.small.rawValue)
 
-        categoryImageView.setCornerRadius()
+        categoryImageView.setCornerRadius(3)
         categoryImageView.layer.masksToBounds = true
-
-        startTextLabel.textColor = MyColor.theme.value
-        startTextLabel.font = UIFont.systemFont(ofSize: TextSize.small.rawValue)
-        startTextLabel.backgroundColor = MyColor.paledTheme.value
-        startTextLabel.layer.cornerRadius = startTextLabel.frame.height / 2
-        startTextLabel.layer.masksToBounds = true
+        
+        arrowImageView.setTintColor(MyColor.lightText.value)
 
         self.preservesSuperviewLayoutMargins = false
         self.separatorInset = UIEdgeInsets.zero
