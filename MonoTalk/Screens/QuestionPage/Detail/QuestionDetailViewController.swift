@@ -62,6 +62,7 @@ class QuestionDetailViewController: UIViewController {
         // MARK:Observe Results Notifications For Records
         notificationTokenForRecords = question.records.observe { [weak self] (changes: RealmCollectionChange) in
             guard let tableView = self?.tableView else { return }
+            guard let this = self else { return }
             switch changes {
             case .initial:
                 tableView.reloadData()
@@ -70,12 +71,13 @@ class QuestionDetailViewController: UIViewController {
                 if !insertions.isEmpty {
                     tableView.insertRows(at: [IndexPath.init(row: 0, section: 0)], with: .automatic)
                 }
-                let i = (self?.question.records.count)!
+                let i = this.question.records.count
                 tableView.deleteRows(at: deletions.map({ IndexPath(row: abs($0 - i), section: 0) }),
                                      with: .automatic)
                 tableView.reloadRows(at: modifications.map({ IndexPath(row: $0, section: 0) }),
                                      with: .automatic)
                 tableView.endUpdates()
+                this.setTagsToPlayButtons()
             case .error(let error):
                 fatalError("\(error)")
             }
@@ -92,7 +94,7 @@ class QuestionDetailViewController: UIViewController {
     private func setupTableView() {
         tableView.dataSource = self
         tableView.delegate = self
-        records = question.records.sorted(byKeyPath: SortMode.date.rawValue, ascending: SortMode.date.acsending)
+        records = question.records.sorted(byKeyPath: SortMode.createdDate.rawValue, ascending: SortMode.createdDate.acsending)
 
         tableView.estimatedRowHeight = 88
         tableView.backgroundColor = MyColor.lightGrayBackground.value
@@ -171,6 +173,7 @@ class QuestionDetailViewController: UIViewController {
 
     // MARK: Answer Button
     @IBAction func answerButtonTapped(_ sender: Any) {
+        stopAudioCompulsory(tappedPlayButtonAt: nil)
         let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
         let modal = storyboard.instantiateViewController(withIdentifier: "ModalViewController") as! RecorderModalViewController
         modal.question = question
@@ -308,6 +311,7 @@ extension QuestionDetailViewController: UITableViewDataSource {
         cell.question = question
         cell.playButton.tag = indexPath.row
         cell.playButton.addTarget(self, action: #selector(playButtontapped(_:)), for: .touchUpInside)
+//        cell.deleteButton.addTarget(self, action: #selector(readdTagsToButtons(_:)), for: .touchUpInside)
         cell.setUp()
         return cell
     }
@@ -315,21 +319,32 @@ extension QuestionDetailViewController: UITableViewDataSource {
 
 // MARK: Manipulate Cell
 extension QuestionDetailViewController {
+    
+    @objc private func playButtontapped(_ sender: UIButton) {
+        print("clicked \(sender.tag)")
+        stopAudioCompulsory(tappedPlayButtonAt: sender.tag)
+    }
+    
     private func stopAudioCompulsory(tappedPlayButtonAt: Int?) {
         for i in 0..<records.count {
             let indexPath = IndexPath(row: i, section: 0)
             if let cell = tableView.cellForRow(at: indexPath) {
                 let cell = cell as! PlayerCellXib
-                
                 if cell.audioPlayer.isPlaying && i != tappedPlayButtonAt {
                     cell.pauseAudio()
                 }
             }
         }
     }
-
-    @objc func playButtontapped(_ sender: UIButton) {
-        stopAudioCompulsory(tappedPlayButtonAt: sender.tag)
+    
+    private func setTagsToPlayButtons() {
+        for i in 0..<records.count {
+            if let cell = tableView.cellForRow(at: IndexPath(row: i, section: 0)) {
+                let cell = cell as! PlayerCellXib
+                cell.playButton.tag = i
+                print(cell.playButton.tag)
+            }
+        }
     }
     
     override func viewWillDisappear(_ animated: Bool) {

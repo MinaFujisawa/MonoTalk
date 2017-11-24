@@ -17,6 +17,7 @@ class PlayerCellXib: UITableViewCell {
     @IBOutlet weak var playButton: UIButton!
     @IBOutlet weak var slider: UISlider!
     @IBOutlet weak var fileSizeLabel: UILabel!
+    @IBOutlet weak var deleteButton: UIButton!
 
     var audioPlayer: AVAudioPlayer!
     var isPaused = true
@@ -31,7 +32,7 @@ class PlayerCellXib: UITableViewCell {
         super.awakeFromNib()
         setUpUI()
     }
-    
+
     // MARK: Setup
     internal func setUp() {
         // Get record URL
@@ -47,7 +48,7 @@ class PlayerCellXib: UITableViewCell {
         }
 
         // Set date
-        dateLabel.text = Time.getFormattedDate(date: record.date)
+        dateLabel.text = Time.getFormattedDate(date: record.createdDate)
 
         // Set slider
         slider.maximumValue = Float(Time.getDuration(url: recordUrl))
@@ -147,6 +148,10 @@ class PlayerCellXib: UITableViewCell {
 
     // MARK: Delete
     @IBAction func tappedDeleteButton(_ sender: Any) {
+        if audioPlayer.isPlaying {
+            resetAudio()
+        }
+
         let realm = try! Realm()
 
         try! realm.write() {

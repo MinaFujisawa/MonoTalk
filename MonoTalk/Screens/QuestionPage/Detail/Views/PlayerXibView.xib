@@ -99,6 +99,7 @@
             <connections>
                 <outlet property="containerView" destination="nr3-pq-2l3" id="6SF-LN-khU"/>
                 <outlet property="dateLabel" destination="L26-Kl-7cr" id="vqd-lZ-n5M"/>
+                <outlet property="deleteButton" destination="q2X-me-h1q" id="aot-wo-mXb"/>
                 <outlet property="fileSizeLabel" destination="KBb-44-3sI" id="6XJ-8W-Fl6"/>
                 <outlet property="playButton" destination="gWL-CE-UAn" id="41i-HV-dS5"/>
                 <outlet property="slider" destination="VBt-QL-hx3" id="tpR-zL-q9x"/>
