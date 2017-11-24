@@ -29,7 +29,7 @@ class QuestionDetailViewController: UIViewController {
     var records: Results<Record>!
     var realm: Realm!
     var isShowingBalloon = false
-    var speachGestureReconizer: UITapGestureRecognizer!
+    var speechGestureReconizer: UITapGestureRecognizer!
     var synthesizer: AVSpeechSynthesizer!
 
     override func viewDidLoad() {
@@ -41,9 +41,9 @@ class QuestionDetailViewController: UIViewController {
         // Gesture to Close the Rate Balloon
         self.view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(closeRateBalloon)))
 
-        // Speach
-        speachGestureReconizer = UITapGestureRecognizer(target: self, action: #selector(speach))
-        questionAreaView.addGestureRecognizer(speachGestureReconizer)
+        // Speech
+        speechGestureReconizer = UITapGestureRecognizer(target: self, action: #selector(speech))
+        questionAreaView.addGestureRecognizer(speechGestureReconizer)
         synthesizer = AVSpeechSynthesizer()
 
         // MARK:Observe Results Notifications For Question
@@ -206,7 +206,7 @@ class QuestionDetailViewController: UIViewController {
     }
 
     private func showRateBaloon() {
-        questionAreaView.removeGestureRecognizer(speachGestureReconizer)
+        questionAreaView.removeGestureRecognizer(speechGestureReconizer)
         isShowingBalloon = true
 
         // Set up Baloon view base
@@ -260,7 +260,7 @@ class QuestionDetailViewController: UIViewController {
     @objc private func closeRateBalloon() {
         removeBalloonSubView()
         isShowingBalloon = false
-        questionAreaView.addGestureRecognizer(speachGestureReconizer)
+        questionAreaView.addGestureRecognizer(speechGestureReconizer)
     }
 
     // MARK: Animation for Balloon
@@ -282,8 +282,8 @@ class QuestionDetailViewController: UIViewController {
     }
 
 
-    //MARK: Speach Question
-    @objc private func speach() {
+    //MARK: Speech Question
+    @objc private func speech() {
         if !self.synthesizer.isSpeaking {
             let utterance = AVSpeechUtterance(string: self.question.questionBody)
             synthesizer.speak(utterance)

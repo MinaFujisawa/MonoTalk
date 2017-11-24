@@ -35,6 +35,7 @@
 		095E33401FA8131C0010B1F3 /* QuestionsPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 095E333F1FA8131C0010B1F3 /* QuestionsPageViewController.swift */; };
 		0972A8081FB0FE4D002E9E88 /* AddEditQuestionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0972A8071FB0FE4D002E9E88 /* AddEditQuestionViewController.swift */; };
 		0979FA4A1FA80172000BDB5B /* UI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0979FA491FA80172000BDB5B /* UI.swift */; };
+		097D7BC11FC7BFCF004E9BF7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 097D7BC01FC7BFCF004E9BF7 /* Assets.xcassets */; };
 		097F3BD11FB4E964005B6BD1 /* Text.swift in Sources */ = {isa = PBXBuildFile; fileRef = 097F3BD01FB4E964005B6BD1 /* Text.swift */; };
 		099F7B821FB2878F0069C73E /* CreateCategoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 099F7B801FB2878F0069C73E /* CreateCategoryCell.swift */; };
 		099F7B831FB2878F0069C73E /* CreateCategoryCellXib.xib in Resources */ = {isa = PBXBuildFile; fileRef = 099F7B811FB2878F0069C73E /* CreateCategoryCellXib.xib */; };
@@ -103,6 +104,7 @@
 		095E333F1FA8131C0010B1F3 /* QuestionsPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionsPageViewController.swift; sourceTree = "<group>"; };
 		0972A8071FB0FE4D002E9E88 /* AddEditQuestionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEditQuestionViewController.swift; sourceTree = "<group>"; };
 		0979FA491FA80172000BDB5B /* UI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UI.swift; sourceTree = "<group>"; };
+		097D7BC01FC7BFCF004E9BF7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		097F3BD01FB4E964005B6BD1 /* Text.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Text.swift; sourceTree = "<group>"; };
 		099F7B801FB2878F0069C73E /* CreateCategoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateCategoryCell.swift; sourceTree = "<group>"; };
 		099F7B811FB2878F0069C73E /* CreateCategoryCellXib.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CreateCategoryCellXib.xib; sourceTree = "<group>"; };
@@ -156,8 +158,8 @@
 		090C10ED1FB4D50B003E7AAD /* Screens */ = {
 			isa = PBXGroup;
 			children = (
-				094ABF0B1FA7E85F00BA23AB /* Main.storyboard */,
 				094ABF0E1FA7E85F00BA23AB /* Assets.xcassets */,
+				094ABF0B1FA7E85F00BA23AB /* Main.storyboard */,
 				090C10EE1FB4D589003E7AAD /* CategoryList */,
 				090C10EF1FB4D5E3003E7AAD /* QuestionList */,
 				090C10F01FB4D643003E7AAD /* QuestionPage */,
@@ -344,6 +346,7 @@
 		0980E0631FC62B8C00D4DDAB /* App */ = {
 			isa = PBXGroup;
 			children = (
+				097D7BC01FC7BFCF004E9BF7 /* Assets.xcassets */,
 				094ABF071FA7E85F00BA23AB /* AppDelegate.swift */,
 				098446C31FAE4A81005F72E8 /* Views */,
 			);
@@ -531,6 +534,7 @@
 				0910BB3A1FAD28EE006AEA85 /* CategoryCellXib.xib in Resources */,
 				094ABF121FA7E85F00BA23AB /* LaunchScreen.storyboard in Resources */,
 				090E30411FBE6A5B0071F714 /* RateTutorial.storyboard in Resources */,
+				097D7BC11FC7BFCF004E9BF7 /* Assets.xcassets in Resources */,
 				09C899D81FB539BC007A9263 /* SortCellXib.xib in Resources */,
 				090E30431FBE90E10071F714 /* RateTutorialItem.xib in Resources */,
 				095A09E51FC20DD700793B45 /* seed_categories.csv in Resources */,
@@ -917,6 +921,7 @@
 			baseConfigurationReference = 964E139B8D5986FD42043BFF /* Pods-MonoTalk.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 3LWPTJLC7P;
 				INFOPLIST_FILE = MonoTalk/Info.plist;
@@ -933,6 +938,7 @@
 			baseConfigurationReference = C2E5D93F45AFD6EDE9B02667 /* Pods-MonoTalk.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 3LWPTJLC7P;
 				INFOPLIST_FILE = MonoTalk/Info.plist;

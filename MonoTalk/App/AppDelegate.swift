@@ -14,8 +14,11 @@ import AVFoundation
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
+    var navigationController: UINavigationController?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+        
+        configureRootViewController()
 
         // Load seed data when first launch
         let userDefault = UserDefaults.standard
@@ -30,7 +33,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         AVCaptureDevice.requestAccess(for: .audio, completionHandler: { (granted: Bool) in })
 
         setNaviBarStyle()
+        
+        sleep(1); // to prevent the splash screen disappear too fast
         return true
+    }
+    
+    private func configureRootViewController() {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let viewController = storyboard.instantiateViewController(withIdentifier: "CategoryTableView")
+        
+        navigationController = UINavigationController(rootViewController: viewController)
+        self.window = UIWindow(frame: UIScreen.main.bounds)
+        self.window?.rootViewController = navigationController
+        self.window?.makeKeyAndVisible()
     }
 
     func setNaviBarStyle() {
