@@ -8,16 +8,16 @@
 
 import Foundation
 enum SortMode: String {
-    case date
+    case createdDate
     case rate
     case isFavorited
     case recordsNum
     
-    static let allValues = [date, rate, isFavorited, recordsNum]
+    static let allValues = [createdDate, rate, isFavorited, recordsNum]
 
     var title: String {
         switch self {
-        case .date:
+        case .createdDate:
             return "Creation date"
         case .rate:
             return "Rate"
@@ -30,7 +30,7 @@ enum SortMode: String {
 
     var acsending: Bool {
         switch self {
-        case .date:
+        case .createdDate:
             return false
         case .rate:
             return false

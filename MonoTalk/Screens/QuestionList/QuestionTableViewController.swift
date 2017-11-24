@@ -19,7 +19,7 @@ class QuestionTableViewController: UIViewController {
     let cellID = "QuestionCell"
     let sortCellID = "SortCell"
     var notificationToken: NotificationToken? = nil
-    var sortMode: SortMode = .date
+    var sortMode: SortMode = .createdDate
 
 
     override func viewDidLoad() {

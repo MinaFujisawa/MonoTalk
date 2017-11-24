@@ -15,6 +15,7 @@ class Category: Object {
     @objc dynamic var id = UUID().uuidString
     @objc dynamic var name = ""
     @objc dynamic var imageName = ""
+    @objc dynamic var createdDate = Date()
     var questions = List<Question>()
     override static func primaryKey() -> String? {
         return "id"
@@ -22,7 +23,7 @@ class Category: Object {
 }
 class Question: Object {
     @objc dynamic var id = UUID().uuidString
-    @objc dynamic var date = Date()
+    @objc dynamic var createdDate = Date()
     @objc dynamic var questionBody = ""
     @objc dynamic var note: String? = nil
     @objc dynamic var isFavorited = false
@@ -88,7 +89,7 @@ class Question: Object {
 
 class Record: Object {
     @objc dynamic var id = ""
-    @objc dynamic var date = Date()
+    @objc dynamic var createdDate = Date()
     @objc dynamic var fileSize: Int64 = 0
     override static func primaryKey() -> String? {
         return "id"

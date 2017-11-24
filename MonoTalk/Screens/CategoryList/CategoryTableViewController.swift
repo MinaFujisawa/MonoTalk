@@ -21,7 +21,7 @@ class CategoryTableViewController: UITableViewController {
         super.viewDidLoad()
         realm = try! Realm()
 
-        categories = realm.objects(Category.self)
+        categories = realm.objects(Category.self).sorted(byKeyPath: "createdDate", ascending: true)
         tableView.register(UINib(nibName: "CreateCategoryCellXib", bundle: nil), forCellReuseIdentifier: createCategorycellID)
 
         // MARK:Observe Results Notifications
