@@ -30,8 +30,6 @@
 		0957D61B1FA9373000A91705 /* PlayerXibView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0957D61A1FA9373000A91705 /* PlayerXibView.xib */; };
 		0957D61D1FA93C9F00A91705 /* PlayerCellXib.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0957D61C1FA93C9F00A91705 /* PlayerCellXib.swift */; };
 		095A09E21FC1528100793B45 /* SeedAssets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 095A09E11FC1528100793B45 /* SeedAssets.xcassets */; };
-		095A09E51FC20DD700793B45 /* seed_categories.csv in Resources */ = {isa = PBXBuildFile; fileRef = 095A09E31FC20DD700793B45 /* seed_categories.csv */; };
-		095A09E61FC20DD700793B45 /* seed_questions.csv in Resources */ = {isa = PBXBuildFile; fileRef = 095A09E41FC20DD700793B45 /* seed_questions.csv */; };
 		095E33401FA8131C0010B1F3 /* QuestionsPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 095E333F1FA8131C0010B1F3 /* QuestionsPageViewController.swift */; };
 		0972A8081FB0FE4D002E9E88 /* AddEditQuestionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0972A8071FB0FE4D002E9E88 /* AddEditQuestionViewController.swift */; };
 		0979FA4A1FA80172000BDB5B /* UI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0979FA491FA80172000BDB5B /* UI.swift */; };
@@ -43,6 +41,8 @@
 		09B0E2F21FB6ACF40028444B /* NoteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B0E2F11FB6ACF40028444B /* NoteViewController.swift */; };
 		09C899D71FB539BC007A9263 /* SortCellXib.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09C899D51FB539BC007A9263 /* SortCellXib.swift */; };
 		09C899D81FB539BC007A9263 /* SortCellXib.xib in Resources */ = {isa = PBXBuildFile; fileRef = 09C899D61FB539BC007A9263 /* SortCellXib.xib */; };
+		09E3EB341FC8BC5100EC7AF8 /* seed_category.csv in Resources */ = {isa = PBXBuildFile; fileRef = 09E3EB321FC8BC4F00EC7AF8 /* seed_category.csv */; };
+		09E3EB361FC8C2E900EC7AF8 /* seed_questions.csv in Resources */ = {isa = PBXBuildFile; fileRef = 09E3EB331FC8BC4F00EC7AF8 /* seed_questions.csv */; };
 		09E728521FA95342007B7F5F /* RecorderModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09E728511FA95342007B7F5F /* RecorderModalViewController.swift */; };
 		09E728541FA96B91007B7F5F /* Time.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09E728531FA96B91007B7F5F /* Time.swift */; };
 		09F2A7681FAE3383001DEBD6 /* RealmInitializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09F2A7671FAE3383001DEBD6 /* RealmInitializer.swift */; };
@@ -80,7 +80,6 @@
 		0910BB381FAD28EE006AEA85 /* CategoryCellXib.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CategoryCellXib.xib; sourceTree = "<group>"; };
 		0910BB3B1FAD30C0006AEA85 /* QuestionTavleViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionTavleViewCell.swift; sourceTree = "<group>"; };
 		0910BB3D1FAD30DC006AEA85 /* QuestionTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionTableViewController.swift; sourceTree = "<group>"; };
-		092B62891FBD2ECE001AF0F8 /* seed.csv */ = {isa = PBXFileReference; lastKnownFileType = text; name = seed.csv; path = ../../../temporal/seed.csv; sourceTree = "<group>"; };
 		094ABF041FA7E85F00BA23AB /* MonoTalk.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MonoTalk.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		094ABF071FA7E85F00BA23AB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		094ABF0C1FA7E85F00BA23AB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -99,8 +98,6 @@
 		0957D61A1FA9373000A91705 /* PlayerXibView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PlayerXibView.xib; sourceTree = "<group>"; };
 		0957D61C1FA93C9F00A91705 /* PlayerCellXib.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerCellXib.swift; sourceTree = "<group>"; };
 		095A09E11FC1528100793B45 /* SeedAssets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = SeedAssets.xcassets; sourceTree = "<group>"; };
-		095A09E31FC20DD700793B45 /* seed_categories.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = seed_categories.csv; sourceTree = "<group>"; };
-		095A09E41FC20DD700793B45 /* seed_questions.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = seed_questions.csv; sourceTree = "<group>"; };
 		095E333F1FA8131C0010B1F3 /* QuestionsPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionsPageViewController.swift; sourceTree = "<group>"; };
 		0972A8071FB0FE4D002E9E88 /* AddEditQuestionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEditQuestionViewController.swift; sourceTree = "<group>"; };
 		0979FA491FA80172000BDB5B /* UI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UI.swift; sourceTree = "<group>"; };
@@ -109,10 +106,11 @@
 		099F7B801FB2878F0069C73E /* CreateCategoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateCategoryCell.swift; sourceTree = "<group>"; };
 		099F7B811FB2878F0069C73E /* CreateCategoryCellXib.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CreateCategoryCellXib.xib; sourceTree = "<group>"; };
 		09A958B11FAE39D9000DD9AF /* default.realm */ = {isa = PBXFileReference; lastKnownFileType = file; path = default.realm; sourceTree = "<group>"; };
-		09A958B21FAE39FD000DD9AF /* default.realm */ = {isa = PBXFileReference; lastKnownFileType = file; name = default.realm; path = "../../../Library/Developer/CoreSimulator/Devices/F4BF7243-7F90-4C42-A711-52F2DF361C4B/data/Containers/Data/Application/00689D4C-15B0-42AF-A04B-0FAEED33487D/Documents/default.realm"; sourceTree = "<group>"; };
 		09B0E2F11FB6ACF40028444B /* NoteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteViewController.swift; sourceTree = "<group>"; };
 		09C899D51FB539BC007A9263 /* SortCellXib.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortCellXib.swift; sourceTree = "<group>"; };
 		09C899D61FB539BC007A9263 /* SortCellXib.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SortCellXib.xib; sourceTree = "<group>"; };
+		09E3EB321FC8BC4F00EC7AF8 /* seed_category.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = seed_category.csv; sourceTree = "<group>"; };
+		09E3EB331FC8BC4F00EC7AF8 /* seed_questions.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = seed_questions.csv; path = ../../../../../../Dropbox/004_private_projects/MonoTalk/CSV/seed_questions.csv; sourceTree = "<group>"; };
 		09E728511FA95342007B7F5F /* RecorderModalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecorderModalViewController.swift; sourceTree = "<group>"; };
 		09E728531FA96B91007B7F5F /* Time.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Time.swift; sourceTree = "<group>"; };
 		09F2A7671FAE3383001DEBD6 /* RealmInitializer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmInitializer.swift; sourceTree = "<group>"; };
@@ -277,8 +275,8 @@
 		0980E05C1FC608EC00D4DDAB /* CSV */ = {
 			isa = PBXGroup;
 			children = (
-				095A09E31FC20DD700793B45 /* seed_categories.csv */,
-				095A09E41FC20DD700793B45 /* seed_questions.csv */,
+				09E3EB321FC8BC4F00EC7AF8 /* seed_category.csv */,
+				09E3EB331FC8BC4F00EC7AF8 /* seed_questions.csv */,
 			);
 			path = CSV;
 			sourceTree = "<group>";
@@ -387,8 +385,6 @@
 		2190F73CF7241A551C2E921C /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				092B62891FBD2ECE001AF0F8 /* seed.csv */,
-				09A958B21FAE39FD000DD9AF /* default.realm */,
 				A3B299541C4A4170D0E3A6B0 /* Pods_MonoTalk.framework */,
 				2645F8DA66821BEDDE56A428 /* Pods_MonoTalkTests.framework */,
 				30391151E5FE1E147BC2EE3B /* Pods_MonoTalkUITests.framework */,
@@ -530,6 +526,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				09E3EB361FC8C2E900EC7AF8 /* seed_questions.csv in Resources */,
 				09A958B41FAE3C5B000DD9AF /* default.realm in Resources */,
 				0910BB3A1FAD28EE006AEA85 /* CategoryCellXib.xib in Resources */,
 				094ABF121FA7E85F00BA23AB /* LaunchScreen.storyboard in Resources */,
@@ -537,13 +534,12 @@
 				097D7BC11FC7BFCF004E9BF7 /* Assets.xcassets in Resources */,
 				09C899D81FB539BC007A9263 /* SortCellXib.xib in Resources */,
 				090E30431FBE90E10071F714 /* RateTutorialItem.xib in Resources */,
-				095A09E51FC20DD700793B45 /* seed_categories.csv in Resources */,
+				09E3EB341FC8BC5100EC7AF8 /* seed_category.csv in Resources */,
 				094ABF0F1FA7E85F00BA23AB /* Assets.xcassets in Resources */,
 				099F7B831FB2878F0069C73E /* CreateCategoryCellXib.xib in Resources */,
 				094ABF0D1FA7E85F00BA23AB /* Main.storyboard in Resources */,
 				095A09E21FC1528100793B45 /* SeedAssets.xcassets in Resources */,
 				0957D61B1FA9373000A91705 /* PlayerXibView.xib in Resources */,
-				095A09E61FC20DD700793B45 /* seed_questions.csv in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

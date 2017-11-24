@@ -15,7 +15,7 @@ struct RealmInitializer {
         let realm = try! Realm()
 
         // Read Category CSV
-        let categoriesPath: String = Bundle.main.path(forResource: "seed_categories", ofType: "csv")!
+        let categoriesPath: String = Bundle.main.path(forResource: "seed_category", ofType: "csv")!
         let categoriesStream = InputStream(fileAtPath: categoriesPath)!
 
         for row in try! CSV(stream: categoriesStream, hasHeaderRow: true) {
