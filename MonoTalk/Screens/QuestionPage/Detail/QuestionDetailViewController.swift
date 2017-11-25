@@ -77,7 +77,7 @@ class QuestionDetailViewController: UIViewController {
                 tableView.reloadRows(at: modifications.map({ IndexPath(row: $0, section: 0) }),
                                      with: .automatic)
                 tableView.endUpdates()
-                this.setTagsToPlayButtons()
+                this.setTagsToPlayerButtons()
             case .error(let error):
                 fatalError("\(error)")
             }
@@ -140,7 +140,7 @@ class QuestionDetailViewController: UIViewController {
         categoryLabel.textColor = MyColor.lightText.value
         categoryLabel.font = UIFont.systemFont(ofSize: TextSize.small.rawValue)
     }
-    
+
     private func setRateButtonIcon() {
         rateButton.setImage(Question.Rate.allValues[question.rate].rateImage, for: .normal)
     }
@@ -173,11 +173,23 @@ class QuestionDetailViewController: UIViewController {
 
     // MARK: Answer Button
     @IBAction func answerButtonTapped(_ sender: Any) {
-        stopAudioCompulsory(tappedPlayButtonAt: nil)
-        let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
-        let modal = storyboard.instantiateViewController(withIdentifier: "ModalViewController") as! RecorderModalViewController
-        modal.question = question
-        self.present(modal, animated: true, completion: nil)
+        
+        let status = AVCaptureDevice.authorizationStatus(for: AVMediaType.audio)
+        
+        if status == .authorized {
+            stopAudioCompulsory(tappedPlayButtonAt: nil)
+            let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
+            let modal = storyboard.instantiateViewController(withIdentifier: "ModalViewController") as! RecorderModalViewController
+            modal.question = question
+            self.present(modal, animated: true, completion: nil)
+        } else {
+            // Open setting page
+            if let url = URL(string:UIApplicationOpenSettingsURLString) {
+                if UIApplication.shared.canOpenURL(url) {
+                    _ =  UIApplication.shared.open(url, options: [:], completionHandler: nil)
+                }
+            }
+        }
     }
 
 
@@ -310,21 +322,41 @@ extension QuestionDetailViewController: UITableViewDataSource {
         cell.record = record
         cell.question = question
         cell.playButton.tag = indexPath.row
-        cell.playButton.addTarget(self, action: #selector(playButtontapped(_:)), for: .touchUpInside)
-//        cell.deleteButton.addTarget(self, action: #selector(readdTagsToButtons(_:)), for: .touchUpInside)
+        cell.playButton.addTarget(self, action: #selector(playButtonTapped(_:)), for: .touchUpInside)
+        cell.deleteButton.addTarget(self, action: #selector(deleteButtonTapped(_:)), for: .touchUpInside)
         cell.setUp()
         return cell
     }
 }
 
-// MARK: Manipulate Cell
+// MARK: Manipulate Player Cell
 extension QuestionDetailViewController {
-    
-    @objc private func playButtontapped(_ sender: UIButton) {
-        print("clicked \(sender.tag)")
+
+    @objc private func playButtonTapped(_ sender: UIButton) {
+        if let cell = self.getCell(row: sender.tag){
+            cell.togglePlayOrStop()
+        }
         stopAudioCompulsory(tappedPlayButtonAt: sender.tag)
     }
     
+    @objc private func deleteButtonTapped(_ sender: UIButton) {
+        
+        let message = "Delete this Record?"
+        let alert: UIAlertController = UIAlertController(title: nil, message: message, preferredStyle: .actionSheet)
+        let cancel = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        
+        let delete: UIAlertAction = UIAlertAction(title: "Delete Record", style: .destructive, handler: {
+            (action: UIAlertAction!) -> Void in
+            if let cell = self.getCell(row: sender.tag){
+                cell.tappedDeleteButton()
+            }
+        })
+        
+        alert.addAction(cancel)
+        alert.addAction(delete)
+        self.present(alert, animated: true, completion: nil)
+    }
+
     private func stopAudioCompulsory(tappedPlayButtonAt: Int?) {
         for i in 0..<records.count {
             let indexPath = IndexPath(row: i, section: 0)
@@ -337,16 +369,24 @@ extension QuestionDetailViewController {
         }
     }
     
-    private func setTagsToPlayButtons() {
+    private func getCell(row: Int) -> PlayerCellXib? {
+        let indexPath = IndexPath(row: row, section: 0)
+        if let cell = self.tableView.cellForRow(at: indexPath) {
+            return cell as? PlayerCellXib
+        }
+        return nil
+    }
+
+    private func setTagsToPlayerButtons() {
         for i in 0..<records.count {
             if let cell = tableView.cellForRow(at: IndexPath(row: i, section: 0)) {
                 let cell = cell as! PlayerCellXib
                 cell.playButton.tag = i
-                print(cell.playButton.tag)
+                cell.deleteButton.tag = i
             }
         }
     }
-    
+
     override func viewWillDisappear(_ animated: Bool) {
         stopAudioCompulsory(tappedPlayButtonAt: nil)
     }

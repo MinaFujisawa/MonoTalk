@@ -82,11 +82,7 @@ class PlayerCellXib: UITableViewCell {
 
 
     // MARK : Play
-    @IBAction func tappedPlayButton(_ sender: Any) {
-        togglePlayOrStop()
-    }
-
-    func togglePlayOrStop() {
+    internal func togglePlayOrStop() {
         if let audioPlayer = audioPlayer {
             if audioPlayer.isPlaying {
                 pauseAudio()
@@ -147,13 +143,12 @@ class PlayerCellXib: UITableViewCell {
     }
 
     // MARK: Delete
-    @IBAction func tappedDeleteButton(_ sender: Any) {
+    internal func tappedDeleteButton() {
         if audioPlayer.isPlaying {
             resetAudio()
         }
 
         let realm = try! Realm()
-
         try! realm.write() {
             question.recordsNum -= 1
             realm.delete(record)

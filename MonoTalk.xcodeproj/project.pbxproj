@@ -18,6 +18,7 @@
 		0910BB3A1FAD28EE006AEA85 /* CategoryCellXib.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0910BB381FAD28EE006AEA85 /* CategoryCellXib.xib */; };
 		0910BB3C1FAD30C0006AEA85 /* QuestionTavleViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0910BB3B1FAD30C0006AEA85 /* QuestionTavleViewCell.swift */; };
 		0910BB3E1FAD30DC006AEA85 /* QuestionTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0910BB3D1FAD30DC006AEA85 /* QuestionTableViewController.swift */; };
+		0938F6231FC9453E00C29980 /* UserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0938F6221FC9453E00C29980 /* UserDefaults.swift */; };
 		094ABF081FA7E85F00BA23AB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 094ABF071FA7E85F00BA23AB /* AppDelegate.swift */; };
 		094ABF0D1FA7E85F00BA23AB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 094ABF0B1FA7E85F00BA23AB /* Main.storyboard */; };
 		094ABF0F1FA7E85F00BA23AB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 094ABF0E1FA7E85F00BA23AB /* Assets.xcassets */; };
@@ -80,6 +81,7 @@
 		0910BB381FAD28EE006AEA85 /* CategoryCellXib.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CategoryCellXib.xib; sourceTree = "<group>"; };
 		0910BB3B1FAD30C0006AEA85 /* QuestionTavleViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionTavleViewCell.swift; sourceTree = "<group>"; };
 		0910BB3D1FAD30DC006AEA85 /* QuestionTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionTableViewController.swift; sourceTree = "<group>"; };
+		0938F6221FC9453E00C29980 /* UserDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaults.swift; sourceTree = "<group>"; };
 		094ABF041FA7E85F00BA23AB /* MonoTalk.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MonoTalk.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		094ABF071FA7E85F00BA23AB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		094ABF0C1FA7E85F00BA23AB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -355,6 +357,7 @@
 			isa = PBXGroup;
 			children = (
 				09F2A7671FAE3383001DEBD6 /* RealmInitializer.swift */,
+				0938F6221FC9453E00C29980 /* UserDefaults.swift */,
 				09A958B11FAE39D9000DD9AF /* default.realm */,
 				095A09E11FC1528100793B45 /* SeedAssets.xcassets */,
 				0980E05C1FC608EC00D4DDAB /* CSV */,
@@ -748,6 +751,7 @@
 				099F7B821FB2878F0069C73E /* CreateCategoryCell.swift in Sources */,
 				090E303F1FBE5AA70071F714 /* SortMode.swift in Sources */,
 				09C899D71FB539BC007A9263 /* SortCellXib.swift in Sources */,
+				0938F6231FC9453E00C29980 /* UserDefaults.swift in Sources */,
 				0910BB361FAD23FC006AEA85 /* CategoryTableViewController.swift in Sources */,
 				0910BB3C1FAD30C0006AEA85 /* QuestionTavleViewCell.swift in Sources */,
 				0910BB391FAD28EE006AEA85 /* CategoryTableViewCell.swift in Sources */,

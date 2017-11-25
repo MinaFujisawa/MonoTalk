@@ -33,9 +33,6 @@
                                     <constraint firstAttribute="width" constant="30" id="r23-eN-FfI"/>
                                 </constraints>
                                 <state key="normal" image="icon_play"/>
-                                <connections>
-                                    <action selector="tappedPlayButton:" destination="J11-qV-APo" eventType="touchUpInside" id="2er-4N-DEi"/>
-                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="q2X-me-h1q">
                                 <rect key="frame" x="305" y="5.5" width="30" height="30"/>
@@ -44,9 +41,6 @@
                                     <constraint firstAttribute="width" constant="30" id="ptM-Ai-TOM"/>
                                 </constraints>
                                 <state key="normal" image="icon_remove"/>
-                                <connections>
-                                    <action selector="tappedDeleteButton:" destination="J11-qV-APo" eventType="touchUpInside" id="JMV-gj-C47"/>
-                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00:00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="E3i-cy-grq">
                                 <rect key="frame" x="265" y="13" width="40" height="14.5"/>

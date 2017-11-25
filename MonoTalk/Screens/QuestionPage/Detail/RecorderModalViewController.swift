@@ -117,7 +117,6 @@ class RecorderModalViewController: UIViewController {
         
         dismiss(animated: true, completion: {
             // MARK: Display Rate Tutorial
-            // TODO: only first time
             let storyboard = UIStoryboard(name: "RateTutorial", bundle: Bundle.main)
             let rateTutorialModal = storyboard.instantiateViewController(withIdentifier: "RateTutorial") as! RateTutorialViewController
             rateTutorialModal.question = self.question
@@ -127,6 +126,17 @@ class RecorderModalViewController: UIViewController {
                 UIApplication.topViewController()?.present(rateTutorialModal, animated: true, completion: nil)
             }
         })
+    }
+    
+    private func isFirstTime() {
+        // Load seed data when first launch
+        let userDefault = UserDefaults.standard
+        let dict = [UserDefaults.StringKey.firstLaunch.rawValue: true]
+        userDefault.register(defaults: dict)
+        if userDefault.bool(forKey: UserDefaults.StringKey.firstLaunch.rawValue) {
+            RealmInitializer.setUp()
+            userDefault.set(false, forKey: UserDefaults.StringKey.firstLaunch.rawValue)
+        }
     }
     
 }
