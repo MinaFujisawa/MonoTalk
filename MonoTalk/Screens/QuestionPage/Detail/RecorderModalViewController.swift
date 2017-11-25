@@ -32,7 +32,7 @@ class RecorderModalViewController: UIViewController {
         setupUI()
         setupRecordingSession()
     }
-    
+
     // MARK: Setup
     private func setupRecordingSession() {
         recordingSession = AVAudioSession.sharedInstance()
@@ -56,7 +56,7 @@ class RecorderModalViewController: UIViewController {
     private func setupUI() {
         okButton.isHidden = true
         deleteButton.isHidden = true
-        
+
         mainButton.circle()
         okButton.circle()
         deleteButton.circle()
@@ -68,19 +68,19 @@ class RecorderModalViewController: UIViewController {
         timeLabel.textColor = MyColor.darkText.value
         timeLabel.font = UIFont.systemFont(ofSize: TextSize.normal.rawValue)
     }
-    
+
     // MARK: Helper functions
     private func getFileURL() -> URL {
         let urls = fileManager.urls(for: .documentDirectory, in: .userDomainMask) as [NSURL]
         let dirURL = urls[0]
         return dirURL.appendingPathComponent(id + Record.fileExtension)!
     }
-    
+
     private func displayDurationTime() {
         let duration = Time.getDuration(url: getFileURL())
         timeLabel.text = Time.getFormattedTime(timeInterval: duration)
     }
-    
+
     // MARK: Main button
     @IBAction private func mainButton(_ sender: Any) {
         if audioRecorder != nil {
@@ -89,13 +89,13 @@ class RecorderModalViewController: UIViewController {
             togglePlayOrStop()
         }
     }
-    
+
     // MARK: Delete button
     @IBAction private func deleteButton(_ sender: Any) {
         stopAudio()
         dismiss(animated: true, completion: nil)
     }
-    
+
     // MARK: OK button
     @IBAction private func okButton(_ sender: Any) {
         stopAudio()
@@ -107,38 +107,41 @@ class RecorderModalViewController: UIViewController {
         } catch {
             print("Error: \(error)")
         }
-        
+
         let realm = try! Realm()
-        
+
         try! realm.write() {
             question.records.append(newRecord)
             question.recordsNum += 1
         }
-        
+
         dismiss(animated: true, completion: {
             // MARK: Display Rate Tutorial
-            let storyboard = UIStoryboard(name: "RateTutorial", bundle: Bundle.main)
-            let rateTutorialModal = storyboard.instantiateViewController(withIdentifier: "RateTutorial") as! RateTutorialViewController
-            rateTutorialModal.question = self.question
-            
-            let additionalTime = DispatchTimeInterval.milliseconds(800)
-            DispatchQueue.main.asyncAfter(deadline: .now() + additionalTime) {
-                UIApplication.topViewController()?.present(rateTutorialModal, animated: true, completion: nil)
+            if self.isFirstTime() {
+                self.showRateTutorial()
+                UserDefaults.standard.set(false, forKey: UserDefaults.StringKey.firstRecord.rawValue)
             }
         })
     }
     
-    private func isFirstTime() {
-        // Load seed data when first launch
-        let userDefault = UserDefaults.standard
-        let dict = [UserDefaults.StringKey.firstLaunch.rawValue: true]
-        userDefault.register(defaults: dict)
-        if userDefault.bool(forKey: UserDefaults.StringKey.firstLaunch.rawValue) {
-            RealmInitializer.setUp()
-            userDefault.set(false, forKey: UserDefaults.StringKey.firstLaunch.rawValue)
-        }
+    // MARK: Rate Tutorial helper methods
+    private func showRateTutorial() {
+        let storyboard = UIStoryboard(name: "RateTutorial", bundle: Bundle.main)
+        let rateTutorialModal = storyboard.instantiateViewController(withIdentifier: "RateTutorial") as! RateTutorialViewController
+        rateTutorialModal.question = self.question
+
+        UIApplication.topViewController()?.present(rateTutorialModal, animated: true, completion: nil)
     }
-    
+
+    private func isFirstTime() -> Bool {
+        let dict = [UserDefaults.StringKey.firstRecord.rawValue: true]
+        UserDefaults.standard.register(defaults: dict)
+        if UserDefaults.standard.bool(forKey: UserDefaults.StringKey.firstRecord.rawValue) {
+            return true
+        }
+        return false
+    }
+
 }
 
 // MARK: Record
@@ -150,45 +153,45 @@ extension RecorderModalViewController {
             AVNumberOfChannelsKey: 1,
             AVEncoderAudioQualityKey: AVAudioQuality.high.rawValue
         ]
-        
+
         do {
             audioRecorder = try AVAudioRecorder(url: getFileURL(), settings: settings)
             audioRecorder.delegate = self
             audioRecorder.record()
-            
+
         } catch {
             finishRecording(success: false)
         }
-        
+
         // Display recording time
         startTime = Date()
         recordingTimer = Timer.scheduledTimer(timeInterval: 0, target: self, selector: #selector(displayRecordingTime), userInfo: nil, repeats: true)
     }
-    
+
     private func finishRecording(success: Bool) {
         audioRecorder.stop()
         audioRecorder = nil
-        
+
         // UI
         okButton.isHidden = false
         deleteButton.isHidden = false
         mainButton.setImage(UIImage(named: "icon_record_play"), for: .normal)
         mainButton.tintColor = MyColor.theme.value
-        
+
         // Stop timer
         recordingTimer?.invalidate()
-        
+
         do {
             try recordingSession.setCategory(AVAudioSessionCategoryPlayback)
-        } catch{
-            
+        } catch {
+
         }
-        
+
         if !success {
             print("recording failed")
         }
     }
-    
+
     @objc private func displayRecordingTime() {
         let interval = Date().timeIntervalSince(startTime)
         timeLabel.text = Time.getFormattedTime(timeInterval: interval)
@@ -201,12 +204,12 @@ extension RecorderModalViewController {
     private func playAudio() {
         mainButton.setImage(UIImage(named: "icon_record_stop"), for: .normal)
         mainButton.tintColor = MyColor.red.value
-        
+
         // Display playing time
         playTimer = Timer.scheduledTimer(timeInterval: 0, target: self, selector: #selector(displayPlayingTime), userInfo: nil, repeats: true)
         audioPlayer?.play()
     }
-    
+
     private func stopAudio() {
         audioPlayer?.stop()
         audioPlayer?.currentTime = 0
@@ -215,11 +218,11 @@ extension RecorderModalViewController {
         mainButton.tintColor = MyColor.theme.value
         displayDurationTime()
     }
-    
+
     @objc func displayPlayingTime() {
         timeLabel.text = Time.getFormattedTime(timeInterval: audioPlayer!.currentTime)
     }
-    
+
     private func togglePlayOrStop() {
         if audioPlayer == nil {
             do {
@@ -229,7 +232,7 @@ extension RecorderModalViewController {
                 print("Error to play")
             }
         }
-        
+
         if let audioPlayer = audioPlayer {
             if audioPlayer.isPlaying {
                 stopAudio()
