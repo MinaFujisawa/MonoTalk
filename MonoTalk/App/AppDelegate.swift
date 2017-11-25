@@ -29,9 +29,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             userDefault.set(false, forKey: "firstLaunch")
         }
 
-        // Request access to michrophone
-        AVCaptureDevice.requestAccess(for: .audio, completionHandler: { (granted: Bool) in })
-
         setNaviBarStyle()
         
         sleep(1); // to prevent the splash screen disappear too fast

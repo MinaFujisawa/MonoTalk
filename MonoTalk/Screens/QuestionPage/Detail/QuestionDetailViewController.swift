@@ -173,23 +173,34 @@ class QuestionDetailViewController: UIViewController {
 
     // MARK: Answer Button
     @IBAction func answerButtonTapped(_ sender: Any) {
-        
+
         let status = AVCaptureDevice.authorizationStatus(for: AVMediaType.audio)
-        
+
         if status == .authorized {
-            stopAudioCompulsory(tappedPlayButtonAt: nil)
-            let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
-            let modal = storyboard.instantiateViewController(withIdentifier: "ModalViewController") as! RecorderModalViewController
-            modal.question = question
-            self.present(modal, animated: true, completion: nil)
-        } else {
-            // Open setting page
-            if let url = URL(string:UIApplicationOpenSettingsURLString) {
-                if UIApplication.shared.canOpenURL(url) {
-                    _ =  UIApplication.shared.open(url, options: [:], completionHandler: nil)
+            showRecordModal()
+        } else if status == .notDetermined {
+            AVCaptureDevice.requestAccess(for: AVMediaType.audio) { granted in
+                if granted {
+                    DispatchQueue.main.async {
+                        self.showRecordModal()
+                    }
                 }
             }
+        } else {
+            // Open setting page
+            guard let url = URL(string: UIApplicationOpenSettingsURLString) else { return }
+            if UIApplication.shared.canOpenURL(url) {
+                _ = UIApplication.shared.open(url, options: [:], completionHandler: nil)
+            }
         }
+    }
+    
+    private func showRecordModal() {
+        stopAudioCompulsory(tappedPlayButtonAt: nil)
+        let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
+        let modal = storyboard.instantiateViewController(withIdentifier: "ModalViewController") as! RecorderModalViewController
+        modal.question = question
+        self.present(modal, animated: true, completion: nil)
     }
 
 
@@ -333,25 +344,25 @@ extension QuestionDetailViewController: UITableViewDataSource {
 extension QuestionDetailViewController {
 
     @objc private func playButtonTapped(_ sender: UIButton) {
-        if let cell = self.getCell(row: sender.tag){
+        if let cell = self.getCell(row: sender.tag) {
             cell.togglePlayOrStop()
         }
         stopAudioCompulsory(tappedPlayButtonAt: sender.tag)
     }
-    
+
     @objc private func deleteButtonTapped(_ sender: UIButton) {
-        
+
         let message = "Delete this Record?"
         let alert: UIAlertController = UIAlertController(title: nil, message: message, preferredStyle: .actionSheet)
         let cancel = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
-        
+
         let delete: UIAlertAction = UIAlertAction(title: "Delete Record", style: .destructive, handler: {
             (action: UIAlertAction!) -> Void in
-            if let cell = self.getCell(row: sender.tag){
+            if let cell = self.getCell(row: sender.tag) {
                 cell.tappedDeleteButton()
             }
         })
-        
+
         alert.addAction(cancel)
         alert.addAction(delete)
         self.present(alert, animated: true, completion: nil)
@@ -368,7 +379,7 @@ extension QuestionDetailViewController {
             }
         }
     }
-    
+
     private func getCell(row: Int) -> PlayerCellXib? {
         let indexPath = IndexPath(row: row, section: 0)
         if let cell = self.tableView.cellForRow(at: indexPath) {
