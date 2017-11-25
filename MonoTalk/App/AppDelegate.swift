@@ -25,7 +25,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let dict = ["firstLaunch": true]
         userDefault.register(defaults: dict)
         if userDefault.bool(forKey: "firstLaunch") {
-            RealmInitializer.setUp()
+            RealmInitializer.setup()
             userDefault.set(false, forKey: "firstLaunch")
         }
 

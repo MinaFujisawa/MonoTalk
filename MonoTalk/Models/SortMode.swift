@@ -33,7 +33,7 @@ enum SortMode: String {
         case .createdDate:
             return false
         case .rate:
-            return false
+            return true
         case .isFavorited:
             return false
         case .recordsNum:

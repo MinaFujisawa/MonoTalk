@@ -11,7 +11,7 @@ import RealmSwift
 import CSV
 
 struct RealmInitializer {
-    static func setUp() {
+    static func setup() {
         let realm = try! Realm()
 
         // Read Category CSV
