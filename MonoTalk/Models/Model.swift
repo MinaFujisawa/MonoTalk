@@ -37,11 +37,11 @@ class Question: Object {
     }
 
     enum Rate: Int {
-        case great
-        case good
-        case soso
-        case notGood
         case bad
+        case notGood
+        case soso
+        case good
+        case great
 
         var rateImage: UIImage {
             switch self {
@@ -60,20 +60,20 @@ class Question: Object {
 
         var tutorialText: String {
             switch self {
-            case .great:
-                return "Easy!"
-            case .good:
-                return "Not bad"
-            case .soso:
-                return "So-so"
-            case .notGood:
-                return "Difficult"
             case .bad:
                 return "Oh no!"
+            case .notGood:
+                return "Difficult"
+            case .soso:
+                return "So-so"
+            case .good:
+                return "Not bad"
+            case .great:
+                return "Easy!"
             }
         }
 
-        static let allValues = [great, good, soso, notGood, bad]
+        static let allValues = [bad, notGood, soso, good, great]
     }
 
     var rateAsEnum: Rate {
@@ -94,7 +94,7 @@ class Record: Object {
     override static func primaryKey() -> String? {
         return "id"
     }
-    
+
     static let fileExtension = ".caf"
 }
 
