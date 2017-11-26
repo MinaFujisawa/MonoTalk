@@ -932,7 +932,7 @@
 				DEVELOPMENT_TEAM = 3LWPTJLC7P;
 				INFOPLIST_FILE = MonoTalk/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = test.MonoTalk;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.mina-fujisawa.MonoTalk";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -950,7 +950,7 @@
 				DEVELOPMENT_TEAM = 3LWPTJLC7P;
 				INFOPLIST_FILE = MonoTalk/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = test.MonoTalk;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.mina-fujisawa.MonoTalk";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = 1;
