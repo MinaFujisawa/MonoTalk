@@ -141,7 +141,7 @@ extension QuestionTableViewController: UITableViewDelegate {
         if indexPath.row == 0 {
             return 56
         }
-        return UITableViewAutomaticDimension
+        return UITableView.automaticDimension
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.row == 0 {

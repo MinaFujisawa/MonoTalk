@@ -37,7 +37,7 @@ class RecorderModalViewController: UIViewController {
     private func setupRecordingSession() {
         recordingSession = AVAudioSession.sharedInstance()
         do {
-            try recordingSession.setCategory(AVAudioSessionCategoryRecord)
+            try recordingSession.setCategory(convertFromAVAudioSessionCategory(AVAudioSession.Category.record))
             try recordingSession.setActive(true)
             recordingSession.requestRecordPermission() { [unowned self] allowed in
                 DispatchQueue.main.async {
@@ -182,7 +182,7 @@ extension RecorderModalViewController {
         recordingTimer?.invalidate()
 
         do {
-            try recordingSession.setCategory(AVAudioSessionCategoryPlayback)
+            try recordingSession.setCategory(convertFromAVAudioSessionCategory(AVAudioSession.Category.playback))
         } catch {
 
         }
@@ -275,4 +275,9 @@ extension UIApplication {
         }
         return base
     }
+}
+
+// Helper function inserted by Swift 4.2 migrator.
+fileprivate func convertFromAVAudioSessionCategory(_ input: AVAudioSession.Category) -> String {
+	return input.rawValue
 }

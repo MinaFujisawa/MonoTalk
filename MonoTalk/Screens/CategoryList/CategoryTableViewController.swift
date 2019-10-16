@@ -124,7 +124,7 @@ class CategoryTableViewController: UITableViewController {
     }
 
     // Disable swipe to delete for Create cell
-    override func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCellEditingStyle {
+    override func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
         return .none
     }
 

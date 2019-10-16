@@ -16,7 +16,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
     var navigationController: UINavigationController?
 
-    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
         configureRootViewController()
 
@@ -49,7 +49,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Color
         UINavigationBar.appearance().barTintColor = .white
         UINavigationBar.appearance().tintColor = MyColor.theme.value
-        UINavigationBar.appearance().titleTextAttributes = [NSAttributedStringKey.foregroundColor: MyColor.darkText.value]
+        UINavigationBar.appearance().titleTextAttributes = [NSAttributedString.Key.foregroundColor: MyColor.darkText.value]
 
         // Border
         UINavigationBar.appearance().shadowImage = MyColor.border.value.as1ptImage()

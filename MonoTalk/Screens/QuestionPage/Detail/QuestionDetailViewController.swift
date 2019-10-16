@@ -99,7 +99,7 @@ class QuestionDetailViewController: UIViewController {
         tableView.estimatedRowHeight = 88
         tableView.backgroundColor = MyColor.lightGrayBackground.value
         tableView.separatorStyle = .none
-        tableView.contentInset = UIEdgeInsetsMake(0, 0, 88, 0)
+        tableView.contentInset = UIEdgeInsets.init(top: 0, left: 0, bottom: 88, right: 0)
         tableView.allowsSelection = false
 
         let nib = UINib(nibName: "PlayerXibView", bundle: nil)
@@ -112,7 +112,7 @@ class QuestionDetailViewController: UIViewController {
         recordButton.circle()
         recordButton.dropShadow()
         recordButton.imageView?.contentMode = .scaleAspectFit
-        self.view.bringSubview(toFront: recordButton)
+        self.view.bringSubviewToFront(recordButton)
 
         let origImage = UIImage(named: "icon_microphone")
         let tintedImage = origImage?.withRenderingMode(.alwaysTemplate)
@@ -188,9 +188,9 @@ class QuestionDetailViewController: UIViewController {
             }
         } else {
             // Open setting page
-            guard let url = URL(string: UIApplicationOpenSettingsURLString) else { return }
+            guard let url = URL(string: UIApplication.openSettingsURLString) else { return }
             if UIApplication.shared.canOpenURL(url) {
-                _ = UIApplication.shared.open(url, options: [:], completionHandler: nil)
+                _ = UIApplication.shared.open(url, options: convertToUIApplicationOpenExternalURLOptionsKeyDictionary([:]), completionHandler: nil)
             }
         }
     }
@@ -406,6 +406,11 @@ extension QuestionDetailViewController {
 // MARK: UITableViewDelegate
 extension QuestionDetailViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return UITableViewAutomaticDimension
+        return UITableView.automaticDimension
     }
+}
+
+// Helper function inserted by Swift 4.2 migrator.
+fileprivate func convertToUIApplicationOpenExternalURLOptionsKeyDictionary(_ input: [String: Any]) -> [UIApplication.OpenExternalURLOptionsKey: Any] {
+	return Dictionary(uniqueKeysWithValues: input.map { key, value in (UIApplication.OpenExternalURLOptionsKey(rawValue: key), value)})
 }

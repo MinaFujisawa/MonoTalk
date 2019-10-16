@@ -10,7 +10,6 @@ import UIKit
 
 class SortCellXib: UITableViewCell {
 
-    
     @IBOutlet weak var arrowIconImageView: UIImageView!
     @IBOutlet weak var sortIconImageView: UIImageView!
     @IBOutlet weak var sortLabel: UILabel!

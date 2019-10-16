@@ -49,7 +49,7 @@ class QuestionsPageViewController: UIPageViewController {
     }
 
     private func setupNavigationBarItems() {
-        let menuButton = UIButton(type: UIButtonType.custom)
+        let menuButton = UIButton(type: UIButton.ButtonType.custom)
         menuButton.setImage(UIImage(named: "navi_menu"), for: .normal)
         menuButton.addTarget(self, action: #selector(menuButtonPressed), for: .touchUpInside)
         menuButton.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
@@ -127,7 +127,7 @@ extension QuestionsPageViewController {
 extension QuestionsPageViewController: UIPageViewControllerDataSource {
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
 
-        guard let index = pageCollection.index(of: viewController) else { return nil }
+        guard let index = pageCollection.firstIndex(of: viewController) else { return nil }
         if (index - 1 < 0) {
             return nil
         }
@@ -135,7 +135,7 @@ extension QuestionsPageViewController: UIPageViewControllerDataSource {
     }
 
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerAfter viewController: UIViewController) -> UIViewController? {
-        guard let index = pageCollection.index(of: viewController) else { return nil }
+        guard let index = pageCollection.firstIndex(of: viewController) else { return nil }
 
         if (index + 1 >= pageCollection.count) {
             return nil
@@ -151,7 +151,7 @@ extension QuestionsPageViewController: UIPageViewControllerDelegate {
         
         // Add Title
         guard let viewController = self.viewControllers?.last else { return }
-        guard let index = pageCollection.index(of: viewController) else { return }
+        guard let index = pageCollection.firstIndex(of: viewController) else { return }
         currentIndex = index
         addTitle(index: currentIndex)
     }
