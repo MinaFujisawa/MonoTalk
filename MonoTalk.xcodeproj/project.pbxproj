@@ -112,7 +112,7 @@
 		09C899D51FB539BC007A9263 /* SortCellXib.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortCellXib.swift; sourceTree = "<group>"; };
 		09C899D61FB539BC007A9263 /* SortCellXib.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SortCellXib.xib; sourceTree = "<group>"; };
 		09E3EB321FC8BC4F00EC7AF8 /* seed_category.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = seed_category.csv; sourceTree = "<group>"; };
-		09E3EB331FC8BC4F00EC7AF8 /* seed_questions.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = seed_questions.csv; path = ../../../../../../Dropbox/004_private_projects/MonoTalk/CSV/seed_questions.csv; sourceTree = "<group>"; };
+		09E3EB331FC8BC4F00EC7AF8 /* seed_questions.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = seed_questions.csv; path = ../../../../../../004_private_projects/MonoTalk/CSV/seed_questions.csv; sourceTree = "<group>"; };
 		09E728511FA95342007B7F5F /* RecorderModalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecorderModalViewController.swift; sourceTree = "<group>"; };
 		09E728531FA96B91007B7F5F /* Time.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Time.swift; sourceTree = "<group>"; };
 		09EBE9761FC95E32009354EC /* MonoTalk.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MonoTalk.entitlements; sourceTree = "<group>"; };
@@ -482,7 +482,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0900;
-				LastUpgradeCheck = 0900;
+				LastUpgradeCheck = 1030;
 				ORGANIZATIONNAME = "MINA FUJISAWA";
 				TargetAttributes = {
 					094ABF031FA7E85F00BA23AB = {
@@ -828,6 +828,7 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -835,6 +836,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
@@ -885,6 +887,7 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -892,6 +895,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;

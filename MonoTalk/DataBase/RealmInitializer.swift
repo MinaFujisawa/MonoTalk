@@ -18,7 +18,7 @@ struct RealmInitializer {
         let categoriesPath: String = Bundle.main.path(forResource: "seed_category", ofType: "csv")!
         let categoriesStream = InputStream(fileAtPath: categoriesPath)!
 
-        for row in try! CSV(stream: categoriesStream, hasHeaderRow: true) {
+        for row in try! CSVReader(stream: categoriesStream, hasHeaderRow: true) {
             let category = Category()
             category.id = row[0]
             category.name = row[1]
@@ -33,7 +33,7 @@ struct RealmInitializer {
         let questionsPath: String = Bundle.main.path(forResource: "seed_questions", ofType: "csv")!
         let questionsStream = InputStream(fileAtPath: questionsPath)!
         
-        for row in try! CSV(stream: questionsStream, hasHeaderRow: true) {
+        for row in try! CSVReader(stream: questionsStream, hasHeaderRow: true) {
             let question = Question()
             question.categoryID = row[0]
             question.questionBody = row[2]
